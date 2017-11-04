@@ -5,4 +5,8 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="title_activity_lamp">LampActivity</string>
+    <string name="title_activity_blind">BlindActivity</string>
+    <string name="title_activity_door">DoorActivity</string>
+    <string name="title_activity_oven">OvenActivity</string>
 </resources>
