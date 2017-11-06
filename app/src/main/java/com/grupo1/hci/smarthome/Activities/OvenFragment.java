@@ -1,12 +1,7 @@
 package com.grupo1.hci.smarthome.Activities;
 
 import android.app.Fragment;
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
-
-import android.support.v7.app.ActionBar;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,16 +11,17 @@ import android.widget.ToggleButton;
 
 import com.grupo1.hci.smarthome.Model.Blind;
 import com.grupo1.hci.smarthome.Model.Constants;
+import com.grupo1.hci.smarthome.Model.Oven;
 import com.grupo1.hci.smarthome.R;
 
 
-public class BlindFragment extends Fragment {
+public class OvenFragment extends Fragment {
 
     ToggleButton openCloseToggleButton;
     TextView stateTextView;
-    Blind blind;
+    Oven oven;
 
-    public BlindFragment() {
+    public OvenFragment() {
         // Required empty public constructor
     }
 
@@ -66,8 +62,8 @@ public class BlindFragment extends Fragment {
 
     private void setView() {
 
-        blind = (Blind) ((DeviceActivity) getActivity()).getDevice();
-        ((DeviceActivity)getActivity()).getSupportActionBar().setTitle(blind.getName());
+        oven = (Oven) ((DeviceActivity) getActivity()).getDevice();
+        ((DeviceActivity)getActivity()).getSupportActionBar().setTitle(oven.getName());
 
         openCloseToggleButton = getActivity().findViewById(R.id.contentBlind_OnOff_ToggleButton);
         openCloseToggleButton.setTextOff(getString(R.string.close));
@@ -76,7 +72,7 @@ public class BlindFragment extends Fragment {
     }
 
     private void loadBlindState(){
-        String status = blind.getStatus();
+        String status = oven.getStatus();
         if(status.equals(Constants.BLIND_STATE_OPENED)){
             openCloseToggleButton.setChecked(true);
             stateTextView.setText(R.string.opened);

@@ -44,11 +44,28 @@ public class DeviceActivity extends AppCompatActivity {
     }
 
     private void setFragment() {
+        Fragment newFragment;
         switch (device.getTypeId()){
             case Constants.BLIND_ID:
-                BlindFragment newFragment = new BlindFragment();
-                fragmentTransaction.add(R.id.deviceFragment, (Fragment) newFragment);
+                newFragment = new BlindFragment();
+                fragmentTransaction.add(R.id.deviceFragment, newFragment);
                 fragmentTransaction.commit();
+                break;
+            case Constants.LAMP_ID:
+                newFragment = new BlindFragment();
+                fragmentTransaction.add(R.id.deviceFragment, newFragment);
+                fragmentTransaction.commit();
+                break;
+            case Constants.OVEN_ID:
+                newFragment = new BlindFragment();
+                fragmentTransaction.add(R.id.deviceFragment, newFragment);
+                fragmentTransaction.commit();
+                break;
+            case Constants.DOOR_ID:
+                newFragment = new BlindFragment();
+                fragmentTransaction.add(R.id.deviceFragment, newFragment);
+                fragmentTransaction.commit();
+                break;
         }
     }
 
