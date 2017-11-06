@@ -20,10 +20,6 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <fragment
-        android:id="@+id/deviceFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        xmlns:android="http://schemas.android.com/apk/res/android" />
+    <include layout="@layout/content_settings" />
 
 </android.support.design.widget.CoordinatorLayout>

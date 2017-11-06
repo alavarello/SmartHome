@@ -1,5 +1,6 @@
 package com.grupo1.hci.smarthome.Activities;
 
+import android.app.DialogFragment;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -21,13 +22,37 @@ import com.grupo1.hci.smarthome.R;
 public class BlindActivity extends AppCompatActivity {
 
     Blind blind;
-    ToggleButton onOffToggleButton;
+    ToggleButton openCloseToggleButton;
     TextView stateTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blind);
+
+        setView();
+        setOnClickListener();
+        loadBlindState();
+    }
+
+    private void setOnClickListener() {
+        openCloseToggleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ToggleButton onOffToogleButton = (ToggleButton) view;
+                if(onOffToogleButton.isChecked()){
+                    Toast.makeText(getApplicationContext(), "CERRADO", Toast.LENGTH_SHORT).show();
+                    stateTextView.setText(Constants.BLIND_STATE_CLOSING);
+                }else{
+                    Toast.makeText(getApplicationContext(), "ABIERTO", Toast.LENGTH_SHORT).show();
+                    stateTextView.setText(Constants.BLIND_STATE_OPENING);
+                }
+            }
+        });
+
+    }
+
+    private void setView() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         blind = (Blind) getIntent().getSerializableExtra(Constants.DEVICE_INTENT);
@@ -38,43 +63,30 @@ public class BlindActivity extends AppCompatActivity {
         // Enable the Up button
         ab.setDisplayHomeAsUpEnabled(true);
 
-        onOffToggleButton = findViewById(R.id.contentBlind_OnOff_ToggleButton);
-        onOffToggleButton.setTextOff("CERRAR");
-        onOffToggleButton.setTextOn("ABRIR");
+        openCloseToggleButton = findViewById(R.id.contentBlind_OnOff_ToggleButton);
+        openCloseToggleButton.setTextOff(getString(R.string.close));
+        openCloseToggleButton.setTextOn(getString(R.string.open));
         stateTextView = findViewById(R.id.contentBlind_State_TextView);
-        onOffToggleButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ToggleButton onOffToogleButton = (ToggleButton) view;
-               if(onOffToogleButton.isChecked()){
-                   Toast.makeText(getApplicationContext(), "CERRADO", Toast.LENGTH_SHORT).show();
-                   stateTextView.setText(Constants.BLIND_STATE_CLOSING);
-               }else{
-                   Toast.makeText(getApplicationContext(), "ABIERTO", Toast.LENGTH_SHORT).show();
-                   stateTextView.setText(Constants.BLIND_STATE_OPENING);
-               }
-            }
-        });
-
-        loadBlindState();
     }
 
     private void loadBlindState(){
         String status = blind.getStatus();
         if(status.equals(Constants.BLIND_STATE_OPENED)){
-            onOffToggleButton.setChecked(true);
-            stateTextView.setText(Constants.BLIND_STATE_OPENED);
+            openCloseToggleButton.setChecked(true);
+            stateTextView.setText(R.string.opened);
         }else if(status.equals(Constants.BLIND_STATE_CLOSED)){
-            onOffToggleButton.setChecked(false);
-            stateTextView.setText(Constants.BLIND_STATE_CLOSED);
+            openCloseToggleButton.setChecked(false);
+            stateTextView.setText(R.string.closed);
         }else if(status.equals(Constants.BLIND_STATE_CLOSING)){
-            onOffToggleButton.setChecked(false);
-            stateTextView.setText(Constants.BLIND_STATE_CLOSING);
+            openCloseToggleButton.setChecked(false);
+            stateTextView.setText(R.string.closing);
         }else if(status.equals(Constants.BLIND_STATE_OPENING)){
-            onOffToggleButton.setChecked(true);
-            stateTextView.setText(Constants.BLIND_STATE_OPENING);
+            openCloseToggleButton.setChecked(true);
+            stateTextView.setText(R.string.opening);
         }
     }
+
+
 
     @Override
     public boolean onPrepareOptionsMenu(final Menu menu) {
@@ -86,7 +98,9 @@ public class BlindActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.deleteElement:
-                Toast.makeText(getApplicationContext(), "click", Toast.LENGTH_SHORT).show();
+                DeleteDialogMessage deleteConfirmationFragment = new DeleteDialogMessage();
+                deleteConfirmationFragment.setRoomId("id");
+                deleteConfirmationFragment.show(getFragmentManager(), "deleteConfirmation");
                 return true;
 
             case R.id.editElement:

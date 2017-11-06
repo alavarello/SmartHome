@@ -1,76 +1,60 @@
 package com.grupo1.hci.smarthome.Activities;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.grupo1.hci.smarthome.Model.Blind;
 import com.grupo1.hci.smarthome.Model.Constants;
-import com.grupo1.hci.smarthome.Model.Lamp;
+import com.grupo1.hci.smarthome.Model.Device;
 import com.grupo1.hci.smarthome.R;
 
-public class LampActivity extends AppCompatActivity {
+public class DeviceActivity extends AppCompatActivity {
 
-    Lamp lamp;
-    ToggleButton onOffToggleButton;
+    Device device;
+   FragmentTransaction fragmentTransaction;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lamp);
+        setContentView(R.layout.activity_blind);
 
+        device = (Device) getIntent().getSerializableExtra(Constants.DEVICE_INTENT);
 
-        setView();
-        setOnClickListener();
-        setLampState();
-
-    }
-
-    private void setOnClickListener() {
-        onOffToggleButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(onOffToggleButton.isChecked()){
-                    Toast.makeText(getApplicationContext(), "OFF", Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(getApplicationContext(), "ON", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-    }
-
-    private void setView() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        lamp = (Lamp) getIntent().getSerializableExtra(Constants.DEVICE_INTENT);
-        getSupportActionBar().setTitle(lamp.getName());
 
         // Get a support ActionBar corresponding to this toolbar
         ActionBar ab = getSupportActionBar();
         // Enable the Up button
         ab.setDisplayHomeAsUpEnabled(true);
 
-        onOffToggleButton = findViewById(R.id.contentLamp_OnOff_toogleButton);
-        onOffToggleButton.setTextOff(getString(R.string.off));
-        onOffToggleButton.setTextOn(getString(R.string.on));
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        setFragment();
     }
 
-    private void setLampState() {
-        if(lamp.isOn()){
-            onOffToggleButton.setChecked(true);
-        }else{
-            onOffToggleButton.setChecked(false);
+    private void setFragment() {
+        switch (device.getTypeId()){
+            case Constants.BLIND_ID:
+                BlindFragment newFragment = new BlindFragment();
+                fragmentTransaction.add(R.id.deviceFragment, (Fragment) newFragment);
+                fragmentTransaction.commit();
         }
-
     }
 
+    public Device getDevice() {
+        return device;
+    }
 
     @Override
     public boolean onPrepareOptionsMenu(final Menu menu) {
@@ -98,7 +82,5 @@ public class LampActivity extends AppCompatActivity {
 
         }
     }
-
-
 
 }

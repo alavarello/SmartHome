@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
-    <item android:title="Cuartos"
+    <item android:title="Rooms"
         android:id="@+id/roomsNavigationalDrawer"
         android:icon="@drawable/ic_menu_share" >
         <menu>
@@ -11,11 +11,16 @@
             </group>
         </menu>
     </item>
-
-    <item android:title="Settings"
-    android:id="@+id/nav_share"
-    android:icon="@drawable/ic_menu_share"
+    <item android:title="Rutines"
+        android:id="@+id/rutines"
+        android:icon="@drawable/ic_menu_manage"
         android:orderInCategory="1000"     >
     </item>
+    <item android:title="Settings"
+        android:id="@+id/settings"
+        android:icon="@drawable/ic_menu_manage"
+        android:orderInCategory="1000"     >
+    </item>
+
 
 </menu>

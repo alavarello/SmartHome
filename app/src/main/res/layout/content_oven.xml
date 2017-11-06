@@ -9,7 +9,7 @@
     tools:showIn="@layout/activity_oven">
 
     <ToggleButton
-        android:id="@+id/toggleButton5"
+        android:id="@+id/contentOven_Onoff_ToogleButton"
         android:layout_width="150dp"
         android:layout_height="78dp"
         android:layout_marginEnd="8dp"
@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/contentDoor_Heat_Spinner"
         android:layout_width="207dp"
         android:layout_height="39dp"
         android:layout_marginEnd="8dp"
@@ -30,10 +30,10 @@
         android:layout_marginTop="60dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner3" />
+        app:layout_constraintTop_toBottomOf="@+id/contentDoor_Convection_Spinner" />
 
     <Spinner
-        android:id="@+id/spinner3"
+        android:id="@+id/contentDoor_Convection_Spinner"
         android:layout_width="207dp"
         android:layout_height="39dp"
         android:layout_marginEnd="8dp"
@@ -42,10 +42,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner2" />
+        app:layout_constraintTop_toBottomOf="@+id/contentDoor_Grill_Spinner" />
 
     <Spinner
-        android:id="@+id/spinner2"
+        android:id="@+id/contentDoor_Grill_Spinner"
         android:layout_width="207dp"
         android:layout_height="39dp"
         android:layout_marginEnd="8dp"
@@ -54,17 +54,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toggleButton5" />
+        app:layout_constraintTop_toBottomOf="@+id/contentOven_Onoff_ToogleButton" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/contentDoor_Temperature_EditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="numberSigned"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner"
-        tools:layout_editor_absoluteX="74dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contentDoor_Heat_Spinner"
+        app:layout_constraintVertical_bias="0.515" />
 </android.support.constraint.ConstraintLayout>
