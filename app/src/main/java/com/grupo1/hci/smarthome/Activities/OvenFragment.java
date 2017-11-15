@@ -1,16 +1,17 @@
 package com.grupo1.hci.smarthome.Activities;
 
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-import com.grupo1.hci.smarthome.Model.Blind;
-import com.grupo1.hci.smarthome.Model.Constants;
 import com.grupo1.hci.smarthome.Model.Oven;
 import com.grupo1.hci.smarthome.R;
 
@@ -20,6 +21,11 @@ public class OvenFragment extends Fragment {
     ToggleButton openCloseToggleButton;
     TextView stateTextView;
     Oven oven;
+    Spinner heatSpinner;
+    Spinner grillSpinner;
+    Spinner convectionSpinner;
+    EditText temperatureEditText;
+    ToggleButton onOffToggleButton;
 
     public OvenFragment() {
         // Required empty public constructor
@@ -35,58 +41,60 @@ public class OvenFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        setView();
+        View view = inflater.inflate(R.layout.fragment_oven, container, false);
+        setView(view);
         setOnClickListener();
-        loadBlindState();
+        loadOvenState();
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_blind, container, false);
+        return view;
     }
 
 
     private void setOnClickListener() {
-        openCloseToggleButton.setOnClickListener(new View.OnClickListener() {
+        onOffToggleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ToggleButton onOffToogleButton = (ToggleButton) view;
-                if(onOffToogleButton.isChecked()){
-                    Toast.makeText(getActivity().getApplicationContext(), "CERRADO", Toast.LENGTH_SHORT).show();
-                    stateTextView.setText(Constants.BLIND_STATE_CLOSING);
+                if(onOffToggleButton.isChecked()){
+                    Toast.makeText(getActivity().getApplicationContext(), "OFF", Toast.LENGTH_SHORT).show();
                 }else{
-                    Toast.makeText(getActivity().getApplicationContext(), "ABIERTO", Toast.LENGTH_SHORT).show();
-                    stateTextView.setText(Constants.BLIND_STATE_OPENING);
+                    Toast.makeText(getActivity().getApplicationContext(), "ON", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
+        temperatureEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                Toast.makeText(getActivity().getApplicationContext(), textView.getText(), Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
     }
 
-    private void setView() {
+    private void setView(View view) {
 
         oven = (Oven) ((DeviceActivity) getActivity()).getDevice();
         ((DeviceActivity)getActivity()).getSupportActionBar().setTitle(oven.getName());
 
-        openCloseToggleButton = getActivity().findViewById(R.id.contentBlind_OnOff_ToggleButton);
-        openCloseToggleButton.setTextOff(getString(R.string.close));
-        openCloseToggleButton.setTextOn(getString(R.string.open));
-        stateTextView = getActivity().findViewById(R.id.contentBlind_State_TextView);
+        onOffToggleButton = view.findViewById(R.id.contentOven_Onoff_ToogleButton);
+        heatSpinner = view.findViewById(R.id.contentDoor_Heat_Spinner);
+        grillSpinner = view.findViewById(R.id.contentDoor_Grill_Spinner);
+        convectionSpinner = view.findViewById(R.id.contentDoor_Convection_Spinner);
+        temperatureEditText = view.findViewById(R.id.contentDoor_Temperature_EditText);
+
+        onOffToggleButton.setTextOff(getString(R.string.off));
+        onOffToggleButton.setTextOn(getString(R.string.on));
+        temperatureEditText.setHint(R.string.temperature);
     }
 
-    private void loadBlindState(){
-        String status = oven.getStatus();
-        if(status.equals(Constants.BLIND_STATE_OPENED)){
-            openCloseToggleButton.setChecked(true);
-            stateTextView.setText(R.string.opened);
-        }else if(status.equals(Constants.BLIND_STATE_CLOSED)){
-            openCloseToggleButton.setChecked(false);
-            stateTextView.setText(R.string.closed);
-        }else if(status.equals(Constants.BLIND_STATE_CLOSING)){
-            openCloseToggleButton.setChecked(false);
-            stateTextView.setText(R.string.closing);
-        }else if(status.equals(Constants.BLIND_STATE_OPENING)){
-            openCloseToggleButton.setChecked(true);
-            stateTextView.setText(R.string.opening);
+    private void loadOvenState() {
+        if(oven.isOn()){
+            onOffToggleButton.setChecked(true);
+        }else{
+            onOffToggleButton.setChecked(false);
         }
+        temperatureEditText.setText(String.valueOf(oven.getTemperature()));
     }
+
 
 
 }

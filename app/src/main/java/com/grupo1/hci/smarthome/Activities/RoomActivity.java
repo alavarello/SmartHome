@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.support.design.widget.Snackbar;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.ActionMode;
 import android.view.View;
 import android.widget.AdapterView;
@@ -112,28 +111,9 @@ public class RoomActivity extends NavigationActivity {
 
     private void startDeviceActivity(Device device) {
         Intent intent;
-        switch (device.getTypeId()){
-            case Constants.LAMP_ID:
-                intent = new Intent(RoomActivity.this.getApplicationContext(), LampActivity.class);
-                intent.putExtra(Constants.DEVICE_INTENT, (Serializable) device);
-                startActivity(intent);
-                break;
-            case Constants.BLIND_ID:
-                intent = new Intent(RoomActivity.this.getApplicationContext(), BlindActivity.class);
-                intent.putExtra(Constants.DEVICE_INTENT, (Serializable) device);
-                startActivity(intent);
-                break;
-            case Constants.OVEN_ID:
-                intent = new Intent(RoomActivity.this.getApplicationContext(), OvenActivity.class);
-                intent.putExtra(Constants.DEVICE_INTENT, (Serializable) device);
-                startActivity(intent);
-                break;
-            case Constants.DOOR_ID:
-                intent = new Intent(RoomActivity.this.getApplicationContext(), DoorActivity.class);
-                intent.putExtra(Constants.DEVICE_INTENT, (Serializable) device);
-                startActivity(intent);
-                break;
-        }
+        intent = new Intent(getApplicationContext(), DeviceActivity.class);
+        intent.putExtra(Constants.DEVICE_INTENT, (Serializable) device);
+        startActivity(intent);
     }
 
     public void selectedElement(View view, Device device) {

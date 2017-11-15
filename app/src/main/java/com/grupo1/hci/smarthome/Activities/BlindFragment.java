@@ -1,12 +1,8 @@
 package com.grupo1.hci.smarthome.Activities;
 
-import android.app.Fragment;
-import android.content.Context;
-import android.net.Uri;
+import android.support.v4.app.Fragment;
 import android.os.Bundle;
 
-import android.support.v7.app.ActionBar;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,13 +33,14 @@ public class BlindFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        setView();
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.fragment_blind, container, false);
+        setView(view);
         setOnClickListener();
         loadBlindState();
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_blind, container, false);
+        return view;
     }
 
 
@@ -64,15 +61,15 @@ public class BlindFragment extends Fragment {
 
     }
 
-    private void setView() {
+    private void setView(View view) {
 
         blind = (Blind) ((DeviceActivity) getActivity()).getDevice();
         ((DeviceActivity)getActivity()).getSupportActionBar().setTitle(blind.getName());
 
-        openCloseToggleButton = getActivity().findViewById(R.id.contentBlind_OnOff_ToggleButton);
+        openCloseToggleButton = view.findViewById(R.id.contentBlind_OnOff_ToggleButton);
         openCloseToggleButton.setTextOff(getString(R.string.close));
         openCloseToggleButton.setTextOn(getString(R.string.open));
-        stateTextView = getActivity().findViewById(R.id.contentBlind_State_TextView);
+        stateTextView = view.findViewById(R.id.contentBlind_State_TextView);
     }
 
     private void loadBlindState(){

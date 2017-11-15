@@ -1,32 +1,27 @@
 package com.grupo1.hci.smarthome.Activities;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
-import com.grupo1.hci.smarthome.Model.Blind;
 import com.grupo1.hci.smarthome.Model.Constants;
 import com.grupo1.hci.smarthome.Model.Device;
 import com.grupo1.hci.smarthome.R;
 
 public class DeviceActivity extends AppCompatActivity {
-
     Device device;
-   FragmentTransaction fragmentTransaction;
+    FragmentTransaction fragmentTransaction;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_blind);
+        setContentView(R.layout.activity_device);
 
         device = (Device) getIntent().getSerializableExtra(Constants.DEVICE_INTENT);
 
@@ -38,7 +33,7 @@ public class DeviceActivity extends AppCompatActivity {
         // Enable the Up button
         ab.setDisplayHomeAsUpEnabled(true);
 
-        FragmentManager fragmentManager = getFragmentManager();
+        FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
         setFragment();
     }
@@ -48,22 +43,22 @@ public class DeviceActivity extends AppCompatActivity {
         switch (device.getTypeId()){
             case Constants.BLIND_ID:
                 newFragment = new BlindFragment();
-                fragmentTransaction.add(R.id.deviceFragment, newFragment);
+                fragmentTransaction.add(R.id.deviceActivity_Fragmentcontainer, newFragment);
                 fragmentTransaction.commit();
                 break;
             case Constants.LAMP_ID:
-                newFragment = new BlindFragment();
-                fragmentTransaction.add(R.id.deviceFragment, newFragment);
+                newFragment = new LampFragment();
+                fragmentTransaction.add(R.id.deviceActivity_Fragmentcontainer, newFragment);
                 fragmentTransaction.commit();
                 break;
             case Constants.OVEN_ID:
-                newFragment = new BlindFragment();
-                fragmentTransaction.add(R.id.deviceFragment, newFragment);
+                newFragment = new OvenFragment();
+                fragmentTransaction.add(R.id.deviceActivity_Fragmentcontainer, newFragment);
                 fragmentTransaction.commit();
                 break;
             case Constants.DOOR_ID:
-                newFragment = new BlindFragment();
-                fragmentTransaction.add(R.id.deviceFragment, newFragment);
+                newFragment = new DoorFragment();
+                fragmentTransaction.add(R.id.deviceActivity_Fragmentcontainer, newFragment);
                 fragmentTransaction.commit();
                 break;
         }

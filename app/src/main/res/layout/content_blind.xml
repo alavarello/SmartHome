@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<fragment android:name="com.grupo1.hci.smarthome.Activities.BlindFragment"
-    android:id="@+id/list"
-    android:layout_weight="1"
-    android:layout_width="0dp"
-    android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android" />

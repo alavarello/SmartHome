@@ -19,31 +19,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-       <activity android:name=".Activities.NavigationActivity"
-           android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".Activities.NavigationActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activities.RoomActivity"
             android:launchMode="singleTop"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.grupo1.hci.smarthome.Activities.HomeActivity" />
-        </activity>
-        <activity
-            android:name=".Activities.LampActivity"
-            android:label="@string/title_activity_lamp"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.grupo1.hci.smarthome.Activities.RoomActivity" />
-        </activity>
-        <activity
-            android:name=".Activities.BlindActivity"
-            android:label="@string/title_activity_blind"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.grupo1.hci.smarthome.Activities.RoomActivity" />
         </activity>
         <activity
             android:name=".Activities.SettingsActivity"
@@ -56,23 +41,12 @@
         <activity
             android:name=".Activities.RutinesActivity"
             android:label="@string/title_activity_settings"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-        <activity
-            android:name=".Activities.DoorActivity"
-            android:label="@string/title_activity_door"
-            android:theme="@style/AppTheme.NoActionBar" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.grupo1.hci.smarthome.Activities.RoomActivity" />
-        </activity>
-        <activity
-            android:name=".Activities.OvenActivity"
-            android:label="@string/title_activity_oven"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".Activities.DeviceActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.grupo1.hci.smarthome.Activities.RoomActivity" />
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.grupo1.hci.smarthome.Activities.RoomActivity" />
         </activity>
     </application>
 
