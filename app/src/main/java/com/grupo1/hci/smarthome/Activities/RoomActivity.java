@@ -171,5 +171,40 @@ public class RoomActivity extends NavigationActivity {
         roomsArray = (ArrayList<Room>) savedInstanceState.getSerializable(Constants.ROOM_ARRAY_INTENT);
         super.onRestoreInstanceState(savedInstanceState);
     }
+
+
+
+    public void deleteRoom(String roomId)
+    {
+        //setting the snackbar
+        mySnackbar = Snackbar.make(findViewById(R.id.contentRoom_ListView), "Deleted", Snackbar.LENGTH_LONG);
+        mySnackbar.setAction("Undo", new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                deleteCountDown.cancel();
+            }
+        });
+
+        mySnackbar.show();
+        deleteCountDown = new CountDownTimer(4000,1000) {
+            @Override
+            public void onTick(long l) {
+
+            }
+
+            @Override
+            public void onFinish() {
+                Toast.makeText(getApplicationContext(), "Se borro!!!!!", Toast.LENGTH_SHORT).show();
+            }
+        }.start();
+    }
+
+    public void selectedElement(View view, Room room) {
+        view.setBackgroundColor(Color.GRAY);
+        view.findViewById(R.id.rowLayout_iconImageView).setBackground(null);
+        selectedElement =view;
+        toolbar.setTitle(room.getName());
+    }
 }
 

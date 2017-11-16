@@ -41,6 +41,10 @@ public class NavigationActivity extends AppCompatActivity
     NavigationView navigationView;
     DrawerLayout drawer;
 
+    public ArrayList<Room> getRoomsArray() {
+        return roomsArray;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
