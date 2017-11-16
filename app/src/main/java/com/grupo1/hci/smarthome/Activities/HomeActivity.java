@@ -16,7 +16,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Cache;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Network;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -27,6 +29,7 @@ import com.android.volley.toolbox.DiskBasedCache;
 import com.android.volley.toolbox.HurlStack;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.grupo1.hci.smarthome.Model.Constants;
@@ -40,6 +43,8 @@ import java.io.FileReader;
 import java.io.Serializable;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class HomeActivity extends NavigationActivity {
 
@@ -63,7 +68,6 @@ public class HomeActivity extends NavigationActivity {
 
         setView();
         setOnClickListener();
-        getRoomsFromAPI();
 
     }
 
@@ -112,8 +116,8 @@ public class HomeActivity extends NavigationActivity {
         mActionModeCallback = new HomeContextualMenu();
         ((HomeContextualMenu) mActionModeCallback).setHomeActivity(this);
         //set listview Adapter and onCikcListener
-        ArrayAdapter rowAdapter = new HomeAdapter(this, roomsArray);
-        listView.setAdapter(rowAdapter);
+        //ArrayAdapter rowAdapter = new HomeAdapter(this, roomsArray);
+        //listView.setAdapter(rowAdapter);
     }
 
 
@@ -163,20 +167,20 @@ public class HomeActivity extends NavigationActivity {
      * los rooms. Falta hacer bien la construccion, la estrucutura del llamado a la API creo que funciona
      * Por ahora cuando la llamo no esta haciendo nada pero no tira error.
      */
-    private void getRoomsFromAPI() {
+        private void getRoomsFromAPI() {
         RequestQueue mRequestQueue;
         Cache cache = new DiskBasedCache(getCacheDir(), 1024 * 1024); // 1MB cap
         Network network = new BasicNetwork(new HurlStack());
         mRequestQueue = new RequestQueue(cache, network);
         mRequestQueue.start();
 
-        String url = "http://127.0.0.1:8080/api/rooms";
-        final Context c = this;
+        String url = "http://10.0.3.2:8080/api/rooms";
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+
                         Gson gson = new Gson();
                         Type listType = new TypeToken<ArrayList<Room>>() {}.getType();
                         ArrayList<Room> roomList = gson.fromJson(response, listType);
@@ -184,19 +188,80 @@ public class HomeActivity extends NavigationActivity {
 
                         ListView listView = (ListView) findViewById(R.id.contentRoom_ListView);
                         if (listView != null) {
-                            ArrayAdapter arrayAdapter = new HomeAdapter(c,roomList);
+                            ArrayAdapter arrayAdapter = new HomeAdapter(getApplicationContext(),roomList);
                             listView.setAdapter(arrayAdapter);
                         }
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                Toast.makeText(getApplicationContext(), error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(40000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        mRequestQueue.start();
+
         mRequestQueue.add(stringRequest);
 
-        mRequestQueue.start();
     }
 
+    /**
+     * @author sswinnen
+     * Recibe un nombre y un meta, (si el meta es vacio pasarle ""), y gson construye el JSON
+     * para mandarle a la API
+     * @param roomName nombre elegido por el usuario
+     * @param meta vacio en caso de no querer usarlo
+     */
+
+    private void newRoomToAPI(final String roomName, final String meta) {
+
+        String url = "http://10.0.3.2:8080/api/rooms";
+        RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+        StringRequest sr = new StringRequest(Request.Method.POST,url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast.makeText(getApplicationContext(), "Posteo bien a la API", Toast.LENGTH_SHORT).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("name", roomName);
+                params.put("meta", meta);
+                return params;
+            }
+
+        };
+        queue.add(sr);
+    }
+
+    /**
+     * Recibe un id de room, arma el URL y manda el delete a la API
+     * @param roomId id del Room a eliminar. Si es conveniente se podria pasar el Room y desde ahi sacarle el id.
+     */
+
+    private void deleteRoomFromAPI(String roomId) {
+        String url = "http://10.0.3.2:8080/api/rooms" + roomId;
+        RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+        StringRequest sr = new StringRequest(Request.Method.DELETE,url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast.makeText(getApplicationContext(), "Posteo bien a la API", Toast.LENGTH_SHORT).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        queue.add(sr);
+    }
 }
