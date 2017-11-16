@@ -116,8 +116,8 @@ public class HomeActivity extends NavigationActivity {
         mActionModeCallback = new HomeContextualMenu();
         ((HomeContextualMenu) mActionModeCallback).setHomeActivity(this);
         //set listview Adapter and onCikcListener
-        //ArrayAdapter rowAdapter = new HomeAdapter(this, roomsArray);
-        //listView.setAdapter(rowAdapter);
+        ArrayAdapter rowAdapter = new HomeAdapter(this, roomsArray);
+        listView.setAdapter(rowAdapter);
     }
 
 
