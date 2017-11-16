@@ -9,6 +9,6 @@
         />
     <item android:title=""
         android:id="@+id/deleteElement"
-        android:icon="@mipmap/ic_delete_black_24dp"
+        android:icon="@mipmap/ic_launcher"
         app:showAsAction="ifRoom"/>
 </menu>
