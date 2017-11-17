@@ -46,6 +46,8 @@ public class RoomsAdapter extends ArrayAdapter<Device> {
         return convertView;
     }
 
+
+
     @Nullable
     @Override
     public Device getItem(int position) {

@@ -21,15 +21,18 @@ public class APIManager {
     }
 
     public static ArrayList<Device> getRoomDevices(String roomId){
-
         ArrayList<Device> deviceArray = new ArrayList<>();
+        if(roomId.equals("3")){
+            deviceArray.add(new Lamp("1","Lamp3"));
+            deviceArray.add(new Lamp("2","Lamp4"));
+            return deviceArray;
+        }
         //Add Elements to array for testing------------------
         deviceArray.add(new Lamp("1","Lamp1"));
         deviceArray.add(new Lamp("2","Lamp2"));
         deviceArray.add(new Blind("3","Blind1"));
         deviceArray.add(new Door("4","Door1"));
         deviceArray.add(new Oven("5","Oven1"));
-
         //------------------------------------------------------4
         return deviceArray;
     }

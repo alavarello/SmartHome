@@ -1,5 +1,6 @@
 package com.grupo1.hci.smarthome.Activities;
 
+<<<<<<< HEAD
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -13,6 +14,12 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+=======
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+>>>>>>> ListFragment
 import android.widget.Toast;
 
 
@@ -36,18 +43,22 @@ import com.grupo1.hci.smarthome.Model.Constants;
 import com.grupo1.hci.smarthome.Model.Room;
 import com.grupo1.hci.smarthome.R;
 
+<<<<<<< HEAD
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.Serializable;
 import java.lang.reflect.Type;
+=======
+>>>>>>> ListFragment
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class HomeActivity extends NavigationActivity {
 
+<<<<<<< HEAD
     // Array of strings...
     View selectedElement;
     ListView listView;
@@ -62,64 +73,40 @@ public class HomeActivity extends NavigationActivity {
 
     ActionMode.Callback mActionModeCallback;
 
+=======
+    FragmentTransaction fragmentTransaction;
+    Fragment fragment;
+>>>>>>> ListFragment
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        setView();
-        setOnClickListener();
-
-    }
-
-    private void setOnClickListener() {
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> arg0, View view, int position, long arg3) {
-                Object o = arg0.getAdapter().getItem(position);
-                Room room = (Room) o;//As you are using Default String Adapter
-                Toast.makeText(getApplicationContext(), room.getName() + " ShortClick", Toast.LENGTH_SHORT).show();
-                //if is the same view as the selected one
-                if (mActionMode == null) {
-                    diselectElement();
-                    Intent intent = new Intent(HomeActivity.this.getApplicationContext(), RoomActivity.class);
-                    intent.putExtra(Constants.ROOM_ARRAY_INTENT, (Serializable) roomsArray);
-                    intent.putExtra(Constants.ROOM_INTENT, (Serializable) room);
-                    startActivity(intent);
-                }
-            }
-        });
-
-        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> arg0, View view, int position, long id) {
-                Object o = arg0.getAdapter().getItem(position);
-                Room room = (Room) o;//As you are using Default String Adapter
-
-                Toast.makeText(getApplicationContext(), room.getName() + " LongClick", Toast.LENGTH_SHORT).show();
-                if (mActionMode != null) {
-                    return false;
-                }
-                // Start the CAB using the ActionMode.Callback defined above
-                ((HomeContextualMenu) mActionModeCallback).setRoom(room);
-                mActionMode = HomeActivity.this.startActionMode(mActionModeCallback);
-                selectedElement(view, room);
-
-                return true;
-            }
-        });
+        if(savedInstanceState != null){
+            roomsArray = (ArrayList<Room>) savedInstanceState.getSerializable(Constants.ROOM_ARRAY_INTENT);
+        }
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        setFragment();
 
     }
 
-    private void setView() {
-        listView = (ListView) findViewById(R.id.contentRoom_ListView);
-        //set the contextual floating menu
-        mActionModeCallback = new HomeContextualMenu();
-        ((HomeContextualMenu) mActionModeCallback).setHomeActivity(this);
-        //set listview Adapter and onCikcListener
-        ArrayAdapter rowAdapter = new HomeAdapter(this, roomsArray);
-        listView.setAdapter(rowAdapter);
+    private void setFragment() {
+        if(getResources().getConfiguration().orientation ==  getResources().getConfiguration().ORIENTATION_PORTRAIT) {
+            fragment = new HomeListFragment();
+            fragmentTransaction.add(R.id.homeActivity_Fragmentcontainer, fragment);
+            fragmentTransaction.commit();
+        }else{
+            Toast.makeText(getApplicationContext(), "CAMBIO", Toast.LENGTH_SHORT).show();
+            fragment = new HomeTileFragment();
+            fragmentTransaction.add(R.id.homeActivity_Fragmentcontainer, fragment);
+            fragmentTransaction.commit();
+        }
     }
 
+    public Fragment getFragment() {
+        return fragment;
+    }
+
+<<<<<<< HEAD
 
     public void deleteRoom(String roomId) {
         //setting the snackbar
@@ -264,4 +251,18 @@ public class HomeActivity extends NavigationActivity {
         });
         queue.add(sr);
     }
+=======
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.clear();
+        outState.putSerializable(Constants.ROOM_ARRAY_INTENT, roomsArray);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        roomsArray = (ArrayList<Room>) savedInstanceState.getSerializable(Constants.ROOM_ARRAY_INTENT);
+        super.onRestoreInstanceState(savedInstanceState);
+    }
+>>>>>>> ListFragment
 }
