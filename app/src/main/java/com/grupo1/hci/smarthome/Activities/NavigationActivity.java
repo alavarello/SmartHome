@@ -12,6 +12,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.ActionMode;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.SubMenu;
 import android.view.View;
@@ -41,6 +42,10 @@ public class NavigationActivity extends AppCompatActivity
     NavigationView navigationView;
     DrawerLayout drawer;
 
+    public Toolbar getToolbar() {
+        return toolbar;
+    }
+
     public ArrayList<Room> getRoomsArray() {
         return roomsArray;
     }
@@ -64,6 +69,7 @@ public class NavigationActivity extends AppCompatActivity
         //Set toolbar content
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -113,10 +119,15 @@ public class NavigationActivity extends AppCompatActivity
             Intent intent = new Intent(NavigationActivity.this.getApplicationContext(), RutinesActivity.class);
             startActivity(intent);
         }else{
-            Intent intent = new Intent(NavigationActivity.this.getApplicationContext(), RoomActivity.class);
-            intent.putExtra(Constants.ROOM_INTENT, (Serializable) roomsArray.get(id));
-            intent.putExtra(Constants.ROOM_ARRAY_INTENT, (Serializable) roomsArray);
-            startActivity(intent);
+            if(getClass().equals(HomeActivity.class)){
+                Intent intent = new Intent(NavigationActivity.this.getApplicationContext(), RoomActivity.class);
+                intent.putExtra(Constants.ROOM_INTENT, (Serializable) roomsArray.get(id));
+                intent.putExtra(Constants.ROOM_ARRAY_INTENT, (Serializable) roomsArray);
+                startActivity(intent);
+            }else{
+                ((RoomListFragment)((RoomActivity)this).getFragment()).changeRoom(roomsArray.get(id));
+            }
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -124,5 +135,10 @@ public class NavigationActivity extends AppCompatActivity
         return true;
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.one_item_contextual_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 }
 

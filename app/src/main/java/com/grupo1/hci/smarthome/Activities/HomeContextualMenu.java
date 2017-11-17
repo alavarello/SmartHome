@@ -1,15 +1,15 @@
 package com.grupo1.hci.smarthome.Activities;
 
-import android.content.Context;
 import android.util.Log;
 import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.grupo1.hci.smarthome.Model.Room;
 import com.grupo1.hci.smarthome.R;
+
+import java.util.ArrayList;
 
 /**
  * Created by agust on 11/1/2017.
@@ -17,12 +17,12 @@ import com.grupo1.hci.smarthome.R;
 
 public class HomeContextualMenu implements ActionMode.Callback {
 
-    Room room;
+    ArrayList<Room> rooms = new ArrayList<>();
     HomeActivity homeActivity;
-
-
-    public void setRoom(Room room) {
-        this.room = room;
+    MenuInflater inflater;
+    Menu menu;
+    public void addRoom(Room room) {
+        this.rooms.add(room);
     }
 
     public void setHomeActivity(HomeActivity homeActivity) {
@@ -31,9 +31,14 @@ public class HomeContextualMenu implements ActionMode.Callback {
 
     @Override
     public boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
-        MenuInflater inflater = actionMode.getMenuInflater();
-        inflater.inflate(R.menu.contextual_menu, menu);
+        inflater = actionMode.getMenuInflater();
+        this.menu = menu;
+        inflater.inflate(R.menu.one_item_contextual_menu, menu);
         return true;
+    }
+
+    public void changeToSeveralItemsMenu(){
+        menu.findItem(R.id.editElement).setVisible(false);
     }
 
     @Override
@@ -44,15 +49,17 @@ public class HomeContextualMenu implements ActionMode.Callback {
     @Override
     public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem) {
 
-        Log.i("Menu Item click: ", room.getName());
-        homeActivity.deleteRoom(room.getId());
+        Log.i("Menu Item click: ", rooms.toString());
+        for (Room r:rooms){
+            ((HomeFragment)homeActivity.getFragment()).deleteRoom(r.getId());
+        }
         return true;
     }
 
     @Override
     public void onDestroyActionMode(ActionMode actionMode) {
-        homeActivity.setmActionMode(null);
-        homeActivity.diselectElement();
+        ((HomeFragment)homeActivity.getFragment()).setmActionMode(null);
+        ((HomeFragment)homeActivity.getFragment()).diselectElement();
     }
 
 }

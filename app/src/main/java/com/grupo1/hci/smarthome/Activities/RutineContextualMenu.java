@@ -1,14 +1,14 @@
 package com.grupo1.hci.smarthome.Activities;
 
-import android.util.Log;
 import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import com.grupo1.hci.smarthome.Model.Device;
 import com.grupo1.hci.smarthome.Model.Rutine;
 import com.grupo1.hci.smarthome.R;
+
+import java.util.ArrayList;
 
 /**
  * Created by agust on 11/1/2017.
@@ -16,22 +16,28 @@ import com.grupo1.hci.smarthome.R;
 
 public class RutineContextualMenu implements ActionMode.Callback {
 
-    Rutine rutine;
+    ArrayList<Rutine> rutines = new ArrayList<>();
     RutinesActivity rutineActivity;
+    Menu menu;
 
 
-    public void setRutine(Rutine rutine) {
-        this.rutine = rutine;
+
+    public void addRutine(Rutine rutine) {
+        this.rutines.add(rutine);
     }
 
     public void setRutineActivity(RutinesActivity roomActivity) {
         this.rutineActivity = roomActivity;
     }
+    public void changeToSeveralItemsMenu(){
+        menu.findItem(R.id.editElement).setVisible(false);
+    }
 
     @Override
     public boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
         MenuInflater inflater = actionMode.getMenuInflater();
-        inflater.inflate(R.menu.contextual_menu, menu);
+        this.menu =menu;
+        inflater.inflate(R.menu.one_item_contextual_menu, menu);
         return true;
     }
 
@@ -42,15 +48,16 @@ public class RutineContextualMenu implements ActionMode.Callback {
 
     @Override
     public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem) {
-
-        rutineActivity.deleteRutine(rutine.toString());
+        for (Rutine r:rutines){
+            ((RutinesListFragment)rutineActivity.getFragment()).deleteRutine(r.toString());
+        }
         return true;
     }
 
     @Override
     public void onDestroyActionMode(ActionMode actionMode) {
-      rutineActivity.setmActionMode(null);
-      rutineActivity.diselectElement();
+        ((RutinesListFragment)rutineActivity.getFragment()).setmActionMode(null);
+        ((RutinesListFragment)rutineActivity.getFragment()).diselectElement();
 
     }
 

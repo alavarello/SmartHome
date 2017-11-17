@@ -70,7 +70,7 @@ public class DeviceActivity extends AppCompatActivity {
 
     @Override
     public boolean onPrepareOptionsMenu(final Menu menu) {
-        getMenuInflater().inflate(R.menu.contextual_menu, menu);
+        getMenuInflater().inflate(R.menu.one_item_contextual_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
