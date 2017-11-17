@@ -1,6 +1,5 @@
 package com.grupo1.hci.smarthome.Activities;
 
-<<<<<<< HEAD
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -14,12 +13,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-=======
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
->>>>>>> ListFragment
 import android.widget.Toast;
 
 
@@ -42,41 +39,22 @@ import com.google.gson.reflect.TypeToken;
 import com.grupo1.hci.smarthome.Model.Constants;
 import com.grupo1.hci.smarthome.Model.Room;
 import com.grupo1.hci.smarthome.R;
-
-<<<<<<< HEAD
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.Serializable;
 import java.lang.reflect.Type;
-=======
->>>>>>> ListFragment
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class HomeActivity extends NavigationActivity {
 
-<<<<<<< HEAD
-    // Array of strings...
-    View selectedElement;
-    ListView listView;
-    Toolbar toolbar;
-    ActionMode mActionMode;
-    Snackbar mySnackbar;
-    private CountDownTimer deleteCountDown;
 
-    public void setmActionMode(ActionMode mActionMode) {
-        this.mActionMode = mActionMode;
-    }
-
-    ActionMode.Callback mActionModeCallback;
-
-=======
     FragmentTransaction fragmentTransaction;
     Fragment fragment;
->>>>>>> ListFragment
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -106,46 +84,7 @@ public class HomeActivity extends NavigationActivity {
         return fragment;
     }
 
-<<<<<<< HEAD
 
-    public void deleteRoom(String roomId) {
-        //setting the snackbar
-        mySnackbar = Snackbar.make(findViewById(R.id.contentRoom_ListView), "Deleted", Snackbar.LENGTH_LONG);
-        mySnackbar.setAction("Undo", new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                deleteCountDown.cancel();
-            }
-        });
-
-        mySnackbar.show();
-        deleteCountDown = new CountDownTimer(4000, 1000) {
-            @Override
-            public void onTick(long l) {
-
-            }
-
-            @Override
-            public void onFinish() {
-                Toast.makeText(getApplicationContext(), "Se borro!!!!!", Toast.LENGTH_SHORT).show();
-            }
-        }.start();
-    }
-
-    public void selectedElement(View view, Room room) {
-        view.setBackgroundColor(Color.GRAY);
-        view.findViewById(R.id.rowLayout_iconImageView).setBackground(null);
-        selectedElement = view;
-        toolbar.setTitle(room.getName());
-    }
-
-    public void diselectElement() {
-        if (selectedElement != null) {
-            selectedElement.setBackgroundColor(Color.TRANSPARENT);
-            toolbar.setTitle(Constants.appName);
-        }
-    }
 
 
     /**
@@ -154,46 +93,46 @@ public class HomeActivity extends NavigationActivity {
      * los rooms. Falta hacer bien la construccion, la estrucutura del llamado a la API creo que funciona
      * Por ahora cuando la llamo no esta haciendo nada pero no tira error.
      */
-        private void getRoomsFromAPI() {
-        RequestQueue mRequestQueue;
-        Cache cache = new DiskBasedCache(getCacheDir(), 1024 * 1024); // 1MB cap
-        Network network = new BasicNetwork(new HurlStack());
-        mRequestQueue = new RequestQueue(cache, network);
-        mRequestQueue.start();
-
-        String url = "http://10.0.3.2:8080/api/rooms";
-
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-
-                        Gson gson = new Gson();
-                        Type listType = new TypeToken<ArrayList<Room>>() {}.getType();
-                        ArrayList<Room> roomList = gson.fromJson(response, listType);
-                        getRoomsFromAPI();
-
-                        ListView listView = (ListView) findViewById(R.id.contentRoom_ListView);
-                        if (listView != null) {
-                            ArrayAdapter arrayAdapter = new HomeAdapter(getApplicationContext(),roomList);
-                            listView.setAdapter(arrayAdapter);
-                        }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        stringRequest.setRetryPolicy(new DefaultRetryPolicy(40000,
-                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        mRequestQueue.start();
-
-        mRequestQueue.add(stringRequest);
-
-    }
+//        private void getRoomsFromAPI() {
+//        RequestQueue mRequestQueue;
+//        Cache cache = new DiskBasedCache(getCacheDir(), 1024 * 1024); // 1MB cap
+//        Network network = new BasicNetwork(new HurlStack());
+//        mRequestQueue = new RequestQueue(cache, network);
+//        mRequestQueue.start();
+//
+//        String url = "http://10.0.3.2:8080/api/rooms";
+//
+//        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+//                new Response.Listener<String>() {
+//                    @Override
+//                    public void onResponse(String response) {
+//
+//                        Gson gson = new Gson();
+//                        Type listType = new TypeToken<ArrayList<Room>>() {}.getType();
+//                        ArrayList<Room> roomList = gson.fromJson(response, listType);
+//                        getRoomsFromAPI();
+////
+////                        ListView listView = (ListView) findViewById(R.id.contentRoom_ListView);
+////                        if (listView != null) {
+////                            ArrayAdapter arrayAdapter = new HomeAdapter(getApplicationContext(),roomList);
+////                            listView.setAdapter(arrayAdapter);
+////                        }
+////                    }
+//                }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                Toast.makeText(getApplicationContext(), error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        stringRequest.setRetryPolicy(new DefaultRetryPolicy(40000,
+//                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+//                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+//        mRequestQueue.start();
+//
+//        mRequestQueue.add(stringRequest);
+//
+//    }
 
     /**
      * @author sswinnen
@@ -251,7 +190,6 @@ public class HomeActivity extends NavigationActivity {
         });
         queue.add(sr);
     }
-=======
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         outState.clear();
@@ -264,5 +202,4 @@ public class HomeActivity extends NavigationActivity {
         roomsArray = (ArrayList<Room>) savedInstanceState.getSerializable(Constants.ROOM_ARRAY_INTENT);
         super.onRestoreInstanceState(savedInstanceState);
     }
->>>>>>> ListFragment
 }
