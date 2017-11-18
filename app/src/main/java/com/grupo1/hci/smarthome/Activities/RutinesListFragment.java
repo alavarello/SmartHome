@@ -36,7 +36,7 @@ public class RutinesListFragment extends ListFragment implements AdapterView.OnI
 
     // Array of strings...
     ArrayList<Rutine> rutineArray = new ArrayList<>();
-    View selectedElement;
+    ArrayList<View> selectedElement = new ArrayList<>();
     TextView emptyTextView;
     ActionMode mActionMode;
     Snackbar mySnackbar;
@@ -89,14 +89,25 @@ public class RutinesListFragment extends ListFragment implements AdapterView.OnI
     public void selectedElement(View view,Rutine rutine) {
         view.setBackgroundColor(Color.GRAY);
         view.findViewById(R.id.rowLayout_iconImageView).setBackground(null);
-        selectedElement = view;
+        selectedElement.add(view);
         toolbar.setTitle(rutine.toString());
     }
 
-    public void diselectElement() {
-        if(selectedElement != null){
-            selectedElement.setBackgroundColor(Color.TRANSPARENT);
+    public void diselectElements() {
+        for(View v: selectedElement){
+            v.setBackgroundColor(Color.TRANSPARENT);
+        }
             toolbar.setTitle(R.string.title_activity_rutines);
+    }
+
+    public void diselectElement(View view) {
+        view.setBackgroundColor(Color.TRANSPARENT);
+        selectedElement.remove(view);
+        if(selectedElement.size() == 1){
+            ((RutineContextualMenu)mActionModeCallback).changeToOneItemsMenu();
+        }
+        if(selectedElement.isEmpty()){
+            mActionMode.finish();
         }
     }
 
@@ -153,7 +164,7 @@ public class RutinesListFragment extends ListFragment implements AdapterView.OnI
 
         //if is the same view as the selected one
         if(mActionMode == null){
-            diselectElement();
+            diselectElements();
         }else{
             ((RoomContextualMenu)mActionModeCallback).changeToSeveralItemsMenu();
             selectedElement(view, rutine);

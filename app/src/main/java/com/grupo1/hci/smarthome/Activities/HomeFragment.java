@@ -14,5 +14,4 @@ interface HomeFragment {
     void diselectElements();
     void diselectElement(View view);
 
-    //TODO add in diselectElement: if it's the last element in the array, the contextual menu should disappear
 }

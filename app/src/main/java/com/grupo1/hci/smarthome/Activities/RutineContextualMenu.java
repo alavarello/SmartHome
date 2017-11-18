@@ -61,7 +61,7 @@ public class RutineContextualMenu implements ActionMode.Callback {
     @Override
     public void onDestroyActionMode(ActionMode actionMode) {
         ((RutinesListFragment)rutineActivity.getFragment()).setmActionMode(null);
-        ((RutinesListFragment)rutineActivity.getFragment()).diselectElement();
+        ((RutinesListFragment)rutineActivity.getFragment()).diselectElements();
 
     }
 
