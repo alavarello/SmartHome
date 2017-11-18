@@ -28,6 +28,7 @@ android:orientation="vertical">
         android:verticalSpacing="10dp"
         android:horizontalSpacing="10dp"
         android:stretchMode="columnWidth"
+        android:visibility="visible"
         android:gravity="center"
         android:id="@+id/gridView">
 
