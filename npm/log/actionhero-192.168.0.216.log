@@ -534,3 +534,36 @@
 {"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-18T20:06:35.979Z"}
 {"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"e0e19ece3fa8adbc\",\"name\":\"test\",\"meta\":\"{}\"},{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-18T20:06:35.980Z"}
 {"level":"notice","message":"Shutting down open servers and stopping task processing...","timestamp":"192.168.0.216 @ 2017-11-18T20:21:58.934Z"}
+{"level":"info","message":"--------------------------------------","timestamp":"192.168.0.216 @ 2017-11-18T23:19:29.083Z"}
+{"level":"info","message":"ACTIONHERO COMMAND >> start","timestamp":"192.168.0.216 @ 2017-11-18T23:19:29.088Z"}
+{"level":"info","message":"--------------------------------------","timestamp":"192.168.0.216 @ 2017-11-18T23:19:29.092Z"}
+{"level":"notice","message":"*** Starting ActionHero ***","timestamp":"192.168.0.216 @ 2017-11-18T23:19:29.124Z"}
+{"level":"notice","message":"pid: 236","timestamp":"192.168.0.216 @ 2017-11-18T23:19:29.150Z"}
+{"level":"notice","message":"server ID: 192.168.0.216","timestamp":"192.168.0.216 @ 2017-11-18T23:19:29.152Z"}
+{"level":"info","message":"actionhero member 192.168.0.216 has joined the cluster","timestamp":"192.168.0.216 @ 2017-11-18T23:19:29.215Z"}
+{"level":"notice","message":"Starting server: `web` @ 0.0.0.0:8080","timestamp":"192.168.0.216 @ 2017-11-18T23:19:29.288Z"}
+{"level":"notice","message":"environment: development","timestamp":"192.168.0.216 @ 2017-11-18T23:19:29.346Z"}
+{"level":"info","message":"device log database loaded","timestamp":"192.168.0.216 @ 2017-11-18T23:19:29.374Z"}
+{"level":"info","message":"device type database loaded","timestamp":"192.168.0.216 @ 2017-11-18T23:19:29.403Z"}
+{"level":"info","message":"device database loaded","timestamp":"192.168.0.216 @ 2017-11-18T23:19:29.419Z"}
+{"level":"info","message":"room database loaded","timestamp":"192.168.0.216 @ 2017-11-18T23:19:29.440Z"}
+{"level":"info","message":"routine database loaded","timestamp":"192.168.0.216 @ 2017-11-18T23:19:29.456Z"}
+{"level":"alert","message":"*** ActionHero Started ***","timestamp":"192.168.0.216 @ 2017-11-18T23:19:29.479Z"}
+{"level":"warning","message":"invalid device id \"c39181d52abe5555\"","timestamp":"192.168.0.216 @ 2017-11-18T23:19:47.909Z"}
+{"level":"warning","message":"invalid device id \"f597c13717008fb1\"","timestamp":"192.168.0.216 @ 2017-11-18T23:19:47.916Z"}
+["invalid device id \"c39181d52abe5555\"","invalid device id \"f597c13717008fb1\""]
+{"to":"127.0.0.1","action":"createRoutine","params":"{\"action\":\"createRoutine\",\"apiVersion\":1}","duration":82,"error":"{\"code\":1,\"description\":[\"invalid device id \\\"c39181d52abe5555\\\"\",\"invalid device id \\\"f597c13717008fb1\\\"\"]}","level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-18T23:19:47.935Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=createRoutine, response={\"error\":{\"code\":1,\"description\":[\"invalid device id \\\"c39181d52abe5555\\\"\",\"invalid device id \\\"f597c13717008fb1\\\"\"]}}","timestamp":"192.168.0.216 @ 2017-11-18T23:19:47.937Z"}
+{"level":"warning","message":"invalid device id \"c39181d52abe5555\"","timestamp":"192.168.0.216 @ 2017-11-18T23:19:58.779Z"}
+{"level":"warning","message":"invalid device id \"f597c13717008fb1\"","timestamp":"192.168.0.216 @ 2017-11-18T23:19:58.782Z"}
+["invalid device id \"c39181d52abe5555\"","invalid device id \"f597c13717008fb1\""]
+{"to":"127.0.0.1","action":"createRoutine","params":"{\"action\":\"createRoutine\",\"apiVersion\":1}","duration":20,"error":"{\"code\":1,\"description\":[\"invalid device id \\\"c39181d52abe5555\\\"\",\"invalid device id \\\"f597c13717008fb1\\\"\"]}","level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-18T23:19:58.790Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=createRoutine, response={\"error\":{\"code\":1,\"description\":[\"invalid device id \\\"c39181d52abe5555\\\"\",\"invalid device id \\\"f597c13717008fb1\\\"\"]}}","timestamp":"192.168.0.216 @ 2017-11-18T23:19:58.791Z"}
+{"level":"warning","message":"invalid device id \"c39181d52abe5555\"","timestamp":"192.168.0.216 @ 2017-11-18T23:20:03.838Z"}
+{"level":"warning","message":"invalid device id \"f597c13717008fb1\"","timestamp":"192.168.0.216 @ 2017-11-18T23:20:03.840Z"}
+["invalid device id \"c39181d52abe5555\"","invalid device id \"f597c13717008fb1\""]
+{"to":"127.0.0.1","action":"createRoutine","params":"{\"action\":\"createRoutine\",\"apiVersion\":1}","duration":14,"error":"{\"code\":1,\"description\":[\"invalid device id \\\"c39181d52abe5555\\\"\",\"invalid device id \\\"f597c13717008fb1\\\"\"]}","level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-18T23:20:03.857Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=createRoutine, response={\"error\":{\"code\":1,\"description\":[\"invalid device id \\\"c39181d52abe5555\\\"\",\"invalid device id \\\"f597c13717008fb1\\\"\"]}}","timestamp":"192.168.0.216 @ 2017-11-18T23:20:03.859Z"}
+{"to":"127.0.0.1","action":"retrieveRoutines","params":"{\"action\":\"retrieveRoutines\",\"apiVersion\":1}","duration":11,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-18T23:20:25.888Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooutines, response={\"routines\":[]}","timestamp":"192.168.0.216 @ 2017-11-18T23:20:25.891Z"}
+{"level":"notice","message":"Shutting down open servers and stopping task processing...","timestamp":"192.168.0.216 @ 2017-11-18T23:23:25.778Z"}

@@ -1,5 +1,7 @@
 package com.grupo1.hci.smarthome.Model;
 
+import java.util.ArrayList;
+
 /**
  * Created by agust on 11/5/2017.
  */
@@ -7,6 +9,7 @@ package com.grupo1.hci.smarthome.Model;
 public class Rutine {
 
     String name;
+    ArrayList<Action> actions;
     String id;
 
     public Rutine(String id, String name) {

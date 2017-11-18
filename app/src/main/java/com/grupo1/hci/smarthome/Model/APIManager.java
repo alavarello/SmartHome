@@ -183,7 +183,7 @@ public class APIManager {
      * @param roomId id del Room a eliminar. Si es conveniente se podria pasar el Room y desde ahi sacarle el id.
      */
 
-    private void deleteRoom(String roomId, final Context context) {
+    private void deleteRoom(String roomId, final Activity activity) {
 
         String url = "http://10.0.2.2:8080/api/rooms/" + roomId;
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.DELETE, url, new JSONObject(),
@@ -192,7 +192,7 @@ public class APIManager {
                     @Override
                     public void onResponse(JSONObject response)
                     {
-                        Toast.makeText(context,response.toString(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(activity,response.toString(), Toast.LENGTH_LONG).show();
                     }
                 },
                 new Response.ErrorListener()
@@ -202,10 +202,44 @@ public class APIManager {
                     {
                         if (null != error.networkResponse)
                         {
-                            Toast.makeText(context,error.getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(activity,error.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     }
                 });
         queue.add(request);
+    }
+
+    public void getRoutines(final Activity activity) {
+        String url = "http://10.0.2.2:8080/api/routines";
+        cache = new DiskBasedCache(activity.getCacheDir(), 1024 * 1024); // 1MB cap
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, new JSONObject(),
+                new Response.Listener<JSONObject>()
+                {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try{
+                            Gson gson = new GsonBuilder().create();
+                            Type listType = new TypeToken<ArrayList<Rutine>>() {
+                            }.getType();
+                            String jsonFragment = response.getString("routines");
+                            ArrayList<Rutine> routineList = gson.fromJson(jsonFragment, listType);
+
+                            /**
+                             * TODO
+                             * Armar el adapter
+                             */
+                        } catch (Exception exception) {
+                            Toast.makeText(activity, exception.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(activity, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        queue.add(request);
+
     }
 }
