@@ -1,0 +1,3 @@
+{"_id":"e0e19ece3fa8adbc","name":"test","meta":"{}"}
+{"_id":"fd9f12da765927c0","name":"kitchen","meta":"{}"}
+{"$$indexCreated":{"fieldName":"name","unique":true,"sparse":false}}

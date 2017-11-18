@@ -1,0 +1,536 @@
+{"level":"info","message":"--------------------------------------","timestamp":"192.168.0.216 @ 2017-11-15T23:18:05.142Z"}
+{"level":"info","message":"ACTIONHERO COMMAND >> start","timestamp":"192.168.0.216 @ 2017-11-15T23:18:05.142Z"}
+{"level":"info","message":"--------------------------------------","timestamp":"192.168.0.216 @ 2017-11-15T23:18:05.142Z"}
+{"level":"notice","message":"*** Starting ActionHero ***","timestamp":"192.168.0.216 @ 2017-11-15T23:18:05.159Z"}
+{"level":"notice","message":"pid: 2652","timestamp":"192.168.0.216 @ 2017-11-15T23:18:05.162Z"}
+{"level":"notice","message":"server ID: 192.168.0.216","timestamp":"192.168.0.216 @ 2017-11-15T23:18:05.163Z"}
+{"level":"info","message":"actionhero member 192.168.0.216 has joined the cluster","timestamp":"192.168.0.216 @ 2017-11-15T23:18:05.179Z"}
+{"level":"notice","message":"Starting server: `web` @ 0.0.0.0:8080","timestamp":"192.168.0.216 @ 2017-11-15T23:18:05.179Z"}
+{"level":"notice","message":"environment: development","timestamp":"192.168.0.216 @ 2017-11-15T23:18:05.195Z"}
+{"level":"info","message":"device log database loaded","timestamp":"192.168.0.216 @ 2017-11-15T23:18:05.195Z"}
+{"level":"info","message":"device type database loaded","timestamp":"192.168.0.216 @ 2017-11-15T23:18:05.195Z"}
+{"level":"info","message":"device database loaded","timestamp":"192.168.0.216 @ 2017-11-15T23:18:05.195Z"}
+{"level":"info","message":"room database loaded","timestamp":"192.168.0.216 @ 2017-11-15T23:18:05.211Z"}
+{"level":"info","message":"routine database loaded","timestamp":"192.168.0.216 @ 2017-11-15T23:18:05.211Z"}
+{"level":"alert","message":"*** ActionHero Started ***","timestamp":"192.168.0.216 @ 2017-11-15T23:18:05.211Z"}
+{"to":"127.0.0.1","file":"{not found}","requestedFile":"swagger","size":null,"duration":null,"success":false,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-15T23:38:55.618Z"}
+{"to":"127.0.0.1","file":"{not found}","requestedFile":"favicon.ico","size":null,"duration":null,"success":false,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-15T23:38:55.732Z"}
+{"to":"127.0.0.1","file":"{not found}","requestedFile":"swagger","size":null,"duration":null,"success":false,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-15T23:38:58.195Z"}
+{"to":"127.0.0.1","file":"{not found}","requestedFile":"swagger","size":null,"duration":null,"success":false,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-15T23:39:13.148Z"}
+{"to":"127.0.0.1","file":"{not found}","requestedFile":"swagger","size":null,"duration":null,"success":false,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-15T23:39:38.418Z"}
+{"to":"127.0.0.1","file":"{not found}","requestedFile":"swagger","size":null,"duration":null,"success":false,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-15T23:41:52.357Z"}
+{"to":"127.0.0.1","params":"{}","duration":0,"error":"Error: unknown action or invalid apiVersion","level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-15T23:45:02.377Z"}
+{"to":"127.0.0.1","file":"{not found}","requestedFile":"favicon.ico","size":null,"duration":null,"success":false,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-15T23:45:02.553Z"}
+{"to":"127.0.0.1","file":"{not found}","requestedFile":"swagger","size":null,"duration":null,"success":false,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-15T23:45:07.777Z"}
+{"to":"127.0.0.1","file":"{not found}","requestedFile":"index.html","size":null,"duration":null,"success":false,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-15T23:45:11.849Z"}
+{"to":"127.0.0.1","file":"{not found}","requestedFile":"index.html","size":null,"duration":null,"success":false,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-15T23:45:17.279Z"}
+{"to":"127.0.0.1","file":"{not found}","requestedFile":"index.html","size":null,"duration":null,"success":false,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-15T23:45:32.312Z"}
+{"to":"127.0.0.1","action":"swagger","params":"{\"action\":\"swagger\"}","duration":1,"error":"Error: unknown action or invalid apiVersion","level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-15T23:45:41.521Z"}
+{"to":"127.0.0.1","file":"{not found}","requestedFile":"swagger\\rooms","size":null,"duration":null,"success":false,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-15T23:45:49.604Z"}
+{"to":"127.0.0.1","params":"{}","duration":0,"error":"Error: unknown action or invalid apiVersion","level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-15T23:46:00.167Z"}
+{"to":"127.0.0.1","file":"{not found}","requestedFile":"swagger","size":null,"duration":null,"success":false,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-15T23:46:09.125Z"}
+{"level":"notice","message":"Shutting down open servers and stopping task processing...","timestamp":"192.168.0.216 @ 2017-11-16T03:10:13.852Z"}
+{"level":"info","message":"--------------------------------------","timestamp":"192.168.0.216 @ 2017-11-16T03:10:19.364Z"}
+{"level":"info","message":"ACTIONHERO COMMAND >> start","timestamp":"192.168.0.216 @ 2017-11-16T03:10:19.365Z"}
+{"level":"info","message":"--------------------------------------","timestamp":"192.168.0.216 @ 2017-11-16T03:10:19.367Z"}
+{"level":"notice","message":"*** Starting ActionHero ***","timestamp":"192.168.0.216 @ 2017-11-16T03:10:19.372Z"}
+{"level":"notice","message":"pid: 10308","timestamp":"192.168.0.216 @ 2017-11-16T03:10:19.376Z"}
+{"level":"notice","message":"server ID: 192.168.0.216","timestamp":"192.168.0.216 @ 2017-11-16T03:10:19.376Z"}
+{"level":"info","message":"actionhero member 192.168.0.216 has joined the cluster","timestamp":"192.168.0.216 @ 2017-11-16T03:10:19.396Z"}
+{"level":"notice","message":"Starting server: `web` @ 0.0.0.0:8080","timestamp":"192.168.0.216 @ 2017-11-16T03:10:19.401Z"}
+{"level":"notice","message":"environment: development","timestamp":"192.168.0.216 @ 2017-11-16T03:10:19.410Z"}
+{"level":"info","message":"device log database loaded","timestamp":"192.168.0.216 @ 2017-11-16T03:10:19.414Z"}
+{"level":"info","message":"device type database loaded","timestamp":"192.168.0.216 @ 2017-11-16T03:10:19.418Z"}
+{"level":"info","message":"device database loaded","timestamp":"192.168.0.216 @ 2017-11-16T03:10:19.421Z"}
+{"level":"info","message":"room database loaded","timestamp":"192.168.0.216 @ 2017-11-16T03:10:19.423Z"}
+{"level":"info","message":"routine database loaded","timestamp":"192.168.0.216 @ 2017-11-16T03:10:19.425Z"}
+{"level":"alert","message":"*** ActionHero Started ***","timestamp":"192.168.0.216 @ 2017-11-16T03:10:19.427Z"}
+{"to":"127.0.0.1","file":"{not found}","requestedFile":"swagger","size":null,"duration":null,"success":false,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T03:10:43.734Z"}
+{"to":"127.0.0.1","file":"{not found}","requestedFile":"swagger","size":null,"duration":null,"success":false,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T03:11:02.350Z"}
+{"to":"127.0.0.1","file":"{not found}","requestedFile":"swagger","size":null,"duration":null,"success":false,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T03:11:05.183Z"}
+{"to":"127.0.0.1","file":"{not found}","requestedFile":"swagger","size":null,"duration":null,"success":false,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T03:11:40.553Z"}
+{"to":"127.0.0.1","file":"{not found}","requestedFile":"swagger","size":null,"duration":null,"success":false,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T03:11:46.886Z"}
+{"level":"notice","message":"Shutting down open servers and stopping task processing...","timestamp":"192.168.0.216 @ 2017-11-16T03:12:01.221Z"}
+{"level":"info","message":"--------------------------------------","timestamp":"192.168.0.216 @ 2017-11-16T03:12:19.537Z"}
+{"level":"info","message":"ACTIONHERO COMMAND >> start","timestamp":"192.168.0.216 @ 2017-11-16T03:12:19.539Z"}
+{"level":"info","message":"--------------------------------------","timestamp":"192.168.0.216 @ 2017-11-16T03:12:19.541Z"}
+{"level":"notice","message":"*** Starting ActionHero ***","timestamp":"192.168.0.216 @ 2017-11-16T03:12:19.547Z"}
+{"level":"notice","message":"pid: 2148","timestamp":"192.168.0.216 @ 2017-11-16T03:12:19.551Z"}
+{"level":"notice","message":"server ID: 192.168.0.216","timestamp":"192.168.0.216 @ 2017-11-16T03:12:19.552Z"}
+{"level":"info","message":"actionhero member 192.168.0.216 has joined the cluster","timestamp":"192.168.0.216 @ 2017-11-16T03:12:19.572Z"}
+{"level":"notice","message":"Starting server: `web` @ 0.0.0.0:8080","timestamp":"192.168.0.216 @ 2017-11-16T03:12:19.578Z"}
+{"level":"notice","message":"environment: development","timestamp":"192.168.0.216 @ 2017-11-16T03:12:19.592Z"}
+{"level":"info","message":"device log database loaded","timestamp":"192.168.0.216 @ 2017-11-16T03:12:19.597Z"}
+{"level":"info","message":"device type database loaded","timestamp":"192.168.0.216 @ 2017-11-16T03:12:19.605Z"}
+{"level":"info","message":"device database loaded","timestamp":"192.168.0.216 @ 2017-11-16T03:12:19.613Z"}
+{"level":"info","message":"room database loaded","timestamp":"192.168.0.216 @ 2017-11-16T03:12:19.618Z"}
+{"level":"info","message":"routine database loaded","timestamp":"192.168.0.216 @ 2017-11-16T03:12:19.623Z"}
+{"level":"alert","message":"*** ActionHero Started ***","timestamp":"192.168.0.216 @ 2017-11-16T03:12:19.624Z"}
+{"to":"127.0.0.1","file":"{not found}","requestedFile":"swagger","size":null,"duration":null,"success":false,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T03:12:22.167Z"}
+{"level":"notice","message":"Shutting down open servers and stopping task processing...","timestamp":"192.168.0.216 @ 2017-11-16T03:13:00.533Z"}
+{"level":"info","message":"--------------------------------------","timestamp":"192.168.0.216 @ 2017-11-16T03:13:09.024Z"}
+{"level":"info","message":"ACTIONHERO COMMAND >> start","timestamp":"192.168.0.216 @ 2017-11-16T03:13:09.025Z"}
+{"level":"info","message":"--------------------------------------","timestamp":"192.168.0.216 @ 2017-11-16T03:13:09.026Z"}
+{"level":"notice","message":"*** Starting ActionHero ***","timestamp":"192.168.0.216 @ 2017-11-16T03:13:09.032Z"}
+{"level":"notice","message":"pid: 7092","timestamp":"192.168.0.216 @ 2017-11-16T03:13:09.035Z"}
+{"level":"notice","message":"server ID: 192.168.0.216","timestamp":"192.168.0.216 @ 2017-11-16T03:13:09.036Z"}
+{"level":"info","message":"actionhero member 192.168.0.216 has joined the cluster","timestamp":"192.168.0.216 @ 2017-11-16T03:13:09.056Z"}
+{"level":"notice","message":"Starting server: `web` @ 0.0.0.0:8080","timestamp":"192.168.0.216 @ 2017-11-16T03:13:09.060Z"}
+{"level":"notice","message":"environment: development","timestamp":"192.168.0.216 @ 2017-11-16T03:13:09.072Z"}
+{"level":"info","message":"device log database loaded","timestamp":"192.168.0.216 @ 2017-11-16T03:13:09.077Z"}
+{"level":"info","message":"device type database loaded","timestamp":"192.168.0.216 @ 2017-11-16T03:13:09.084Z"}
+{"level":"info","message":"device database loaded","timestamp":"192.168.0.216 @ 2017-11-16T03:13:09.089Z"}
+{"level":"info","message":"room database loaded","timestamp":"192.168.0.216 @ 2017-11-16T03:13:09.092Z"}
+{"level":"info","message":"routine database loaded","timestamp":"192.168.0.216 @ 2017-11-16T03:13:09.095Z"}
+{"level":"alert","message":"*** ActionHero Started ***","timestamp":"192.168.0.216 @ 2017-11-16T03:13:09.096Z"}
+{"to":"127.0.0.1","file":"{not found}","requestedFile":"swagger","size":null,"duration":null,"success":false,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T03:13:12.566Z"}
+{"to":"127.0.0.1","file":"{not found}","requestedFile":"swagger","size":null,"duration":null,"success":false,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T03:13:14.484Z"}
+{"level":"notice","message":"Shutting down open servers and stopping task processing...","timestamp":"192.168.0.216 @ 2017-11-16T03:13:56.295Z"}
+{"level":"info","message":"--------------------------------------","timestamp":"192.168.0.216 @ 2017-11-16T03:14:20.853Z"}
+{"level":"info","message":"ACTIONHERO COMMAND >> link","timestamp":"192.168.0.216 @ 2017-11-16T03:14:20.857Z"}
+{"level":"info","message":"--------------------------------------","timestamp":"192.168.0.216 @ 2017-11-16T03:14:20.858Z"}
+{"level":"info","message":"linking the plugin found at node_modules\\ah-swagger-plugin","timestamp":"192.168.0.216 @ 2017-11-16T03:14:20.860Z"}
+{"level":"info","message":" - creating directory 'C:\\Users\\Santiago Swinnen\\Desktop\\SmartHome\\npm\\actions\\plugins'","timestamp":"192.168.0.216 @ 2017-11-16T03:14:20.864Z"}
+{"level":"info","message":" - creating linkfile 'C:\\Users\\Santiago Swinnen\\Desktop\\SmartHome\\npm\\actions\\plugins\\ah-swagger-plugin.link'","timestamp":"192.168.0.216 @ 2017-11-16T03:14:20.867Z"}
+{"level":"info","message":" - creating directory 'C:\\Users\\Santiago Swinnen\\Desktop\\SmartHome\\npm\\public\\plugins'","timestamp":"192.168.0.216 @ 2017-11-16T03:14:20.874Z"}
+{"level":"info","message":" - creating linkfile 'C:\\Users\\Santiago Swinnen\\Desktop\\SmartHome\\npm\\public\\plugins\\ah-swagger-plugin.link'","timestamp":"192.168.0.216 @ 2017-11-16T03:14:20.876Z"}
+{"level":"info","message":" - creating directory 'C:\\Users\\Santiago Swinnen\\Desktop\\SmartHome\\npm\\initializers\\plugins'","timestamp":"192.168.0.216 @ 2017-11-16T03:14:20.883Z"}
+{"level":"info","message":" - creating linkfile 'C:\\Users\\Santiago Swinnen\\Desktop\\SmartHome\\npm\\initializers\\plugins\\ah-swagger-plugin.link'","timestamp":"192.168.0.216 @ 2017-11-16T03:14:20.886Z"}
+{"level":"alert","message":" - file 'C:\\Users\\Santiago Swinnen\\Desktop\\SmartHome\\npm\\config\\swagger.js' already exists, skipping","timestamp":"192.168.0.216 @ 2017-11-16T03:14:20.893Z"}
+{"level":"info","message":"--------------------------------------","timestamp":"192.168.0.216 @ 2017-11-16T03:14:28.896Z"}
+{"level":"info","message":"ACTIONHERO COMMAND >> start","timestamp":"192.168.0.216 @ 2017-11-16T03:14:28.898Z"}
+{"level":"info","message":"--------------------------------------","timestamp":"192.168.0.216 @ 2017-11-16T03:14:28.898Z"}
+{"level":"notice","message":"*** Starting ActionHero ***","timestamp":"192.168.0.216 @ 2017-11-16T03:14:28.903Z"}
+{"level":"notice","message":"pid: 4484","timestamp":"192.168.0.216 @ 2017-11-16T03:14:28.907Z"}
+{"level":"notice","message":"server ID: 192.168.0.216","timestamp":"192.168.0.216 @ 2017-11-16T03:14:28.908Z"}
+{"level":"info","message":"actionhero member 192.168.0.216 has joined the cluster","timestamp":"192.168.0.216 @ 2017-11-16T03:14:28.927Z"}
+{"level":"notice","message":"Starting server: `web` @ 0.0.0.0:8080","timestamp":"192.168.0.216 @ 2017-11-16T03:14:28.931Z"}
+{"level":"notice","message":"environment: development","timestamp":"192.168.0.216 @ 2017-11-16T03:14:28.941Z"}
+{"level":"info","message":"device log database loaded","timestamp":"192.168.0.216 @ 2017-11-16T03:14:28.945Z"}
+{"level":"info","message":"device type database loaded","timestamp":"192.168.0.216 @ 2017-11-16T03:14:28.950Z"}
+{"level":"info","message":"device database loaded","timestamp":"192.168.0.216 @ 2017-11-16T03:14:28.952Z"}
+{"level":"info","message":"room database loaded","timestamp":"192.168.0.216 @ 2017-11-16T03:14:28.955Z"}
+{"level":"info","message":"routine database loaded","timestamp":"192.168.0.216 @ 2017-11-16T03:14:28.958Z"}
+{"level":"alert","message":"*** ActionHero Started ***","timestamp":"192.168.0.216 @ 2017-11-16T03:14:28.960Z"}
+{"to":"127.0.0.1","file":"C:\\Users\\Santiago Swinnen\\Desktop\\SmartHome\\npm\\node_modules\\ah-swagger-plugin\\public\\swagger/index.html","requestedFile":"swagger","size":5114,"duration":6,"success":true,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T03:14:33.892Z"}
+{"to":"127.0.0.1","file":"C:\\Users\\Santiago Swinnen\\Desktop\\SmartHome\\npm\\node_modules\\ah-swagger-plugin\\public\\swagger\\css\\typography.css","requestedFile":"swagger\\css\\typography.css","size":1474,"duration":3,"success":true,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T03:14:33.919Z"}
+{"to":"127.0.0.1","file":"C:\\Users\\Santiago Swinnen\\Desktop\\SmartHome\\npm\\node_modules\\ah-swagger-plugin\\public\\swagger\\css\\reset.css","requestedFile":"swagger\\css\\reset.css","size":1066,"duration":2,"success":true,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T03:14:33.925Z"}
+{"to":"127.0.0.1","file":"C:\\Users\\Santiago Swinnen\\Desktop\\SmartHome\\npm\\node_modules\\ah-swagger-plugin\\public\\swagger\\css\\screen.css","requestedFile":"swagger\\css\\screen.css","size":43212,"duration":5,"success":true,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T03:14:33.929Z"}
+{"to":"127.0.0.1","file":"C:\\Users\\Santiago Swinnen\\Desktop\\SmartHome\\npm\\node_modules\\ah-swagger-plugin\\public\\swagger\\lib\\jquery-1.8.0.min.js","requestedFile":"swagger\\lib\\jquery-1.8.0.min.js","size":92555,"duration":2,"success":true,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T03:14:33.933Z"}
+{"to":"127.0.0.1","file":"C:\\Users\\Santiago Swinnen\\Desktop\\SmartHome\\npm\\node_modules\\ah-swagger-plugin\\public\\swagger\\lib\\jquery.slideto.min.js","requestedFile":"swagger\\lib\\jquery.slideto.min.js","size":369,"duration":2,"success":true,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T03:14:33.936Z"}
+{"to":"127.0.0.1","file":"C:\\Users\\Santiago Swinnen\\Desktop\\SmartHome\\npm\\node_modules\\ah-swagger-plugin\\public\\swagger\\lib\\jquery.wiggle.min.js","requestedFile":"swagger\\lib\\jquery.wiggle.min.js","size":762,"duration":1,"success":true,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T03:14:33.939Z"}
+{"to":"127.0.0.1","file":"C:\\Users\\Santiago Swinnen\\Desktop\\SmartHome\\npm\\node_modules\\ah-swagger-plugin\\public\\swagger\\lib\\jquery.ba-bbq.min.js","requestedFile":"swagger\\lib\\jquery.ba-bbq.min.js","size":4119,"duration":4,"success":true,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T03:14:33.944Z"}
+{"to":"127.0.0.1","file":"C:\\Users\\Santiago Swinnen\\Desktop\\SmartHome\\npm\\node_modules\\ah-swagger-plugin\\public\\swagger\\lib\\handlebars-2.0.0.js","requestedFile":"swagger\\lib\\handlebars-2.0.0.js","size":48517,"duration":1,"success":true,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T03:14:33.946Z"}
+{"to":"127.0.0.1","file":"C:\\Users\\Santiago Swinnen\\Desktop\\SmartHome\\npm\\node_modules\\ah-swagger-plugin\\public\\swagger\\lib\\underscore-min.js","requestedFile":"swagger\\lib\\underscore-min.js","size":15626,"duration":2,"success":true,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T03:14:33.951Z"}
+{"to":"127.0.0.1","file":"C:\\Users\\Santiago Swinnen\\Desktop\\SmartHome\\npm\\node_modules\\ah-swagger-plugin\\public\\swagger\\lib\\backbone-min.js","requestedFile":"swagger\\lib\\backbone-min.js","size":20390,"duration":2,"success":true,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T03:14:33.953Z"}
+{"to":"127.0.0.1","file":"C:\\Users\\Santiago Swinnen\\Desktop\\SmartHome\\npm\\node_modules\\ah-swagger-plugin\\public\\swagger\\lib\\highlight.7.3.pack.js","requestedFile":"swagger\\lib\\highlight.7.3.pack.js","size":7499,"duration":2,"success":true,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T03:14:33.961Z"}
+{"to":"127.0.0.1","file":"C:\\Users\\Santiago Swinnen\\Desktop\\SmartHome\\npm\\node_modules\\ah-swagger-plugin\\public\\swagger\\lib\\marked.js","requestedFile":"swagger\\lib\\marked.js","size":28156,"duration":3,"success":true,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T03:14:33.967Z"}
+{"to":"127.0.0.1","file":"C:\\Users\\Santiago Swinnen\\Desktop\\SmartHome\\npm\\node_modules\\ah-swagger-plugin\\public\\swagger\\lib\\swagger-oauth.js","requestedFile":"swagger\\lib\\swagger-oauth.js","size":8935,"duration":1,"success":true,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T03:14:33.976Z"}
+{"to":"127.0.0.1","file":"C:\\Users\\Santiago Swinnen\\Desktop\\SmartHome\\npm\\public\\javascript\\actionheroClient.min.js","requestedFile":"javascript\\actionheroClient.min.js","size":32917,"duration":1,"success":true,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T03:14:33.978Z"}
+{"to":"127.0.0.1","file":"C:\\Users\\Santiago Swinnen\\Desktop\\SmartHome\\npm\\node_modules\\ah-swagger-plugin\\public\\swagger\\css\\print.css","requestedFile":"swagger\\css\\print.css","size":41123,"duration":1,"success":true,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T03:14:33.991Z"}
+{"to":"127.0.0.1","file":"C:\\Users\\Santiago Swinnen\\Desktop\\SmartHome\\npm\\node_modules\\ah-swagger-plugin\\public\\swagger\\swagger-ui.js","requestedFile":"swagger\\swagger-ui.js","size":1565728,"duration":43,"success":true,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T03:14:33.998Z"}
+{"to":"127.0.0.1","file":"C:\\Users\\Santiago Swinnen\\Desktop\\SmartHome\\npm\\node_modules\\ah-swagger-plugin\\public\\swagger\\images\\logo_small.png","requestedFile":"swagger\\images\\logo_small.png","size":770,"duration":3,"success":true,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T03:14:34.193Z"}
+{"to":"127.0.0.1","file":"C:\\Users\\Santiago Swinnen\\Desktop\\SmartHome\\npm\\node_modules\\ah-swagger-plugin\\public\\swagger\\fonts\\droid-sans-v6-latin-700.woff2","requestedFile":"swagger\\fonts\\droid-sans-v6-latin-700.woff2","size":11480,"duration":1,"success":true,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T03:14:34.196Z"}
+{"to":"127.0.0.1","file":"C:\\Users\\Santiago Swinnen\\Desktop\\SmartHome\\npm\\node_modules\\ah-swagger-plugin\\public\\swagger\\fonts\\droid-sans-v6-latin-regular.woff2","requestedFile":"swagger\\fonts\\droid-sans-v6-latin-regular.woff2","size":11304,"duration":3,"success":true,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T03:14:34.198Z"}
+{"to":"127.0.0.1","action":"swagger","params":"{\"secure\":\"false\",\"action\":\"swagger\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T03:14:34.213Z"}
+{"to":"127.0.0.1","action":"swagger","params":"{\"secure\":\"false\",\"action\":\"swagger\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T03:14:34.243Z"}
+{"to":"127.0.0.1","file":"{not found}","requestedFile":"images\\favicon-32x32.png","size":null,"duration":null,"success":false,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T03:14:34.253Z"}
+{"to":"127.0.0.1","file":"{not found}","requestedFile":"images\\favicon-16x16.png","size":null,"duration":null,"success":false,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T03:14:34.361Z"}
+{"to":"127.0.0.1","file":"C:\\Users\\Santiago Swinnen\\Desktop\\SmartHome\\npm\\node_modules\\ah-swagger-plugin\\public\\swagger\\images\\throbber.gif","requestedFile":"swagger\\images\\throbber.gif","size":9257,"duration":1,"success":true,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T03:14:50.837Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":4,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T03:14:51.996Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[]}","timestamp":"192.168.0.216 @ 2017-11-16T03:14:51.999Z"}
+{"to":"127.0.0.1","action":"createRoom","params":"{\"action\":\"createRoom\",\"apiVersion\":1}","duration":12,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T05:05:07.344Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=createRoom, response={\"room\":{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}}","timestamp":"192.168.0.216 @ 2017-11-16T05:05:07.345Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T12:15:52.645Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-16T12:15:52.647Z"}
+{"level":"notice","message":"Shutting down open servers and stopping task processing...","timestamp":"192.168.0.216 @ 2017-11-16T12:17:45.355Z"}
+{"level":"info","message":"--------------------------------------","timestamp":"192.168.0.216 @ 2017-11-16T12:17:49.339Z"}
+{"level":"info","message":"ACTIONHERO COMMAND >> start","timestamp":"192.168.0.216 @ 2017-11-16T12:17:49.341Z"}
+{"level":"info","message":"--------------------------------------","timestamp":"192.168.0.216 @ 2017-11-16T12:17:49.342Z"}
+{"level":"notice","message":"*** Starting ActionHero ***","timestamp":"192.168.0.216 @ 2017-11-16T12:17:49.352Z"}
+{"level":"notice","message":"pid: 5648","timestamp":"192.168.0.216 @ 2017-11-16T12:17:49.358Z"}
+{"level":"notice","message":"server ID: 192.168.0.216","timestamp":"192.168.0.216 @ 2017-11-16T12:17:49.359Z"}
+{"level":"info","message":"actionhero member 192.168.0.216 has joined the cluster","timestamp":"192.168.0.216 @ 2017-11-16T12:17:49.386Z"}
+{"level":"notice","message":"Starting server: `web` @ 0.0.0.0:8080","timestamp":"192.168.0.216 @ 2017-11-16T12:17:49.390Z"}
+{"level":"notice","message":"environment: development","timestamp":"192.168.0.216 @ 2017-11-16T12:17:49.406Z"}
+{"level":"info","message":"device log database loaded","timestamp":"192.168.0.216 @ 2017-11-16T12:17:49.414Z"}
+{"level":"info","message":"device type database loaded","timestamp":"192.168.0.216 @ 2017-11-16T12:17:49.423Z"}
+{"level":"info","message":"device database loaded","timestamp":"192.168.0.216 @ 2017-11-16T12:17:49.430Z"}
+{"level":"info","message":"room database loaded","timestamp":"192.168.0.216 @ 2017-11-16T12:17:49.436Z"}
+{"level":"info","message":"routine database loaded","timestamp":"192.168.0.216 @ 2017-11-16T12:17:49.440Z"}
+{"level":"alert","message":"*** ActionHero Started ***","timestamp":"192.168.0.216 @ 2017-11-16T12:17:49.447Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":3,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T12:18:49.454Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-16T12:18:49.457Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T12:19:06.732Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-16T12:19:06.733Z"}
+{"to":"127.0.0.1","action":"swagger","params":"{\"secure\":\"false\",\"action\":\"swagger\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T12:24:25.349Z"}
+{"to":"127.0.0.1","action":"swagger","params":"{\"secure\":\"false\",\"action\":\"swagger\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T12:24:25.381Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T12:28:18.939Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-16T12:28:18.941Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T13:28:52.545Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-16T13:28:52.545Z"}
+{"to":"127.0.0.1","action":"swagger","params":"{\"secure\":\"false\",\"action\":\"swagger\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T13:43:01.844Z"}
+{"to":"127.0.0.1","action":"swagger","params":"{\"secure\":\"false\",\"action\":\"swagger\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T13:43:01.866Z"}
+{"to":"127.0.0.1","action":"createRoom","params":"{\"action\":\"createRoom\",\"apiVersion\":1}","duration":16,"error":"{\"code\":2,\"description\":[\"room \\\"kitchen\\\" already exists\"]}","level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T13:56:19.012Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=createRoom, response={\"error\":{\"code\":2,\"description\":[\"room \\\"kitchen\\\" already exists\"]}}","timestamp":"192.168.0.216 @ 2017-11-16T13:56:19.014Z"}
+{"to":"127.0.0.1","action":"createRoom","params":"{\"action\":\"createRoom\",\"apiVersion\":1}","duration":4,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T13:56:29.054Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=createRoom, response={\"room\":{\"id\":\"c8ad3c3eea80bf80\",\"name\":\"living\",\"meta\":null}}","timestamp":"192.168.0.216 @ 2017-11-16T13:56:29.056Z"}
+{"to":"127.0.0.1","action":"deleteRoom","params":"{\"roomId\":\"c8ad3c3eea80bf80\",\"action\":\"deleteRoom\",\"apiVersion\":1}","duration":11,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T14:07:58.560Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=deleteRoom, response={\"result\":true}","timestamp":"192.168.0.216 @ 2017-11-16T14:07:58.561Z"}
+{"level":"info","message":"--------------------------------------","timestamp":"192.168.0.216 @ 2017-11-16T23:12:49.162Z"}
+{"level":"info","message":"ACTIONHERO COMMAND >> start","timestamp":"192.168.0.216 @ 2017-11-16T23:12:49.162Z"}
+{"level":"info","message":"--------------------------------------","timestamp":"192.168.0.216 @ 2017-11-16T23:12:49.162Z"}
+{"level":"notice","message":"*** Starting ActionHero ***","timestamp":"192.168.0.216 @ 2017-11-16T23:12:49.162Z"}
+{"level":"notice","message":"pid: 2728","timestamp":"192.168.0.216 @ 2017-11-16T23:12:49.178Z"}
+{"level":"notice","message":"server ID: 192.168.0.216","timestamp":"192.168.0.216 @ 2017-11-16T23:12:49.178Z"}
+{"level":"info","message":"actionhero member 192.168.0.216 has joined the cluster","timestamp":"192.168.0.216 @ 2017-11-16T23:12:49.209Z"}
+{"level":"notice","message":"Starting server: `web` @ 0.0.0.0:8080","timestamp":"192.168.0.216 @ 2017-11-16T23:12:49.209Z"}
+{"level":"notice","message":"environment: development","timestamp":"192.168.0.216 @ 2017-11-16T23:12:49.225Z"}
+{"level":"info","message":"device log database loaded","timestamp":"192.168.0.216 @ 2017-11-16T23:12:49.240Z"}
+{"level":"info","message":"device type database loaded","timestamp":"192.168.0.216 @ 2017-11-16T23:12:49.240Z"}
+{"level":"info","message":"device database loaded","timestamp":"192.168.0.216 @ 2017-11-16T23:12:49.256Z"}
+{"level":"info","message":"room database loaded","timestamp":"192.168.0.216 @ 2017-11-16T23:12:49.256Z"}
+{"level":"info","message":"routine database loaded","timestamp":"192.168.0.216 @ 2017-11-16T23:12:49.256Z"}
+{"level":"alert","message":"*** ActionHero Started ***","timestamp":"192.168.0.216 @ 2017-11-16T23:12:49.256Z"}
+{"to":"127.0.0.1","action":"swagger","params":"{\"secure\":\"false\",\"action\":\"swagger\",\"apiVersion\":1}","duration":2,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T23:16:51.249Z"}
+{"to":"127.0.0.1","action":"swagger","params":"{\"secure\":\"false\",\"action\":\"swagger\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T23:16:51.274Z"}
+{"to":"127.0.0.1","file":"{not found}","requestedFile":"images\\favicon-32x32.png","size":null,"duration":null,"success":false,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T23:16:51.284Z"}
+{"to":"127.0.0.1","file":"{not found}","requestedFile":"images\\favicon-16x16.png","size":null,"duration":null,"success":false,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T23:16:51.378Z"}
+{"level":"notice","message":"Shutting down open servers and stopping task processing...","timestamp":"192.168.0.216 @ 2017-11-16T23:18:00.619Z"}
+{"level":"info","message":"--------------------------------------","timestamp":"192.168.0.216 @ 2017-11-16T23:18:05.145Z"}
+{"level":"info","message":"ACTIONHERO COMMAND >> start","timestamp":"192.168.0.216 @ 2017-11-16T23:18:05.146Z"}
+{"level":"info","message":"--------------------------------------","timestamp":"192.168.0.216 @ 2017-11-16T23:18:05.147Z"}
+{"level":"notice","message":"*** Starting ActionHero ***","timestamp":"192.168.0.216 @ 2017-11-16T23:18:05.152Z"}
+{"level":"notice","message":"pid: 12052","timestamp":"192.168.0.216 @ 2017-11-16T23:18:05.157Z"}
+{"level":"notice","message":"server ID: 192.168.0.216","timestamp":"192.168.0.216 @ 2017-11-16T23:18:05.157Z"}
+{"level":"info","message":"actionhero member 192.168.0.216 has joined the cluster","timestamp":"192.168.0.216 @ 2017-11-16T23:18:05.162Z"}
+{"level":"notice","message":"Starting server: `web` @ 0.0.0.0:8080","timestamp":"192.168.0.216 @ 2017-11-16T23:18:05.177Z"}
+{"level":"notice","message":"environment: development","timestamp":"192.168.0.216 @ 2017-11-16T23:18:05.186Z"}
+{"level":"info","message":"device log database loaded","timestamp":"192.168.0.216 @ 2017-11-16T23:18:05.189Z"}
+{"level":"info","message":"device type database loaded","timestamp":"192.168.0.216 @ 2017-11-16T23:18:05.193Z"}
+{"level":"info","message":"device database loaded","timestamp":"192.168.0.216 @ 2017-11-16T23:18:05.196Z"}
+{"level":"info","message":"room database loaded","timestamp":"192.168.0.216 @ 2017-11-16T23:18:05.198Z"}
+{"level":"info","message":"routine database loaded","timestamp":"192.168.0.216 @ 2017-11-16T23:18:05.200Z"}
+{"level":"alert","message":"*** ActionHero Started ***","timestamp":"192.168.0.216 @ 2017-11-16T23:18:05.203Z"}
+{"level":"notice","message":"Shutting down open servers and stopping task processing...","timestamp":"192.168.0.216 @ 2017-11-16T23:18:31.955Z"}
+{"level":"info","message":"--------------------------------------","timestamp":"192.168.0.216 @ 2017-11-16T23:18:51.554Z"}
+{"level":"info","message":"ACTIONHERO COMMAND >> start","timestamp":"192.168.0.216 @ 2017-11-16T23:18:51.555Z"}
+{"level":"info","message":"--------------------------------------","timestamp":"192.168.0.216 @ 2017-11-16T23:18:51.556Z"}
+{"level":"notice","message":"*** Starting ActionHero ***","timestamp":"192.168.0.216 @ 2017-11-16T23:18:51.561Z"}
+{"level":"notice","message":"pid: 13508","timestamp":"192.168.0.216 @ 2017-11-16T23:18:51.564Z"}
+{"level":"notice","message":"server ID: 192.168.0.216","timestamp":"192.168.0.216 @ 2017-11-16T23:18:51.565Z"}
+{"level":"info","message":"actionhero member 192.168.0.216 has joined the cluster","timestamp":"192.168.0.216 @ 2017-11-16T23:18:51.582Z"}
+{"level":"notice","message":"Starting server: `web` @ 0.0.0.0:8080","timestamp":"192.168.0.216 @ 2017-11-16T23:18:51.585Z"}
+{"level":"notice","message":"environment: development","timestamp":"192.168.0.216 @ 2017-11-16T23:18:51.593Z"}
+{"level":"info","message":"device log database loaded","timestamp":"192.168.0.216 @ 2017-11-16T23:18:51.597Z"}
+{"level":"info","message":"device type database loaded","timestamp":"192.168.0.216 @ 2017-11-16T23:18:51.601Z"}
+{"level":"info","message":"device database loaded","timestamp":"192.168.0.216 @ 2017-11-16T23:18:51.603Z"}
+{"level":"info","message":"room database loaded","timestamp":"192.168.0.216 @ 2017-11-16T23:18:51.605Z"}
+{"level":"info","message":"routine database loaded","timestamp":"192.168.0.216 @ 2017-11-16T23:18:51.606Z"}
+{"level":"alert","message":"*** ActionHero Started ***","timestamp":"192.168.0.216 @ 2017-11-16T23:18:51.610Z"}
+{"to":"127.0.0.1","action":"swagger","params":"{\"secure\":\"false\",\"action\":\"swagger\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T23:21:00.949Z"}
+{"to":"127.0.0.1","action":"swagger","params":"{\"secure\":\"false\",\"action\":\"swagger\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T23:21:00.970Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":2,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T23:54:07.176Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-16T23:54:07.177Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T23:54:11.767Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-16T23:54:11.769Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T23:54:23.329Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-16T23:54:23.330Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T23:54:56.472Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-16T23:54:56.473Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T23:55:11.370Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-16T23:55:11.371Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T23:55:54.084Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-16T23:55:54.085Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T23:56:00.459Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-16T23:56:00.462Z"}
+{"level":"warning","message":"\"meta\" is not allowed to be empty","timestamp":"192.168.0.216 @ 2017-11-16T23:56:52.285Z"}
+{"to":"127.0.0.1","action":"createRoom","params":"{\"action\":\"createRoom\",\"apiVersion\":1}","duration":36,"error":"{\"code\":1,\"description\":[\"\\\"meta\\\" is not allowed to be empty\"]}","level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T23:56:52.291Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=createRoom, response={\"error\":{\"code\":1,\"description\":[\"\\\"meta\\\" is not allowed to be empty\"]}}","timestamp":"192.168.0.216 @ 2017-11-16T23:56:52.291Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":53,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T23:56:52.301Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-16T23:56:52.303Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T23:57:58.344Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-16T23:57:58.347Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-16T23:58:01.891Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-16T23:58:01.893Z"}
+{"level":"notice","message":"Shutting down open servers and stopping task processing...","timestamp":"192.168.0.216 @ 2017-11-16T23:59:56.560Z"}
+{"level":"info","message":"--------------------------------------","timestamp":"192.168.0.216 @ 2017-11-17T00:00:03.120Z"}
+{"level":"info","message":"ACTIONHERO COMMAND >> start","timestamp":"192.168.0.216 @ 2017-11-17T00:00:03.122Z"}
+{"level":"info","message":"--------------------------------------","timestamp":"192.168.0.216 @ 2017-11-17T00:00:03.122Z"}
+{"level":"notice","message":"*** Starting ActionHero ***","timestamp":"192.168.0.216 @ 2017-11-17T00:00:03.126Z"}
+{"level":"notice","message":"pid: 2128","timestamp":"192.168.0.216 @ 2017-11-17T00:00:03.130Z"}
+{"level":"notice","message":"server ID: 192.168.0.216","timestamp":"192.168.0.216 @ 2017-11-17T00:00:03.130Z"}
+{"level":"info","message":"actionhero member 192.168.0.216 has joined the cluster","timestamp":"192.168.0.216 @ 2017-11-17T00:00:03.146Z"}
+{"level":"notice","message":"Starting server: `web` @ 0.0.0.0:8080","timestamp":"192.168.0.216 @ 2017-11-17T00:00:03.150Z"}
+{"level":"notice","message":"environment: development","timestamp":"192.168.0.216 @ 2017-11-17T00:00:03.157Z"}
+{"level":"info","message":"device log database loaded","timestamp":"192.168.0.216 @ 2017-11-17T00:00:03.161Z"}
+{"level":"info","message":"device type database loaded","timestamp":"192.168.0.216 @ 2017-11-17T00:00:03.164Z"}
+{"level":"info","message":"device database loaded","timestamp":"192.168.0.216 @ 2017-11-17T00:00:03.166Z"}
+{"level":"info","message":"room database loaded","timestamp":"192.168.0.216 @ 2017-11-17T00:00:03.168Z"}
+{"level":"info","message":"routine database loaded","timestamp":"192.168.0.216 @ 2017-11-17T00:00:03.170Z"}
+{"level":"alert","message":"*** ActionHero Started ***","timestamp":"192.168.0.216 @ 2017-11-17T00:00:03.172Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":3,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T00:00:18.603Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-17T00:00:18.603Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T00:00:45.203Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-17T00:00:45.203Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T00:01:37.438Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-17T00:01:37.440Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T00:03:51.978Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-17T00:03:51.981Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T00:05:08.812Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-17T00:05:08.816Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T00:07:04.173Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-17T00:07:04.188Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T00:07:54.319Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-17T00:07:54.327Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T00:09:03.966Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-17T00:09:03.971Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T00:09:55.833Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-17T00:09:55.837Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T00:15:45.871Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-17T00:15:45.878Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T00:16:30.275Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-17T00:16:30.276Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T00:18:59.575Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-17T00:18:59.578Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T00:19:59.081Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-17T00:19:59.084Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T00:27:45.660Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-17T00:27:45.662Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T00:28:27.988Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-17T00:28:27.993Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T00:32:34.648Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-17T00:32:34.655Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T00:42:54.340Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-17T00:42:54.341Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T00:43:52.124Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-17T00:43:52.126Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T01:22:04.985Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-17T01:22:04.987Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T01:24:18.842Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-17T01:24:18.843Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T01:27:43.269Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-17T01:27:43.269Z"}
+{"to":"127.0.0.1","action":"createRoom","params":"{\"action\":\"createRoom\",\"apiVersion\":1}","duration":12,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T01:31:43.932Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=createRoom, response={\"room\":{\"id\":\"e0e19ece3fa8adbc\",\"name\":\"test\",\"meta\":\"{}\"}}","timestamp":"192.168.0.216 @ 2017-11-17T01:31:43.933Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T01:32:52.044Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"e0e19ece3fa8adbc\",\"name\":\"test\",\"meta\":\"{}\"},{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-17T01:32:52.046Z"}
+{"to":"127.0.0.1","action":"swagger","params":"{\"secure\":\"false\",\"action\":\"swagger\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T01:34:36.558Z"}
+{"to":"127.0.0.1","action":"swagger","params":"{\"secure\":\"false\",\"action\":\"swagger\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T01:34:36.577Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T01:35:10.079Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"e0e19ece3fa8adbc\",\"name\":\"test\",\"meta\":\"{}\"},{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-17T01:35:10.082Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T01:37:32.556Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"e0e19ece3fa8adbc\",\"name\":\"test\",\"meta\":\"{}\"},{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-17T01:37:32.559Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T01:44:51.173Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"e0e19ece3fa8adbc\",\"name\":\"test\",\"meta\":\"{}\"},{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-17T01:44:51.174Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T01:45:57.897Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"e0e19ece3fa8adbc\",\"name\":\"test\",\"meta\":\"{}\"},{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-17T01:45:57.902Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T01:49:22.248Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"e0e19ece3fa8adbc\",\"name\":\"test\",\"meta\":\"{}\"},{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-17T01:49:22.252Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T01:50:18.002Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"e0e19ece3fa8adbc\",\"name\":\"test\",\"meta\":\"{}\"},{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-17T01:50:18.004Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T01:58:30.830Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"e0e19ece3fa8adbc\",\"name\":\"test\",\"meta\":\"{}\"},{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-17T01:58:30.831Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T01:59:41.410Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"e0e19ece3fa8adbc\",\"name\":\"test\",\"meta\":\"{}\"},{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-17T01:59:41.414Z"}
+{"level":"warning","message":"\"meta\" is not allowed to be empty","timestamp":"192.168.0.216 @ 2017-11-17T02:35:41.559Z"}
+{"to":"127.0.0.1","action":"createRoom","params":"{\"action\":\"createRoom\",\"apiVersion\":1}","duration":1998147,"error":"{\"code\":1,\"description\":[\"\\\"meta\\\" is not allowed to be empty\"]}","level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T02:35:41.561Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=createRoom, response={\"error\":{\"code\":1,\"description\":[\"\\\"meta\\\" is not allowed to be empty\"]}}","timestamp":"192.168.0.216 @ 2017-11-17T02:35:41.580Z"}
+{"level":"warning","message":"\"meta\" is not allowed to be empty","timestamp":"192.168.0.216 @ 2017-11-17T02:35:41.609Z"}
+{"to":"127.0.0.1","action":"createRoom","params":"{\"action\":\"createRoom\",\"apiVersion\":1}","duration":5,"error":"{\"code\":1,\"description\":[\"\\\"meta\\\" is not allowed to be empty\"]}","level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T02:35:41.618Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=createRoom, response={\"error\":{\"code\":1,\"description\":[\"\\\"meta\\\" is not allowed to be empty\"]}}","timestamp":"192.168.0.216 @ 2017-11-17T02:35:41.628Z"}
+{"level":"warning","message":"\"meta\" is not allowed to be empty","timestamp":"192.168.0.216 @ 2017-11-17T02:35:41.633Z"}
+{"to":"127.0.0.1","action":"createRoom","params":"{\"action\":\"createRoom\",\"apiVersion\":1}","duration":2,"error":"{\"code\":1,\"description\":[\"\\\"meta\\\" is not allowed to be empty\"]}","level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T02:35:41.637Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=createRoom, response={\"error\":{\"code\":1,\"description\":[\"\\\"meta\\\" is not allowed to be empty\"]}}","timestamp":"192.168.0.216 @ 2017-11-17T02:35:41.638Z"}
+{"level":"warning","message":"\"meta\" is not allowed to be empty","timestamp":"192.168.0.216 @ 2017-11-17T02:35:41.643Z"}
+{"to":"127.0.0.1","action":"createRoom","params":"{\"action\":\"createRoom\",\"apiVersion\":1}","duration":3,"error":"{\"code\":1,\"description\":[\"\\\"meta\\\" is not allowed to be empty\"]}","level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T02:35:41.645Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=createRoom, response={\"error\":{\"code\":1,\"description\":[\"\\\"meta\\\" is not allowed to be empty\"]}}","timestamp":"192.168.0.216 @ 2017-11-17T02:35:41.648Z"}
+{"level":"warning","message":"\"meta\" is not allowed to be empty","timestamp":"192.168.0.216 @ 2017-11-17T02:35:41.659Z"}
+{"to":"127.0.0.1","action":"createRoom","params":"{\"action\":\"createRoom\",\"apiVersion\":1}","duration":4,"error":"{\"code\":1,\"description\":[\"\\\"meta\\\" is not allowed to be empty\"]}","level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T02:35:41.660Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=createRoom, response={\"error\":{\"code\":1,\"description\":[\"\\\"meta\\\" is not allowed to be empty\"]}}","timestamp":"192.168.0.216 @ 2017-11-17T02:35:41.668Z"}
+{"level":"warning","message":"\"meta\" is not allowed to be empty","timestamp":"192.168.0.216 @ 2017-11-17T02:35:41.680Z"}
+{"to":"127.0.0.1","action":"createRoom","params":"{\"action\":\"createRoom\",\"apiVersion\":1}","duration":10,"error":"{\"code\":1,\"description\":[\"\\\"meta\\\" is not allowed to be empty\"]}","level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T02:35:41.684Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=createRoom, response={\"error\":{\"code\":1,\"description\":[\"\\\"meta\\\" is not allowed to be empty\"]}}","timestamp":"192.168.0.216 @ 2017-11-17T02:35:41.686Z"}
+{"level":"warning","message":"\"meta\" is not allowed to be empty","timestamp":"192.168.0.216 @ 2017-11-17T02:35:41.697Z"}
+{"to":"127.0.0.1","action":"createRoom","params":"{\"action\":\"createRoom\",\"apiVersion\":1}","duration":9,"error":"{\"code\":1,\"description\":[\"\\\"meta\\\" is not allowed to be empty\"]}","level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T02:35:41.700Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=createRoom, response={\"error\":{\"code\":1,\"description\":[\"\\\"meta\\\" is not allowed to be empty\"]}}","timestamp":"192.168.0.216 @ 2017-11-17T02:35:41.704Z"}
+{"level":"warning","message":"\"meta\" is not allowed to be empty","timestamp":"192.168.0.216 @ 2017-11-17T02:35:41.712Z"}
+{"to":"127.0.0.1","action":"createRoom","params":"{\"action\":\"createRoom\",\"apiVersion\":1}","duration":7,"error":"{\"code\":1,\"description\":[\"\\\"meta\\\" is not allowed to be empty\"]}","level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T02:35:41.714Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=createRoom, response={\"error\":{\"code\":1,\"description\":[\"\\\"meta\\\" is not allowed to be empty\"]}}","timestamp":"192.168.0.216 @ 2017-11-17T02:35:41.720Z"}
+{"level":"warning","message":"\"meta\" is not allowed to be empty","timestamp":"192.168.0.216 @ 2017-11-17T02:35:41.724Z"}
+{"to":"127.0.0.1","action":"createRoom","params":"{\"action\":\"createRoom\",\"apiVersion\":1}","duration":3,"error":"{\"code\":1,\"description\":[\"\\\"meta\\\" is not allowed to be empty\"]}","level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T02:35:41.731Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=createRoom, response={\"error\":{\"code\":1,\"description\":[\"\\\"meta\\\" is not allowed to be empty\"]}}","timestamp":"192.168.0.216 @ 2017-11-17T02:35:41.733Z"}
+{"level":"warning","message":"\"meta\" is not allowed to be empty","timestamp":"192.168.0.216 @ 2017-11-17T02:35:41.737Z"}
+{"to":"127.0.0.1","action":"createRoom","params":"{\"action\":\"createRoom\",\"apiVersion\":1}","duration":3,"error":"{\"code\":1,\"description\":[\"\\\"meta\\\" is not allowed to be empty\"]}","level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T02:35:41.740Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=createRoom, response={\"error\":{\"code\":1,\"description\":[\"\\\"meta\\\" is not allowed to be empty\"]}}","timestamp":"192.168.0.216 @ 2017-11-17T02:35:41.745Z"}
+{"to":"127.0.0.1","action":"createRoom","params":"{\"action\":\"createRoom\",\"apiVersion\":1}","duration":7,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T02:35:41.755Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=createRoom, response={\"room\":{\"id\":\"a009701a71804adc\",\"name\":\"successRoom\",\"meta\":\"{}\"}}","timestamp":"192.168.0.216 @ 2017-11-17T02:35:41.760Z"}
+{"to":"127.0.0.1","action":"createRoom","params":"{\"action\":\"createRoom\",\"apiVersion\":1}","duration":14,"error":"{\"code\":2,\"description\":[\"room \\\"successRoom\\\" already exists\"]}","level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T02:35:41.764Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=createRoom, response={\"error\":{\"code\":2,\"description\":[\"room \\\"successRoom\\\" already exists\"]}}","timestamp":"192.168.0.216 @ 2017-11-17T02:35:41.767Z"}
+{"to":"127.0.0.1","action":"createRoom","params":"{\"action\":\"createRoom\",\"apiVersion\":1}","duration":4,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T02:42:54.445Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=createRoom, response={\"room\":{\"id\":\"5a4febf57a6b356e\",\"name\":\"APIPRUEBAAA\",\"meta\":\"{}\"}}","timestamp":"192.168.0.216 @ 2017-11-17T02:42:54.446Z"}
+{"to":"127.0.0.1","action":"createRoom","params":"{\"action\":\"createRoom\",\"apiVersion\":1}","duration":0,"error":"{\"code\":2,\"description\":[\"room \\\"APIPRUEBAAA\\\" already exists\"]}","level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T02:42:54.450Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=createRoom, response={\"error\":{\"code\":2,\"description\":[\"room \\\"APIPRUEBAAA\\\" already exists\"]}}","timestamp":"192.168.0.216 @ 2017-11-17T02:42:54.450Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T02:43:54.558Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"5a4febf57a6b356e\",\"name\":\"APIPRUEBAAA\",\"meta\":\"{}\"},{\"id\":\"a009701a71804adc\",\"name\":\"successRoom\",\"meta\":\"{}\"},{\"id\":\"e0e19ece3fa8adbc\",\"name\":\"test\",\"meta\":\"{}\"},{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-17T02:43:54.559Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T02:44:33.794Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"5a4febf57a6b356e\",\"name\":\"APIPRUEBAAA\",\"meta\":\"{}\"},{\"id\":\"a009701a71804adc\",\"name\":\"successRoom\",\"meta\":\"{}\"},{\"id\":\"e0e19ece3fa8adbc\",\"name\":\"test\",\"meta\":\"{}\"},{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-17T02:44:33.796Z"}
+{"to":"127.0.0.1","params":"{}","duration":3,"error":"Error: unknown action or invalid apiVersion","level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T02:47:27.120Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T02:47:27.156Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"5a4febf57a6b356e\",\"name\":\"APIPRUEBAAA\",\"meta\":\"{}\"},{\"id\":\"a009701a71804adc\",\"name\":\"successRoom\",\"meta\":\"{}\"},{\"id\":\"e0e19ece3fa8adbc\",\"name\":\"test\",\"meta\":\"{}\"},{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-17T02:47:27.158Z"}
+{"to":"127.0.0.1","params":"{}","duration":0,"error":"Error: unknown action or invalid apiVersion","level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T02:48:46.585Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T02:48:46.597Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"5a4febf57a6b356e\",\"name\":\"APIPRUEBAAA\",\"meta\":\"{}\"},{\"id\":\"a009701a71804adc\",\"name\":\"successRoom\",\"meta\":\"{}\"},{\"id\":\"e0e19ece3fa8adbc\",\"name\":\"test\",\"meta\":\"{}\"},{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-17T02:48:46.601Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T02:48:57.974Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"5a4febf57a6b356e\",\"name\":\"APIPRUEBAAA\",\"meta\":\"{}\"},{\"id\":\"a009701a71804adc\",\"name\":\"successRoom\",\"meta\":\"{}\"},{\"id\":\"e0e19ece3fa8adbc\",\"name\":\"test\",\"meta\":\"{}\"},{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-17T02:48:57.977Z"}
+{"to":"127.0.0.1","params":"{}","duration":0,"error":"Error: unknown action or invalid apiVersion","level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T02:48:57.980Z"}
+{"to":"127.0.0.1","params":"{}","duration":0,"error":"Error: unknown action or invalid apiVersion","level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T02:49:41.874Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T02:49:41.977Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"5a4febf57a6b356e\",\"name\":\"APIPRUEBAAA\",\"meta\":\"{}\"},{\"id\":\"a009701a71804adc\",\"name\":\"successRoom\",\"meta\":\"{}\"},{\"id\":\"e0e19ece3fa8adbc\",\"name\":\"test\",\"meta\":\"{}\"},{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-17T02:49:41.982Z"}
+{"to":"127.0.0.1","params":"{}","duration":1,"error":"Error: unknown action or invalid apiVersion","level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T02:58:10.223Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":12,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T02:58:10.234Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"5a4febf57a6b356e\",\"name\":\"APIPRUEBAAA\",\"meta\":\"{}\"},{\"id\":\"a009701a71804adc\",\"name\":\"successRoom\",\"meta\":\"{}\"},{\"id\":\"e0e19ece3fa8adbc\",\"name\":\"test\",\"meta\":\"{}\"},{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-17T02:58:10.236Z"}
+{"to":"127.0.0.1","params":"{}","duration":0,"error":"Error: unknown action or invalid apiVersion","level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T03:00:31.349Z"}
+{"to":"127.0.0.1","params":"{}","duration":0,"error":"Error: unknown action or invalid apiVersion","level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T03:06:02.439Z"}
+{"to":"127.0.0.1","params":"{}","duration":0,"error":"Error: unknown action or invalid apiVersion","level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T03:06:47.633Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T03:08:04.942Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"5a4febf57a6b356e\",\"name\":\"APIPRUEBAAA\",\"meta\":\"{}\"},{\"id\":\"a009701a71804adc\",\"name\":\"successRoom\",\"meta\":\"{}\"},{\"id\":\"e0e19ece3fa8adbc\",\"name\":\"test\",\"meta\":\"{}\"},{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-17T03:08:04.945Z"}
+{"to":"127.0.0.1","params":"{\"roomId\":\"5a4febf57a6b356e\"}","duration":0,"error":"Error: unknown action or invalid apiVersion","level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T03:09:24.655Z"}
+{"to":"127.0.0.1","params":"{\"roomId\":\"5a4febf57a6b356e\"}","duration":0,"error":"Error: unknown action or invalid apiVersion","level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T03:10:01.207Z"}
+{"to":"127.0.0.1","action":"deleteRoom","params":"{\"roomId\":\"5a4febf57a6b356e\",\"action\":\"deleteRoom\",\"apiVersion\":1}","duration":14,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T03:10:56.717Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=deleteRoom, response={\"result\":true}","timestamp":"192.168.0.216 @ 2017-11-17T03:10:56.721Z"}
+{"to":"127.0.0.1","action":"retrieveRoom","params":"{\"roomId\":\"5a4febf57a6b356e\",\"action\":\"retrieveRoom\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T03:21:37.649Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRoom, response={\"room\":null}","timestamp":"192.168.0.216 @ 2017-11-17T03:21:37.654Z"}
+{"to":"127.0.0.1","params":"{}","duration":0,"error":"Error: unknown action or invalid apiVersion","level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T03:21:37.671Z"}
+{"to":"127.0.0.1","params":"{}","duration":0,"error":"Error: unknown action or invalid apiVersion","level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T03:21:37.677Z"}
+{"to":"127.0.0.1","action":"retrieveRoom","params":"{\"roomId\":\"5a4febf57a6b356e\",\"action\":\"retrieveRoom\",\"apiVersion\":1}","duration":10,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T03:21:37.687Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRoom, response={\"room\":null}","timestamp":"192.168.0.216 @ 2017-11-17T03:21:37.690Z"}
+{"to":"127.0.0.1","params":"{}","duration":0,"error":"Error: unknown action or invalid apiVersion","level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T03:22:49.561Z"}
+{"to":"127.0.0.1","action":"deleteRoom","params":"{\"roomId\":\"5a4febf57a6b356e\",\"action\":\"deleteRoom\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T03:23:44.982Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=deleteRoom, response={\"result\":false}","timestamp":"192.168.0.216 @ 2017-11-17T03:23:44.983Z"}
+{"to":"127.0.0.1","action":"deleteRoom","params":"{\"roomId\":\"5a4febf57a6b356e\",\"action\":\"deleteRoom\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T03:24:25.232Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=deleteRoom, response={\"result\":false}","timestamp":"192.168.0.216 @ 2017-11-17T03:24:25.234Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T03:24:46.063Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"a009701a71804adc\",\"name\":\"successRoom\",\"meta\":\"{}\"},{\"id\":\"e0e19ece3fa8adbc\",\"name\":\"test\",\"meta\":\"{}\"},{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-17T03:24:46.064Z"}
+{"to":"127.0.0.1","action":"deleteRoom","params":"{\"roomId\":\"a009701a71804adc\",\"action\":\"deleteRoom\",\"apiVersion\":1}","duration":9,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T03:26:06.697Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=deleteRoom, response={\"result\":true}","timestamp":"192.168.0.216 @ 2017-11-17T03:26:06.711Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T03:32:58.044Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"e0e19ece3fa8adbc\",\"name\":\"test\",\"meta\":\"{}\"},{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-17T03:32:58.045Z"}
+{"to":"127.0.0.1","action":"deleteRoom","params":"{\"roomId\":\"a009701a71804adc\",\"action\":\"deleteRoom\",\"apiVersion\":1}","duration":12,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T03:32:58.049Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=deleteRoom, response={\"result\":false}","timestamp":"192.168.0.216 @ 2017-11-17T03:32:58.055Z"}
+{"to":"127.0.0.1","action":"deleteRoom","params":"{\"roomId\":\"a009701a71804adc\",\"action\":\"deleteRoom\",\"apiVersion\":1}","duration":3,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T03:33:43.406Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=deleteRoom, response={\"result\":false}","timestamp":"192.168.0.216 @ 2017-11-17T03:33:43.406Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T03:33:43.455Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"e0e19ece3fa8adbc\",\"name\":\"test\",\"meta\":\"{}\"},{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-17T03:33:43.459Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T03:35:24.967Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"e0e19ece3fa8adbc\",\"name\":\"test\",\"meta\":\"{}\"},{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-17T03:35:24.983Z"}
+{"to":"127.0.0.1","action":"deleteRoom","params":"{\"roomId\":\"a009701a71804adc\",\"action\":\"deleteRoom\",\"apiVersion\":1}","duration":23,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T03:35:24.984Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=deleteRoom, response={\"result\":false}","timestamp":"192.168.0.216 @ 2017-11-17T03:35:24.986Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T03:36:04.853Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"e0e19ece3fa8adbc\",\"name\":\"test\",\"meta\":\"{}\"},{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-17T03:36:04.859Z"}
+{"to":"127.0.0.1","action":"deleteRoom","params":"{\"roomId\":\"a009701a71804adc\",\"action\":\"deleteRoom\",\"apiVersion\":1}","duration":2,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-17T03:36:04.929Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=deleteRoom, response={\"result\":false}","timestamp":"192.168.0.216 @ 2017-11-17T03:36:04.937Z"}
+{"level":"info","message":"--------------------------------------","timestamp":"192.168.0.216 @ 2017-11-17T23:50:11.365Z"}
+{"level":"info","message":"ACTIONHERO COMMAND >> start","timestamp":"192.168.0.216 @ 2017-11-17T23:50:11.367Z"}
+{"level":"info","message":"--------------------------------------","timestamp":"192.168.0.216 @ 2017-11-17T23:50:11.372Z"}
+{"level":"notice","message":"*** Starting ActionHero ***","timestamp":"192.168.0.216 @ 2017-11-17T23:50:11.382Z"}
+{"level":"notice","message":"pid: 2340","timestamp":"192.168.0.216 @ 2017-11-17T23:50:11.389Z"}
+{"level":"notice","message":"server ID: 192.168.0.216","timestamp":"192.168.0.216 @ 2017-11-17T23:50:11.393Z"}
+{"level":"info","message":"actionhero member 192.168.0.216 has joined the cluster","timestamp":"192.168.0.216 @ 2017-11-17T23:50:11.419Z"}
+{"level":"notice","message":"Starting server: `web` @ 0.0.0.0:8080","timestamp":"192.168.0.216 @ 2017-11-17T23:50:11.423Z"}
+{"level":"notice","message":"environment: development","timestamp":"192.168.0.216 @ 2017-11-17T23:50:11.439Z"}
+{"level":"info","message":"device log database loaded","timestamp":"192.168.0.216 @ 2017-11-17T23:50:11.445Z"}
+{"level":"info","message":"device type database loaded","timestamp":"192.168.0.216 @ 2017-11-17T23:50:11.457Z"}
+{"level":"info","message":"device database loaded","timestamp":"192.168.0.216 @ 2017-11-17T23:50:11.469Z"}
+{"level":"info","message":"room database loaded","timestamp":"192.168.0.216 @ 2017-11-17T23:50:11.475Z"}
+{"level":"info","message":"routine database loaded","timestamp":"192.168.0.216 @ 2017-11-17T23:50:11.482Z"}
+{"level":"alert","message":"*** ActionHero Started ***","timestamp":"192.168.0.216 @ 2017-11-17T23:50:11.488Z"}
+{"to":"127.0.0.1","action":"swagger","params":"{\"secure\":\"false\",\"action\":\"swagger\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-18T00:12:05.110Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":16,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-18T00:12:05.141Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"e0e19ece3fa8adbc\",\"name\":\"test\",\"meta\":\"{}\"},{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-18T00:12:05.143Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":8,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-18T00:12:05.149Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"e0e19ece3fa8adbc\",\"name\":\"test\",\"meta\":\"{}\"},{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-18T00:12:05.152Z"}
+{"to":"127.0.0.1","action":"deleteRoom","params":"{\"roomId\":\"a009701a71804adc\",\"action\":\"deleteRoom\",\"apiVersion\":1}","duration":32,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-18T00:12:05.160Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=deleteRoom, response={\"result\":false}","timestamp":"192.168.0.216 @ 2017-11-18T00:12:05.166Z"}
+{"to":"127.0.0.1","file":"C:\\Users\\Santiago Swinnen\\Desktop\\SmartHome\\npm\\node_modules\\ah-swagger-plugin\\public\\swagger/index.html","requestedFile":"swagger","size":5114,"duration":14,"success":true,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-18T00:12:05.172Z"}
+{"to":"127.0.0.1","action":"deleteRoom","params":"{\"roomId\":\"a009701a71804adc\",\"action\":\"deleteRoom\",\"apiVersion\":1}","duration":40,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-18T00:12:05.179Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=deleteRoom, response={\"result\":false}","timestamp":"192.168.0.216 @ 2017-11-18T00:12:05.181Z"}
+{"to":"127.0.0.1","file":"{not found}","requestedFile":"images\\favicon-32x32.png","size":null,"duration":null,"success":false,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-18T00:12:05.188Z"}
+{"to":"127.0.0.1","action":"swagger","params":"{\"secure\":\"false\",\"action\":\"swagger\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-18T00:12:05.204Z"}
+{"to":"127.0.0.1","file":"{not found}","requestedFile":"images\\favicon-16x16.png","size":null,"duration":null,"success":false,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-18T00:12:05.546Z"}
+{"to":"127.0.0.1","action":"swagger","params":"{\"secure\":\"false\",\"action\":\"swagger\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-18T00:12:06.322Z"}
+{"to":"127.0.0.1","action":"swagger","params":"{\"secure\":\"false\",\"action\":\"swagger\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-18T00:12:06.362Z"}
+{"to":"127.0.0.1","file":"{not found}","requestedFile":"images\\favicon-16x16.png","size":null,"duration":null,"success":false,"level":"info","message":"[ file @ web ]","timestamp":"192.168.0.216 @ 2017-11-18T00:12:06.365Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-18T00:13:27.833Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"e0e19ece3fa8adbc\",\"name\":\"test\",\"meta\":\"{}\"},{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-18T00:13:27.836Z"}
+{"to":"127.0.0.1","action":"deleteRoom","params":"{\"roomId\":\"a009701a71804adc\",\"action\":\"deleteRoom\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-18T00:13:27.843Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=deleteRoom, response={\"result\":false}","timestamp":"192.168.0.216 @ 2017-11-18T00:13:27.847Z"}
+{"level":"warning","message":"parameter \"deviceId\" length must be 16 characters long","timestamp":"192.168.0.216 @ 2017-11-18T01:42:41.758Z"}
+{"level":"warning","message":"parameter \"roomId\" length must be 16 characters long","timestamp":"192.168.0.216 @ 2017-11-18T01:42:41.758Z"}
+{"to":"127.0.0.1","action":"addDeviceRoom","params":"{\"deviceId\":\"fgsdfhdfhnd\",\"roomId\":\"dfgfghdfh\",\"action\":\"addDeviceRoom\",\"apiVersion\":1}","duration":4,"error":"{\"code\":1,\"description\":[\"parameter \\\"deviceId\\\" length must be 16 characters long\"]}","level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-18T01:42:41.758Z"}
+{"level":"warning","message":"parameter \"deviceId\" length must be 16 characters long","timestamp":"192.168.0.216 @ 2017-11-18T01:46:06.301Z"}
+{"level":"warning","message":"parameter \"roomId\" length must be 16 characters long","timestamp":"192.168.0.216 @ 2017-11-18T01:46:06.302Z"}
+{"to":"127.0.0.1","action":"addDeviceRoom","params":"{\"deviceId\":\"device\",\"roomId\":\"room\",\"action\":\"addDeviceRoom\",\"apiVersion\":1}","duration":5,"error":"{\"code\":1,\"description\":[\"parameter \\\"deviceId\\\" length must be 16 characters long\"]}","level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-18T01:46:06.306Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-18T02:02:13.054Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"e0e19ece3fa8adbc\",\"name\":\"test\",\"meta\":\"{}\"},{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-18T02:02:13.054Z"}
+{"to":"127.0.0.1","action":"deleteRoom","params":"{\"roomId\":\"a009701a71804adc\",\"action\":\"deleteRoom\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-18T02:02:13.057Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=deleteRoom, response={\"result\":false}","timestamp":"192.168.0.216 @ 2017-11-18T02:02:13.059Z"}
+{"to":"127.0.0.1","action":"deleteRoom","params":"{\"roomId\":\"a009701a71804adc\",\"action\":\"deleteRoom\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-18T02:12:04.634Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=deleteRoom, response={\"result\":false}","timestamp":"192.168.0.216 @ 2017-11-18T02:12:04.635Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-18T02:12:04.748Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"e0e19ece3fa8adbc\",\"name\":\"test\",\"meta\":\"{}\"},{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-18T02:12:04.750Z"}
+{"to":"127.0.0.1","action":"deleteRoom","params":"{\"roomId\":\"a009701a71804adc\",\"action\":\"deleteRoom\",\"apiVersion\":1}","duration":3,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-18T02:22:32.486Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=deleteRoom, response={\"result\":false}","timestamp":"192.168.0.216 @ 2017-11-18T02:22:32.490Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-18T02:22:32.498Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"e0e19ece3fa8adbc\",\"name\":\"test\",\"meta\":\"{}\"},{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-18T02:22:32.500Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":2,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-18T02:37:51.356Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"e0e19ece3fa8adbc\",\"name\":\"test\",\"meta\":\"{}\"},{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-18T02:37:51.362Z"}
+{"to":"127.0.0.1","action":"deleteRoom","params":"{\"roomId\":\"a009701a71804adc\",\"action\":\"deleteRoom\",\"apiVersion\":1}","duration":8,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-18T02:37:52.378Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=deleteRoom, response={\"result\":false}","timestamp":"192.168.0.216 @ 2017-11-18T02:37:52.387Z"}
+{"to":"127.0.0.1","action":"swagger","params":"{\"secure\":\"false\",\"action\":\"swagger\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-18T02:46:14.821Z"}
+{"to":"127.0.0.1","action":"swagger","params":"{\"secure\":\"false\",\"action\":\"swagger\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-18T02:46:15.147Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":2,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-18T02:46:35.987Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"e0e19ece3fa8adbc\",\"name\":\"test\",\"meta\":\"{}\"},{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-18T02:46:35.995Z"}
+{"to":"127.0.0.1","action":"deleteRoom","params":"{\"roomId\":\"a009701a71804adc\",\"action\":\"deleteRoom\",\"apiVersion\":1}","duration":2,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-18T03:16:04.473Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=deleteRoom, response={\"result\":false}","timestamp":"192.168.0.216 @ 2017-11-18T03:16:04.476Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-18T03:16:04.755Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"e0e19ece3fa8adbc\",\"name\":\"test\",\"meta\":\"{}\"},{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-18T03:16:04.757Z"}
+{"level":"notice","message":"Shutting down open servers and stopping task processing...","timestamp":"192.168.0.216 @ 2017-11-18T13:06:03.810Z"}
+{"level":"info","message":"--------------------------------------","timestamp":"192.168.0.216 @ 2017-11-18T13:06:08.595Z"}
+{"level":"info","message":"ACTIONHERO COMMAND >> start","timestamp":"192.168.0.216 @ 2017-11-18T13:06:08.595Z"}
+{"level":"info","message":"--------------------------------------","timestamp":"192.168.0.216 @ 2017-11-18T13:06:08.595Z"}
+{"level":"notice","message":"*** Starting ActionHero ***","timestamp":"192.168.0.216 @ 2017-11-18T13:06:08.595Z"}
+{"level":"notice","message":"pid: 12884","timestamp":"192.168.0.216 @ 2017-11-18T13:06:08.612Z"}
+{"level":"notice","message":"server ID: 192.168.0.216","timestamp":"192.168.0.216 @ 2017-11-18T13:06:08.614Z"}
+{"level":"info","message":"actionhero member 192.168.0.216 has joined the cluster","timestamp":"192.168.0.216 @ 2017-11-18T13:06:08.617Z"}
+{"level":"notice","message":"Starting server: `web` @ 0.0.0.0:8080","timestamp":"192.168.0.216 @ 2017-11-18T13:06:08.632Z"}
+{"level":"notice","message":"environment: development","timestamp":"192.168.0.216 @ 2017-11-18T13:06:08.632Z"}
+{"level":"info","message":"device log database loaded","timestamp":"192.168.0.216 @ 2017-11-18T13:06:08.632Z"}
+{"level":"info","message":"device type database loaded","timestamp":"192.168.0.216 @ 2017-11-18T13:06:08.648Z"}
+{"level":"info","message":"device database loaded","timestamp":"192.168.0.216 @ 2017-11-18T13:06:08.648Z"}
+{"level":"info","message":"room database loaded","timestamp":"192.168.0.216 @ 2017-11-18T13:06:08.648Z"}
+{"level":"info","message":"routine database loaded","timestamp":"192.168.0.216 @ 2017-11-18T13:06:08.648Z"}
+{"level":"alert","message":"*** ActionHero Started ***","timestamp":"192.168.0.216 @ 2017-11-18T13:06:08.648Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":4,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-18T14:28:52.879Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"e0e19ece3fa8adbc\",\"name\":\"test\",\"meta\":\"{}\"},{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-18T14:28:52.883Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":2,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-18T14:31:40.382Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"e0e19ece3fa8adbc\",\"name\":\"test\",\"meta\":\"{}\"},{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-18T14:31:40.403Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-18T14:32:35.669Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"e0e19ece3fa8adbc\",\"name\":\"test\",\"meta\":\"{}\"},{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-18T14:32:35.682Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":2,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-18T14:37:10.537Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"e0e19ece3fa8adbc\",\"name\":\"test\",\"meta\":\"{}\"},{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-18T14:37:10.575Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":2,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-18T14:48:30.784Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"e0e19ece3fa8adbc\",\"name\":\"test\",\"meta\":\"{}\"},{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-18T14:48:30.820Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-18T19:51:24.284Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"e0e19ece3fa8adbc\",\"name\":\"test\",\"meta\":\"{}\"},{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-18T19:51:24.284Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":1,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-18T19:52:12.196Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"e0e19ece3fa8adbc\",\"name\":\"test\",\"meta\":\"{}\"},{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-18T19:52:12.196Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-18T19:52:54.634Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"e0e19ece3fa8adbc\",\"name\":\"test\",\"meta\":\"{}\"},{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-18T19:52:54.636Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-18T19:53:46.564Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"e0e19ece3fa8adbc\",\"name\":\"test\",\"meta\":\"{}\"},{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-18T19:53:46.569Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-18T20:05:41.281Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"e0e19ece3fa8adbc\",\"name\":\"test\",\"meta\":\"{}\"},{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-18T20:05:41.282Z"}
+{"to":"127.0.0.1","action":"retrieveRooms","params":"{\"action\":\"retrieveRooms\",\"apiVersion\":1}","duration":0,"level":"info","message":"[ action @ web ]","timestamp":"192.168.0.216 @ 2017-11-18T20:06:35.979Z"}
+{"level":"info","message":"[ action @ web ] to=127.0.0.1, action=retrieveRooms, response={\"rooms\":[{\"id\":\"e0e19ece3fa8adbc\",\"name\":\"test\",\"meta\":\"{}\"},{\"id\":\"fd9f12da765927c0\",\"name\":\"kitchen\",\"meta\":\"{}\"}]}","timestamp":"192.168.0.216 @ 2017-11-18T20:06:35.980Z"}
+{"level":"notice","message":"Shutting down open servers and stopping task processing...","timestamp":"192.168.0.216 @ 2017-11-18T20:21:58.934Z"}
