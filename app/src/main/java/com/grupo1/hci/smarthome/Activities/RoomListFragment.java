@@ -30,7 +30,7 @@ import java.util.ArrayList;
  * Created by agust on 11/4/2017.
  */
 
-public class RoomListFragment extends ListFragment implements AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener{
+public class RoomListFragment extends ListFragment implements AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener, RoomsFragment{
 
      // Array of strings...
     ArrayList<Device> deviceArray = new ArrayList<>();
@@ -101,7 +101,7 @@ public class RoomListFragment extends ListFragment implements AdapterView.OnItem
         //set listview Adapter and onCikcListener
         getListView().setVisibility(View.VISIBLE);
         view.findViewById(R.id.gridView).setVisibility(View.GONE);
-        rowAdapter = new RoomsAdapter((RoomActivity)getActivity(), deviceArray);
+        rowAdapter = new RoomsAdapter((RoomActivity)getActivity(), deviceArray, (RoomsFragment)this);
         setListAdapter(rowAdapter);
         loadDevices(room.getId());
 

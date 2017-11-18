@@ -7,14 +7,17 @@ import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ListFragment;
+import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.Toolbar;
 import android.view.ActionMode;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -39,6 +42,7 @@ public class HomeListFragment extends ListFragment implements AdapterView.OnItem
     private CountDownTimer deleteCountDown;
     ActionMode.Callback mActionModeCallback;
 
+
     public void setmActionMode(ActionMode mActionMode) {
         this.mActionMode = mActionMode;
     }
@@ -49,7 +53,12 @@ public class HomeListFragment extends ListFragment implements AdapterView.OnItem
         roomsArray = ((NavigationActivity) getActivity()).getRoomsArray();
         toolbar = ((NavigationActivity) getActivity()).getToolbar();
         setView(view);
+        setOnClickListeners();
         return view;
+    }
+
+    private void setOnClickListeners() {
+
     }
 
     @Override
@@ -64,7 +73,7 @@ public class HomeListFragment extends ListFragment implements AdapterView.OnItem
         mActionModeCallback = new HomeContextualMenu();
         ((HomeContextualMenu) mActionModeCallback).setHomeActivity((HomeActivity) getActivity());
         //set listview Adapter and onCikcListener
-        ArrayAdapter rowAdapter = new HomeAdapter((HomeActivity) getActivity(), roomsArray);
+        ArrayAdapter rowAdapter = new HomeAdapter((HomeActivity) getActivity(), roomsArray, (HomeFragment) this);
         setListAdapter(rowAdapter);
     }
 

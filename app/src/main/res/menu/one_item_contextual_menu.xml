@@ -5,9 +5,10 @@
 
     <item android:title="edit"
         android:id="@+id/editElement"
+        android:icon="@drawable/ic_edit_black_24dp"
         app:showAsAction="ifRoom"
         />
-    <item android:title=""
+    <item android:title="Delete"
         android:id="@+id/deleteElement"
         android:icon="@mipmap/ic_delete_black_24dp"
         app:showAsAction="ifRoom"/>

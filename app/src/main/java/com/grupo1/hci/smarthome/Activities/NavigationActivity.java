@@ -103,11 +103,6 @@ public class NavigationActivity extends AppCompatActivity
         }
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        return super.onOptionsItemSelected(item);
-    }
-
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -135,10 +130,5 @@ public class NavigationActivity extends AppCompatActivity
         return true;
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.one_item_contextual_menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
 }
 

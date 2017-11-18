@@ -101,7 +101,7 @@ public class HomeTileFragment extends Fragment implements HomeFragment  {
         mActionModeCallback = new HomeContextualMenu();
         ((HomeContextualMenu) mActionModeCallback).setHomeActivity((HomeActivity) getActivity());
         //set listview Adapter and onCikcListener
-        ArrayAdapter rowAdapter = new HomeAdapter((HomeActivity) getActivity(), roomsArray);
+        ArrayAdapter rowAdapter = new HomeAdapter((HomeActivity) getActivity(), roomsArray, (HomeFragment) this);
         gridView.setAdapter(rowAdapter);
     }
 

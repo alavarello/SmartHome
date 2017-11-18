@@ -4,10 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.PopupMenu;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,21 +28,50 @@ import java.util.ArrayList;
 public class RoomsAdapter extends ArrayAdapter<Device> {
 
     ArrayList<Device> names;
-    public RoomsAdapter(Context context, ArrayList<Device> names) {
+    Context context;
+    RoomsFragment roomsFragment;
+    public RoomsAdapter(Context context, ArrayList<Device> names, RoomsFragment roomsFragment) {
         super(context, 0, names);
         this.names = names;
+        this.context = context;
+        this.roomsFragment = roomsFragment;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // Get the data item for this position
-       Device device = getItem(position);
+       final Device device = getItem(position);
         // Check if an existing view is being reused, otherwise inflate the view
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.row_layout, parent, false);
         }
         // Lookup view for data population
         TextView deviceName = (TextView) convertView.findViewById(R.id.rowLayout_nameTextView);
+        final ImageButton overflowMenu = convertView.findViewById(R.id.rowLayout_overflowMenu_imageButton);
+        overflowMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popup = new PopupMenu(context, view);
+                popup.inflate(R.menu.one_item_contextual_menu);
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.editElement:
+                                Toast.makeText(context, "Se edito!!!!!", Toast.LENGTH_SHORT).show();
+                                break;
+                            case R.id.deleteElement:
+                                Toast.makeText(context, "Se borro!!!!!" +device.getId(), Toast.LENGTH_SHORT).show();
+                                roomsFragment.deleteDevice(device.getId());
+                                break;
+                        }
+                        return true;
+                    }
+                });
+                popup.show();
+            }
+        });
+        overflowMenu.setFocusable(false);
         // Populate the data into the template view using the data object
         deviceName.setText(device.getName());
         // Return the completed view to render on screen
