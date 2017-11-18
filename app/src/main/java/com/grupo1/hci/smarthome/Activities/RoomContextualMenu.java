@@ -37,6 +37,10 @@ public class RoomContextualMenu implements ActionMode.Callback {
         return true;
     }
 
+    public void changeToOneItemsMenu(){
+        menu.findItem(R.id.editElement).setVisible(true);
+    }
+
     @Override
     public boolean onPrepareActionMode(ActionMode actionMode, Menu menu) {
         return false;
@@ -59,7 +63,7 @@ public class RoomContextualMenu implements ActionMode.Callback {
     @Override
     public void onDestroyActionMode(ActionMode actionMode) {
         ((RoomListFragment)roomActivity.getFragment()).setmActionMode(null);
-        ((RoomListFragment)roomActivity.getFragment()).diselectElement();
+        ((RoomListFragment)roomActivity.getFragment()).diselectElements();
 
     }
 

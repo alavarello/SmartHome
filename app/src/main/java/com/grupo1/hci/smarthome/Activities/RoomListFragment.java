@@ -121,11 +121,22 @@ public class RoomListFragment extends ListFragment implements AdapterView.OnItem
         toolbar.setTitle(device.getName());
     }
 
-    public void diselectElement() {
+    public void diselectElements() {
         for(View v: selectedElement){
             v.setBackgroundColor(Color.TRANSPARENT);
         }
         toolbar.setTitle(room.getName());
+    }
+
+    public void diselectElement(View view){
+        view.setBackgroundColor(Color.TRANSPARENT);
+        selectedElement.remove(view);
+        if(selectedElement.size() == 1){
+            ((RoomContextualMenu)mActionModeCallback).changeToOneItemsMenu();
+        }
+        if(selectedElement.isEmpty()){
+            mActionMode.finish();
+        }
     }
 
     public void deleteDevice(String roomId)
@@ -196,11 +207,15 @@ public class RoomListFragment extends ListFragment implements AdapterView.OnItem
 
         //if is the same view as the selected one
         if(mActionMode == null){
-            diselectElement();
+            diselectElements();
             startDeviceActivity(device);
         }else{
-            ((RoomContextualMenu)mActionModeCallback).changeToSeveralItemsMenu();
-            selectedElement(view, device);
+            if(selectedElement.contains(view)){
+               diselectElement(view);
+            }else{
+                ((RoomContextualMenu)mActionModeCallback).changeToSeveralItemsMenu();
+                selectedElement(view, device);
+            }
         }
     }
 

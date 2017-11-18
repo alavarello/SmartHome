@@ -33,6 +33,10 @@ public class RutineContextualMenu implements ActionMode.Callback {
         menu.findItem(R.id.editElement).setVisible(false);
     }
 
+    public void changeToOneItemsMenu(){
+        menu.findItem(R.id.editElement).setVisible(true);
+    }
+
     @Override
     public boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
         MenuInflater inflater = actionMode.getMenuInflater();

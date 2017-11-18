@@ -41,6 +41,10 @@ public class HomeContextualMenu implements ActionMode.Callback {
         menu.findItem(R.id.editElement).setVisible(false);
     }
 
+    public void changeToOneItemsMenu(){
+        menu.findItem(R.id.editElement).setVisible(true);
+    }
+
     @Override
     public boolean onPrepareActionMode(ActionMode actionMode, Menu menu) {
         return false;
@@ -59,7 +63,7 @@ public class HomeContextualMenu implements ActionMode.Callback {
     @Override
     public void onDestroyActionMode(ActionMode actionMode) {
         ((HomeFragment)homeActivity.getFragment()).setmActionMode(null);
-        ((HomeFragment)homeActivity.getFragment()).diselectElement();
+        ((HomeFragment)homeActivity.getFragment()).diselectElements();
     }
 
 }

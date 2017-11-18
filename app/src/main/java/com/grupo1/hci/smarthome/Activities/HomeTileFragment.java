@@ -43,6 +43,19 @@ public class HomeTileFragment extends Fragment implements HomeFragment  {
         this.mActionMode = mActionMode;
     }
 
+
+    @Override
+    public void diselectElement(View view) {
+        view.setBackgroundColor(Color.TRANSPARENT);
+        selectedElement.remove(view);
+        if(selectedElement.size() == 1){
+            ((HomeContextualMenu)mActionModeCallback).changeToOneItemsMenu();
+        }
+        if(selectedElement.isEmpty()){
+            mActionMode.finish();
+        }
+    }
+
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_list, container, false);
@@ -64,14 +77,18 @@ public class HomeTileFragment extends Fragment implements HomeFragment  {
                 Toast.makeText(getActivity().getApplicationContext(), room.getName() + " ShortClick", Toast.LENGTH_SHORT).show();
                 //if is the same view as the selected one
                 if (mActionMode == null) {
-                    diselectElement();
+                    diselectElements();
                     Intent intent = new Intent(getActivity().getApplicationContext(), RoomActivity.class);
                     intent.putExtra(Constants.ROOM_ARRAY_INTENT, (Serializable) roomsArray);
                     intent.putExtra(Constants.ROOM_INTENT, (Serializable) room);
                     startActivity(intent);
                 }else{
-                    selectedElement(view, room);
-                    ((HomeContextualMenu)mActionModeCallback).changeToSeveralItemsMenu();
+                    if(selectedElement.contains(view)){
+                        diselectElement(view);
+                    }else{
+                        selectedElement(view, room);
+                        ((HomeContextualMenu)mActionModeCallback).changeToSeveralItemsMenu();
+                    }
                 }
             }
         });
@@ -137,7 +154,7 @@ public class HomeTileFragment extends Fragment implements HomeFragment  {
         toolbar.setTitle(room.getName());
     }
 
-    public void diselectElement() {
+    public void diselectElements() {
        for(View v: selectedElement){
             v.setBackgroundColor(Color.TRANSPARENT);
         }
