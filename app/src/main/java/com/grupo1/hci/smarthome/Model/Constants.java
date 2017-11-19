@@ -1,10 +1,16 @@
 package com.grupo1.hci.smarthome.Model;
 
+import android.content.Context;
+
+import com.grupo1.hci.smarthome.R;
+
 /**
  * Created by agust on 10/31/2017.
  */
 
 public class Constants {
+
+    public static Context context;
 
     //Devices ID -------------------------------------------
     public static final String LAMP_ID = "go46xmbqeomjrsjr";
@@ -40,12 +46,16 @@ public class Constants {
     public static final boolean STATUS_OFF = false;
     public static final boolean STATUS_ON = true;
 
-    public static final String appName = "SMART HOME";
+    public static String appName;
 
     //Intents ----------------------------------
     public static String ROOM_INTENT = "room";
     public static String DEVICE_INTENT = "device";
     public static String ROOM_ARRAY_INTENT = "roomArray";
 
-
+    public static void setAppName(){
+        if(context != null && appName == null){
+            appName = context.getResources().getString(R.string.app_name) ;
+        }
+    }
 }

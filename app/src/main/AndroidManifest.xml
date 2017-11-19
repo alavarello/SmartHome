@@ -44,14 +44,38 @@
         <activity
             android:name=".Activities.RutinesActivity"
             android:label="@string/title_activity_settings"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".Activities.DeviceActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Activities.DeviceActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.grupo1.hci.smarthome.Activities.RoomActivity" />
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.grupo1.hci.smarthome.Activities.RoomActivity" />
+        </activity>
+        <activity android:name=".Activities.LampSettingsActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.SettingsActivity" />
+        </activity>
+        <activity android:name=".Activities.BlindSettingsActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.SettingsActivity" />
+        </activity>
+        <activity android:name=".Activities.OvenSettingsActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.SettingsActivity" />
+        </activity>
+        <activity android:name=".Activities.DoorSettingsActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.SettingsActivity" />
         </activity>
     </application>
-
 
 </manifest>

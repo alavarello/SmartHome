@@ -1,5 +1,6 @@
 package com.grupo1.hci.smarthome.Activities;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -85,10 +86,22 @@ public class DeviceActivity extends AppCompatActivity {
                 return true;
 
             case R.id.editElement:
-                Toast.makeText(getApplicationContext(), "click", Toast.LENGTH_SHORT).show();
-                EditDialogMessage editDeviceMessage = new EditDialogMessage();
-                editDeviceMessage.setDevice(device);
-                editDeviceMessage.show(getFragmentManager(), "editDevice");
+               if(device.getTypeId().equals(Constants.LAMP_ID)){
+                   Intent intent = new Intent(this, LampSettingsActivity.class);
+                   startActivity(intent);
+               }
+                if(device.getTypeId().equals(Constants.BLIND_ID)){
+                    Intent intent = new Intent(this, BlindSettingsActivity.class);
+                    startActivity(intent);
+                }
+                if(device.getTypeId().equals(Constants.OVEN_ID)){
+                    Intent intent = new Intent(this, OvenSettingsActivity.class);
+                    startActivity(intent);
+                }
+                if(device.getTypeId().equals(Constants.DOOR_ID)){
+                    Intent intent = new Intent(this, DoorSettingsActivity.class);
+                    startActivity(intent);
+                }
                 return true;
 
             default:

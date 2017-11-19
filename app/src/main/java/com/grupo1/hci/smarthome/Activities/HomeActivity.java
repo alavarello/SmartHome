@@ -60,12 +60,15 @@ public class HomeActivity extends NavigationActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Constants.context = getApplicationContext();
+        Constants.setAppName();
         if(savedInstanceState != null){
             roomsArray = (ArrayList<Room>) savedInstanceState.getSerializable(Constants.ROOM_ARRAY_INTENT);
         }
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
         setFragment();
+       getSupportActionBar().setTitle(Constants.appName);
 
     }
 

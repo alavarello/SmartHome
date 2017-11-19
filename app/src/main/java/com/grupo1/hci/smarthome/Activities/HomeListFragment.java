@@ -168,8 +168,6 @@ public class HomeListFragment extends ListFragment implements AdapterView.OnItem
         // Start the CAB using the ActionMode.Callback defined above
         ((HomeContextualMenu) mActionModeCallback).addRoom(room);
         mActionMode = getActivity().startActionMode(mActionModeCallback);
-
-
         return true;
     }
 
