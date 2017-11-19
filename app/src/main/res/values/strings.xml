@@ -1,66 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<resources>
-    <string name="app_name">Smart Home</string>
+    <resources>
+        <string name="app_name">Smart Home</string>
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+        <string name="navigation_drawer_open">Open navigation drawer</string>
+        <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_lamp">LampActivity</string>
-    <string name="title_activity_blind">BlindActivity</string>
-    <string name="title_activity_door">DoorActivity</string>
-    <string name="title_activity_settings">Settings</string>
-    <string name="title_activity_oven">OvenActivity</string>
-    <string name="title_activity_rutines">Rutines</string>
-
-
-    <string name="drawer_menu_setting">Settings</string>
-    <string name="drawer_menu_rooms">Room</string>
-    <string name="drawer_menu_rutines">Rutines</string>
-
-
-    <string name="open">Open</string>
-    <string name="close">Close</string>
-    <string name="opened">Opened</string>
-    <string name="closed">Closed</string>
-    <string name="closing">Closing</string>
-    <string name="opening">Opening</string>
-    <string name="lock">Lock</string>
-    <string name="unlock">Unlock</string>
-    <string name="on">On</string>
-    <string name="off">Off</string>
-    <string name="temperature">Temperature</string>
-    <string name="delete">Delete</string>
-    <string name="cancel">Cancel</string>
-    <string name="deleteConfirmation">Are you sure you want to delete it?</string>
-    <string name="undo">Undo</string>
+        <string name="action_settings">Settings</string>
+        <string name="title_activity_lamp">LampActivity</string>
+        <string name="title_activity_blind">BlindActivity</string>
+        <string name="title_activity_door">DoorActivity</string>
+        <string name="title_activity_settings">Settings</string>
+        <string name="title_activity_oven">OvenActivity</string>
+        <string name="title_activity_rutines">Rutines</string>
 
     <string name="lamp">Lamp</string>
-    <string name="oven">Oven</string>
-    <string name="door">Door</string>
-    <string name="blind">Blind</string>
+    <string name="color">Color</string>
+    <string name="brightness">Brightness</string>
+
+    <string name="Oven">Oven</string>
+    <string name="Heat">Heat</string>
+    <string name="Grill">Grill</string>
+    <string name="Temperature">Temperature</string>
+    <string name="Convection">Convection</string>
+
+    <string name="drawer_menu_setting">Settings</string>
+        <string name="drawer_menu_rooms">Room</string>
+        <string name="drawer_menu_rutines">Rutines</string>
 
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="blackErrorMessage">This field can\'t be empty</string>
-    <string name="time_spinner">Recive a notification every</string>
-    <string name="defaultsNotificationListTitle">Default configuration</string>
-    <string name="notificationTitle">Notify me when:</string>
-    <string name="changeNotificationOn">Turn On</string>
-    <string name="changeNotificationOff">Turn Off</string>
-    <string name="changeNotificationColor">Color change</string>
-    <string name="changeNotificationDimmer">Change Dimmer</string>
-    <string name="changeNotificationOpenClose">The door open and close</string>
-    <string name="changeNotificationLockUnlock">The door locks or unlocks</string>
+        <string name="open">Open</string>
+        <string name="close">Close</string>
+        <string name="opened">Opened</string>
+        <string name="closed">Closed</string>
+        <string name="closing">Closing</string>
+        <string name="opening">Opening</string>
+        <string name="lock">Lock</string>
+        <string name="unlock">Unlock</string>
+        <string name="on">On</string>
+        <string name="off">Off</string>
+        <string name="temperature">Temperature</string>
+        <string name="delete">Delete</string>
+        <string name="cancel">Cancel</string>
+        <string name="deleteConfirmation">Are you sure you want to delete it?</string>
+        <string name="undo">Undo</string>
 
+        <!-- TODO: Remove or change this placeholder text -->
+        <string name="hello_blank_fragment">Hello blank fragment</string>
     <string-array name="timeNotification_array">
         <item>30 seconds</item>
         <item>1 minute</item>
         <item>5 minutes</item>
         <item>10 minutes</item>
     </string-array>
+
+    <string name="oven">Oven</string>
+    <string name="door">Door</string>
+    <string name="blind">Blind</string>
 
     <string-array name="defaultDeviceNotification_array">
         <item>@string/lamp</item>
@@ -69,5 +65,5 @@
         <item>@string/door</item>
     </string-array>
 
-</resources>
+    </resources>
 
