@@ -61,14 +61,13 @@ public class LampFragment extends Fragment {
         lamp = (Lamp) ((DeviceActivity) getActivity()).getDevice();
         ((DeviceActivity)getActivity()).getSupportActionBar().setTitle(lamp.getName());
 
-
         onOffToggleButton = view.findViewById(R.id.contentLamp_OnOff_toogleButton);
         onOffToggleButton.setTextOff(getString(R.string.off));
         onOffToggleButton.setTextOn(getString(R.string.on));
     }
 
     private void loadLampState() {
-        if(lamp.isOn()){
+       if(lamp.isOn()){
             onOffToggleButton.setChecked(true);
         }else{
             onOffToggleButton.setChecked(false);
