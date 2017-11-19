@@ -7,6 +7,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.grupo1.hci.smarthome.Model.Device;
+import com.grupo1.hci.smarthome.Model.Room;
 import com.grupo1.hci.smarthome.R;
 
 import java.util.ArrayList;
@@ -49,9 +50,15 @@ public class RoomContextualMenu implements ActionMode.Callback {
     @Override
     public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem) {
 
-        Log.i("Menu Item click: ", devices.toString());
-        for(Device d: devices) {
-            ((RoomListFragment) roomActivity.getFragment()).deleteDevice(d.getId());
+        switch (menuItem.getItemId()) {
+            case R.id.editElement:
+                EditDialogMessage editDeviceMessage = new EditDialogMessage();
+                editDeviceMessage.setDevice(devices.get(0));
+                editDeviceMessage.show(roomActivity.getFragmentManager(), "editDevice");
+                break;
+            case R.id.deleteElement:
+                ((RoomsFragment) roomActivity.getFragment()).deleteDevices(devices);
+                break;
         }
         return true;
     }

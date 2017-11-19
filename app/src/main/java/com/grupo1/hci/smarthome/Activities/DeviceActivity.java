@@ -18,6 +18,7 @@ import com.grupo1.hci.smarthome.R;
 public class DeviceActivity extends AppCompatActivity {
     Device device;
     FragmentTransaction fragmentTransaction;
+    Fragment fragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,12 +80,15 @@ public class DeviceActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.deleteElement:
                 DeleteDialogMessage deleteConfirmationFragment = new DeleteDialogMessage();
-                deleteConfirmationFragment.setRoomId("id");
+                deleteConfirmationFragment.setDeviceId(device.getId());
                 deleteConfirmationFragment.show(getFragmentManager(), "deleteConfirmation");
                 return true;
 
             case R.id.editElement:
                 Toast.makeText(getApplicationContext(), "click", Toast.LENGTH_SHORT).show();
+                EditDialogMessage editDeviceMessage = new EditDialogMessage();
+                editDeviceMessage.setDevice(device);
+                editDeviceMessage.show(getFragmentManager(), "editDevice");
                 return true;
 
             default:

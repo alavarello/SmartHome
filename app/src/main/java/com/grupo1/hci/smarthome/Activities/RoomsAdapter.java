@@ -20,6 +20,7 @@ import com.grupo1.hci.smarthome.Model.Room;
 import com.grupo1.hci.smarthome.R;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
  * Created by agust on 10/30/2017.
@@ -30,11 +31,13 @@ public class RoomsAdapter extends ArrayAdapter<Device> {
     ArrayList<Device> names;
     Context context;
     RoomsFragment roomsFragment;
-    public RoomsAdapter(Context context, ArrayList<Device> names, RoomsFragment roomsFragment) {
+    RoomActivity roomActivity;
+    public RoomsAdapter(Context context, ArrayList<Device> names, RoomsFragment roomsFragment, RoomActivity roomActivity) {
         super(context, 0, names);
         this.names = names;
         this.context = context;
         this.roomsFragment = roomsFragment;
+        this.roomActivity = roomActivity;
     }
 
     @Override
@@ -59,10 +62,15 @@ public class RoomsAdapter extends ArrayAdapter<Device> {
                         switch (item.getItemId()) {
                             case R.id.editElement:
                                 Toast.makeText(context, "Se edito!!!!!", Toast.LENGTH_SHORT).show();
+                                EditDialogMessage editDeviceMessage = new EditDialogMessage();
+                                editDeviceMessage.setDevice(device);
+                                editDeviceMessage.show(roomActivity.getFragmentManager(), "editDevice");
                                 break;
                             case R.id.deleteElement:
                                 Toast.makeText(context, "Se borro!!!!!" +device.getId(), Toast.LENGTH_SHORT).show();
-                                roomsFragment.deleteDevice(device.getId());
+                                LinkedList<Device> list = new LinkedList<>();
+                                list.add(device);
+                                roomsFragment.deleteDevices(list);
                                 break;
                         }
                         return true;

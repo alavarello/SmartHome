@@ -14,7 +14,7 @@ import com.grupo1.hci.smarthome.R;
 
 public class DeleteDialogMessage extends DialogFragment {
 
-    String roomId;
+    String deviceId;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -35,7 +35,7 @@ public class DeleteDialogMessage extends DialogFragment {
         return builder.create();
     }
 
-    public void setRoomId(String roomId) {
-        this.roomId = roomId;
+    public void setDeviceId(String roomId) {
+        this.deviceId = roomId;
     }
 }

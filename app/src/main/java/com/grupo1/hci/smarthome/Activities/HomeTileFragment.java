@@ -23,6 +23,7 @@ import com.grupo1.hci.smarthome.R;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by agust on 11/15/2017.
@@ -118,11 +119,11 @@ public class HomeTileFragment extends Fragment implements HomeFragment  {
         mActionModeCallback = new HomeContextualMenu();
         ((HomeContextualMenu) mActionModeCallback).setHomeActivity((HomeActivity) getActivity());
         //set listview Adapter and onCikcListener
-        ArrayAdapter rowAdapter = new HomeAdapter((HomeActivity) getActivity(), roomsArray, (HomeFragment) this);
+        ArrayAdapter rowAdapter = new HomeAdapter((HomeActivity) getActivity(), roomsArray, (HomeFragment) this, (HomeActivity) getActivity());
         gridView.setAdapter(rowAdapter);
     }
 
-    public void deleteRoom(String roomId) {
+    public void deleteRooms(List<Room> rooms) {
         //setting the snackbar
         mySnackbar = Snackbar.make(getActivity().findViewById(R.id.homeActivity_Fragmentcontainer), "Deleted", Snackbar.LENGTH_LONG);
         mySnackbar.setAction("Undo", new View.OnClickListener() {

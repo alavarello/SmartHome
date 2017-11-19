@@ -53,10 +53,17 @@ public class HomeContextualMenu implements ActionMode.Callback {
     @Override
     public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem) {
 
-        Log.i("Menu Item click: ", rooms.toString());
-        for (Room r:rooms){
-            ((HomeFragment)homeActivity.getFragment()).deleteRoom(r.getId());
-        }
+       switch (menuItem.getItemId()){
+           case R.id.editElement:
+               EditDialogMessage editDeviceMessage = new EditDialogMessage();
+               editDeviceMessage.setRoom(rooms.get(0));
+               editDeviceMessage.show(homeActivity.getFragmentManager(), "editDevice");
+               break;
+           case R.id.deleteElement:
+               ((HomeFragment)homeActivity.getFragment()).deleteRooms(rooms);
+
+               break;
+       }
         return true;
     }
 

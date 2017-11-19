@@ -5,6 +5,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.grupo1.hci.smarthome.Model.Device;
 import com.grupo1.hci.smarthome.Model.Rutine;
 import com.grupo1.hci.smarthome.R;
 
@@ -52,8 +53,15 @@ public class RutineContextualMenu implements ActionMode.Callback {
 
     @Override
     public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem) {
-        for (Rutine r:rutines){
-            ((RutinesListFragment)rutineActivity.getFragment()).deleteRutine(r.toString());
+        switch (menuItem.getItemId()) {
+            case R.id.editElement:
+                EditDialogMessage editDeviceMessage = new EditDialogMessage();
+                editDeviceMessage.setRutine(rutines.get(0));
+                editDeviceMessage.show(rutineActivity.getFragmentManager(), "editDevice");
+                break;
+            case R.id.deleteElement:
+                ((RutinesListFragment) rutineActivity.getFragment()).deleteRutines(rutines);
+                break;
         }
         return true;
     }

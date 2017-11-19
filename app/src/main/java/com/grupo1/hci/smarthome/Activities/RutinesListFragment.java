@@ -27,6 +27,7 @@ import com.grupo1.hci.smarthome.R;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by agust on 11/4/2017.
@@ -111,7 +112,7 @@ public class RutinesListFragment extends ListFragment implements AdapterView.OnI
         }
     }
 
-    public void deleteRutine(String rutineId)
+    public void deleteRutines(List<Rutine> rutines)
     {
         //setting the snackbar
         mySnackbar = Snackbar.make(getActivity().findViewById(R.id.homeActivity_Fragmentcontainer), "Deleted", Snackbar.LENGTH_LONG);

@@ -25,6 +25,7 @@ import com.grupo1.hci.smarthome.R;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by agust on 11/4/2017.
@@ -101,7 +102,7 @@ public class RoomListFragment extends ListFragment implements AdapterView.OnItem
         //set listview Adapter and onCikcListener
         getListView().setVisibility(View.VISIBLE);
         view.findViewById(R.id.gridView).setVisibility(View.GONE);
-        rowAdapter = new RoomsAdapter((RoomActivity)getActivity(), deviceArray, (RoomsFragment)this);
+        rowAdapter = new RoomsAdapter((RoomActivity)getActivity(), deviceArray, (RoomsFragment)this, (RoomActivity) getActivity());
         setListAdapter(rowAdapter);
         loadDevices(room.getId());
 
@@ -139,7 +140,7 @@ public class RoomListFragment extends ListFragment implements AdapterView.OnItem
         }
     }
 
-    public void deleteDevice(String roomId)
+    public void deleteDevices(List<Device> devices)
     {
         //setting the snackbar
         mySnackbar = Snackbar.make(getActivity().findViewById(R.id.homeActivity_Fragmentcontainer), "Deleted", Snackbar.LENGTH_LONG);
