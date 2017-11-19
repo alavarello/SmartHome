@@ -43,6 +43,12 @@
         <string name="color">Color</string>
         <string name="brightness">Brightness</string>
 
+        <string name="Oven">Oven</string>
+        <string name="Heat">Heat</string>
+        <string name="Grill">Grill</string>
+        <string name="Temperature">Temperature</string>
+        <string name="Convection">Convection</string>
+
 
     </resources>
 
