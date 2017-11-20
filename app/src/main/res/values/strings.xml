@@ -69,16 +69,9 @@
     <string name="blind">Blind</string>
     <string name="dismiss">Dismiss</string>
     <string name="snooze">Snooze</string>
-    <string name="notificationTitle">notificationTitle</string>
     <string name="changeNotificationOpenClose">OpenClose</string>
     <string name="changeNotificationLockUnlock">cNLockUnlock</string>
-    <string name="changeNotificationOn">NotificationOn</string>
-    <string name="changeNotificationOff">notOff</string>
-    <string name="changeNotificationDimmer">Snooze</string>
-    <string name="changeNotificationColor">Snooze</string>
-    <string name="defaultsNotificationListTitle">Snooze</string>
-    <string name="time_spinner">Snooze</string>
-    <string name="blackErrorMessage">Snooze</string>
+
 
     <string-array name="defaultDeviceNotification_array">
         <item>@string/lamp</item>

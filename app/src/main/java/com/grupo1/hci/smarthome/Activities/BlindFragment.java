@@ -39,7 +39,7 @@ public class BlindFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_blind, container, false);
         setView(view);
         setOnClickListener();
-        loadBlindState();
+   //     loadBlindState();
         // Inflate the layout for this fragment
         return view;
     }
