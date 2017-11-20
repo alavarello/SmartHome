@@ -6,8 +6,10 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -25,7 +27,7 @@ public class OvenFragment extends Fragment {
     Spinner grillSpinner;
     Spinner convectionSpinner;
     EditText temperatureEditText;
-    ToggleButton onOffToggleButton;
+    Switch onOffToggleButton;
 
     public OvenFragment() {
         // Required empty public constructor
@@ -76,15 +78,40 @@ public class OvenFragment extends Fragment {
         ((DeviceActivity)getActivity()).getSupportActionBar().setTitle(oven.getName());
 
         onOffToggleButton = view.findViewById(R.id.contentOven_Onoff_ToogleButton);
-        heatSpinner = view.findViewById(R.id.contentDoor_Heat_Spinner);
-        grillSpinner = view.findViewById(R.id.contentDoor_Grill_Spinner);
-        convectionSpinner = view.findViewById(R.id.contentDoor_Convection_Spinner);
-        temperatureEditText = view.findViewById(R.id.contentDoor_Temperature_EditText);
+        heatSpinner = view.findViewById(R.id.contentOven_Heat_Spinner);
+        grillSpinner = view.findViewById(R.id.contentOven_Grill_Spinner);
+        convectionSpinner = view.findViewById(R.id.contentOven_Convection_Spinner);
+        temperatureEditText = view.findViewById(R.id.contentOven_Temperature_EditText);
+
+        setSpinners(view);
 
         onOffToggleButton.setTextOff(getString(R.string.off));
         onOffToggleButton.setTextOn(getString(R.string.on));
         temperatureEditText.setHint(R.string.temperature);
     }
+
+    private void setSpinners(View view) {
+
+        String[] heatModes = getResources().getStringArray(R.array.heat_array);
+        ArrayAdapter<String> heatAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, heatModes);
+        Spinner heatSp = view.findViewById(R.id.contentOven_Heat_Spinner);
+        heatAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        heatSp.setAdapter(heatAdapter);
+
+        String[] grillModes = getResources().getStringArray(R.array.grill_array);
+        ArrayAdapter<String> grillAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, grillModes);
+        Spinner grillSp = view.findViewById(R.id.contentOven_Grill_Spinner);
+        grillAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        grillSp.setAdapter(grillAdapter);
+
+        String[] convectionModes = getResources().getStringArray(R.array.convection_array);
+        ArrayAdapter<String> convectionAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, convectionModes);
+        Spinner convectionSp = view.findViewById(R.id.contentOven_Convection_Spinner);
+        convectionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        convectionSp.setAdapter(convectionAdapter);
+
+    }
+
 
     private void loadOvenState() {
         if(oven.isOn()){

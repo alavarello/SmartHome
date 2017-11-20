@@ -11,14 +11,14 @@
             </group>
         </menu>
     </item>
-    <item android:title="Rutines"
+    <item android:title="@string/drawer_menu_rutines"
         android:id="@+id/rutines"
         android:icon="@drawable/ic_menu_manage"
         android:orderInCategory="1000"     >
     </item>
-    <item android:title="Settings"
+    <item android:title="@string/drawer_menu_setting"
         android:id="@+id/settings"
-        android:icon="@drawable/ic_menu_manage"
+        android:icon="@drawable/ic_menu_settings"
         android:orderInCategory="1000"     >
     </item>
 

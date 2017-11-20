@@ -1,5 +1,7 @@
 package com.grupo1.hci.smarthome.Activities;
 
+import com.grupo1.hci.smarthome.Notifications.ApiService;
+
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -75,6 +77,9 @@ public class HomeActivity extends NavigationActivity {
         fragmentTransaction = fragmentManager.beginTransaction();
         setFragment();
        getSupportActionBar().setTitle(Constants.appName);
+
+        Intent serviceIntent = new Intent(getApplicationContext() , ApiService.class );
+        startService(serviceIntent);
 
     }
 

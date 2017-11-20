@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="navigation_drawer_open">Abrir menú de navegación</string>
+    <string name="navigation_drawer_close">Cerrar menú de navegación</string>
+    <string name="action_settings">Configuraciones</string>
+    <string name="title_activity_lamp">LampActivity</string>
+    <string name="title_activity_blind">BlindActivity</string>
+    <string name="title_activity_door">DoorActivity</string>
+    <string name="title_activity_settings">Configuraciones</string>
+    <string name="title_activity_oven">OvenActivity</string>
+    <string name="title_activity_rutines">Rutinas</string>
+    <string name="lamp">Lámpara</string>
+    <string name="color">Color</string>
+    <string name="brightness">Brillo</string>
+    <string name="Oven">Horno</string>
+    <string name="Heat">Calor</string>
+    <string name="Grill">Parrilla</string>
+    <string name="Temperature">Temperatura</string>
+    <string name="Convection">Convección</string>
+    <string name="drawer_menu_setting">Configuraciones</string>
+    <string name="drawer_menu_rooms">Cuarto</string>
+    <string name="drawer_menu_rutines">Rutinas</string>
+    <string name="blackErrorMessage">Este campo no puede estar vacío</string>
+    <string name="time_spinner">Recibir una notificación cada</string>
+    <string name="defaultsNotificationListTitle">Configuración por defecto</string>
+    <string name="notificationTitle">Notificarme cuando:</string>
+    <string name="changeNotificationOn">Encender</string>
+    <string name="changeNotificationOff">Apagar</string>
+    <string name="changeNotificationColor">Cambio de color</string>
+    <string name="changeNotificationDimmer">Cambio de brillo</string>
+    <string name="open">Abrir</string>
+    <string name="close">Cerrar</string>
+    <string name="opened">Abierta</string>
+    <string name="closed">Cerrada</string>
+    <string name="closing">Cerrando</string>
+    <string name="opening">Abriendo</string>
+    <string name="lock">Trabar</string>
+    <string name="unlock">Destrabar</string>
+    <string name="on">Encendido</string>
+    <string name="off">Apagado</string>
+    <string name="temperature">Temperatura</string>
+    <string name="delete">Borrar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="deleteConfirmation">¿Está seguro de que desea borrar el elemento?</string>
+    <string name="undo">Deshacer</string>
+    <string name="hello_blank_fragment">Hola fragmento blanco</string>
+    <string name="oven">Horno</string>
+    <string name="door">Puerta</string>
+    <string name="blind">Cortina</string>
+    <string name="lock_door">Trabar Puerta</string>
+    <string name="open_door">Abrir Puerta</string>
+    <string name="open_blind">Subir Cortina</string>
+    <string name="turn_on">Encender</string>
+    <string name="turn_off">Apagar</string>
+    <string name="color_change">Cambio de color</string>
+    <string name="brightness_change">Cambio de brillo</string>
+    <string name="notifyMe_blind">La corta se abre o se cierra</string>
+    <string name="orange">Naranja</string>
+    <string name="green">Verde</string>
+    <string name="red">Rojo</string>
+    <string name="blue">Azul</string>
+    <string name="changeNotificationOpenClose">La puerta se abre o se cierra</string>
+    <string name="changeNotificationLockUnlock">La puerta se traba o se destraba</string>
+    <string name="changeNotificationHeat">Cambio de calor</string>
+    <string name="changeNotificationConvection">Cambio de convección</string>
+    <string name="changeNotificationTemperature">Cambio de temperatura</string>
+    <string name="changeNotificationGrill">Cambio de parrilla</string>
+
+    <string-array name="timeNotification_array">
+        <item>30 segundos</item>
+        <item>1 minuto</item>
+        <item>5 minutos</item>
+        <item>10 minutos</item>
+    </string-array>
+
+    <string-array name="heat_array">
+        <item>Convencional</item>
+        <item>Abajo</item>
+        <item>Arriba</item>
+    </string-array>
+
+    <string-array name="grill_array">
+        <item>Largo</item>
+        <item>Eco</item>
+        <item>Apagado</item>
+    </string-array>
+
+    <string-array name="convection_array">
+        <item>Normal</item>
+        <item>Eco</item>
+        <item>Apagado</item>
+    </string-array>
+</resources>

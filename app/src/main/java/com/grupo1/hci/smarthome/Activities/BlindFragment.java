@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -17,8 +18,8 @@ import com.grupo1.hci.smarthome.R;
 
 public class BlindFragment extends Fragment {
 
-    ToggleButton openCloseToggleButton;
-    TextView stateTextView;
+    Switch openCloseToggleButton;
+
     Blind blind;
 
     public BlindFragment() {
@@ -51,10 +52,10 @@ public class BlindFragment extends Fragment {
                 ToggleButton onOffToogleButton = (ToggleButton) view;
                 if(onOffToogleButton.isChecked()){
                     Toast.makeText(getActivity().getApplicationContext(), "CERRADO", Toast.LENGTH_SHORT).show();
-                    stateTextView.setText(Constants.BLIND_STATE_CLOSING);
+
                 }else{
                     Toast.makeText(getActivity().getApplicationContext(), "ABIERTO", Toast.LENGTH_SHORT).show();
-                    stateTextView.setText(Constants.BLIND_STATE_OPENING);
+
                 }
             }
         });
@@ -69,23 +70,23 @@ public class BlindFragment extends Fragment {
         openCloseToggleButton = view.findViewById(R.id.contentBlind_OnOff_ToggleButton);
         openCloseToggleButton.setTextOff(getString(R.string.close));
         openCloseToggleButton.setTextOn(getString(R.string.open));
-        stateTextView = view.findViewById(R.id.contentBlind_State_TextView);
+
     }
 
     private void loadBlindState(){
         String status = blind.getStatus();
         if(status.equals(Constants.BLIND_STATE_OPENED)){
             openCloseToggleButton.setChecked(true);
-            stateTextView.setText(R.string.opened);
+
         }else if(status.equals(Constants.BLIND_STATE_CLOSED)){
             openCloseToggleButton.setChecked(false);
-            stateTextView.setText(R.string.closed);
+
         }else if(status.equals(Constants.BLIND_STATE_CLOSING)){
             openCloseToggleButton.setChecked(false);
-            stateTextView.setText(R.string.closing);
+
         }else if(status.equals(Constants.BLIND_STATE_OPENING)){
             openCloseToggleButton.setChecked(true);
-            stateTextView.setText(R.string.opening);
+
         }
     }
 

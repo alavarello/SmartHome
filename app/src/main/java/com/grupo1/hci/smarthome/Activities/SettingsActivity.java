@@ -3,6 +3,8 @@ package com.grupo1.hci.smarthome.Activities;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -10,6 +12,7 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -89,7 +92,17 @@ public class SettingsActivity extends AppCompatActivity {
         blind = res.getString(R.string.blind);
 
         String[] list = getResources().getStringArray(R.array.defaultDeviceNotification_array);
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,list );
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,list ) {
+            @NonNull
+            @Override
+            public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                View view = super.getView(position,convertView,parent);
+                ViewGroup.LayoutParams params = view.getLayoutParams();
+                params.height = 200;
+                view.setLayoutParams(params);
+                return view;
+            }
+        };
         defaultNotificationView.setAdapter(dataAdapter);
         defaultNotificationView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
