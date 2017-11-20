@@ -44,6 +44,7 @@ public class RutinesListFragment extends ListFragment implements AdapterView.OnI
     private CountDownTimer deleteCountDown;
     Toolbar toolbar;
     View view;
+    ArrayAdapter rowAdapter;
 
     ActionMode.Callback mActionModeCallback;
     @Override
@@ -57,15 +58,16 @@ public class RutinesListFragment extends ListFragment implements AdapterView.OnI
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         toolbar = ((NavigationActivity)getActivity()).getToolbar();
-        loadRutines();
         setView();
 
 
     }
 
-    private void loadRutines() {
+    public void loadRutines(ArrayList<Rutine> rutines) {
         emptyTextView = getActivity().findViewById(R.id.fragmentList_emptyListTextView);
-        rutineArray = APIManager.getRutines();
+        rowAdapter.clear();
+        rowAdapter.addAll(rutines);
+        rowAdapter.notifyDataSetChanged();
         if(rutineArray.isEmpty()){
             emptyTextView.setVisibility(View.VISIBLE);
         }else{
@@ -79,7 +81,7 @@ public class RutinesListFragment extends ListFragment implements AdapterView.OnI
         mActionModeCallback = new RutineContextualMenu();
         ((RutineContextualMenu) mActionModeCallback).setRutineActivity((RutinesActivity) getActivity());
         //set listview Adapter and onCikcListener
-        final ArrayAdapter rowAdapter = new RutineAdapter((RutinesActivity)getActivity(), rutineArray);
+        rowAdapter = new RutineAdapter((RutinesActivity)getActivity(), rutineArray);
         setListAdapter(rowAdapter);
         getListView().setVisibility(View.VISIBLE);
         view.findViewById(R.id.gridView).setVisibility(View.GONE);

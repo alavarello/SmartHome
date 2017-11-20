@@ -81,7 +81,8 @@ public class DeviceActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.deleteElement:
                 DeleteDialogMessage deleteConfirmationFragment = new DeleteDialogMessage();
-                deleteConfirmationFragment.setDeviceId(device.getId());
+                deleteConfirmationFragment.setDevice(device);
+                deleteConfirmationFragment.setActivity(this);
                 deleteConfirmationFragment.show(getFragmentManager(), "deleteConfirmation");
                 return true;
 
@@ -112,4 +113,10 @@ public class DeviceActivity extends AppCompatActivity {
         }
     }
 
+    public void deviceDeleted() {
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra(Constants.DEVICE_INTENT,device);
+        setResult(this.RESULT_OK,returnIntent);
+        finish();
+    }
 }

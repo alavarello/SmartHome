@@ -41,6 +41,7 @@ public class NavigationActivity extends AppCompatActivity
     Toolbar toolbar;
     NavigationView navigationView;
     DrawerLayout drawer;
+    APIManager apiManager;
 
     public Toolbar getToolbar() {
         return toolbar;
@@ -50,20 +51,21 @@ public class NavigationActivity extends AppCompatActivity
         return roomsArray;
     }
 
+    public void setRoomsArray(ArrayList<Room> roomsArray){
+        this.roomsArray = roomsArray;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation);
-
+        apiManager = APIManager.getInstance(this);
         setView();
-        loadRooms();
         setMenu();
 
     }
 
-    private void loadRooms() {
-        roomsArray = APIManager.getRooms();
-    }
+
 
     private void setView() {
         //Set toolbar content
@@ -114,7 +116,7 @@ public class NavigationActivity extends AppCompatActivity
             Intent intent = new Intent(NavigationActivity.this.getApplicationContext(), RutinesActivity.class);
             startActivity(intent);
         }else{
-            if(getClass().equals(HomeActivity.class)){
+            if(!getClass().equals(RoomActivity.class)){
                 Intent intent = new Intent(NavigationActivity.this.getApplicationContext(), RoomActivity.class);
                 intent.putExtra(Constants.ROOM_INTENT, (Serializable) roomsArray.get(id));
                 intent.putExtra(Constants.ROOM_ARRAY_INTENT, (Serializable) roomsArray);
@@ -129,6 +131,7 @@ public class NavigationActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 
 }
 

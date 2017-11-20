@@ -9,11 +9,11 @@ import java.io.Serializable;
 public class Room implements Serializable{
 
     String id;
-    String Name;
+    String name;
 
     public Room(String id, String name) {
         this.id = id;
-        Name = name;
+        this.name = name;
     }
 
     public Room(){}
@@ -27,10 +27,10 @@ public class Room implements Serializable{
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 }

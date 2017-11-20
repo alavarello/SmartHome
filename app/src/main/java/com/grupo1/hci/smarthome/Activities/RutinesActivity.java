@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.grupo1.hci.smarthome.Model.APIManager;
 import com.grupo1.hci.smarthome.Model.Device;
+import com.grupo1.hci.smarthome.Model.Room;
 import com.grupo1.hci.smarthome.Model.Rutine;
 import com.grupo1.hci.smarthome.R;
 
@@ -35,6 +36,8 @@ public class RutinesActivity extends NavigationActivity {
         getSupportActionBar().setTitle("Rutines");
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
+        APIManager apiManager = APIManager.getInstance(this);
+        apiManager.getRoutines(this);
         setFragment();
 
     }
@@ -51,6 +54,8 @@ public class RutinesActivity extends NavigationActivity {
     }
 
 
-
+    public void loadRutines(ArrayList<Rutine> rutineList) {
+        ((RutinesListFragment)fragment).loadRutines(rutineList);
+    }
 }
 

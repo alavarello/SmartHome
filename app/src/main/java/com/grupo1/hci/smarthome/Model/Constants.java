@@ -10,6 +10,8 @@ import com.grupo1.hci.smarthome.R;
 
 public class Constants {
 
+    public static final int DELTE_FROM_DIALOGE = 1;
+    public static final int DELTE__FROM_OVERFLOW = 0;
     public static Context context;
 
     //Devices ID -------------------------------------------

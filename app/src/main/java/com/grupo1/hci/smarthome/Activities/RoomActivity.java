@@ -1,6 +1,7 @@
 package com.grupo1.hci.smarthome.Activities;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.support.design.widget.Snackbar;
@@ -23,6 +24,7 @@ import com.grupo1.hci.smarthome.R;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 public class RoomActivity extends NavigationActivity {
 
@@ -30,6 +32,7 @@ public class RoomActivity extends NavigationActivity {
     Room room;
     Fragment fragment;
     FragmentTransaction fragmentTransaction;
+    APIManager apiManager;
     public Room getRoom() {
         return room;
     }
@@ -44,6 +47,8 @@ public class RoomActivity extends NavigationActivity {
         }else{
             room = (Room) getIntent().getSerializableExtra(Constants.ROOM_INTENT);
             roomsArray = (ArrayList<Room>) getIntent().getSerializableExtra(Constants.ROOM_ARRAY_INTENT);
+            apiManager = APIManager.getInstance(this);
+            apiManager.getDevicesForRoom(room.getId(), this);
         }
         //Set toolbar content
         getSupportActionBar().setTitle(room.getName());
@@ -55,6 +60,14 @@ public class RoomActivity extends NavigationActivity {
     }
 
     private void setFragment() {
+        if ((getResources().getConfiguration().screenLayout &
+                Configuration.SCREENLAYOUT_SIZE_MASK) ==
+                Configuration.SCREENLAYOUT_SIZE_LARGE) {
+            fragment = new OvenFragment();
+            fragmentTransaction.add(R.id.homeActivity_FragmentDevicecontainer, fragment);
+            fragmentTransaction.commit();
+
+        }
         fragment = new RoomListFragment();
         fragmentTransaction.add(R.id.homeActivity_Fragmentcontainer, fragment);
         fragmentTransaction.commit();
@@ -81,7 +94,9 @@ public class RoomActivity extends NavigationActivity {
         super.onRestoreInstanceState(savedInstanceState);
     }
 
-
+    public void loadDevices(List<Device> devices){
+        ((RoomsFragment)fragment).loadDevices(devices);
+    }
 
 }
 

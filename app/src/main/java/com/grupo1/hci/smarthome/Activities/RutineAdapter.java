@@ -37,7 +37,7 @@ public class RutineAdapter extends ArrayAdapter<Rutine> {
         // Lookup view for data population
         TextView deviceName = (TextView) convertView.findViewById(R.id.rutineRowLayout_nameTextView);
         // Populate the data into the template view using the data object
-        deviceName.setText(rutine.toString());
+        deviceName.setText(rutine.getName());
         // Return the completed view to render on screen
         return convertView;
     }

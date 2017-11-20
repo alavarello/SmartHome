@@ -20,6 +20,7 @@ import com.grupo1.hci.smarthome.Model.Room;
 import com.grupo1.hci.smarthome.R;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 
 /**
@@ -41,7 +42,7 @@ public class RoomsAdapter extends ArrayAdapter<Device> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         // Get the data item for this position
        final Device device = getItem(position);
         // Check if an existing view is being reused, otherwise inflate the view
@@ -68,9 +69,10 @@ public class RoomsAdapter extends ArrayAdapter<Device> {
                                 break;
                             case R.id.deleteElement:
                                 Toast.makeText(context, "Se borro!!!!!" +device.getId(), Toast.LENGTH_SHORT).show();
-                                LinkedList<Device> list = new LinkedList<>();
-                                list.add(device);
-                                roomsFragment.deleteDevices(list);
+                                HashMap<Device,Integer> hashMap = new HashMap<>();
+                                hashMap.put(device, position);
+
+                                roomsFragment.deleteDevices(hashMap);
                                 break;
                         }
                         return true;

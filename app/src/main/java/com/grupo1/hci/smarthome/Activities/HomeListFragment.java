@@ -19,14 +19,18 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.grupo1.hci.smarthome.Model.APIManager;
 import com.grupo1.hci.smarthome.Model.Constants;
+import com.grupo1.hci.smarthome.Model.Device;
 import com.grupo1.hci.smarthome.Model.Room;
 import com.grupo1.hci.smarthome.R;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -42,6 +46,8 @@ public class HomeListFragment extends ListFragment implements AdapterView.OnItem
     Snackbar mySnackbar;
     private CountDownTimer deleteCountDown;
     ActionMode.Callback mActionModeCallback;
+    ArrayAdapter rowAdapter;
+    TextView emptyTextView;
 
 
     public void setmActionMode(ActionMode mActionMode) {
@@ -51,7 +57,6 @@ public class HomeListFragment extends ListFragment implements AdapterView.OnItem
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_list, container, false);
-        roomsArray = ((NavigationActivity) getActivity()).getRoomsArray();
         toolbar = ((NavigationActivity) getActivity()).getToolbar();
         setView(view);
         setOnClickListeners();
@@ -74,22 +79,36 @@ public class HomeListFragment extends ListFragment implements AdapterView.OnItem
         mActionModeCallback = new HomeContextualMenu();
         ((HomeContextualMenu) mActionModeCallback).setHomeActivity((HomeActivity) getActivity());
         //set listview Adapter and onCikcListener
-        ArrayAdapter rowAdapter = new HomeAdapter((HomeActivity) getActivity(), roomsArray, (HomeFragment) this,(HomeActivity) getActivity());
+        rowAdapter = new HomeAdapter((HomeActivity) getActivity(), roomsArray, (HomeFragment) this,(HomeActivity) getActivity());
         setListAdapter(rowAdapter);
     }
 
-    public void deleteRooms(List<Room> rooms) {
+    public void deleteRooms(final HashMap<Room, Integer> rooms) {
         //setting the snackbar
         mySnackbar = Snackbar.make(getActivity().findViewById(R.id.homeActivity_Fragmentcontainer), "Deleted", Snackbar.LENGTH_LONG);
         mySnackbar.setAction("Undo", new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
+                for(Room r: rooms.keySet()){
+                    if(rooms.get(r) < roomsArray.size()){
+                        roomsArray.add(rooms.get(r), r);
+                    }else{
+                        roomsArray.add(r);
+                    }
+                }
+                loadRomms(roomsArray);
                 deleteCountDown.cancel();
             }
         });
 
         mySnackbar.show();
+        roomsArray.removeAll(rooms.keySet());
+        loadRomms(roomsArray);
+        diselectElements();
+        if(mActionMode != null){
+            mActionMode.finish();
+        }
         deleteCountDown = new CountDownTimer(4000, 1000) {
             @Override
             public void onTick(long l) {
@@ -98,10 +117,29 @@ public class HomeListFragment extends ListFragment implements AdapterView.OnItem
 
             @Override
             public void onFinish() {
-                Toast.makeText(getActivity().getApplicationContext(), "Se borro!!!!!", Toast.LENGTH_SHORT).show();
+
+                APIManager apiManager = APIManager.getInstance(getActivity());
+                for(Room r: rooms.keySet()){
+                    apiManager.deleteRoom(r, getActivity());
+                }
             }
         }.start();
     }
+
+    @Override
+    public void loadRomms(List<Room> rooms) {
+        roomsArray = (ArrayList<Room>) rooms;
+        rowAdapter.clear();
+        rowAdapter.addAll(rooms);
+        rowAdapter.notifyDataSetChanged();
+        emptyTextView = getActivity().findViewById(R.id.fragmentList_emptyListTextView);
+        if(roomsArray.isEmpty()){
+            emptyTextView.setVisibility(View.VISIBLE);
+        }else{
+            emptyTextView.setVisibility(View.GONE);
+        }
+    }
+
 
     public void selectedElement(View view, Room room) {
         view.setBackgroundColor(Color.GRAY);
@@ -129,6 +167,12 @@ public class HomeListFragment extends ListFragment implements AdapterView.OnItem
         }
     }
 
+    @Override
+    public void roomDeleteError(Room room) {
+        roomsArray.add(room);
+        loadRomms(roomsArray);
+    }
+
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -145,9 +189,11 @@ public class HomeListFragment extends ListFragment implements AdapterView.OnItem
         }else{
             if(selectedElement.contains(view)){
                 diselectElement(view);
+                ((HomeContextualMenu) mActionModeCallback).removeRoom(room);
             }else{
                 selectedElement(view, room);
                 ((HomeContextualMenu)mActionModeCallback).changeToSeveralItemsMenu();
+                ((HomeContextualMenu) mActionModeCallback).addRoom(room,i);
             }
 
         }
@@ -161,14 +207,22 @@ public class HomeListFragment extends ListFragment implements AdapterView.OnItem
         Toast.makeText(getActivity().getApplicationContext(), room.getName() + " LongClick", Toast.LENGTH_SHORT).show();
         selectedElement(view, room);
         if (mActionMode != null) {
-            //selected severla items
-            ((HomeContextualMenu)mActionModeCallback).changeToSeveralItemsMenu();
+            if (selectedElement.contains(view)) {
+                diselectElement(view);
+                ((HomeContextualMenu) mActionModeCallback).removeRoom(room);
+            } else {
+                ((HomeContextualMenu) mActionModeCallback).changeToSeveralItemsMenu();
+                ((HomeContextualMenu) mActionModeCallback).addRoom(room, i);
+                selectedElement(view, room);
+            }
             return false;
         }
         // Start the CAB using the ActionMode.Callback defined above
-        ((HomeContextualMenu) mActionModeCallback).addRoom(room);
+        ((HomeContextualMenu) mActionModeCallback).addRoom(room, i);
         mActionMode = getActivity().startActionMode(mActionModeCallback);
         return true;
     }
+
+
 
 }

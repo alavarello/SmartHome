@@ -5,17 +5,20 @@ import android.view.View;
 
 import com.grupo1.hci.smarthome.Model.Room;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
  * Created by agust on 11/17/2017.
  */
 
-interface HomeFragment {
+public interface HomeFragment {
 
-    void deleteRooms(List<Room> rooms);
+    void deleteRooms(HashMap<Room,Integer> rooms);
+    void loadRomms(List<Room> rooms);
     void setmActionMode(ActionMode mActionMode);
     void diselectElements();
     void diselectElement(View view);
-
+    void roomDeleteError(Room room);
 }

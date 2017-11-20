@@ -11,6 +11,7 @@ import com.grupo1.hci.smarthome.Model.Room;
 import com.grupo1.hci.smarthome.R;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by agust on 11/1/2017.
@@ -18,12 +19,16 @@ import java.util.ArrayList;
 
 public class RoomContextualMenu implements ActionMode.Callback {
 
-    ArrayList<Device> devices = new ArrayList<>();
+    HashMap<Device, Integer> devices = new HashMap<>();
     RoomActivity roomActivity;
     Menu menu;
 
-    public void addDevice(Device device) {
-        this.devices.add(device);
+    public void addDevice(Device device, int position) {
+        this.devices.put(device, position);
+    }
+
+    public void removeDevice(Device device) {
+        this.devices.remove(device);
     }
 
     public void setRoomActivity(RoomActivity roomActivity) {
@@ -53,7 +58,7 @@ public class RoomContextualMenu implements ActionMode.Callback {
         switch (menuItem.getItemId()) {
             case R.id.editElement:
                 EditDialogMessage editDeviceMessage = new EditDialogMessage();
-                editDeviceMessage.setDevice(devices.get(0));
+                editDeviceMessage.setDevice(devices.keySet().iterator().next());
                 editDeviceMessage.show(roomActivity.getFragmentManager(), "editDevice");
                 break;
             case R.id.deleteElement:

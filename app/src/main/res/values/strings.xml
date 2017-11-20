@@ -28,6 +28,17 @@
         <string name="drawer_menu_rooms">Room</string>
         <string name="drawer_menu_rutines">Rutines</string>
 
+    <string name="blackErrorMessage">This field can\'t be empty</string>
+    <string name="time_spinner">Recive a notification every</string>
+    <string name="defaultsNotificationListTitle">Default configuration</string>
+    <string name="notificationTitle">Notify me when:</string>
+    <string name="changeNotificationOn">Turn On</string>
+    <string name="changeNotificationOff">Turn Off</string>
+        <string name="changeNotificationColor">Color change</string>
+        <string name="changeNotificationDimmer">Change Dimmer</string>
+        <string name="changeNotificationOpenClose">The door open and close</string>
+        <string name="changeNotificationLockUnlock">The door locks or unlocks</string>
+
 
         <string name="open">Open</string>
         <string name="close">Close</string>

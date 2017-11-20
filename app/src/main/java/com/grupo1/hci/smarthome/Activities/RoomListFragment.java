@@ -25,15 +25,18 @@ import com.grupo1.hci.smarthome.R;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+
+import static android.app.Activity.RESULT_OK;
 
 /**
  * Created by agust on 11/4/2017.
  */
 
-public class RoomListFragment extends ListFragment implements AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener, RoomsFragment{
+public class RoomListFragment extends ListFragment implements AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener, RoomsFragment {
 
-     // Array of strings...
+    // Array of strings...
     ArrayList<Device> deviceArray = new ArrayList<>();
     ArrayList<View> selectedElement = new ArrayList<>();
     Room room;
@@ -65,15 +68,15 @@ public class RoomListFragment extends ListFragment implements AdapterView.OnItem
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        room = ((RoomActivity)getActivity()).getRoom();
-        toolbar = ((NavigationActivity)getActivity()).getToolbar();
+        room = ((RoomActivity) getActivity()).getRoom();
+        toolbar = ((NavigationActivity) getActivity()).getToolbar();
         setView();
         getListView().setOnItemLongClickListener(this);
         getListView().setOnItemClickListener(this);
 
     }
 
-    public void changeRoom(Room room){
+    public void changeRoom(Room room) {
         this.room = room;
         loadDevices(room.getId());
         setView();
@@ -81,16 +84,8 @@ public class RoomListFragment extends ListFragment implements AdapterView.OnItem
 
 
     public void loadDevices(String roomID) {
-        deviceArray = APIManager.getRoomDevices(roomID);
-        rowAdapter.clear();
-        rowAdapter.addAll(deviceArray);
-        rowAdapter.notifyDataSetChanged();
-        emptyTextView = getActivity().findViewById(R.id.fragmentList_emptyListTextView);
-        if(deviceArray.isEmpty()){
-            emptyTextView.setVisibility(View.VISIBLE);
-        }else{
-            emptyTextView.setVisibility(View.GONE);
-        }
+        // deviceArray = APIManager.getRoomDevices(roomID);
+
     }
 
 
@@ -98,11 +93,11 @@ public class RoomListFragment extends ListFragment implements AdapterView.OnItem
         toolbar.setTitle(room.getName());
         //set the contextual floating menu
         mActionModeCallback = new RoomContextualMenu();
-        ((RoomContextualMenu) mActionModeCallback).setRoomActivity((RoomActivity)getActivity());
+        ((RoomContextualMenu) mActionModeCallback).setRoomActivity((RoomActivity) getActivity());
         //set listview Adapter and onCikcListener
         getListView().setVisibility(View.VISIBLE);
         view.findViewById(R.id.gridView).setVisibility(View.GONE);
-        rowAdapter = new RoomsAdapter((RoomActivity)getActivity(), deviceArray, (RoomsFragment)this, (RoomActivity) getActivity());
+        rowAdapter = new RoomsAdapter((RoomActivity) getActivity(), deviceArray, (RoomsFragment) this, (RoomActivity) getActivity());
         setListAdapter(rowAdapter);
         loadDevices(room.getId());
 
@@ -112,7 +107,7 @@ public class RoomListFragment extends ListFragment implements AdapterView.OnItem
         Intent intent;
         intent = new Intent(getActivity().getApplicationContext(), DeviceActivity.class);
         intent.putExtra(Constants.DEVICE_INTENT, (Serializable) device);
-        startActivity(intent);
+        startActivityForResult(intent, 148);
     }
 
     public void selectedElement(View view, Device device) {
@@ -123,37 +118,55 @@ public class RoomListFragment extends ListFragment implements AdapterView.OnItem
     }
 
     public void diselectElements() {
-        for(View v: selectedElement){
+        for (View v : selectedElement) {
             v.setBackgroundColor(Color.TRANSPARENT);
         }
         toolbar.setTitle(room.getName());
     }
 
-    public void diselectElement(View view){
+    public void diselectElement(View view) {
         view.setBackgroundColor(Color.TRANSPARENT);
         selectedElement.remove(view);
-        if(selectedElement.size() == 1){
-            ((RoomContextualMenu)mActionModeCallback).changeToOneItemsMenu();
+        if (selectedElement.size() == 1) {
+            ((RoomContextualMenu) mActionModeCallback).changeToOneItemsMenu();
         }
-        if(selectedElement.isEmpty()){
+        if (selectedElement.isEmpty()) {
             mActionMode.finish();
         }
     }
 
-    public void deleteDevices(List<Device> devices)
-    {
+    @Override
+    public void deviceDeleteError(Device device) {
+        deviceArray.add(device);
+        loadDevices(deviceArray);
+    }
+
+    public void deleteDevices(final HashMap<Device, Integer> devices) {
         //setting the snackbar
         mySnackbar = Snackbar.make(getActivity().findViewById(R.id.homeActivity_Fragmentcontainer), "Deleted", Snackbar.LENGTH_LONG);
-        mySnackbar.setAction("Undo", new View.OnClickListener(){
+        mySnackbar.setAction("Undo", new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
+                for(Device d: devices.keySet()){
+                    if(devices.get(d) < deviceArray.size()){
+                        deviceArray.add(devices.get(d), d);
+                    }else{
+                        deviceArray.add(d);
+                    }
+                }
+                loadDevices(deviceArray);
                 deleteCountDown.cancel();
             }
         });
-
+        deviceArray.removeAll(devices.keySet());
+        loadDevices(deviceArray);
+        diselectElements();
         mySnackbar.show();
-        deleteCountDown = new CountDownTimer(4000,1000) {
+        if(mActionMode != null){
+            mActionMode.finish();
+        }
+        deleteCountDown = new CountDownTimer(4000, 1000) {
             @Override
             public void onTick(long l) {
 
@@ -161,44 +174,28 @@ public class RoomListFragment extends ListFragment implements AdapterView.OnItem
 
             @Override
             public void onFinish() {
-                Toast.makeText(getActivity().getApplicationContext(), "Se borro!!!!!", Toast.LENGTH_SHORT).show();
+                APIManager apiManager = APIManager.getInstance(getActivity());
+                for(Device d: devices.keySet()){
+                    apiManager.deleteDevice(d, getActivity(), Constants.DELTE__FROM_OVERFLOW);
+                }
             }
         }.start();
     }
 
-
-    public void deleteRoom(String roomId)
-    {
-        //setting the snackbar
-        mySnackbar = Snackbar.make(getActivity().findViewById(R.id.homeActivity_Fragmentcontainer), "Deleted", Snackbar.LENGTH_LONG);
-        mySnackbar.setAction("Undo", new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                deleteCountDown.cancel();
-            }
-        });
-
-        mySnackbar.show();
-        deleteCountDown = new CountDownTimer(4000,1000) {
-            @Override
-            public void onTick(long l) {
-
-            }
-
-            @Override
-            public void onFinish() {
-                Toast.makeText(getActivity().getApplicationContext(), "Se borro!!!!!", Toast.LENGTH_SHORT).show();
-            }
-        }.start();
+    @Override
+    public void loadDevices(List<Device> devices) {
+        deviceArray = (ArrayList<Device>) devices;
+        rowAdapter.clear();
+        rowAdapter.addAll(devices);
+        rowAdapter.notifyDataSetChanged();
+        emptyTextView = getActivity().findViewById(R.id.fragmentList_emptyListTextView);
+        if (deviceArray.isEmpty()) {
+            emptyTextView.setVisibility(View.VISIBLE);
+        } else {
+            emptyTextView.setVisibility(View.GONE);
+        }
     }
 
-    public void selectedElement(View view, Room room) {
-        view.setBackgroundColor(Color.GRAY);
-        view.findViewById(R.id.rowLayout_iconImageView).setBackground(null);
-        selectedElement.add(view);
-        toolbar.setTitle(room.getName());
-    }
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -207,14 +204,16 @@ public class RoomListFragment extends ListFragment implements AdapterView.OnItem
         Toast.makeText(getActivity().getApplicationContext(), device.getName(), Toast.LENGTH_SHORT).show();
 
         //if is the same view as the selected one
-        if(mActionMode == null){
+        if (mActionMode == null) {
             diselectElements();
             startDeviceActivity(device);
-        }else{
-            if(selectedElement.contains(view)){
-               diselectElement(view);
-            }else{
-                ((RoomContextualMenu)mActionModeCallback).changeToSeveralItemsMenu();
+        } else {
+            if (selectedElement.contains(view)) {
+                diselectElement(view);
+                ((RoomContextualMenu) mActionModeCallback).removeDevice(device);
+            } else {
+                ((RoomContextualMenu) mActionModeCallback).changeToSeveralItemsMenu();
+                ((RoomContextualMenu) mActionModeCallback).addDevice(device, i);
                 selectedElement(view, device);
             }
         }
@@ -228,13 +227,33 @@ public class RoomListFragment extends ListFragment implements AdapterView.OnItem
         Toast.makeText(getActivity().getApplicationContext(), device.getName(), Toast.LENGTH_SHORT).show();
         selectedElement(view, device);
         if (mActionMode != null) {
-            ((RoomContextualMenu)mActionModeCallback).changeToSeveralItemsMenu();
+            if (selectedElement.contains(view)) {
+                diselectElement(view);
+                ((RoomContextualMenu) mActionModeCallback).removeDevice(device);
+            } else {
+                ((RoomContextualMenu) mActionModeCallback).changeToSeveralItemsMenu();
+                ((RoomContextualMenu) mActionModeCallback).addDevice(device, i);
+                selectedElement(view, device);
+            }
             return false;
         }
         // Start the CAB using the ActionMode.Callback defined above
-        ((RoomContextualMenu) mActionModeCallback).addDevice(device);
+        ((RoomContextualMenu) mActionModeCallback).addDevice(device, i);
         mActionMode = getActivity().startActionMode(mActionModeCallback);
 
         return true;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 148) {
+            // Make sure the request was successful
+            if (resultCode == RESULT_OK) {
+                Device device = (Device) data.getSerializableExtra(Constants.DEVICE_INTENT);
+               deviceArray.remove(device);
+                loadDevices(deviceArray);
+            }
+        }
     }
 }
