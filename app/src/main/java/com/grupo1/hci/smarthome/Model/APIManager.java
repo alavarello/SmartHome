@@ -246,6 +246,33 @@ public class APIManager {
         queue.add(request);
     }
 
+    public void deleteRutine(final Rutine rutine, final Activity activity) {
+
+        String url = "http://192.168.0.105:8080/api/routines/" + rutine.getId();
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.DELETE, url, new JSONObject(),
+                new Response.Listener<JSONObject>()
+                {
+                    @Override
+                    public void onResponse(JSONObject response)
+                    {
+                        Toast.makeText(activity,response.toString(), Toast.LENGTH_LONG).show();
+                    }
+                },
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error)
+                    {
+                        if (null != error.networkResponse)
+                        {
+                           //TODO
+                            Toast.makeText(activity,error.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+        queue.add(request);
+    }
+
     public void deleteDevice(final Device device, final Activity activity, final int from) {
 
         String url = "http://192.168.0.105:8080/api/devices/" + device.getId();

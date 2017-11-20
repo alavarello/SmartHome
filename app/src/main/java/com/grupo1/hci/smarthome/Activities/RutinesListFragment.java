@@ -27,6 +27,7 @@ import com.grupo1.hci.smarthome.R;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -65,7 +66,7 @@ public class RutinesListFragment extends ListFragment implements AdapterView.OnI
 
     public void loadRutines(ArrayList<Rutine> rutines) {
         emptyTextView = getActivity().findViewById(R.id.fragmentList_emptyListTextView);
-        rowAdapter.clear();
+        //rowAdapter.clear();
         rowAdapter.addAll(rutines);
         rowAdapter.notifyDataSetChanged();
         if(rutineArray.isEmpty()){
@@ -81,7 +82,7 @@ public class RutinesListFragment extends ListFragment implements AdapterView.OnI
         mActionModeCallback = new RutineContextualMenu();
         ((RutineContextualMenu) mActionModeCallback).setRutineActivity((RutinesActivity) getActivity());
         //set listview Adapter and onCikcListener
-        rowAdapter = new RutineAdapter((RutinesActivity)getActivity(), rutineArray);
+        rowAdapter = new RutineAdapter((RutinesActivity)getActivity(), rutineArray, this);
         setListAdapter(rowAdapter);
         getListView().setVisibility(View.VISIBLE);
         view.findViewById(R.id.gridView).setVisibility(View.GONE);
@@ -91,7 +92,7 @@ public class RutinesListFragment extends ListFragment implements AdapterView.OnI
 
     public void selectedElement(View view,Rutine rutine) {
         view.setBackgroundColor(Color.GRAY);
-        view.findViewById(R.id.rowLayout_iconImageView).setBackground(null);
+        view.findViewById(R.id.rutineRowLayout_nameTextView).setBackground(null);
         selectedElement.add(view);
         toolbar.setTitle(rutine.toString());
     }
@@ -106,15 +107,12 @@ public class RutinesListFragment extends ListFragment implements AdapterView.OnI
     public void diselectElement(View view) {
         view.setBackgroundColor(Color.TRANSPARENT);
         selectedElement.remove(view);
-        if(selectedElement.size() == 1){
-            ((RutineContextualMenu)mActionModeCallback).changeToOneItemsMenu();
-        }
         if(selectedElement.isEmpty()){
             mActionMode.finish();
         }
     }
 
-    public void deleteRutines(List<Rutine> rutines)
+    public void deleteRutines(final HashMap<Rutine, Integer> rutines)
     {
         //setting the snackbar
         mySnackbar = Snackbar.make(getActivity().findViewById(R.id.homeActivity_Fragmentcontainer), "Deleted", Snackbar.LENGTH_LONG);
@@ -122,11 +120,24 @@ public class RutinesListFragment extends ListFragment implements AdapterView.OnI
 
             @Override
             public void onClick(View v) {
+                for(Rutine r: rutines.keySet()){
+                    if(rutines.get(r) < rutineArray.size()){
+                        rutineArray.add(rutines.get(r), r);
+                    }else{
+                        rutineArray.add(r);
+                    }
+                }
+                loadRutines(rutineArray);
                 deleteCountDown.cancel();
             }
         });
-
+        rutineArray.removeAll(rutines.keySet());
+        loadRutines(rutineArray);
+        diselectElements();
         mySnackbar.show();
+        if(mActionMode != null){
+            mActionMode.finish();
+        }
         deleteCountDown = new CountDownTimer(4000,1000) {
             @Override
             public void onTick(long l) {
@@ -135,7 +146,10 @@ public class RutinesListFragment extends ListFragment implements AdapterView.OnI
 
             @Override
             public void onFinish() {
-                Toast.makeText(getActivity().getApplicationContext(), "Se borro!!!!!", Toast.LENGTH_SHORT).show();
+                APIManager apiManager = APIManager.getInstance(getActivity());
+                for(Rutine r: rutines.keySet()){
+                    apiManager.deleteRutine(r, getActivity());
+                }
             }
         }.start();
     }
@@ -148,11 +162,17 @@ public class RutinesListFragment extends ListFragment implements AdapterView.OnI
         Toast.makeText(getActivity().getApplicationContext(), rutine.toString(), Toast.LENGTH_SHORT).show();
         selectedElement(view, rutine);
         if (mActionMode != null) {
-            ((RutineContextualMenu) mActionModeCallback).changeToSeveralItemsMenu();
+            if (selectedElement.contains(view)) {
+                diselectElement(view);
+                ((RutineContextualMenu) mActionModeCallback).removeRutine(rutine);
+            } else {
+                ((RutineContextualMenu) mActionModeCallback).addRutine(rutine, i);
+                selectedElement(view, rutine);
+            }
             return false;
         }
         // Start the CAB using the ActionMode.Callback defined above
-        ((RutineContextualMenu) mActionModeCallback).addRutine(rutine);
+        ((RutineContextualMenu) mActionModeCallback).addRutine(rutine, i);
         mActionMode = getActivity().startActionMode(mActionModeCallback);
 
         return true;
@@ -166,11 +186,16 @@ public class RutinesListFragment extends ListFragment implements AdapterView.OnI
         Toast.makeText(getActivity().getApplicationContext(), rutine.toString(), Toast.LENGTH_SHORT).show();
 
         //if is the same view as the selected one
-        if(mActionMode == null){
+        if (mActionMode == null) {
             diselectElements();
-        }else{
-            ((RoomContextualMenu)mActionModeCallback).changeToSeveralItemsMenu();
-            selectedElement(view, rutine);
+        } else {
+            if (selectedElement.contains(view)) {
+                diselectElement(view);
+                ((RutineContextualMenu) mActionModeCallback).removeRutine(rutine);
+            } else {
+                ((RutineContextualMenu) mActionModeCallback).addRutine(rutine, i);
+                selectedElement(view, rutine);
+            }
         }
     }
 
