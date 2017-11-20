@@ -12,32 +12,11 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
 
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="40dp"
         android:background="@drawable/roundedbutton"
         android:backgroundTint="@android:color/holo_green_light"
         app:layout_constraintEnd_toStartOf="@+id/button4"
         app:layout_constraintTop_toTopOf="@+id/textView14" />
-
-    <ToggleButton
-        android:id="@+id/contentLamp_OnOff_toogleButton"
-        android:layout_width="88dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp"
-        android:text="ToggleButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:gravity="center"
-        android:text="@string/lamp"
-        app:layout_constraintBottom_toBottomOf="@+id/contentLamp_OnOff_toogleButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/contentLamp_OnOff_toogleButton" />
 
     <SeekBar
         android:id="@+id/seekBar6"
@@ -51,20 +30,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="@string/brightness"
-        android:gravity="center"
 
-        app:layout_constraintStart_toStartOf="@+id/textView12"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+        android:gravity="center"
+        android:text="@string/brightness"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        app:layout_constraintStart_toStartOf="@+id/contentLamp_OnOff_toogleButton"
+        app:layout_constraintTop_toBottomOf="@+id/contentLamp_OnOff_toogleButton" />
 
     <TextView
         android:id="@+id/textView14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="@string/color"
         android:gravity="center"
+        android:text="@string/color"
 
+        android:textAppearance="@style/TextAppearance.AppCompat"
         app:layout_constraintStart_toStartOf="@+id/textView13"
         app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
@@ -73,8 +54,9 @@
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:background="@drawable/roundedbutton"
+        android:layout_marginEnd="16dp"
 
+        android:background="@drawable/roundedbutton"
         android:backgroundTint="@android:color/holo_blue_light"
         app:layout_constraintEnd_toEndOf="@+id/seekBar6"
         app:layout_constraintTop_toTopOf="@+id/textView14" />
@@ -84,24 +66,84 @@
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="40dp"
         android:background="@drawable/roundedbutton"
 
         android:backgroundTint="@android:color/holo_red_dark"
         app:layout_constraintBottom_toBottomOf="@+id/button2"
         app:layout_constraintEnd_toStartOf="@+id/button2"
-        app:layout_constraintTop_toTopOf="@+id/button2" />
+        app:layout_constraintTop_toTopOf="@+id/button2"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/button8"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="40dp"
         android:background="@drawable/roundedbutton"
         android:backgroundTint="@android:color/holo_orange_dark"
         app:layout_constraintEnd_toStartOf="@+id/button6"
         app:layout_constraintTop_toTopOf="@+id/textView14" />
+
+    <Switch
+        android:id="@+id/contentLamp_OnOff_toogleButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/ONOFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/orange_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/orange"
+        app:layout_constraintEnd_toEndOf="@+id/button8"
+        app:layout_constraintHorizontal_bias="0.739"
+        app:layout_constraintStart_toStartOf="@+id/button8"
+        app:layout_constraintTop_toBottomOf="@+id/button8" />
+
+    <TextView
+        android:id="@+id/green_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/green"
+        app:layout_constraintEnd_toEndOf="@+id/button6"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="@+id/button6"
+        app:layout_constraintTop_toBottomOf="@+id/button6" />
+
+    <TextView
+        android:id="@+id/red_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/red"
+        app:layout_constraintEnd_toEndOf="@+id/button4"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/button4"
+        app:layout_constraintTop_toBottomOf="@+id/button4" />
+
+    <TextView
+        android:id="@+id/blue_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/blue"
+        app:layout_constraintEnd_toEndOf="@+id/button2"
+        app:layout_constraintStart_toStartOf="@+id/button2"
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
 
 </android.support.constraint.ConstraintLayout>
 

@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -17,7 +18,7 @@ import com.grupo1.hci.smarthome.R;
 
 public class LampFragment extends Fragment {
 
-    ToggleButton onOffToggleButton;
+    Switch onOffToggleButton;
     Lamp lamp;
 
     public LampFragment() {

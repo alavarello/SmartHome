@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
     <resources>
-        <string name="app_name">Smart Home</string>
+        <string name="app_name" translatable="false">Smart Home</string>
 
         <string name="navigation_drawer_open">Open navigation drawer</string>
         <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -23,13 +23,23 @@
     <string name="Grill">Grill</string>
     <string name="Temperature">Temperature</string>
     <string name="Convection">Convection</string>
-
+    <string name="ONOFF" translatable="false">ON/OFF</string>
     <string name="drawer_menu_setting">Settings</string>
         <string name="drawer_menu_rooms">Room</string>
         <string name="drawer_menu_rutines">Rutines</string>
 
+    <string name="blackErrorMessage">This field can\'t be empty</string>
+    <string name="time_spinner">Receive a notification every</string>
+    <string name="defaultsNotificationListTitle">Default configuration</string>
+    <string name="notificationTitle">Notify me when:</string>
+    <string name="changeNotificationOn">Turn On</string>
+    <string name="changeNotificationOff">Turn Off</string>
+    <string name="changeNotificationColor">Color change</string>
+    <string name="changeNotificationDimmer">Change Dimmer</string>
 
-        <string name="open">Open</string>
+
+
+    <string name="open">Open</string>
         <string name="close">Close</string>
         <string name="opened">Opened</string>
         <string name="closed">Closed</string>
@@ -65,5 +75,53 @@
         <item>@string/door</item>
     </string-array>
 
-    </resources>
+    <string-array name="heat_array">
+        <item>Conventional</item>
+        <item>Bottom</item>
+        <item>Top</item>
+    </string-array>
+
+    <string-array name="grill_array">
+        <item>Large</item>
+        <item>Eco</item>
+        <item>Off</item>
+    </string-array>
+
+    <string-array name="convection_array">
+        <item>Normal</item>
+        <item>Eco</item>
+        <item>Off</item>
+    </string-array>
+
+    <string name="lock_door">Lock Door</string>
+    <string name="open_door">Open Door</string>
+    <string name="open_blind">Open Blind</string>
+
+    <string name="turn_on">Turn on</string>
+    <string name="turn_off">Turn off</string>
+    <string name="color_change">Color change</string>
+    <string name="brightness_change">Brightness change</string>
+
+    <string name="notifyMe_blind">The blind opens or closes</string>
+
+    <string name="orange">Orange</string>
+    <string name="green">Green</string>
+    <string name="red">Red</string>
+    <string name="blue">Blue</string>
+
+    <string name="changeNotificationOpenClose">The door opens or closes</string>
+    <string name="changeNotificationLockUnlock">The door locks or unlocks</string>
+
+    <string name="changeNotificationHeat">Changes heat</string>
+    <string name="changeNotificationConvection">Changes convection</string>
+    <string name="changeNotificationTemperature">Changes temperature</string>
+    <string name="changeNotificationGrill">Changes grill</string>
+
+
+
+
+
+
+
+</resources>
 

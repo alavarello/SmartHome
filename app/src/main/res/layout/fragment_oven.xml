@@ -12,55 +12,35 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <ToggleButton
-            android:id="@+id/contentOven_Onoff_ToogleButton"
-            android:layout_width="88dp"
-            android:layout_height="48dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="16dp"
-            android:checked="false"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <Spinner
-            android:id="@+id/contentDoor_Heat_Spinner"
+            android:id="@+id/contentOven_Convection_Spinner"
             android:layout_width="207dp"
             android:layout_height="39dp"
-            app:layout_constraintEnd_toEndOf="@+id/contentDoor_Convection_Spinner"
+            app:layout_constraintEnd_toEndOf="@+id/contentOven_Grill_Spinner"
             app:layout_constraintTop_toTopOf="@+id/textView7" />
 
         <Spinner
-            android:id="@+id/contentDoor_Convection_Spinner"
+            android:id="@+id/contentOven_Grill_Spinner"
             android:layout_width="207dp"
             android:layout_height="39dp"
-            app:layout_constraintEnd_toEndOf="@+id/contentDoor_Grill_Spinner"
+            app:layout_constraintEnd_toEndOf="@+id/contentOven_Heat_Spinner"
             app:layout_constraintTop_toTopOf="@+id/textView6" />
 
         <Spinner
-            android:id="@+id/contentDoor_Grill_Spinner"
+            android:id="@+id/contentOven_Heat_Spinner"
             android:layout_width="207dp"
             android:layout_height="39dp"
             app:layout_constraintEnd_toEndOf="@+id/contentOven_Onoff_ToogleButton"
             app:layout_constraintTop_toTopOf="@+id/textView5" />
 
         <EditText
-            android:id="@+id/contentDoor_Temperature_EditText"
+            android:id="@+id/contentOven_Temperature_EditText"
             android:layout_width="208dp"
             android:layout_height="40dp"
             android:ems="10"
             android:inputType="numberSigned"
-            app:layout_constraintEnd_toEndOf="@+id/contentDoor_Heat_Spinner"
+            app:layout_constraintEnd_toEndOf="@+id/contentOven_Convection_Spinner"
             app:layout_constraintTop_toTopOf="@+id/textView8" />
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="39dp"
-            android:layout_marginStart="16dp"
-            android:gravity="center"
-            android:text="@string/Oven"
-            app:layout_constraintBaseline_toBaselineOf="@+id/contentOven_Onoff_ToogleButton"
-            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/textView5"
@@ -69,8 +49,9 @@
             android:layout_marginTop="40dp"
             android:gravity="center"
             android:text="@string/Heat"
-            app:layout_constraintStart_toStartOf="@+id/textView4"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            app:layout_constraintStart_toStartOf="@+id/contentOven_Onoff_ToogleButton"
+            app:layout_constraintTop_toBottomOf="@+id/contentOven_Onoff_ToogleButton" />
 
         <TextView
             android:id="@+id/textView6"
@@ -79,6 +60,7 @@
             android:layout_marginTop="40dp"
             android:gravity="center"
             android:text="@string/Grill"
+            android:textAppearance="@style/TextAppearance.AppCompat"
             app:layout_constraintStart_toStartOf="@+id/textView5"
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
@@ -89,6 +71,7 @@
             android:layout_marginTop="40dp"
             android:gravity="center"
             android:text="@string/Convection"
+            android:textAppearance="@style/TextAppearance.AppCompat"
             app:layout_constraintStart_toStartOf="@+id/textView6"
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
@@ -99,8 +82,22 @@
             android:layout_marginTop="40dp"
             android:gravity="center"
             android:text="@string/Temperature"
+            android:textAppearance="@style/TextAppearance.AppCompat"
             app:layout_constraintStart_toStartOf="@+id/textView7"
             app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+        <Switch
+            android:id="@+id/contentOven_Onoff_ToogleButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/ONOFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </android.support.constraint.ConstraintLayout>
 
 </FrameLayout>
