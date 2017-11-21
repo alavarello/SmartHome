@@ -6,7 +6,11 @@ import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SeekBar;
+import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -347,10 +351,10 @@ public class APIManager {
      * @param device objeto que se quiere prender o apagar, deberia servir para cualquier device
      * @param actionName tiene que ser "turnOn" o "turnOff"  para que luego sea concatenado a la accion"
      */
-    public void deviceOnOff(final Activity activity,Device device, String actionName) {
+    public void deviceOnOff(final Activity activity, Device device, final String actionName, final Switch switchView) {
         String deviceId = device.getId();
         cache = new DiskBasedCache(activity.getCacheDir(), 1024 * 1024); // 1MB cap
-        String url = "http://10.0.2.2:8080/api/devices/" + deviceId + "/" + actionName;
+        String url = "http://192.168.0.105:8080/api/devices/" + deviceId + "/" + actionName;
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, new JSONObject(),
                 new Response.Listener<JSONObject>()
                 {
@@ -360,6 +364,11 @@ public class APIManager {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                if(actionName.equals("turnOff")){
+                    switchView.setChecked(false);
+                }else {
+                    switchView.setChecked(true);
+                }
                 Toast.makeText(activity, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
@@ -371,7 +380,7 @@ public class APIManager {
     public void lampColorChange(final Activity activity, Device device, String color) {
         String deviceId = device.getId();
         cache = new DiskBasedCache(activity.getCacheDir(), 1024 * 1024); // 1MB cap
-        String url = "http://10.0.2.2:8080/api/devices/" + deviceId + "/changeColor";
+        String url = "http://192.168.0.105:8080/api/devices/" + deviceId + "/changeColor";
         Map<String, String> jsonParams = new HashMap<>();
         jsonParams.put("color",color);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, new JSONObject(jsonParams),
@@ -390,10 +399,10 @@ public class APIManager {
         queue.add(request);
     }
 
-    public void changeLampBrightness(final Activity activity, Device device, Integer brightness) {
+    public void changeLampBrightness(final Activity activity, Device device, Integer brightness, final SeekBar dimmer) {
         String deviceId = device.getId();
         cache = new DiskBasedCache(activity.getCacheDir(), 1024 * 1024); // 1MB cap
-        String url = "http://10.0.2.2:8080/api/devices/" + deviceId + "/changeBrightness";
+        String url = "http://192.168.0.105:8080/api/devices/" + deviceId + "/changeBrightness";
         Map<String, Integer> jsonParams = new HashMap<>();
         jsonParams.put("brightness",brightness);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, new JSONObject(jsonParams),
@@ -412,10 +421,11 @@ public class APIManager {
         queue.add(request);
     }
 
-    public void setOvenTemperature(final Activity activity, Device device, Integer temperature) {
+    public void setOvenTemperature(final Activity activity, Device device, Integer temperature,final EditText temperatureEditText) {
         String deviceId = device.getId();
+        final String oldTemperature = temperatureEditText.getText().toString();
         cache = new DiskBasedCache(activity.getCacheDir(), 1024 * 1024); // 1MB cap
-        String url = "http://10.0.2.2:8080/api/devices/" + deviceId + "/setTemperature";
+        String url = "http://192.168.0.105:8080/api/devices/" + deviceId + "/setTemperature";
         Map<String, Integer> jsonParams = new HashMap<>();
         jsonParams.put("temperature",temperature);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, new JSONObject(jsonParams),
@@ -489,10 +499,10 @@ public class APIManager {
     /**
      * convection soporta "normal" "eco" u "off"
      */
-    public void setOvenConvection(final Activity activity, Device device, String convection) {
+    public void setOvenConvection(final Activity activity, Device device, String convection, Spinner spinner) {
         String deviceId = device.getId();
         cache = new DiskBasedCache(activity.getCacheDir(), 1024 * 1024); // 1MB cap
-        String url = "http://10.0.2.2:8080/api/devices/" + deviceId + "/setConvection";
+        String url = "http://192.168.0.105:8080/api/devices/" + deviceId + "/setConvection";
         Map<String, String> jsonParams = new HashMap<>();
         jsonParams.put("convection",convection);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, new JSONObject(jsonParams),
@@ -547,15 +557,15 @@ public class APIManager {
                                    break;
                                 case Constants.DOOR_ID:
                                     Door d = (Door) device;
-                                    if(jsonObject.getString("status") == "opened"){
+                                    if(jsonObject.getString("status").equals("opened")){
                                         d.setClosed(Constants.DOOR_OPENED);
                                     }else{
                                         d.setClosed(Constants.DOOR_CLOSED);
                                     }
-                                    if(jsonObject.getString("status") == "unlocked"){
-                                        d.setClosed(Constants.DOOR_UNLOCKED);
+                                    if(jsonObject.getString("lock").equals("unlocked")){
+                                        d.setLocked(Constants.DOOR_UNLOCKED);
                                     }else{
-                                        d.setClosed(Constants.DOOR_LOCKED);
+                                        d.setLocked(Constants.DOOR_LOCKED);
                                     }
                                     ((DoorFragment)fragment).loadDoorState(d);
                                     break;
@@ -587,5 +597,131 @@ public class APIManager {
 
         queue.add(request);
 
+    }
+
+    public void openDoor(final Activity activity, Device device,final Switch switchView) {
+        String deviceId = device.getId();
+        cache = new DiskBasedCache(activity.getCacheDir(), 1024 * 1024); // 1MB cap
+        String url = "http://192.168.0.105:8080/api/devices/" + deviceId + "/open";
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, new JSONObject(),
+                new Response.Listener<JSONObject>()
+                {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                switchView.setChecked(false);
+                Toast.makeText(activity, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        queue.add(request);
+    }
+
+    public void closeDoor(final Activity activity, Device device, final Switch switchView) {
+        String deviceId = device.getId();
+        cache = new DiskBasedCache(activity.getCacheDir(), 1024 * 1024); // 1MB cap
+        String url = "http://192.168.0.105:8080/api/devices/" + deviceId + "/close";
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, new JSONObject(),
+                new Response.Listener<JSONObject>()
+                {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                switchView.setChecked(true);
+                Toast.makeText(activity, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        queue.add(request);
+    }
+
+    public void lockDoor(final Activity activity, Device device, final Switch switchView) {
+        String deviceId = device.getId();
+        cache = new DiskBasedCache(activity.getCacheDir(), 1024 * 1024); // 1MB cap
+        String url = "http://192.168.0.105:8080/api/devices/" + deviceId + "/lock";
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, new JSONObject(),
+                new Response.Listener<JSONObject>()
+                {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                switchView.setChecked(true);
+                Toast.makeText(activity, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        queue.add(request);
+    }
+
+    public void unlockDoor(final Activity activity, Device device, final Switch switchView) {
+        String deviceId = device.getId();
+        cache = new DiskBasedCache(activity.getCacheDir(), 1024 * 1024); // 1MB cap
+        String url = "http://192.168.0.105:8080/api/devices/" + deviceId + "/unlock";
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, new JSONObject(),
+                new Response.Listener<JSONObject>()
+                {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                switchView.setChecked(false);
+                Toast.makeText(activity, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        queue.add(request);
+    }
+
+    public void blindUp(final Activity activity, Device device, final Switch switchView) {
+        String deviceId = device.getId();
+        cache = new DiskBasedCache(activity.getCacheDir(), 1024 * 1024); // 1MB cap
+        String url = "http://192.168.0.105:8080/api/devices/" + deviceId + "/up";
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, new JSONObject(),
+                new Response.Listener<JSONObject>()
+                {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                switchView.setChecked(false);
+                Toast.makeText(activity, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        queue.add(request);
+    }
+
+    public void blindDown(final Activity activity, Device device, final Switch switchView) {
+        String deviceId = device.getId();
+        cache = new DiskBasedCache(activity.getCacheDir(), 1024 * 1024); // 1MB cap
+        String url = "http://192.168.0.105:8080/api/devices/" + deviceId + "/down";
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, new JSONObject(),
+                new Response.Listener<JSONObject>()
+                {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                switchView.setChecked(true);
+                Toast.makeText(activity, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        queue.add(request);
     }
 }

@@ -20,7 +20,7 @@ import com.grupo1.hci.smarthome.R;
 public class BlindFragment extends Fragment {
 
     Switch openCloseToggleSwitch;
-
+    APIManager apiManager;
     Blind blind;
 
     public BlindFragment() {
@@ -40,7 +40,8 @@ public class BlindFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_blind, container, false);
         setView(view);
         setOnClickListener();
-        APIManager.getInstance(getActivity()).getState(getContext(), blind, getActivity(), this);
+        apiManager = APIManager.getInstance(getActivity());
+        apiManager.getState(getContext(), blind, getActivity(), this);
         // Inflate the layout for this fragment
         return view;
     }
@@ -50,12 +51,12 @@ public class BlindFragment extends Fragment {
         openCloseToggleSwitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ToggleButton onOffToogleButton = (ToggleButton) view;
+                Switch onOffToogleButton = (Switch) view;
                 if(onOffToogleButton.isChecked()){
-                    Toast.makeText(getActivity().getApplicationContext(), "CERRADO", Toast.LENGTH_SHORT).show();
+                   apiManager.blindDown(getActivity(), blind, openCloseToggleSwitch);
 
                 }else{
-                    Toast.makeText(getActivity().getApplicationContext(), "ABIERTO", Toast.LENGTH_SHORT).show();
+                    apiManager.blindUp(getActivity(), blind,openCloseToggleSwitch);
 
                 }
             }
@@ -78,16 +79,16 @@ public class BlindFragment extends Fragment {
         this.blind = blind;
         String status = blind.getStatus();
         if(status.equals(Constants.BLIND_STATE_OPENED)){
-            openCloseToggleSwitch.setChecked(true);
+            openCloseToggleSwitch.setChecked(false);
 
         }else if(status.equals(Constants.BLIND_STATE_CLOSED)){
-            openCloseToggleSwitch.setChecked(false);
+            openCloseToggleSwitch.setChecked(true);
 
         }else if(status.equals(Constants.BLIND_STATE_CLOSING)){
-            openCloseToggleSwitch.setChecked(false);
+            openCloseToggleSwitch.setChecked(true);
 
         }else if(status.equals(Constants.BLIND_STATE_OPENING)){
-            openCloseToggleSwitch.setChecked(true);
+            openCloseToggleSwitch.setChecked(false);
 
         }
     }

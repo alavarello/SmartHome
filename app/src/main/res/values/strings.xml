@@ -105,10 +105,13 @@
     <string name="sleep_error">Sleep failure</string>
     <string name="timer_finished">Timer finished.</string>
     <string-array name="convection_array">
-        <item>Normal</item>
-        <item>Eco</item>
-        <item>Off</item>
+        <item>@string/oven_normal</item>
+        <item>@string/oven_eco</item>
+        <item>@string/oven_off</item>
     </string-array>
+    <string name="oven_normal">Normal</string>
+    <string name="oven_eco">Eco</string>
+    <string name="oven_off">Off</string>
 
     <string name="lock_door">Lock Door</string>
     <string name="open_door">Open Door</string>

@@ -1,12 +1,14 @@
 package com.grupo1.hci.smarthome.Activities;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -31,6 +33,7 @@ public class OvenFragment extends Fragment {
     Spinner convectionSpinner;
     EditText temperatureEditText;
     Switch onOffToggleButton;
+    APIManager apiManager;
 
     public OvenFragment() {
         // Required empty public constructor
@@ -49,30 +52,58 @@ public class OvenFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_oven, container, false);
         setView(view);
         setOnClickListener();
-        APIManager.getInstance(getActivity()).getState(getContext(),oven,getActivity(),this);
+        apiManager = APIManager.getInstance(getActivity());
+        apiManager.getState(getContext(),oven,getActivity(),this);
         // Inflate the layout for this fragment
         return view;
     }
 
 
     private void setOnClickListener() {
+        Resources res = getResources();
+        final String normal = res.getString(R.string.oven_normal);
+        final String eco = res.getString(R.string.oven_eco);
+        final String off = res.getString(R.string.oven_off);
+        String bottom = res.getString(R.string.oven);
+        String top = res.getString(R.string.oven);
+        String large = res.getString(R.string.oven);
+
         onOffToggleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(onOffToggleButton.isChecked()){
-                    Toast.makeText(getActivity().getApplicationContext(), "OFF", Toast.LENGTH_SHORT).show();
+                    apiManager.deviceOnOff(getActivity(),oven,"turnOff", onOffToggleButton );
                 }else{
-                    Toast.makeText(getActivity().getApplicationContext(), "ON", Toast.LENGTH_SHORT).show();
+                    apiManager.deviceOnOff(getActivity(),oven,"turnOn", onOffToggleButton );
                 }
             }
         });
         temperatureEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-                Toast.makeText(getActivity().getApplicationContext(), textView.getText(), Toast.LENGTH_SHORT).show();
+                apiManager.setOvenTemperature(getActivity(), oven, i, temperatureEditText);
                 return false;
             }
         });
+        convectionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String s = (String) adapterView.getItemAtPosition(i);
+                if(s.equals(normal)){
+                    apiManager.setOvenConvection(getActivity(),oven,Constants.OVEN_CONVECTION_NORMAL, convectionSpinner);
+                }else if(s.equals(eco)){
+                    apiManager.setOvenConvection(getActivity(),oven,Constants.OVEN_CONVECTION_ECO, convectionSpinner);
+                }else if(s.equals(off)){
+                    apiManager.setOvenConvection(getActivity(),oven,Constants.OVEN_CONVECTION_OFF, convectionSpinner);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
     }
 
     private void setView(View view) {
@@ -97,21 +128,18 @@ public class OvenFragment extends Fragment {
 
         String[] heatModes = getResources().getStringArray(R.array.heat_array);
         ArrayAdapter<String> heatAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, heatModes);
-        Spinner heatSp = view.findViewById(R.id.contentOven_Heat_Spinner);
         heatAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        heatSp.setAdapter(heatAdapter);
+        heatSpinner.setAdapter(heatAdapter);
 
         String[] grillModes = getResources().getStringArray(R.array.grill_array);
         ArrayAdapter<String> grillAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, grillModes);
-        Spinner grillSp = view.findViewById(R.id.contentOven_Grill_Spinner);
         grillAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        grillSp.setAdapter(grillAdapter);
+        grillSpinner.setAdapter(grillAdapter);
 
         String[] convectionModes = getResources().getStringArray(R.array.convection_array);
         ArrayAdapter<String> convectionAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, convectionModes);
-        Spinner convectionSp = view.findViewById(R.id.contentOven_Convection_Spinner);
         convectionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        convectionSp.setAdapter(convectionAdapter);
+        convectionSpinner.setAdapter(convectionAdapter);
 
     }
 
@@ -119,9 +147,9 @@ public class OvenFragment extends Fragment {
     public void loadOvenState(Oven oven) {
         this.oven = oven;
         if(oven.isOn()){
-            onOffToggleButton.setChecked(true);
-        }else{
             onOffToggleButton.setChecked(false);
+        }else{
+            onOffToggleButton.setChecked(true);
         }
         temperatureEditText.setText(String.valueOf(oven.getTemperature()));
         if(oven.getConvection().equals(Constants.OVEN_CONVECTION_ECO)){
