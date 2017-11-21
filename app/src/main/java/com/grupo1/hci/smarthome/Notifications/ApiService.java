@@ -19,6 +19,7 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import com.grupo1.hci.smarthome.Model.Constants;
 
 import org.json.JSONObject;
 
@@ -39,14 +40,14 @@ public class ApiService extends Service {
 
     private static final String SHARED_PREFS_NAME = "MY_SHARED_PREF";
 
-  private final static String   typeBlind = "eu0v2xgprrhhg41g";
-  private final static String   typeLamp = "go46xmbqeomjrsjr";
-  private final static String   typeOven = "im77xxyulpegfmv8";
+  private final static String   typeBlind = Constants.BLIND_ID;
+  private final static String   typeLamp = Constants.LAMP_ID;
+  private final static String   typeOven = Constants.OVEN_ID;
   private final static String   typeAc = "li6cbv5sdlatti0j";
-  private final static String   typeDoor = "lsf78ly0eqrjbz91";
+  private final static String   typeDoor = Constants.DOOR_ID;
   private final static String   typeAlarm= "mxztsyjzsrq7iaqc";
   private final static String   typeTimer= "ofglvd9gqX8yfl3l";
-  private final static String   typeRefrigerator= "rnizejqr2di0okho";
+  private final static String   typeRefrigerator= Constants.REFRIGERATOR_ID;
 
 
 
@@ -196,7 +197,7 @@ public class ApiService extends Service {
         //Toast.makeText(context, idDevice, Toast.LENGTH_SHORT).show();
         // prueba con una lampara
         // String url = "http://10.0.3.2:8080/api/rooms";
-        String url = "http://10.0.2.2:8080/api/devices/" + deviceState.deviceId + "/getState";
+        String url =  Constants.PORT_CONECTIVITY+"/api/devices/" + deviceState.deviceId + "/getState";
 
 
         StringRequest sr = new StringRequest(Request.Method.PUT,url, new Response.Listener<String>() {
@@ -306,7 +307,7 @@ public class ApiService extends Service {
 
     public  void getAllDevices(final Context context) {
 
-        String url = "http://10.0.2.2:8080/api/devices";
+        String url =  Constants.PORT_CONECTIVITY+"/api/devices";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, new JSONObject(),
                 new Response.Listener<JSONObject>()
                 {

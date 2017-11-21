@@ -86,17 +86,17 @@
     <string name="reminder_label">Reminder Text</string>
     <string name="reminder_text">Don\'t forget!</string>
     <string-array name="heat_array">
-        <item>Conventional</item>
-        <item>Bottom</item>
-        <item>Top</item>
+        <item>@string/oven_conventional</item>
+        <item>@string/oven_bottom</item>
+        <item>@string/oven_top</item>
     </string-array>
 
     <string name="notification">SmartHomeNotification</string>
     <string name="label">Ping Me</string>
     <string-array name="grill_array">
-        <item>Large</item>
-        <item>Eco</item>
-        <item>Off</item>
+        <item>@string/oven_large</item>
+        <item>@string/oven_eco</item>
+        <item>@string/oven_off</item>
     </string-array>
 
     <string name="ping">Ping!</string>
@@ -112,6 +112,10 @@
     <string name="oven_normal">Normal</string>
     <string name="oven_eco">Eco</string>
     <string name="oven_off">Off</string>
+    <string name="oven_large">Large</string>
+    <string name="oven_conventional">Conventional</string>
+    <string name="oven_top">Top</string>
+    <string name="oven_bottom">Bottom</string>
 
     <string name="lock_door">Lock Door</string>
     <string name="open_door">Open Door</string>

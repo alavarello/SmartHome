@@ -13,12 +13,17 @@ public class Constants {
     public static final int DELTE_FROM_DIALOGE = 1;
     public static final int DELTE__FROM_OVERFLOW = 0;
     public static Context context;
+    public static String appName;
+    public static String PORT_CONECTIVITY = "http://192.168.0.105:8080";
+
+
 
     //Devices ID -------------------------------------------
     public static final String LAMP_ID = "go46xmbqeomjrsjr";
     public static final String OVEN_ID = "im77xxyulpegfmv8";
     public static final String DOOR_ID = "lsf78ly0eqrjbz91";
     public static final String BLIND_ID = "eu0v2xgprrhhg41g";
+    public static final String REFRIGERATOR_ID = "rnizejqr2di0okho";
 
     //Blind ---------------------------------------------------
     public static final String BLIND_STATE_OPENED = "opened";
@@ -56,8 +61,6 @@ public class Constants {
     //ON OFF -------------------------------
     public static final boolean STATUS_OFF = false;
     public static final boolean STATUS_ON = true;
-
-    public static String appName;
 
     //Intents ----------------------------------
     public static String ROOM_INTENT = "room";
