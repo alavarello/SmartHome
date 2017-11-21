@@ -19,6 +19,7 @@ public class LampFragment extends Fragment {
     Switch onOffToggleButton;
     Lamp lamp;
     SeekBar seekBar;
+    APIManager apiManager;
 
     public LampFragment() {
         // Required empty public constructor
@@ -37,7 +38,7 @@ public class LampFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_lamp, container, false);
         setView(view);
         setOnClickListener();
-        APIManager apiManager = APIManager.getInstance(getActivity());
+        apiManager = APIManager.getInstance(getActivity());
         apiManager.getState(getContext(), lamp, getActivity(), this);
         // Inflate the layout for this fragment
         return view;
@@ -49,12 +50,29 @@ public class LampFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if(onOffToggleButton.isChecked()){
-                    Toast.makeText(getActivity().getApplicationContext(), "OFF", Toast.LENGTH_SHORT).show();
+                    apiManager.deviceOnOff(getActivity(), lamp,"turnOff", onOffToggleButton);
                 }else{
-                    Toast.makeText(getActivity().getApplicationContext(), "ON", Toast.LENGTH_SHORT).show();
+                    apiManager.deviceOnOff(getActivity(), lamp,"turnOn", onOffToggleButton);
                 }
             }
         });
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                apiManager.changeLampBrightness(getActivity(),lamp,i,seekBar);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+        //TODO change color and fixed brightchange in API manager
     }
 
     private void setView(View view) {

@@ -18,6 +18,7 @@ public class DoorFragment extends Fragment {
     Switch openCloseSwitch;
     Switch lockUnlockSwitch;
     Door door;
+    APIManager apiManager;
 
     public DoorFragment() {
         // Required empty public constructor
@@ -36,7 +37,8 @@ public class DoorFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_door, container, false);
         setView(view);
         setOnClickListener();
-        APIManager.getInstance(getActivity()).getState(getContext(), door, getActivity(), this);
+        apiManager = APIManager.getInstance(getActivity());
+        apiManager.getState(getContext(), door, getActivity(), this);
         // Inflate the layout for this fragment
         return view;
     }
@@ -47,9 +49,9 @@ public class DoorFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if(openCloseSwitch.isChecked()){
-                    Toast.makeText(getActivity().getApplicationContext(), "CLOSE", Toast.LENGTH_SHORT).show();
+                    apiManager.openDoor(getActivity(),door,openCloseSwitch);
                 }else{
-                    Toast.makeText(getActivity().getApplicationContext(), "OPEN", Toast.LENGTH_SHORT).show();
+                    apiManager.closeDoor(getActivity(),door,openCloseSwitch);
                 }
             }
         });
@@ -57,9 +59,9 @@ public class DoorFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if(lockUnlockSwitch.isChecked()){
-                    Toast.makeText(getActivity().getApplicationContext(), "LOCK", Toast.LENGTH_SHORT).show();
+                    apiManager.lockDoor(getActivity(),door,lockUnlockSwitch);
                 }else{
-                    Toast.makeText(getActivity().getApplicationContext(), "UNLOCK", Toast.LENGTH_SHORT).show();
+                    apiManager.unlockDoor(getActivity(),door,lockUnlockSwitch);
                 }
             }
         });
@@ -80,9 +82,9 @@ public class DoorFragment extends Fragment {
     public void loadDoorState(Door door) {
         this.door = door;
         if(door.isClosed()){
-            openCloseSwitch.setChecked(true);
-        }else{
             openCloseSwitch.setChecked(false);
+        }else{
+            openCloseSwitch.setChecked(true);
         }
         if(door.isLocked()){
             lockUnlockSwitch.setChecked(true);
