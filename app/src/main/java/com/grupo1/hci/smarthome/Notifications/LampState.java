@@ -193,8 +193,9 @@ public class LampState extends State {
         return notifyChangeColor;
     }
 
-    public void setSameNotifications(State state){
-        LampState lamp = (LampState ) state;
+    public void setSameNotifications(LampState sameNotifications) {
+        super.setSameNotifications(sameNotifications);
+        LampState lamp = (LampState ) sameNotifications;
         this.setNotifyChangeBrigtness( lamp.notifyChangeBrigtness);
         this.setNotifyChangeColor(lamp.notifyChangeColor);
         this.setNotifyTurnOff(lamp.notifyTurnOff);
