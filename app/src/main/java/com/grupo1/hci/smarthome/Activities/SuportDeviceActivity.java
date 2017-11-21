@@ -9,4 +9,6 @@ import com.grupo1.hci.smarthome.Model.Device;
 public interface SuportDeviceActivity {
 
     public Device getDevice();
+
+    public void deviceDeleted();
 }

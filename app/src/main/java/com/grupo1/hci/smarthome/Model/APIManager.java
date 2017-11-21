@@ -43,6 +43,7 @@ import com.grupo1.hci.smarthome.Activities.RoomListFragment;
 import com.grupo1.hci.smarthome.Activities.RoomsAdapter;
 import com.grupo1.hci.smarthome.Activities.RoomsFragment;
 import com.grupo1.hci.smarthome.Activities.RutinesActivity;
+import com.grupo1.hci.smarthome.Activities.SuportDeviceActivity;
 
 
 import org.json.JSONArray;
@@ -291,7 +292,7 @@ public class APIManager {
                     public void onResponse(JSONObject response)
                     {
                         if(from == Constants.DELTE_FROM_DIALOGE){
-                            ((DeviceActivity)activity).deviceDeleted();
+                            ((SuportDeviceActivity)activity).deviceDeleted();
                         }
                         Toast.makeText(activity,response.toString(), Toast.LENGTH_LONG).show();
                     }

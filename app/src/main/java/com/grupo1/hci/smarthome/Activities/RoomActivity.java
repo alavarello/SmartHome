@@ -11,6 +11,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.DisplayMetrics;
 import android.view.ActionMode;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -26,6 +29,7 @@ import com.grupo1.hci.smarthome.R;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class RoomActivity extends NavigationActivity implements SuportDeviceActivity{
@@ -39,6 +43,7 @@ public class RoomActivity extends NavigationActivity implements SuportDeviceActi
         return room;
     }
     Device device;
+    Menu menu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,6 +114,58 @@ public class RoomActivity extends NavigationActivity implements SuportDeviceActi
         ((RoomsFragment)fragment).loadDevices(devices);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        if(((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_XLARGE)){
+            MenuInflater inflater = getMenuInflater();
+            inflater.inflate(R.menu.one_item_contextual_menu, menu);
+            this.menu = menu;
+            menu.getItem(0).setVisible(false);
+            menu.getItem(1).setVisible(false);
+            return true;
+        }else{
+            return super.onCreateOptionsMenu(menu);
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.deleteElement:
+                DeleteDialogMessage deleteConfirmationFragment = new DeleteDialogMessage();
+                deleteConfirmationFragment.setDevice(device);
+                deleteConfirmationFragment.setActivity(this);
+                deleteConfirmationFragment.show(getFragmentManager(), "deleteConfirmation");
+                return true;
+
+            case R.id.editElement:
+                if(device.getTypeId().equals(Constants.LAMP_ID)){
+                    Intent intent = new Intent(this, LampSettingsActivity.class);
+                    intent.putExtra(Constants.DEVICE_INTENT, device);
+                    startActivity(intent);
+                }
+                if(device.getTypeId().equals(Constants.BLIND_ID)){
+                    Intent intent = new Intent(this, BlindSettingsActivity.class);
+                    intent.putExtra(Constants.DEVICE_INTENT, device);
+                    startActivity(intent);
+                }
+                if(device.getTypeId().equals(Constants.OVEN_ID)){
+                    Intent intent = new Intent(this, OvenSettingsActivity.class);
+                    intent.putExtra(Constants.DEVICE_INTENT, device);
+                    startActivity(intent);
+                }
+                if(device.getTypeId().equals(Constants.DOOR_ID)){
+                    Intent intent = new Intent(this, DoorSettingsActivity.class);
+                    intent.putExtra(Constants.DEVICE_INTENT, device);
+                    startActivity(intent);
+                }
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
     public void changeDeviceFragment(Device device) {
         this.device = device;
         Fragment newFragment = null;
@@ -129,11 +186,19 @@ public class RoomActivity extends NavigationActivity implements SuportDeviceActi
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.homeActivity_FragmentDevicecontainer, newFragment);
         fragmentTransaction.commit();
+        menu.getItem(0).setVisible(true);
+        menu.getItem(1).setVisible(true);
+
     }
 
     @Override
     public Device getDevice() {
         return device;
+    }
+
+    @Override
+    public void deviceDeleted() {
+        ((RoomsFragment)fragment).deleteDevice(device);
     }
 }
 

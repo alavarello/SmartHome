@@ -77,20 +77,13 @@ public class RoomListFragment extends ListFragment implements AdapterView.OnItem
         getListView().setOnItemLongClickListener(this);
         getListView().setOnItemClickListener(this);
         isLargeScreen = ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_XLARGE);
-
     }
 
     public void changeRoom(Room room) {
         this.room = room;
-        loadDevices(room.getId());
         setView();
     }
 
-
-    public void loadDevices(String roomID) {
-        // deviceArray = APIManager.getRoomDevices(roomID);
-
-    }
 
 
     private void setView() {
@@ -101,7 +94,6 @@ public class RoomListFragment extends ListFragment implements AdapterView.OnItem
         //set listview Adapter and onCikcListener
         rowAdapter = new RoomsAdapter((RoomActivity) getActivity(), deviceArray, (RoomsFragment) this, (RoomActivity) getActivity());
         setListAdapter(rowAdapter);
-        loadDevices(room.getId());
 
     }
 
@@ -141,6 +133,13 @@ public class RoomListFragment extends ListFragment implements AdapterView.OnItem
     public void deviceDeleteError(Device device) {
         deviceArray.add(device);
         loadDevices(deviceArray);
+    }
+
+    @Override
+    public void deleteDevice(Device device) {
+        deviceArray.remove(device);
+        loadDevices(deviceArray);
+
     }
 
     public void deleteDevices(final HashMap<Device, Integer> devices) {

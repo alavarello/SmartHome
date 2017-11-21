@@ -21,4 +21,5 @@ public interface RoomsFragment {
     void diselectElements();
     void diselectElement(View view);
     void deviceDeleteError(Device device);
+    void deleteDevice(Device device);
 }
