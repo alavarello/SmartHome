@@ -11,10 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.grupo1.hci.smarthome.Model.Constants;
 import com.grupo1.hci.smarthome.Model.Device;
 import com.grupo1.hci.smarthome.Model.Room;
 import com.grupo1.hci.smarthome.R;
@@ -84,6 +86,24 @@ public class RoomsAdapter extends ArrayAdapter<Device> {
         overflowMenu.setFocusable(false);
         // Populate the data into the template view using the data object
         deviceName.setText(device.getName());
+
+        ImageView imageView = convertView.findViewById(R.id.rowLayout_iconImageView);
+        switch (device.getTypeId()){
+            case Constants.LAMP_ID:
+                imageView.setImageResource(R.drawable.ic_lamp);
+                break;
+            case Constants.DOOR_ID:
+                imageView.setImageResource(R.drawable.ic_door);
+                break;
+            case Constants.BLIND_ID:
+                //TODO icon blind
+                imageView.setImageResource(R.drawable.ic_lamp);
+                break;
+            case Constants.OVEN_ID:
+                imageView.setImageResource(R.drawable.ic_oven);
+                break;
+
+        }
         // Return the completed view to render on screen
         return convertView;
     }

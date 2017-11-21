@@ -50,6 +50,7 @@ public class RoomActivity extends NavigationActivity {
             apiManager = APIManager.getInstance(this);
             apiManager.getDevicesForRoom(room.getId(), this);
         }
+        setMenu();
         //Set toolbar content
         getSupportActionBar().setTitle(room.getName());
 
@@ -91,6 +92,7 @@ public class RoomActivity extends NavigationActivity {
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         room = (Room) savedInstanceState.getSerializable(Constants.ROOM_INTENT);
         roomsArray = (ArrayList<Room>) savedInstanceState.getSerializable(Constants.ROOM_ARRAY_INTENT);
+        setMenu();
         super.onRestoreInstanceState(savedInstanceState);
     }
 

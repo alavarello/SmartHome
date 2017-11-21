@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/contentLamp_greenButton"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="30dp"
         android:layout_height="30dp"
@@ -15,7 +15,7 @@
         android:layout_marginEnd="40dp"
         android:background="@drawable/roundedbutton"
         android:backgroundTint="@android:color/holo_green_light"
-        app:layout_constraintEnd_toStartOf="@+id/button4"
+        app:layout_constraintEnd_toStartOf="@+id/contentLamp_redButton"
         app:layout_constraintTop_toTopOf="@+id/textView14" />
 
     <SeekBar
@@ -50,7 +50,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/contentLamp_blueButton"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="30dp"
         android:layout_height="30dp"
@@ -62,7 +62,7 @@
         app:layout_constraintTop_toTopOf="@+id/textView14" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/contentLamp_redButton"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="30dp"
         android:layout_height="30dp"
@@ -70,20 +70,20 @@
         android:background="@drawable/roundedbutton"
 
         android:backgroundTint="@android:color/holo_red_dark"
-        app:layout_constraintBottom_toBottomOf="@+id/button2"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
-        app:layout_constraintTop_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toBottomOf="@+id/contentLamp_blueButton"
+        app:layout_constraintEnd_toStartOf="@+id/contentLamp_blueButton"
+        app:layout_constraintTop_toTopOf="@+id/contentLamp_blueButton"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/button8"
+        android:id="@+id/contentLamp_yellowButton"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginEnd="40dp"
         android:background="@drawable/roundedbutton"
         android:backgroundTint="@android:color/holo_orange_dark"
-        app:layout_constraintEnd_toStartOf="@+id/button6"
+        app:layout_constraintEnd_toStartOf="@+id/contentLamp_greenButton"
         app:layout_constraintTop_toTopOf="@+id/textView14" />
 
     <Switch
@@ -106,10 +106,10 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/orange"
-        app:layout_constraintEnd_toEndOf="@+id/button8"
+        app:layout_constraintEnd_toEndOf="@+id/contentLamp_yellowButton"
         app:layout_constraintHorizontal_bias="0.739"
-        app:layout_constraintStart_toStartOf="@+id/button8"
-        app:layout_constraintTop_toBottomOf="@+id/button8" />
+        app:layout_constraintStart_toStartOf="@+id/contentLamp_yellowButton"
+        app:layout_constraintTop_toBottomOf="@+id/contentLamp_yellowButton" />
 
     <TextView
         android:id="@+id/green_color"
@@ -118,10 +118,10 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/green"
-        app:layout_constraintEnd_toEndOf="@+id/button6"
+        app:layout_constraintEnd_toEndOf="@+id/contentLamp_greenButton"
         app:layout_constraintHorizontal_bias="0.666"
-        app:layout_constraintStart_toStartOf="@+id/button6"
-        app:layout_constraintTop_toBottomOf="@+id/button6" />
+        app:layout_constraintStart_toStartOf="@+id/contentLamp_greenButton"
+        app:layout_constraintTop_toBottomOf="@+id/contentLamp_greenButton" />
 
     <TextView
         android:id="@+id/red_color"
@@ -130,10 +130,10 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/red"
-        app:layout_constraintEnd_toEndOf="@+id/button4"
+        app:layout_constraintEnd_toEndOf="@+id/contentLamp_redButton"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/button4"
-        app:layout_constraintTop_toBottomOf="@+id/button4" />
+        app:layout_constraintStart_toStartOf="@+id/contentLamp_redButton"
+        app:layout_constraintTop_toBottomOf="@+id/contentLamp_redButton" />
 
     <TextView
         android:id="@+id/blue_color"
@@ -141,9 +141,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/blue"
-        app:layout_constraintEnd_toEndOf="@+id/button2"
-        app:layout_constraintStart_toStartOf="@+id/button2"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintEnd_toEndOf="@+id/contentLamp_blueButton"
+        app:layout_constraintStart_toStartOf="@+id/contentLamp_blueButton"
+        app:layout_constraintTop_toBottomOf="@+id/contentLamp_blueButton" />
 
 </android.support.constraint.ConstraintLayout>
 

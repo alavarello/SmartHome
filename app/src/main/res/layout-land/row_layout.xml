@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,9 +11,13 @@
         android:layout_height="100dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="29dp"
-        android:src="@mipmap/desk_lamp" />
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_rooms"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/rowLayout_nameTextView"
@@ -21,15 +25,25 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/rowLayout_iconImageView"
         android:layout_below="@+id/rowLayout_iconImageView"
-        android:text="fjrejgeri" />
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="fjrejgeri"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rowLayout_iconImageView" />
+
     <ImageButton
         android:id="@+id/rowLayout_overflowMenu_imageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/rowLayout_nameTextView"
-        android:layout_marginEnd="15dp"
-        app:srcCompat="@android:drawable/stat_notify_more"/>
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/rowLayout_iconImageView"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@null"
+        app:srcCompat="@drawable/ic_more_vert_black_24dp" />
 
 
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

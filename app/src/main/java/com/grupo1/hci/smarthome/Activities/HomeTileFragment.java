@@ -18,6 +18,7 @@ import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.grupo1.hci.smarthome.Model.APIManager;
 import com.grupo1.hci.smarthome.Model.Constants;
 import com.grupo1.hci.smarthome.Model.Room;
 import com.grupo1.hci.smarthome.R;
@@ -44,7 +45,7 @@ public class HomeTileFragment extends Fragment implements HomeFragment  {
     ArrayAdapter rowAdapter;
     TextView emptyTextView;
     View view;
-
+    APIManager apiManager;
     public void setmActionMode(ActionMode mActionMode) {
         this.mActionMode = mActionMode;
     }
@@ -73,13 +74,30 @@ public class HomeTileFragment extends Fragment implements HomeFragment  {
         roomsArray = ((NavigationActivity) getActivity()).getRoomsArray();
         toolbar = ((NavigationActivity) getActivity()).getToolbar();
         gridView = view.findViewById(R.id.gridView);
+
         return view;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        apiManager = APIManager.getInstance(getActivity());
+        apiManager.getRooms(getActivity());
         setView(view);
+        setOnClickListeners();
+    }
+
+    private void setView(View view) {
+        //set the contextual floating menu
+        mActionModeCallback = new HomeContextualMenu();
+        ((HomeContextualMenu) mActionModeCallback).setHomeActivity((HomeActivity) getActivity());
+
+        //set listview Adapter and onCikcListener
+        rowAdapter = new HomeAdapter((HomeActivity) getActivity(), roomsArray, (HomeFragment) this, (HomeActivity) getActivity());
+        gridView.setAdapter(rowAdapter);
+    }
+
+    private void setOnClickListeners(){
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -130,16 +148,6 @@ public class HomeTileFragment extends Fragment implements HomeFragment  {
                 return true;
             }
         });
-    }
-
-    private void setView(View view) {
-        //set the contextual floating menu
-        mActionModeCallback = new HomeContextualMenu();
-        ((HomeContextualMenu) mActionModeCallback).setHomeActivity((HomeActivity) getActivity());
-
-        //set listview Adapter and onCikcListener
-        rowAdapter = new HomeAdapter((HomeActivity) getActivity(), roomsArray, (HomeFragment) this, (HomeActivity) getActivity());
-        gridView.setAdapter(rowAdapter);
     }
 
     public void deleteRooms(HashMap<Room,Integer> rooms) {

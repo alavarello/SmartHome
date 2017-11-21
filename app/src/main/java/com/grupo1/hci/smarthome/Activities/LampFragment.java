@@ -5,11 +5,13 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.Toast;
 
 import com.grupo1.hci.smarthome.Model.APIManager;
+import com.grupo1.hci.smarthome.Model.Constants;
 import com.grupo1.hci.smarthome.Model.Lamp;
 import com.grupo1.hci.smarthome.R;
 
@@ -20,6 +22,10 @@ public class LampFragment extends Fragment {
     Lamp lamp;
     SeekBar seekBar;
     APIManager apiManager;
+    Button greenButton;
+    Button redButton;
+    Button blueButton;
+    Button yellowButton;
 
     public LampFragment() {
         // Required empty public constructor
@@ -72,7 +78,32 @@ public class LampFragment extends Fragment {
 
             }
         });
-        //TODO change color and fixed brightchange in API manager
+        //TODO add final fragment to apimanager changeColor
+        yellowButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                apiManager.lampColorChange(getActivity(),lamp, Constants.COLOR_YELLOW);
+            }
+        });
+        redButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                apiManager.lampColorChange(getActivity(),lamp, Constants.COLOR_RED);
+            }
+        });
+        greenButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                apiManager.lampColorChange(getActivity(),lamp, Constants.COLOR_GREEN);
+            }
+        });
+        blueButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                apiManager.lampColorChange(getActivity(),lamp, Constants.COLOR_BLUE);
+            }
+        });
+        
     }
 
     private void setView(View view) {
@@ -84,6 +115,11 @@ public class LampFragment extends Fragment {
         seekBar = view.findViewById(R.id.contentLamp_dimmerSeekBar);
         onOffToggleButton.setTextOff(getString(R.string.off));
         onOffToggleButton.setTextOn(getString(R.string.on));
+        greenButton = view.findViewById(R.id.contentLamp_greenButton);
+        yellowButton = view.findViewById(R.id.contentLamp_yellowButton);
+        blueButton = view.findViewById(R.id.contentLamp_blueButton);
+        redButton = view.findViewById(R.id.contentLamp_redButton);
+
     }
 
     public void loadLampState(Lamp lamp) {
@@ -94,6 +130,7 @@ public class LampFragment extends Fragment {
             onOffToggleButton.setChecked(false);
         }
         seekBar.setProgress(lamp.getBrightness());
+       
        //TODO color of the lamp
 
     }

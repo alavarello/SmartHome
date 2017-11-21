@@ -62,6 +62,12 @@ public class Constants {
     public static final boolean STATUS_OFF = false;
     public static final boolean STATUS_ON = true;
 
+    //LAMP----------------------------------
+    public static final String COLOR_RED = "ff0000";
+    public static final String COLOR_BLUE = "#0033cc";
+    public static final String COLOR_GREEN = "#00cc00";
+    public static final String COLOR_YELLOW = "ffff00";
+
     //Intents ----------------------------------
     public static String ROOM_INTENT = "room";
     public static String DEVICE_INTENT = "device";

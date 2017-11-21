@@ -48,6 +48,8 @@ public class HomeListFragment extends ListFragment implements AdapterView.OnItem
     ActionMode.Callback mActionModeCallback;
     ArrayAdapter rowAdapter;
     TextView emptyTextView;
+    View view;
+    APIManager apiManager;
 
 
     public void setmActionMode(ActionMode mActionMode) {
@@ -56,10 +58,8 @@ public class HomeListFragment extends ListFragment implements AdapterView.OnItem
 
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_list, container, false);
+        view = inflater.inflate(R.layout.fragment_list, container, false);
         toolbar = ((NavigationActivity) getActivity()).getToolbar();
-        setView(view);
-        setOnClickListeners();
         return view;
     }
 
@@ -70,6 +70,10 @@ public class HomeListFragment extends ListFragment implements AdapterView.OnItem
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        apiManager = APIManager.getInstance(getActivity());
+        apiManager.getRooms(getActivity());
+        setView(view);
+        setOnClickListeners();
         getListView().setOnItemClickListener(this);
         getListView().setOnItemLongClickListener(this);
     }
