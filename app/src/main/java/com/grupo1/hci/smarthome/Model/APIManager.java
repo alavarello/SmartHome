@@ -96,11 +96,8 @@ public class APIManager {
                              */
                             ArrayList<Room> roomList = gson.fromJson(jsonFragment, listType);
                             ((HomeActivity)activity).loadRooms(roomList);
-
-                            /**
-                             * TODO
-                             * Armar el adapter
-                             */
+                            ((NavigationActivity)activity).setRoomsArray(roomList);
+                            ((NavigationActivity)activity).setMenu();
                         } catch (Exception exception) {
                             Toast.makeText(activity, exception.getLocalizedMessage(), Toast.LENGTH_LONG).show();
                         }
