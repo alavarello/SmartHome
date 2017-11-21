@@ -33,6 +33,23 @@ public class LampState extends State {
         }
     }
 
+    public boolean getRealNotifyTurnOn(){
+        return isNotifiable(notifyTurnOn , notifyTurnOnClass);
+    }
+
+    public boolean getRealNotifyTurnOff(){
+        return isNotifiable(notifyTurnOff , notifyTurnOffClass);
+    }
+
+    public boolean getRealNotifyChangeBrightness(){
+        return isNotifiable( notifyChangeBrigtness , notifyChangeBrigtnessClass);
+    }
+
+    public boolean getRealNotifyChangeColor(){
+        return isNotifiable(notifyChangeColor, notifyChangeColorClass);
+    }
+
+
     public ArrayList<String> getDifferences(State a){
 
         LampState s = (LampState) a;
