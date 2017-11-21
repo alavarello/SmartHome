@@ -58,8 +58,22 @@ public class ApiService extends Service {
 
     static ArrayList<DeviceState> status = new ArrayList<>();
 
+    private void checkForDeleted(ArrayList<DeviceNotifications> dev){
+
+        for(DeviceNotifications d1 : devices) {
+
+         if (!dev.contains(d1)){
+             DeviceState st = new DeviceState(null , d1.getDeviceId());
+             status.remove(st);
+             devices.remove(d1);
+             sendNotification(getApplicationContext() , d1.name + " has been deleted");
+         }
+     }
+    }
+
     public  void updateDevices(ArrayList<DeviceNotifications> dev){
         State s ;
+        checkForDeleted(dev);
         for(DeviceNotifications d : dev ){
             if(!devices.contains(d)){
                 devices.add(d);
@@ -114,8 +128,6 @@ public class ApiService extends Service {
             devices =g.fromJson(l.get(0) ,deviceType );
             status = g.fromJson(l.get(1) , statusType);
 
-
-            Log.d("anduvo" , l.get(0));
         }
 
 
@@ -136,24 +148,6 @@ public class ApiService extends Service {
 
         savingThread.start();
 
-
-        Thread searchDevicesThread = new Thread() {
-            @Override
-            public void run() {
-                try {
-                    while(true) {
-                        sleep(5000);
-                        getAllDevices(getApplicationContext());
-                        //checkDevicesState(getApplicationContext());
-                    }
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        };
-
-        searchDevicesThread.start();
-
         Thread thread = new Thread() {
             @Override
             public void run() {
@@ -161,6 +155,7 @@ public class ApiService extends Service {
                     while(true) {
                         sleep(5000);
                         checkDevicesState(getApplicationContext());
+                        getAllDevices(getApplicationContext());
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -176,7 +171,7 @@ public class ApiService extends Service {
     @Override
     public void onDestroy() {
         // STOP YOUR TASKS
-      //  saveArray();
+        //  saveArray();
         super.onDestroy();
     }
 
@@ -201,7 +196,7 @@ public class ApiService extends Service {
         //Toast.makeText(context, idDevice, Toast.LENGTH_SHORT).show();
         // prueba con una lampara
         // String url = "http://10.0.3.2:8080/api/rooms";
-        String url = "http://192.168.0.105:8080/api/devices/" + deviceState.deviceId + "/getState";
+        String url = "http://10.0.2.2:8080/api/devices/" + deviceState.deviceId + "/getState";
 
 
         StringRequest sr = new StringRequest(Request.Method.PUT,url, new Response.Listener<String>() {
@@ -210,34 +205,48 @@ public class ApiService extends Service {
 
                 Gson g = new Gson();
 
+
                 ApiResponse r = g.fromJson(response,ApiResponse.class );
+
 
                 State s;
 
 
+                try {
+
+                    switch (deviceState.s.getDevice()) {
+
+                        case 0:
+                            s = g.fromJson(r.getResult(), BlindState.class);
+                            break;
+                        case 1:
+                            s = g.fromJson(r.getResult(), LampState.class);
+                            break;
+                        case 2:
+                            s = g.fromJson(r.getResult(), OvenState.class);
+                            break;
+                        case 3:
+                            s = g.fromJson(r.getResult(), AcState.class);
+                            break;
+                        case 4:
+                            s = g.fromJson(r.getResult(), DoorState.class);
+                            break;
+                        case 5:
+                            s = g.fromJson(r.getResult(), AlarmState.class);
+                            break;
+                        case 6:
+                            s = g.fromJson(r.getResult(), TimerState.class);
+                            break;
+                        case 7:
+                            s = g.fromJson(r.getResult(), RefrigeratorState.class);
+                            break;
+                        default:
+                            s = g.fromJson(r.getResult(), LampState.class);
 
 
-                switch(deviceState.s.getDevice()){
-
-                    case 0: s = g.fromJson(r.getResult(), BlindState.class);
-                        break;
-                    case 1: s =  g.fromJson(r.getResult(), LampState.class);
-                         break;
-                    case 2: s = g.fromJson(r.getResult(), OvenState.class);
-                        break;
-                    case 3: s = g.fromJson(r.getResult(), AcState.class);
-                        break;
-                    case 4: s = g.fromJson(r.getResult(), DoorState.class);
-                        break;
-                    case 5: s = g.fromJson(r.getResult(), AlarmState.class);
-                        break;
-                    case 6: s = g.fromJson(r.getResult(), TimerState.class);
-                        break;
-                    case 7: s = g.fromJson(r.getResult(), RefrigeratorState.class);
-                        break;
-                    default : s = g.fromJson(r.getResult(), LampState.class);
-
-
+                    }
+                }catch (Exception e){
+                    return;
                 }
 
                 s.setDevice(deviceState.s.getDevice());
@@ -272,7 +281,9 @@ public class ApiService extends Service {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                sendNotification(context , "error" );
+                //sendNotification(context , "error" );
+
+                //Log.e("error" , error.toString());
                 //Toast.makeText(context, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
@@ -281,6 +292,7 @@ public class ApiService extends Service {
     }
 
     private void sendNotification(Context context , String message ){
+       // mServiceIntent.putExtra("encabezado", "ayaya");
         mServiceIntent.putExtra(CommonConstants.EXTRA_MESSAGE, message);//l.getStatus().toString());
         mServiceIntent.setAction(CommonConstants.ACTION_PING);
 
@@ -294,7 +306,7 @@ public class ApiService extends Service {
 
     public  void getAllDevices(final Context context) {
 
-        String url = "http://192.168.0.105:8080/api/devices";
+        String url = "http://10.0.2.2:8080/api/devices";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, new JSONObject(),
                 new Response.Listener<JSONObject>()
                 {

@@ -17,5 +17,18 @@ public class DeviceState implements Serializable  {
         this.deviceId = deviceId;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof DeviceState)) return false;
 
+        DeviceState that = (DeviceState) o;
+
+        return deviceId.equals(that.deviceId);
+    }
+
+    @Override
+    public int hashCode() {
+        return deviceId.hashCode();
+    }
 }
