@@ -31,7 +31,8 @@ public class LampSettingsActivity extends AppCompatActivity {
         lamp = (Lamp) getIntent().getSerializableExtra(Constants.DEVICE_INTENT);
         if(lamp == null){
             isDefault = true;
-            //TODO get lampState variable
+        }else{
+            lampState = (LampState) ApiService.getDevice(lamp.getId()).getS();
         }
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -95,9 +96,9 @@ public class LampSettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(notificationOnSwitch.isChecked()){
-                    LampState.setNotifyTurnOnClass(false);
-                }else{
                     LampState.setNotifyTurnOnClass(true);
+                }else{
+                    LampState.setNotifyTurnOnClass(false);
                 }
             }
         });
@@ -105,9 +106,9 @@ public class LampSettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(notificationOffSwitch.isChecked()){
-                    LampState.setNotifyTurnOffClass(false);
-                }else{
                     LampState.setNotifyTurnOffClass(true);
+                }else{
+                    LampState.setNotifyTurnOffClass(false);
                 }
             }
         });
@@ -115,9 +116,9 @@ public class LampSettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(notificationColorSwitch.isChecked()){
-                    LampState.setNotifyChangeColorClass(false);
-                }else{
                     LampState.setNotifyChangeColorClass(true);
+                }else{
+                    LampState.setNotifyChangeColorClass(false);
                 }
             }
         });
@@ -125,9 +126,9 @@ public class LampSettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(notificationDimmerSwitch.isChecked()){
-                    LampState.setNotifyChangeBrigtnessClass(false);
-                }else{
                     LampState.setNotifyChangeBrigtnessClass(true);
+                }else{
+                    LampState.setNotifyChangeBrigtnessClass(false);
                 }
             }
         });
@@ -187,7 +188,7 @@ public class LampSettingsActivity extends AppCompatActivity {
         }else{
             notificationDimmerSwitch.setChecked(false);
         }
-        if(LampState.isNotifyTurnOnClass()){
+        if(LampState.isNotifyChangeColorClass()){
             notificationColorSwitch.setChecked(true);
         }else{
             notificationColorSwitch.setChecked(false);
