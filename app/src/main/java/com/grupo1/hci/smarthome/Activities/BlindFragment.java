@@ -3,6 +3,7 @@ package com.grupo1.hci.smarthome.Activities;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,8 +67,8 @@ public class BlindFragment extends Fragment {
 
     private void setView(View view) {
 
-        blind = (Blind) ((DeviceActivity) getActivity()).getDevice();
-        ((DeviceActivity)getActivity()).getSupportActionBar().setTitle(blind.getName());
+        blind = (Blind) ((SuportDeviceActivity) getActivity()).getDevice();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(blind.getName());
 
         openCloseToggleSwitch = view.findViewById(R.id.contentBlind_OnOff_ToggleButton);
         openCloseToggleSwitch.setTextOff(getString(R.string.close));

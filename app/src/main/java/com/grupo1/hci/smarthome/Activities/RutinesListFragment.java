@@ -1,6 +1,5 @@
 package com.grupo1.hci.smarthome.Activities;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -13,22 +12,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.grupo1.hci.smarthome.Model.APIManager;
-import com.grupo1.hci.smarthome.Model.Constants;
-import com.grupo1.hci.smarthome.Model.Device;
-import com.grupo1.hci.smarthome.Model.Room;
 import com.grupo1.hci.smarthome.Model.Rutine;
 import com.grupo1.hci.smarthome.R;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * Created by agust on 11/4/2017.
@@ -51,7 +43,7 @@ public class RutinesListFragment extends ListFragment implements AdapterView.OnI
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_room_list, container, false);
+        view = inflater.inflate(R.layout.fragment_rutine, container, false);
         return view;
     }
 

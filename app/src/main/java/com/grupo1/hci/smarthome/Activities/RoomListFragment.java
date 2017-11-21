@@ -1,6 +1,7 @@
 package com.grupo1.hci.smarthome.Activities;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -46,6 +47,7 @@ public class RoomListFragment extends ListFragment implements AdapterView.OnItem
     private CountDownTimer deleteCountDown;
     ArrayAdapter rowAdapter;
     View view;
+    boolean isLargeScreen;
 
     public void setDeviceArray(ArrayList<Device> deviceArray) {
         this.deviceArray = deviceArray;
@@ -60,7 +62,7 @@ public class RoomListFragment extends ListFragment implements AdapterView.OnItem
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_room_list, container, false);
+        view = inflater.inflate(R.layout.fragment_room, container, false);
         return view;
     }
 
@@ -74,6 +76,7 @@ public class RoomListFragment extends ListFragment implements AdapterView.OnItem
         setView();
         getListView().setOnItemLongClickListener(this);
         getListView().setOnItemClickListener(this);
+        isLargeScreen = ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_XLARGE);
 
     }
 
@@ -201,10 +204,13 @@ public class RoomListFragment extends ListFragment implements AdapterView.OnItem
         Object o = adapterView.getAdapter().getItem(i);
         Device device = (Device) o;//As you are using Default String Adapter
         Toast.makeText(getActivity().getApplicationContext(), device.getName(), Toast.LENGTH_SHORT).show();
-
         //if is the same view as the selected one
         if (mActionMode == null) {
             diselectElements();
+            if(isLargeScreen){
+                ((RoomActivity)getActivity()).changeDeviceFragment(device);
+                return;
+            }
             startDeviceActivity(device);
         } else {
             if (selectedElement.contains(view)) {
@@ -220,6 +226,7 @@ public class RoomListFragment extends ListFragment implements AdapterView.OnItem
 
     @Override
     public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+
 
         Object o = adapterView.getAdapter().getItem(i);
         Device device = (Device) o;//As you are using Default String Adapter

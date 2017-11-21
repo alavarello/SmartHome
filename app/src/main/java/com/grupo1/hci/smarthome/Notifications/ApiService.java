@@ -109,7 +109,7 @@ public class ApiService extends Service {
 
              int channelId =  st.s.getNotificationChannel();
 
-             Log.d("el canal es " + channelId);
+            // Log.d("el canal es " + channelId);
              devicesRemove.add(d1);
              statusRemove.add(st);
              sendNotification(getApplicationContext() , d1.name + " has been deleted" , channelId );

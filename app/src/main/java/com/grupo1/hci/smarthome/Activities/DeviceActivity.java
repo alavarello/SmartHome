@@ -16,7 +16,7 @@ import com.grupo1.hci.smarthome.Model.Constants;
 import com.grupo1.hci.smarthome.Model.Device;
 import com.grupo1.hci.smarthome.R;
 
-public class DeviceActivity extends AppCompatActivity {
+public class DeviceActivity extends AppCompatActivity implements SuportDeviceActivity{
     Device device;
     FragmentTransaction fragmentTransaction;
     Fragment fragment;

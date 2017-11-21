@@ -9,10 +9,12 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.DisplayMetrics;
 import android.view.ActionMode;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -26,7 +28,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RoomActivity extends NavigationActivity {
+public class RoomActivity extends NavigationActivity implements SuportDeviceActivity{
 
     // Array of strings...
     Room room;
@@ -36,6 +38,7 @@ public class RoomActivity extends NavigationActivity {
     public Room getRoom() {
         return room;
     }
+    Device device;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,24 +54,30 @@ public class RoomActivity extends NavigationActivity {
             apiManager.getDevicesForRoom(room.getId(), this);
         }
         setMenu();
+        if(((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_XLARGE)){
+            setViewForXLARGE();
+        }
         //Set toolbar content
         getSupportActionBar().setTitle(room.getName());
-
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentTransaction = fragmentManager.beginTransaction();
         setFragment();
 
     }
 
-    private void setFragment() {
-        if ((getResources().getConfiguration().screenLayout &
-                Configuration.SCREENLAYOUT_SIZE_MASK) ==
-                Configuration.SCREENLAYOUT_SIZE_LARGE) {
-            fragment = new OvenFragment();
-            fragmentTransaction.add(R.id.homeActivity_FragmentDevicecontainer, fragment);
-            fragmentTransaction.commit();
+    private void setViewForXLARGE() {
+        LinearLayout listFragment = findViewById(R.id.homeActivity_Fragmentcontainer);
+        LinearLayout deviceFragment = findViewById(R.id.homeActivity_FragmentDevicecontainer);
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        int height = displayMetrics.heightPixels;
+        int width = displayMetrics.widthPixels;
+        listFragment.getLayoutParams().width = (int)(width*0.5);
+        deviceFragment.getLayoutParams().width = (int)(width*0.5);
 
-        }
+    }
+
+    private void setFragment() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
         fragment = new RoomListFragment();
         fragmentTransaction.add(R.id.homeActivity_Fragmentcontainer, fragment);
         fragmentTransaction.commit();
@@ -100,5 +109,31 @@ public class RoomActivity extends NavigationActivity {
         ((RoomsFragment)fragment).loadDevices(devices);
     }
 
+    public void changeDeviceFragment(Device device) {
+        this.device = device;
+        Fragment newFragment = null;
+        switch (device.getTypeId()){
+            case Constants.BLIND_ID:
+                newFragment = new BlindFragment();
+                break;
+            case Constants.LAMP_ID:
+                newFragment = new LampFragment();
+                break;
+            case Constants.OVEN_ID:
+                newFragment = new OvenFragment();
+                break;
+            case Constants.DOOR_ID:
+                newFragment = new DoorFragment();
+                break;
+        }
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.homeActivity_FragmentDevicecontainer, newFragment);
+        fragmentTransaction.commit();
+    }
+
+    @Override
+    public Device getDevice() {
+        return device;
+    }
 }
 

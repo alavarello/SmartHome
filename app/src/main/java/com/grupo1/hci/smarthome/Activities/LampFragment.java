@@ -2,6 +2,7 @@ package com.grupo1.hci.smarthome.Activities;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -108,8 +109,8 @@ public class LampFragment extends Fragment {
 
     private void setView(View view) {
 
-        lamp = (Lamp) ((DeviceActivity) getActivity()).getDevice();
-        ((DeviceActivity)getActivity()).getSupportActionBar().setTitle(lamp.getName());
+        lamp = (Lamp) ((SuportDeviceActivity) getActivity()).getDevice();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(lamp.getName());
 
         onOffToggleButton = view.findViewById(R.id.contentLamp_OnOff_switch);
         seekBar = view.findViewById(R.id.contentLamp_dimmerSeekBar);

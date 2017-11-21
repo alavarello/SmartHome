@@ -2,6 +2,7 @@ package com.grupo1.hci.smarthome.Activities;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,8 +69,8 @@ public class DoorFragment extends Fragment {
     }
     private void setView(View view) {
 
-        door = (Door) ((DeviceActivity) getActivity()).getDevice();
-        ((DeviceActivity)getActivity()).getSupportActionBar().setTitle(door.getName());
+        door = (Door) ((SuportDeviceActivity) getActivity()).getDevice();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(door.getName());
 
         openCloseSwitch = view.findViewById(R.id.contentDoor_OpenClose_Switch);
         openCloseSwitch.setTextOff(getString(R.string.open));
