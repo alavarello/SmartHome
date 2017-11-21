@@ -287,6 +287,8 @@ public class ApiService extends Service {
                 s.setDevice(deviceState.s.getDevice());
                 s.setName(deviceState.s.getName());
                 s.setNotificationChannel(deviceState.s.getNotificationChannel());
+                s.setSameNotifications(deviceState.s);
+
 
                 if( deviceState.s.equals(s) || !deviceState.s.isStarted()){
 
