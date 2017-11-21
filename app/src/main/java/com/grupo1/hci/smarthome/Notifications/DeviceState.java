@@ -10,6 +10,8 @@ public class DeviceState implements Serializable  {
     State s;
     String deviceId;
 
+
+
     public DeviceState(State s, String deviceId) {
         this.s = s;
         this.deviceId = deviceId;

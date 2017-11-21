@@ -1,6 +1,10 @@
 package com.grupo1.hci.smarthome.Notifications;
 
 
+import com.grupo1.hci.smarthome.Model.Door;
+
+import java.util.ArrayList;
+
 /**
  * Created by francisco on 18/11/2017.
  */
@@ -9,6 +13,32 @@ public class DoorState  extends State {
 
     String status;
     String lock;
+
+    public ArrayList<String> getDifferences(State a){
+
+        DoorState s = (DoorState) a;
+
+        ArrayList<String> ret = new ArrayList<>();
+
+        if(!s.status.equals(status)){
+            if(status.equals("open")){
+                ret.add(super.getName() + " has been opened");
+            }else{
+                ret.add(super.getName() + " has been closed");
+            }
+
+        }
+        if(!s.lock.equals(lock)){
+            if(lock.equals("lock")){
+                ret.add(super.getName() + " has been locked");
+            }else{
+                ret.add(super.getName() + " has been unlocked");
+            }
+        }
+
+        return ret;
+
+    }
 
     public String getStatus() {
         return status;

@@ -1,6 +1,8 @@
 package com.grupo1.hci.smarthome.Notifications;
 
 
+import java.util.ArrayList;
+
 /**
  * Created by francisco on 18/11/2017.
  */
@@ -8,6 +10,20 @@ package com.grupo1.hci.smarthome.Notifications;
 public class AlarmState extends State{
 
     String status;
+
+    public ArrayList<String> getDifferences(State a){
+
+        AlarmState s = (AlarmState) a;
+
+        ArrayList<String> ret = new ArrayList<>();
+
+        if(!s.status.equals(status)){
+            ret.add(super.getName() + " Status has changed to : " + status);
+        }
+
+        return ret;
+
+    }
 
     public String getStatus() {
         return status;

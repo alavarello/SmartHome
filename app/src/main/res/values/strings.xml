@@ -91,7 +91,7 @@
         <item>Top</item>
     </string-array>
 
-    <string name="notification">Ping Notification</string>
+    <string name="notification">SmartHomeNotification</string>
     <string name="label">Ping Me</string>
     <string-array name="grill_array">
         <item>Large</item>

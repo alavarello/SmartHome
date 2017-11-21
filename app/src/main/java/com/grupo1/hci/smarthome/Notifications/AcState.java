@@ -1,4 +1,7 @@
 package com.grupo1.hci.smarthome.Notifications;
+
+import java.util.ArrayList;
+
 /**
  * Created by francisco on 18/11/2017.
  */
@@ -82,5 +85,40 @@ public class AcState  extends State {
                 ", horizontalSwing='" + horizontalSwing + '\'' +
                 ", fanSpeed='" + fanSpeed + '\'' +
                 '}';
+    }
+
+
+    public ArrayList<String> getDifferences( State a){
+
+        AcState s = (AcState) a;
+
+        ArrayList<String> ret = new ArrayList<>();
+
+        if(!s.fanSpeed.equals(fanSpeed)){
+            ret.add(super.getName() + " Fan speed has changed to : " + fanSpeed);
+        }
+        if(!s.status.equals(status)){
+            if(status.equals("on")){
+                ret.add(super.getName() + " has turned on");
+            }else {
+
+                ret.add(super.getName() + " has turned off");
+            }
+        }
+        if(!s.mode.equals(mode)){
+            ret.add(super.getName() + " Mode has changed to : " + mode);
+        }
+        if(!s.verticalSwing.equals(verticalSwing)){
+            ret.add(super.getName() + " Vertical Swing  has changed to : " + verticalSwing);
+        }
+        if(!s.horizontalSwing.equals(horizontalSwing)){
+            ret.add(super.getName() + " Horizontal Swing has changed to : " + horizontalSwing);
+        }
+        if(s.temperature != temperature){
+            ret.add(super.getName() + " Temperature has changed to : " + mode);
+        }
+
+        return ret;
+
     }
 }

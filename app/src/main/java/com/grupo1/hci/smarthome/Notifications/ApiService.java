@@ -90,7 +90,8 @@ public class ApiService extends Service {
                         break;
                     default:  s = new DoorState("", "");
                 }
-                sendNotification(getApplicationContext() , "se agrego " + d.name);
+                s.setName(d.name);
+                sendNotification(getApplicationContext() ,  d.name + " has been added");
                 status.add(new DeviceState(s,d.id));
             }
         }
@@ -214,6 +215,8 @@ public class ApiService extends Service {
                 State s;
 
 
+
+
                 switch(deviceState.s.getDevice()){
 
                     case 0: s = g.fromJson(r.getResult(), BlindState.class);
@@ -238,9 +241,7 @@ public class ApiService extends Service {
                 }
 
                 s.setDevice(deviceState.s.getDevice());
-
-                Log.d("AQUI" ," ESTOY");
-
+                s.setName(deviceState.s.getName());
 
                 if( deviceState.s.equals(s) || !deviceState.s.isStarted()){
 
@@ -248,11 +249,19 @@ public class ApiService extends Service {
                     deviceState.s.setStarted(true);
                     return;
                 }
+
+
+                ArrayList<String> messages = s.getDifferences(deviceState.s);
+
+
+                Log.d("messages es " , g.toJson(messages));
+
                 deviceState.s = s;
                 deviceState.s.setStarted(true);
 
-
-                sendNotification(context , s.toString());
+                for(String m : messages) {
+                    sendNotification(context,    m);
+                }
 
 
 
@@ -263,7 +272,7 @@ public class ApiService extends Service {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                sendNotification(context , "error");
+                sendNotification(context , "error" );
                 //Toast.makeText(context, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
@@ -271,7 +280,7 @@ public class ApiService extends Service {
         queue.add(sr);
     }
 
-    private void sendNotification(Context context , String message){
+    private void sendNotification(Context context , String message ){
         mServiceIntent.putExtra(CommonConstants.EXTRA_MESSAGE, message);//l.getStatus().toString());
         mServiceIntent.setAction(CommonConstants.ACTION_PING);
 

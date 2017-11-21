@@ -1,6 +1,10 @@
 package com.grupo1.hci.smarthome.Notifications;
 
 
+import com.grupo1.hci.smarthome.Model.Blind;
+
+import java.util.ArrayList;
+
 /**
  * Created by francisco on 18/11/2017.
  */
@@ -9,6 +13,29 @@ public class BlindState extends State{
 
     String status;
     int level;
+
+    public ArrayList<String> getDifferences(State a){
+
+        BlindState s = (BlindState) a;
+
+        ArrayList<String> ret = new ArrayList<>();
+
+        if(!s.status.equals(status)){
+            if(status.equals("opened")){
+                ret.add(super.getName() + " has been opened");
+            }else{
+                ret.add(super.getName() + " has been closed");
+            }
+
+        }
+
+        if(s.level != level){
+            ret.add(super.getName() + "Level has changed to : " + level);
+        }
+
+        return ret;
+
+    }
 
     public String getStatus() {
         return status;
