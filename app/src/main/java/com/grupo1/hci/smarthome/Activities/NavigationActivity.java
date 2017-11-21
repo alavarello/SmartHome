@@ -71,8 +71,6 @@ public class NavigationActivity extends AppCompatActivity
         //Set toolbar content
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -84,7 +82,7 @@ public class NavigationActivity extends AppCompatActivity
 
     }
 
-    private void setMenu() {
+    public void setMenu() {
         //Set up the nav menu for the rooms
         SubMenu m = navigationView.getMenu().addSubMenu("Cuartos");
         int i =0;
@@ -111,9 +109,11 @@ public class NavigationActivity extends AppCompatActivity
         int id = item.getItemId();
         if(id == R.id.settings){
             Intent intent = new Intent(NavigationActivity.this.getApplicationContext(), SettingsActivity.class);
+            intent.setFlags(intent.getFlags() | Intent.FLAG_ACTIVITY_NO_HISTORY);
             startActivity(intent);
         }else if(id == R.id.rutines){
             Intent intent = new Intent(NavigationActivity.this.getApplicationContext(), RutinesActivity.class);
+            intent.setFlags(intent.getFlags() | Intent.FLAG_ACTIVITY_NO_HISTORY);
             startActivity(intent);
         }else{
             if(!getClass().equals(RoomActivity.class)){

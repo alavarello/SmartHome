@@ -10,6 +10,7 @@ import com.grupo1.hci.smarthome.Model.Rutine;
 import com.grupo1.hci.smarthome.R;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by agust on 11/1/2017.
@@ -17,32 +18,28 @@ import java.util.ArrayList;
 
 public class RutineContextualMenu implements ActionMode.Callback {
 
-    ArrayList<Rutine> rutines = new ArrayList<>();
+    HashMap<Rutine,Integer> rutines = new HashMap<>();
     RutinesActivity rutineActivity;
     Menu menu;
 
 
 
-    public void addRutine(Rutine rutine) {
-        this.rutines.add(rutine);
+    public void addRutine(Rutine rutine, Integer position) {
+        this.rutines.put(rutine, position);
+    }
+
+    public void removeRutine(Rutine rutine) {
+        this.rutines.remove(rutine);
     }
 
     public void setRutineActivity(RutinesActivity roomActivity) {
         this.rutineActivity = roomActivity;
     }
-    public void changeToSeveralItemsMenu(){
-        menu.findItem(R.id.editElement).setVisible(false);
-    }
-
-    public void changeToOneItemsMenu(){
-        menu.findItem(R.id.editElement).setVisible(true);
-    }
-
     @Override
     public boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
         MenuInflater inflater = actionMode.getMenuInflater();
         this.menu =menu;
-        inflater.inflate(R.menu.one_item_contextual_menu, menu);
+        inflater.inflate(R.menu.contextual_menu, menu);
         return true;
     }
 
@@ -54,11 +51,6 @@ public class RutineContextualMenu implements ActionMode.Callback {
     @Override
     public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem) {
         switch (menuItem.getItemId()) {
-            case R.id.editElement:
-                EditDialogMessage editDeviceMessage = new EditDialogMessage();
-                editDeviceMessage.setRutine(rutines.get(0));
-                editDeviceMessage.show(rutineActivity.getFragmentManager(), "editDevice");
-                break;
             case R.id.deleteElement:
                 ((RutinesListFragment) rutineActivity.getFragment()).deleteRutines(rutines);
                 break;

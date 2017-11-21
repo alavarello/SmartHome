@@ -6,20 +6,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Switch;
-import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
-import com.grupo1.hci.smarthome.Model.Blind;
-import com.grupo1.hci.smarthome.Model.Constants;
+import com.grupo1.hci.smarthome.Model.APIManager;
 import com.grupo1.hci.smarthome.Model.Door;
 import com.grupo1.hci.smarthome.R;
 
 
 public class DoorFragment extends Fragment {
 
-    Switch openCloseToggeleButton;
-    Switch lockUnlockToggleButton;
+    Switch openCloseSwitch;
+    Switch lockUnlockSwitch;
     Door door;
 
     public DoorFragment() {
@@ -39,27 +36,27 @@ public class DoorFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_door, container, false);
         setView(view);
         setOnClickListener();
-        loadDoorState();
+        APIManager.getInstance(getActivity()).getState(getContext(), door, getActivity(), this);
         // Inflate the layout for this fragment
         return view;
     }
 
 
     private void setOnClickListener() {
-        openCloseToggeleButton.setOnClickListener(new View.OnClickListener() {
+        openCloseSwitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(openCloseToggeleButton.isChecked()){
+                if(openCloseSwitch.isChecked()){
                     Toast.makeText(getActivity().getApplicationContext(), "CLOSE", Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(getActivity().getApplicationContext(), "OPEN", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-        lockUnlockToggleButton.setOnClickListener(new View.OnClickListener() {
+        lockUnlockSwitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(openCloseToggeleButton.isChecked()){
+                if(lockUnlockSwitch.isChecked()){
                     Toast.makeText(getActivity().getApplicationContext(), "LOCK", Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(getActivity().getApplicationContext(), "UNLOCK", Toast.LENGTH_SHORT).show();
@@ -72,24 +69,25 @@ public class DoorFragment extends Fragment {
         door = (Door) ((DeviceActivity) getActivity()).getDevice();
         ((DeviceActivity)getActivity()).getSupportActionBar().setTitle(door.getName());
 
-        openCloseToggeleButton = view.findViewById(R.id.contentDoor_OpenClose_ToogleButton);
-        openCloseToggeleButton.setTextOff(getString(R.string.open));
-        openCloseToggeleButton.setTextOn(getString(R.string.close));
-        lockUnlockToggleButton = view.findViewById(R.id.contentDoor_LockUnlock_ToggleButton);
-        lockUnlockToggleButton.setTextOff(getString(R.string.unlock));
-        lockUnlockToggleButton.setTextOn(getString(R.string.lock));
+        openCloseSwitch = view.findViewById(R.id.contentDoor_OpenClose_Switch);
+        openCloseSwitch.setTextOff(getString(R.string.open));
+        openCloseSwitch.setTextOn(getString(R.string.close));
+        lockUnlockSwitch = view.findViewById(R.id.contentDoor_LockUnlock_Switch);
+        lockUnlockSwitch.setTextOff(getString(R.string.unlock));
+        lockUnlockSwitch.setTextOn(getString(R.string.lock));
     }
 
-    private void loadDoorState() {
+    public void loadDoorState(Door door) {
+        this.door = door;
         if(door.isClosed()){
-            openCloseToggeleButton.setChecked(true);
+            openCloseSwitch.setChecked(true);
         }else{
-            openCloseToggeleButton.setChecked(false);
+            openCloseSwitch.setChecked(false);
         }
         if(door.isLocked()){
-            lockUnlockToggleButton.setChecked(true);
+            lockUnlockSwitch.setChecked(true);
         }else{
-            lockUnlockToggleButton.setChecked(false);
+            lockUnlockSwitch.setChecked(false);
         }
     }
 

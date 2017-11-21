@@ -69,6 +69,8 @@
     <string name="blind">Blind</string>
     <string name="dismiss">Dismiss</string>
     <string name="snooze">Snooze</string>
+    <string name="changeNotificationOpenClose">OpenClose</string>
+    <string name="changeNotificationLockUnlock">cNLockUnlock</string>
 
 
     <string-array name="defaultDeviceNotification_array">
@@ -124,8 +126,7 @@
     <string name="red">Red</string>
     <string name="blue">Blue</string>
 
-    <string name="changeNotificationOpenClose">The door opens or closes</string>
-    <string name="changeNotificationLockUnlock">The door locks or unlocks</string>
+
 
     <string name="changeNotificationHeat">Changes heat</string>
     <string name="changeNotificationConvection">Changes convection</string>

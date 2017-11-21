@@ -201,7 +201,7 @@ public class ApiService extends Service {
         //Toast.makeText(context, idDevice, Toast.LENGTH_SHORT).show();
         // prueba con una lampara
         // String url = "http://10.0.3.2:8080/api/rooms";
-        String url = "  http://10.0.2.2:8080/api/devices/" + deviceState.deviceId + "/getState";
+        String url = "http://192.168.0.105:8080/api/devices/" + deviceState.deviceId + "/getState";
 
 
         StringRequest sr = new StringRequest(Request.Method.PUT,url, new Response.Listener<String>() {
@@ -294,7 +294,7 @@ public class ApiService extends Service {
 
     public  void getAllDevices(final Context context) {
 
-        String url = "http://10.0.2.2:8080/api/devices";
+        String url = "http://192.168.0.105:8080/api/devices";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, new JSONObject(),
                 new Response.Listener<JSONObject>()
                 {

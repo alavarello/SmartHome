@@ -1,8 +1,10 @@
 package com.grupo1.hci.smarthome.Model;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.content.Context;
+import android.graphics.Color;
+import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -18,21 +20,26 @@ import com.android.volley.toolbox.BasicNetwork;
 import com.android.volley.toolbox.DiskBasedCache;
 import com.android.volley.toolbox.HurlStack;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import com.grupo1.hci.smarthome.Activities.BlindFragment;
 import com.grupo1.hci.smarthome.Activities.DeviceActivity;
+import com.grupo1.hci.smarthome.Activities.DoorFragment;
 import com.grupo1.hci.smarthome.Activities.HomeActivity;
 import com.grupo1.hci.smarthome.Activities.HomeAdapter;
 import com.grupo1.hci.smarthome.Activities.HomeFragment;
 import com.grupo1.hci.smarthome.Activities.HomeListFragment;
+import com.grupo1.hci.smarthome.Activities.LampFragment;
 import com.grupo1.hci.smarthome.Activities.NavigationActivity;
+import com.grupo1.hci.smarthome.Activities.OvenFragment;
 import com.grupo1.hci.smarthome.Activities.RoomActivity;
 import com.grupo1.hci.smarthome.Activities.RoomListFragment;
 import com.grupo1.hci.smarthome.Activities.RoomsAdapter;
 import com.grupo1.hci.smarthome.Activities.RoomsFragment;
 import com.grupo1.hci.smarthome.Activities.RutinesActivity;
-import com.grupo1.hci.smarthome.R;
+
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -89,11 +96,8 @@ public class APIManager {
                              */
                             ArrayList<Room> roomList = gson.fromJson(jsonFragment, listType);
                             ((HomeActivity)activity).loadRooms(roomList);
-
-                            /**
-                             * TODO
-                             * Armar el adapter
-                             */
+                            ((NavigationActivity)activity).setRoomsArray(roomList);
+                            ((NavigationActivity)activity).setMenu();
                         } catch (Exception exception) {
                             Toast.makeText(activity, exception.getLocalizedMessage(), Toast.LENGTH_LONG).show();
                         }
@@ -239,6 +243,33 @@ public class APIManager {
                         if (null != error.networkResponse)
                         {
                             ((HomeFragment)((RoomActivity)activity).getFragment()).roomDeleteError(room);
+                            Toast.makeText(activity,error.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+        queue.add(request);
+    }
+
+    public void deleteRutine(final Rutine rutine, final Activity activity) {
+
+        String url = "http://192.168.0.105:8080/api/routines/" + rutine.getId();
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.DELETE, url, new JSONObject(),
+                new Response.Listener<JSONObject>()
+                {
+                    @Override
+                    public void onResponse(JSONObject response)
+                    {
+                        Toast.makeText(activity,response.toString(), Toast.LENGTH_LONG).show();
+                    }
+                },
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error)
+                    {
+                        if (null != error.networkResponse)
+                        {
+                           //TODO
                             Toast.makeText(activity,error.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     }
@@ -480,4 +511,81 @@ public class APIManager {
         queue.add(request);
     }
 
+    public  void getState(final Context context , final Device device, final Activity activity, final Fragment fragment) {
+
+        //Toast.makeText(context, idDevice, Toast.LENGTH_SHORT).show();
+        // prueba con una lampara
+        // String url = "http://10.0.3.2:8080/api/rooms";
+        String url = "http://192.168.0.105:8080/api/devices/" + device.getId() + "/getState";
+        cache = new DiskBasedCache(activity.getCacheDir(), 1024 * 1024); // 1MB cap
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, new JSONObject(),
+                new Response.Listener<JSONObject>()
+                {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try{
+                            Gson gson = new GsonBuilder().create();
+                            Type listType = new TypeToken<ArrayList<Rutine>>() {
+                            }.getType();
+                            JSONObject jsonObject = response.getJSONObject("result");
+                            switch (device.getTypeId()){
+                                case Constants.LAMP_ID:
+                                    Lamp l = (Lamp) device;
+                                    l.setBrightness(jsonObject.getInt("brightness"));
+                                    l.setColor(jsonObject.getString("color"));
+                                    if(jsonObject.getString("status").equals("off")){
+                                        l.setOn(false);
+                                    }else{
+                                        l.setOn(true);
+                                    }
+                                    ((LampFragment)fragment).loadLampState(l);
+                                    break;
+                                case Constants.BLIND_ID:
+                                    Blind b = (Blind) device;
+                                   b.setStatus(jsonObject.getString("status"));
+                                    ((BlindFragment)fragment).loadBlindState(b);
+                                   break;
+                                case Constants.DOOR_ID:
+                                    Door d = (Door) device;
+                                    if(jsonObject.getString("status") == "opened"){
+                                        d.setClosed(Constants.DOOR_OPENED);
+                                    }else{
+                                        d.setClosed(Constants.DOOR_CLOSED);
+                                    }
+                                    if(jsonObject.getString("status") == "unlocked"){
+                                        d.setClosed(Constants.DOOR_UNLOCKED);
+                                    }else{
+                                        d.setClosed(Constants.DOOR_LOCKED);
+                                    }
+                                    ((DoorFragment)fragment).loadDoorState(d);
+                                    break;
+                                case Constants.OVEN_ID:
+                                    Oven o = (Oven) device;
+                                    if(jsonObject.getString("status").equals("off")){
+                                        o.setOn(false);
+                                    }else{
+                                        o.setOn(true);
+                                    }
+                                    o.setTemperature(jsonObject.getInt("temperature"));
+                                    o.setConvection(jsonObject.getString("convection"));
+                                    o.setGrill(jsonObject.getString("grill"));
+                                    o.setHeat(jsonObject.getString("heat"));
+                                    ((OvenFragment)fragment).loadOvenState(o);
+                                    break;
+                            }
+
+                        } catch (Exception exception) {
+                            Toast.makeText(activity, exception.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(activity, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        queue.add(request);
+
+    }
 }
