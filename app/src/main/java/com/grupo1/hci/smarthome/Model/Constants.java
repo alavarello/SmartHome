@@ -37,6 +37,15 @@ public class Constants {
     public static final String OVEN_CONVECTION_NORMAL = "normal";
     public static final String OVEN_CONVECTION_ECO = "eco";
     public static final int OVEN_START_TEMPERATURE = 90;
+    public static final int OVEN_CONVECTION_ECO_POSITION = 1;
+    public static final int OVEN_CONVECTION_NORMAL_POSITION = 0;
+    public static final int OVEN_CONVECTION_OFF_POSITION = 2;
+    public static final int OVEN_GRILL_OFF_POSITION = 2;
+    public static final int OVEN_GRILL_ECO_POSITION = 1;
+    public static final int OVEN_GRILL_LARGE_POSITION = 0;
+    public static final int OVEN_HEAT_CONVENTIONAL_POSITION = 0;
+    public static final int OVEN_HEAT_BOTTOM_POSITION = 1;
+    public static final int OVEN_HEAT_TOP_POSITION = 2;
 
     //Door --------------------------------
     public static final boolean DOOR_CLOSED = true;

@@ -19,10 +19,10 @@
         app:layout_constraintTop_toTopOf="@+id/textView14" />
 
     <SeekBar
-        android:id="@+id/seekBar6"
+        android:id="@+id/contentLamp_dimmerSeekBar"
         android:layout_width="174dp"
         android:layout_height="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/contentLamp_OnOff_toogleButton"
+        app:layout_constraintEnd_toEndOf="@+id/contentLamp_OnOff_switch"
         app:layout_constraintTop_toTopOf="@+id/textView13" />
 
     <TextView
@@ -34,8 +34,8 @@
         android:gravity="center"
         android:text="@string/brightness"
         android:textAppearance="@style/TextAppearance.AppCompat"
-        app:layout_constraintStart_toStartOf="@+id/contentLamp_OnOff_toogleButton"
-        app:layout_constraintTop_toBottomOf="@+id/contentLamp_OnOff_toogleButton" />
+        app:layout_constraintStart_toStartOf="@+id/contentLamp_OnOff_switch"
+        app:layout_constraintTop_toBottomOf="@+id/contentLamp_OnOff_switch" />
 
     <TextView
         android:id="@+id/textView14"
@@ -58,7 +58,7 @@
 
         android:background="@drawable/roundedbutton"
         android:backgroundTint="@android:color/holo_blue_light"
-        app:layout_constraintEnd_toEndOf="@+id/seekBar6"
+        app:layout_constraintEnd_toEndOf="@+id/contentLamp_dimmerSeekBar"
         app:layout_constraintTop_toTopOf="@+id/textView14" />
 
     <Button
@@ -87,7 +87,7 @@
         app:layout_constraintTop_toTopOf="@+id/textView14" />
 
     <Switch
-        android:id="@+id/contentLamp_OnOff_toogleButton"
+        android:id="@+id/contentLamp_OnOff_switch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"

@@ -5,13 +5,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SeekBar;
 import android.widget.Switch;
-import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
-import com.grupo1.hci.smarthome.Model.Blind;
-import com.grupo1.hci.smarthome.Model.Constants;
+import com.grupo1.hci.smarthome.Model.APIManager;
 import com.grupo1.hci.smarthome.Model.Lamp;
 import com.grupo1.hci.smarthome.R;
 
@@ -20,6 +18,7 @@ public class LampFragment extends Fragment {
 
     Switch onOffToggleButton;
     Lamp lamp;
+    SeekBar seekBar;
 
     public LampFragment() {
         // Required empty public constructor
@@ -38,7 +37,8 @@ public class LampFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_lamp, container, false);
         setView(view);
         setOnClickListener();
-        loadLampState();
+        APIManager apiManager = APIManager.getInstance(getActivity());
+        apiManager.getState(getContext(), lamp, getActivity(), this);
         // Inflate the layout for this fragment
         return view;
     }
@@ -62,17 +62,21 @@ public class LampFragment extends Fragment {
         lamp = (Lamp) ((DeviceActivity) getActivity()).getDevice();
         ((DeviceActivity)getActivity()).getSupportActionBar().setTitle(lamp.getName());
 
-        onOffToggleButton = view.findViewById(R.id.contentLamp_OnOff_toogleButton);
+        onOffToggleButton = view.findViewById(R.id.contentLamp_OnOff_switch);
+        seekBar = view.findViewById(R.id.contentLamp_dimmerSeekBar);
         onOffToggleButton.setTextOff(getString(R.string.off));
         onOffToggleButton.setTextOn(getString(R.string.on));
     }
 
-    private void loadLampState() {
+    public void loadLampState(Lamp lamp) {
+        this.lamp = lamp;
        if(lamp.isOn()){
             onOffToggleButton.setChecked(true);
         }else{
             onOffToggleButton.setChecked(false);
         }
+        seekBar.setProgress(lamp.getBrightness());
+       //TODO color of the lamp
 
     }
 

@@ -1,5 +1,6 @@
 package com.grupo1.hci.smarthome.Activities;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -14,6 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.grupo1.hci.smarthome.Model.APIManager;
+import com.grupo1.hci.smarthome.Model.Constants;
 import com.grupo1.hci.smarthome.Model.Oven;
 import com.grupo1.hci.smarthome.R;
 
@@ -46,7 +49,7 @@ public class OvenFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_oven, container, false);
         setView(view);
         setOnClickListener();
-        loadOvenState();
+        APIManager.getInstance(getActivity()).getState(getContext(),oven,getActivity(),this);
         // Inflate the layout for this fragment
         return view;
     }
@@ -113,13 +116,38 @@ public class OvenFragment extends Fragment {
     }
 
 
-    private void loadOvenState() {
+    public void loadOvenState(Oven oven) {
+        this.oven = oven;
         if(oven.isOn()){
             onOffToggleButton.setChecked(true);
         }else{
             onOffToggleButton.setChecked(false);
         }
         temperatureEditText.setText(String.valueOf(oven.getTemperature()));
+        if(oven.getConvection().equals(Constants.OVEN_CONVECTION_ECO)){
+            convectionSpinner.setSelection(Constants.OVEN_CONVECTION_ECO_POSITION);
+        }
+        else if(oven.getConvection().equals(Constants.OVEN_CONVECTION_NORMAL)){
+            convectionSpinner.setSelection(Constants.OVEN_CONVECTION_NORMAL_POSITION);
+        }else{
+            convectionSpinner.setSelection(Constants.OVEN_CONVECTION_OFF_POSITION);
+        }
+        if(oven.getGrill().equals(Constants.OVEN_GRILL_ECO)){
+            grillSpinner.setSelection(Constants.OVEN_GRILL_ECO_POSITION);
+        }
+        else if(oven.getGrill().equals(Constants.OVEN_GRILL_LARGE)){
+            grillSpinner.setSelection(Constants.OVEN_GRILL_LARGE_POSITION);
+        }else{
+            grillSpinner.setSelection(Constants.OVEN_GRILL_OFF_POSITION);
+        }
+        if(oven.getHeat().equals(Constants.OVEN_HEAT_BOTTOM)){
+            heatSpinner.setSelection(Constants.OVEN_HEAT_BOTTOM_POSITION);
+        }
+        else if(oven.getHeat().equals(Constants.OVEN_HEAT_TOP)){
+            heatSpinner.setSelection(Constants.OVEN_HEAT_TOP_POSITION);
+        }else{
+            heatSpinner.setSelection(Constants.OVEN_HEAT_CONVENTIONAL_POSITION);
+        }
     }
 
 
