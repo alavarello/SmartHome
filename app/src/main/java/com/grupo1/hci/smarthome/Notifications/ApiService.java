@@ -96,6 +96,8 @@ public class ApiService extends Service {
 
         devicesAdd.clear();
         devicesRemove.clear();
+
+        saveArray();
     }
     private void checkForDeleted(ArrayList<DeviceNotifications> dev){
 
@@ -105,13 +107,14 @@ public class ApiService extends Service {
 
              Log.d("borrar" , "va a borrar" + d1.getDeviceId());
 
-             DeviceState st = new DeviceState(null , d1.getDeviceId());
+             DeviceState st = getDevice(d1.getDeviceId());
 
              int channelId =  st.s.getNotificationChannel();
 
-             Log.d("el canal es " + channelId);
+
              devicesRemove.add(d1);
              statusRemove.add(st);
+
              sendNotification(getApplicationContext() , d1.name + " has been deleted" , channelId );
          }
      }
@@ -177,23 +180,6 @@ public class ApiService extends Service {
 
         }
 
-
-        Thread savingThread = new Thread() {
-            @Override
-            public void run() {
-                try {
-                    while(true) {
-                        sleep(10000);
-                        saveArray();
-                        //checkDevicesState(getApplicationContext());
-                    }
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        };
-
-        savingThread.start();
 
         Thread thread = new Thread() {
             @Override
