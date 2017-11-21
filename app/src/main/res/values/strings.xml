@@ -140,7 +140,15 @@
     <string name="changeNotificationTemperature">Changes temperature</string>
     <string name="changeNotificationGrill">Changes grill</string>
 
+    <string name="refri_def">Default</string>
+    <string name="refri_party">Party</string>
+    <string name="refri_vacation">Vacation</string>
 
+    <string-array name="refri_mode">
+        <item>Default</item>
+        <item>Vacation</item>
+        <item>Party</item>
+    </string-array>
 
 
 
