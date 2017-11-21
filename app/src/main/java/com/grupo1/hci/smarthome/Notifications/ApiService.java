@@ -25,8 +25,10 @@ import org.json.JSONObject;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by francisco on 18/11/2017.
@@ -37,6 +39,8 @@ import java.util.List;
  */
 
 public class ApiService extends Service {
+
+
 
     private static final String SHARED_PREFS_NAME = "MY_SHARED_PREF";
 
@@ -51,6 +55,7 @@ public class ApiService extends Service {
 
 
 
+
     RequestQueue  queue ;
 
     Intent mServiceIntent ;
@@ -59,15 +64,55 @@ public class ApiService extends Service {
 
     static ArrayList<DeviceState> status = new ArrayList<>();
 
+    static Set<DeviceState> statusAdd = new HashSet<>();
+
+    static Set<DeviceState> statusRemove = new HashSet<>();
+
+    static Set<DeviceNotifications> devicesAdd  = new HashSet<>();
+
+    static Set<DeviceNotifications> devicesRemove  = new HashSet<>();
+
+    public static DeviceState getDevice(String id){
+
+        for(DeviceState d : status){
+            if(d.deviceId.equals(id)){
+                return d;
+            }
+        }
+
+        return null;
+    }
+
+    private void updateArrays()
+    {
+        status.removeAll(statusRemove);
+        status.addAll(statusAdd);
+
+        devices.removeAll(devicesRemove);
+        devices.addAll(devicesAdd);
+
+        statusRemove.clear();
+        statusAdd.clear();
+
+        devicesAdd.clear();
+        devicesRemove.clear();
+    }
     private void checkForDeleted(ArrayList<DeviceNotifications> dev){
 
         for(DeviceNotifications d1 : devices) {
 
          if (!dev.contains(d1)){
+
+             Log.d("borrar" , "va a borrar" + d1.getDeviceId());
+
              DeviceState st = new DeviceState(null , d1.getDeviceId());
-             status.remove(st);
-             devices.remove(d1);
-             sendNotification(getApplicationContext() , d1.name + " has been deleted");
+
+             int channelId =  st.s.getNotificationChannel();
+
+             Log.d("el canal es " + channelId);
+             devicesRemove.add(d1);
+             statusRemove.add(st);
+             sendNotification(getApplicationContext() , d1.name + " has been deleted" , channelId );
          }
      }
     }
@@ -106,8 +151,9 @@ public class ApiService extends Service {
                     default:  s = new DoorState("", "");
                 }
                 s.setName(d.name);
-                sendNotification(getApplicationContext() ,  d.name + " has been added");
-                status.add(new DeviceState(s,d.id));
+                sendNotification(getApplicationContext() ,  d.name + " has been added" , s.getNotificationChannel());
+                //status.add(new DeviceState(s,d.id));
+                statusAdd.add(new DeviceState(s,d.id));
             }
         }
     }
@@ -157,6 +203,7 @@ public class ApiService extends Service {
                         sleep(5000);
                         checkDevicesState(getApplicationContext());
                         getAllDevices(getApplicationContext());
+                        updateArrays();
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -196,7 +243,8 @@ public class ApiService extends Service {
 
         //Toast.makeText(context, idDevice, Toast.LENGTH_SHORT).show();
         // prueba con una lampara
-        // String url = "http://10.0.3.2:8080/api/rooms";
+        // String url = "http://10.0.2.2:8080/api/rooms";
+        //String url =  "http://10.0.2.2:8080/api/devices/" + deviceState.deviceId + "/getState";
         String url =  Constants.PORT_CONECTIVITY+"/api/devices/" + deviceState.deviceId + "/getState";
 
 
@@ -252,6 +300,7 @@ public class ApiService extends Service {
 
                 s.setDevice(deviceState.s.getDevice());
                 s.setName(deviceState.s.getName());
+                s.setNotificationChannel(deviceState.s.getNotificationChannel());
 
                 if( deviceState.s.equals(s) || !deviceState.s.isStarted()){
 
@@ -270,7 +319,7 @@ public class ApiService extends Service {
                 deviceState.s.setStarted(true);
 
                 for(String m : messages) {
-                    sendNotification(context,    m);
+                    sendNotification(context,    m , deviceState.s.getNotificationChannel());
                 }
 
 
@@ -292,21 +341,24 @@ public class ApiService extends Service {
         queue.add(sr);
     }
 
-    private void sendNotification(Context context , String message ){
+    private void sendNotification(Context context , String message , int channelId ){
        // mServiceIntent.putExtra("encabezado", "ayaya");
         mServiceIntent.putExtra(CommonConstants.EXTRA_MESSAGE, message);//l.getStatus().toString());
         mServiceIntent.setAction(CommonConstants.ACTION_PING);
+
+        mServiceIntent.putExtra("channelId" , channelId);
 
         int milliseconds = (5 * 1000);
 
         mServiceIntent.putExtra(CommonConstants.EXTRA_TIMER, milliseconds);
 
         // Launches IntentService "PingService" to set timer.
-        context.startService(mServiceIntent);
+        context.startService(mServiceIntent );
     }
 
     public  void getAllDevices(final Context context) {
 
+         //String url = "http://10.0.2.2:8080/api/devices";
         String url =  Constants.PORT_CONECTIVITY+"/api/devices";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, new JSONObject(),
                 new Response.Listener<JSONObject>()
@@ -330,6 +382,8 @@ public class ApiService extends Service {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+
+                sendNotification(context , "error" , 100);
 
             }
         });

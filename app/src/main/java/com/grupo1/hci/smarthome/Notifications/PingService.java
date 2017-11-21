@@ -75,23 +75,25 @@ public class PingService extends IntentService {
         NotificationManager nm = (NotificationManager)
                 getSystemService(NOTIFICATION_SERVICE);
 
+        int channelId  = intent.getIntExtra("channelId" , CommonConstants.NOTIFICATION_ID );
+
         String action = intent.getAction();
         // This section handles the 3 possible actions:
         // ping, snooze, and dismiss.
         if(action.equals(CommonConstants.ACTION_PING)) {
-            issueNotification(intent, mMessage);
+            issueNotification(intent, mMessage , channelId);
         } else if (action.equals(CommonConstants.ACTION_SNOOZE)) {
             nm.cancel(CommonConstants.NOTIFICATION_ID);
             Log.d(CommonConstants.DEBUG_TAG, getString(R.string.snoozing));
             // Sets a snooze-specific "done snoozing" message.
-            issueNotification(intent, getString(R.string.done_snoozing));
+            issueNotification(intent, getString(R.string.done_snoozing) , channelId);
 
         } else if (action.equals(CommonConstants.ACTION_DISMISS)) {
             nm.cancel(CommonConstants.NOTIFICATION_ID);
         }
     }
 
-    private void issueNotification(Intent intent, String msg) {
+    private void issueNotification(Intent intent, String msg , int channelID ) {
         mNotificationManager = (NotificationManager)
                 getSystemService(NOTIFICATION_SERVICE);
 
@@ -144,28 +146,17 @@ public class PingService extends IntentService {
          );
 
          builder.setContentIntent(resultPendingIntent);
-         startTimer(mMillis);
+        issueNotification(builder , channelID);
     }
 
-    private void issueNotification(NotificationCompat.Builder builder) {
+    private void issueNotification(NotificationCompat.Builder builder , int channelId) {
         mNotificationManager = (NotificationManager)
                 getSystemService(NOTIFICATION_SERVICE);
         // Including the notification ID allows you to update the notification later on.
-        mNotificationManager.notify(CommonConstants.NOTIFICATION_ID, builder.build());
+        mNotificationManager.notify(channelId, builder.build());
     }
 
- // Starts the timer according to the number of seconds the user specified.
-    private void startTimer(int millis) {
-        Log.d(CommonConstants.DEBUG_TAG, getString(R.string.timer_start));
-        try {
-            Thread.sleep(millis);
 
-        } catch (InterruptedException e) {
-            Log.d(CommonConstants.DEBUG_TAG, getString(R.string.sleep_error));
-        }
-        Log.d(CommonConstants.DEBUG_TAG, getString(R.string.timer_finished));
-        issueNotification(builder);
-    }
 
 
 }
