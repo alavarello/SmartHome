@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -61,16 +60,16 @@ public class RoomListFragment extends ListFragment implements AdapterView.OnItem
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_list, container, false);
+        view = inflater.inflate(R.layout.fragment_room_list, container, false);
         return view;
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        getListView().setVisibility(View.VISIBLE);
-        view.findViewById(R.id.gridView).setVisibility(View.GONE);
         room = ((RoomActivity) getActivity()).getRoom();
+        APIManager apiManager = APIManager.getInstance(getActivity());
+        apiManager.getDevicesForRoom(room.getId(), getActivity());
         toolbar = ((NavigationActivity) getActivity()).getToolbar();
         setView();
         getListView().setOnItemLongClickListener(this);

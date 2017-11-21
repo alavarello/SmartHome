@@ -51,7 +51,7 @@ public class RutinesListFragment extends ListFragment implements AdapterView.OnI
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_list, container, false);
+        view = inflater.inflate(R.layout.fragment_room_list, container, false);
         return view;
     }
 
@@ -84,8 +84,6 @@ public class RutinesListFragment extends ListFragment implements AdapterView.OnI
         //set listview Adapter and onCikcListener
         rowAdapter = new RutineAdapter((RutinesActivity)getActivity(), rutineArray, this);
         setListAdapter(rowAdapter);
-        getListView().setVisibility(View.VISIBLE);
-        view.findViewById(R.id.gridView).setVisibility(View.GONE);
         getListView().setOnItemClickListener(this);
         getListView().setOnItemLongClickListener(this);
     }
