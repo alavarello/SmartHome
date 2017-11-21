@@ -79,4 +79,7 @@ public class State implements  Serializable {
     public ArrayList<String> getDifferences(State s) {
         return new ArrayList<>();
     }
+
+    public void setSameNotifications(State sameNotifications) {
+    }
 }

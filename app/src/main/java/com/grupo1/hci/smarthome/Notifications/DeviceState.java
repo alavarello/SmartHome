@@ -31,4 +31,8 @@ public class DeviceState implements Serializable  {
     public int hashCode() {
         return deviceId.hashCode();
     }
+
+    public State getS() {
+        return s;
+    }
 }

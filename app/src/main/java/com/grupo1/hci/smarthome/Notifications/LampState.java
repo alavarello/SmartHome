@@ -33,6 +33,23 @@ public class LampState extends State {
         }
     }
 
+    public boolean getRealNotifyTurnOn(){
+        return isNotifiable(notifyTurnOn , notifyTurnOnClass);
+    }
+
+    public boolean getRealNotifyTurnOff(){
+        return isNotifiable(notifyTurnOff , notifyTurnOffClass);
+    }
+
+    public boolean getRealNotifyChangeBrightness(){
+        return isNotifiable( notifyChangeBrigtness , notifyChangeBrigtnessClass);
+    }
+
+    public boolean getRealNotifyChangeColor(){
+        return isNotifiable(notifyChangeColor, notifyChangeColorClass);
+    }
+
+
     public ArrayList<String> getDifferences(State a){
 
         LampState s = (LampState) a;
@@ -142,5 +159,46 @@ public class LampState extends State {
                 ", status='" + status + '\'' +
                 ", brightness=" + brightness +
                 '}';
+    }
+
+    public static boolean isNotifyTurnOnClass() {
+        return notifyTurnOnClass;
+    }
+
+    public static boolean isNotifyTurnOffClass() {
+        return notifyTurnOffClass;
+    }
+
+    public static boolean isNotifyChangeBrigtnessClass() {
+        return notifyChangeBrigtnessClass;
+    }
+
+    public static boolean isNotifyChangeColorClass() {
+        return notifyChangeColorClass;
+    }
+
+    public Boolean getNotifyTurnOn() {
+        return notifyTurnOn;
+    }
+
+    public Boolean getNotifyTurnOff() {
+        return notifyTurnOff;
+    }
+
+    public Boolean getNotifyChangeBrigtness() {
+        return notifyChangeBrigtness;
+    }
+
+    public Boolean getNotifyChangeColor() {
+        return notifyChangeColor;
+    }
+
+    public void setSameNotifications(LampState sameNotifications) {
+        super.setSameNotifications(sameNotifications);
+        LampState lamp = (LampState ) sameNotifications;
+        this.setNotifyChangeBrigtness( lamp.notifyChangeBrigtness);
+        this.setNotifyChangeColor(lamp.notifyChangeColor);
+        this.setNotifyTurnOff(lamp.notifyTurnOff);
+        this.setNotifyTurnOn(lamp.notifyTurnOn);
     }
 }

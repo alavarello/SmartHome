@@ -16,7 +16,7 @@ import com.grupo1.hci.smarthome.Model.Constants;
 import com.grupo1.hci.smarthome.Model.Device;
 import com.grupo1.hci.smarthome.R;
 
-public class DeviceActivity extends AppCompatActivity {
+public class DeviceActivity extends AppCompatActivity implements SuportDeviceActivity{
     Device device;
     FragmentTransaction fragmentTransaction;
     Fragment fragment;
@@ -89,18 +89,22 @@ public class DeviceActivity extends AppCompatActivity {
             case R.id.editElement:
                if(device.getTypeId().equals(Constants.LAMP_ID)){
                    Intent intent = new Intent(this, LampSettingsActivity.class);
+                   intent.putExtra(Constants.DEVICE_INTENT, device);
                    startActivity(intent);
                }
                 if(device.getTypeId().equals(Constants.BLIND_ID)){
                     Intent intent = new Intent(this, BlindSettingsActivity.class);
+                    intent.putExtra(Constants.DEVICE_INTENT, device);
                     startActivity(intent);
                 }
                 if(device.getTypeId().equals(Constants.OVEN_ID)){
                     Intent intent = new Intent(this, OvenSettingsActivity.class);
+                    intent.putExtra(Constants.DEVICE_INTENT, device);
                     startActivity(intent);
                 }
                 if(device.getTypeId().equals(Constants.DOOR_ID)){
                     Intent intent = new Intent(this, DoorSettingsActivity.class);
+                    intent.putExtra(Constants.DEVICE_INTENT, device);
                     startActivity(intent);
                 }
                 return true;

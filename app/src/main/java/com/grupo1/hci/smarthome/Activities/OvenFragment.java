@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -143,8 +144,8 @@ public class OvenFragment extends Fragment {
 
     private void setView(View view) {
 
-        oven = (Oven) ((DeviceActivity) getActivity()).getDevice();
-        ((DeviceActivity)getActivity()).getSupportActionBar().setTitle(oven.getName());
+        oven = (Oven) ((SuportDeviceActivity) getActivity()).getDevice();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(oven.getName());
 
         onOffSwitch = view.findViewById(R.id.contentOven_Onoff_ToogleButton);
         heatSpinner = view.findViewById(R.id.contentOven_Heat_Spinner);
