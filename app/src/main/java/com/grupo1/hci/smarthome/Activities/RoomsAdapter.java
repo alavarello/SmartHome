@@ -97,7 +97,7 @@ public class RoomsAdapter extends ArrayAdapter<Device> {
                 break;
             case Constants.BLIND_ID:
                 //TODO icon blind
-                imageView.setImageResource(R.drawable.ic_lamp);
+                imageView.setImageResource(R.drawable.ic_shutter);
                 break;
             case Constants.OVEN_ID:
                 imageView.setImageResource(R.drawable.ic_oven);
