@@ -53,9 +53,9 @@ public class LampSettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(notificationOnSwitch.isChecked()){
-                    lampState.setNotifyTurnOn(false);
-                }else{
                     lampState.setNotifyTurnOn(true);
+                }else{
+                    lampState.setNotifyTurnOn(false);
                 }
             }
         });
@@ -63,9 +63,9 @@ public class LampSettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(notificationOffSwitch.isChecked()){
-                    lampState.setNotifyTurnOff(false);
-                }else{
                     lampState.setNotifyTurnOff(true);
+                }else{
+                    lampState.setNotifyTurnOff(false);
                 }
             }
         });
@@ -73,9 +73,9 @@ public class LampSettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(notificationColorSwitch.isChecked()){
-                   lampState.setNotifyChangeColor(false);
+                   lampState.setNotifyChangeColor(true);
                 }else{
-                    lampState.setNotifyChangeColor(true);
+                    lampState.setNotifyChangeColor(false);
                 }
             }
         });
@@ -83,9 +83,9 @@ public class LampSettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(notificationDimmerSwitch.isChecked()){
-                    lampState.setNotifyChangeBrigtness(false);
-                }else{
                     lampState.setNotifyChangeBrigtness(true);
+                }else{
+                    lampState.setNotifyChangeBrigtness(false);
                 }
             }
         });
@@ -150,22 +150,22 @@ public class LampSettingsActivity extends AppCompatActivity {
     }
 
     private void setPersonaliseChecks() {
-        if(lampState.getNotifyTurnOn()){
+        if(lampState.getRealNotifyTurnOff()){
             notificationOnSwitch.setChecked(true);
         }else{
             notificationOnSwitch.setChecked(false);
         }
-        if(lampState.getNotifyTurnOff()){
+        if(lampState.getRealNotifyTurnOff()){
             notificationOffSwitch.setChecked(true);
         }else{
             notificationOffSwitch.setChecked(false);
         }
-        if(lampState.getNotifyChangeBrigtness()){
+        if(lampState.getRealNotifyChangeBrightness()){
             notificationDimmerSwitch.setChecked(true);
         }else{
             notificationDimmerSwitch.setChecked(false);
         }
-        if(lampState.getNotifyChangeColor()){
+        if(lampState.getRealNotifyChangeColor()){
             notificationColorSwitch.setChecked(true);
         }else{
             notificationColorSwitch.setChecked(false);
