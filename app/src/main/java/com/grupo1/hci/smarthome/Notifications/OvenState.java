@@ -1,6 +1,8 @@
 package com.grupo1.hci.smarthome.Notifications;
 
 
+import java.util.ArrayList;
+
 /**
  * Created by francisco on 18/11/2017.
  */
@@ -12,6 +14,36 @@ public class OvenState extends State{
     String heat;
     String grill;
     String convection;
+
+    public ArrayList<String> getDifferences(State a){
+
+        OvenState s = (OvenState) a;
+
+        ArrayList<String> ret = new ArrayList<>();
+
+        if(!s.heat.equals(heat)){
+            ret.add(super.getName() + " Heat has changed to : " + heat);
+        }
+        if(!s.grill.equals(grill)){
+            ret.add(super.getName() + " Grill has changed to : " + grill);
+        }
+        if(!s.convection.equals(convection)){
+            ret.add(super.getName() + " Convection has changed to : " + convection);
+        }
+        if(!s.status.equals(status)){
+            if(status.equals("on")){
+                ret.add(super.getName() + " has turned on");
+            }else{
+                ret.add(super.getName() + " has turned off");
+            }
+        }
+        if(s.temperature != temperature){
+            ret.add(super.getName() + " Temperature has changed to : " + temperature);
+        }
+
+        return ret;
+
+    }
 
     public OvenState( String status, int temperature, String heat, String grill, String convection) {
         super(2);

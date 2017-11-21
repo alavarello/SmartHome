@@ -1,6 +1,8 @@
 package com.grupo1.hci.smarthome.Notifications;
 
 
+import java.util.ArrayList;
+
 /**
  * Created by francisco on 18/11/2017.
  */
@@ -9,6 +11,26 @@ public class RefrigeratorState extends State {
     int freezerTemperature;
     int temperature;
     String mode;
+
+    public ArrayList<String> getDifferences(State a){
+
+        RefrigeratorState s = (RefrigeratorState) a;
+        ArrayList<String> ret = new ArrayList<>();
+
+        if(!s.mode.equals(mode)){
+            ret.add(super.getName() + " Mode has changed to : " + mode);
+        }
+
+        if(s.temperature != temperature){
+            ret.add(super.getName() + " Temperature has changed to : " + temperature);
+        }
+        if(s.freezerTemperature != freezerTemperature){
+            ret.add(super.getName() + " Freezer Temperature has changed to : " + freezerTemperature);
+        }
+
+        return ret;
+
+    }
 
     public RefrigeratorState( int freezerTemperature, int temperature, String mode) {
         super(7);

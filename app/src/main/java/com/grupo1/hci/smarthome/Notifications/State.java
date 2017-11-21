@@ -4,13 +4,18 @@ package com.grupo1.hci.smarthome.Notifications;
  * Created by francisco on 19/11/2017.
  */
 
+import android.util.Log;
+
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class State implements  Serializable {
 
     private int device;
 
     private boolean isStarted;
+
+    private String name;
 
     public int getDevice(){
         return device;
@@ -34,6 +39,14 @@ public class State implements  Serializable {
         return isStarted;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -47,5 +60,10 @@ public class State implements  Serializable {
     @Override
     public int hashCode() {
         return getDevice();
+    }
+
+
+    public ArrayList<String> getDifferences(State s) {
+        return new ArrayList<>();
     }
 }
