@@ -14,24 +14,44 @@ public class LampState extends State {
     private String status;
     private int brightness;
 
+    private static boolean notifyTurnOnClass = true;
+    private static boolean notifyTurnOffClass = true;
+    private static boolean notifyChangeBrigtnessClass = true;
+    private static boolean notifyChangeColorClass = true;
+
+    private Boolean notifyTurnOn;
+    private Boolean notifyTurnOff;
+    private Boolean notifyChangeBrigtness;
+    private Boolean notifyChangeColor;
+
+
+    private boolean isNotifiable(Boolean instance, boolean classNot){
+        if(instance!= null){
+            return instance;
+        }else{
+            return classNot;
+        }
+    }
+
     public ArrayList<String> getDifferences(State a){
 
         LampState s = (LampState) a;
         ArrayList<String> ret = new ArrayList<>();
 
         if(!s.color.equals(color)){
-            ret.add(super.getName() + " Color has changed to : " + color);
+            if(isNotifiable(notifyChangeColor , notifyChangeColorClass))ret.add(super.getName() + " Color has changed to : " + color);
         }
         if(!s.status.equals(status)){
             if(status.equals("on")){
-                ret.add(super.getName() + " has turned on");
+
+               if(isNotifiable(notifyTurnOn , notifyTurnOnClass)) ret.add(super.getName() + " has turned on");
             }else{
-                ret.add(super.getName() + " has turned off");
+               if(isNotifiable(notifyTurnOff , notifyTurnOffClass)) ret.add(super.getName() + " has turned off");
             }
 
         }
         if(s.brightness != brightness){
-            ret.add(super.getName() + " Brightness has changed to : " + brightness);
+           if(isNotifiable(notifyChangeBrigtness , notifyChangeBrigtnessClass)) ret.add(super.getName() + " Brightness has changed to : " + brightness);
         }
 
         return ret;
@@ -43,6 +63,44 @@ public class LampState extends State {
         this.color = color;
         this.status = status;
         this.brightness = brightness;
+        this.notifyChangeBrigtness= null;
+        this.notifyChangeColor= null;
+        this.notifyTurnOff= null;
+        this.notifyTurnOn= null;
+    }
+
+    public static void setNotifyTurnOnClass(boolean notifyTurnOnClass) {
+        LampState.notifyTurnOnClass = notifyTurnOnClass;
+    }
+
+
+    public static void setNotifyTurnOffClass(boolean notifyTurnOffClass) {
+        LampState.notifyTurnOffClass = notifyTurnOffClass;
+    }
+
+    public static void setNotifyChangeBrigtnessClass(boolean notifyChangeBrigtnessClass) {
+        LampState.notifyChangeBrigtnessClass = notifyChangeBrigtnessClass;
+    }
+
+
+    public static void setNotifyChangeColorClass(boolean notifyChangeColorClass) {
+        LampState.notifyChangeColorClass = notifyChangeColorClass;
+    }
+
+    public void setNotifyTurnOn(boolean notifyTurnOn) {
+        this.notifyTurnOn = notifyTurnOn;
+    }
+
+    public void setNotifyTurnOff(boolean notifyTurnOff) {
+        this.notifyTurnOff = notifyTurnOff;
+    }
+
+    public void setNotifyChangeBrigtness(boolean notifyChangeBrigtness) {
+        this.notifyChangeBrigtness = notifyChangeBrigtness;
+    }
+
+    public void setNotifyChangeColor(boolean notifyChangeColor) {
+        this.notifyChangeColor = notifyChangeColor;
     }
 
     public String getColor() {

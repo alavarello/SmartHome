@@ -11,11 +11,15 @@ import java.util.ArrayList;
 
 public class State implements  Serializable {
 
+    private static int notificationChannelCounter = 0;
+
     private int device;
 
     private boolean isStarted;
 
     private String name;
+
+    private int notificationChannel;
 
     public int getDevice(){
         return device;
@@ -24,6 +28,15 @@ public class State implements  Serializable {
     public State(int device) {
         this.isStarted = false;
         this.device = device;
+        this.notificationChannel = notificationChannelCounter++;
+    }
+
+    public int getNotificationChannel() {
+        return notificationChannel;
+    }
+
+    public void setNotificationChannel(int notificationChannel) {
+        this.notificationChannel = notificationChannel;
     }
 
     public void setDevice(int device) {
