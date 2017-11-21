@@ -68,6 +68,8 @@ public class RoomListFragment extends ListFragment implements AdapterView.OnItem
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        getListView().setVisibility(View.VISIBLE);
+        view.findViewById(R.id.gridView).setVisibility(View.GONE);
         room = ((RoomActivity) getActivity()).getRoom();
         toolbar = ((NavigationActivity) getActivity()).getToolbar();
         setView();
@@ -95,8 +97,6 @@ public class RoomListFragment extends ListFragment implements AdapterView.OnItem
         mActionModeCallback = new RoomContextualMenu();
         ((RoomContextualMenu) mActionModeCallback).setRoomActivity((RoomActivity) getActivity());
         //set listview Adapter and onCikcListener
-        getListView().setVisibility(View.VISIBLE);
-        view.findViewById(R.id.gridView).setVisibility(View.GONE);
         rowAdapter = new RoomsAdapter((RoomActivity) getActivity(), deviceArray, (RoomsFragment) this, (RoomActivity) getActivity());
         setListAdapter(rowAdapter);
         loadDevices(room.getId());

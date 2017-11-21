@@ -157,11 +157,25 @@ public class HomeTileFragment extends Fragment implements HomeFragment  {
 
             @Override
             public void onClick(View v) {
+                for(Room r: rooms.keySet()){
+                    if(rooms.get(r) < roomsArray.size()){
+                        roomsArray.add(rooms.get(r), r);
+                    }else{
+                        roomsArray.add(r);
+                    }
+                }
+                loadRomms(roomsArray);
                 deleteCountDown.cancel();
             }
         });
 
         mySnackbar.show();
+        roomsArray.removeAll(rooms.keySet());
+        loadRomms(roomsArray);
+        diselectElements();
+        if(mActionMode != null){
+            mActionMode.finish();
+        }
         deleteCountDown = new CountDownTimer(4000, 1000) {
             @Override
             public void onTick(long l) {
@@ -170,7 +184,11 @@ public class HomeTileFragment extends Fragment implements HomeFragment  {
 
             @Override
             public void onFinish() {
-                Toast.makeText(getActivity().getApplicationContext(), "Se borro!!!!!", Toast.LENGTH_SHORT).show();
+
+                APIManager apiManager = APIManager.getInstance(getActivity());
+                for(Room r: rooms.keySet()){
+                    apiManager.deleteRoom(r, getActivity());
+                }
             }
         }.start();
     }

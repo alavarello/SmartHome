@@ -82,6 +82,7 @@ public class HomeAdapter extends ArrayAdapter<Room> {
         overflowMenu.setFocusable(false);
         // Populate the data into the template view using the data object
         roomName.setText(room.getName());
+        roomName.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         // Return the completed view to render on screen
         return convertView;
     }
