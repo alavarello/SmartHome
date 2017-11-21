@@ -36,7 +36,8 @@
         <activity
             android:name=".Activities.RoomActivity"
             android:launchMode="singleTop"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:configChanges="orientation|screenSize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.grupo1.hci.smarthome.Activities.HomeActivity" />
@@ -52,7 +53,8 @@
         <activity
             android:name=".Activities.RutinesActivity"
             android:label="@string/title_activity_settings"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:configChanges="orientation|screenSize"/>
         <activity
             android:name=".Activities.DeviceActivity"
             android:theme="@style/AppTheme.NoActionBar">
