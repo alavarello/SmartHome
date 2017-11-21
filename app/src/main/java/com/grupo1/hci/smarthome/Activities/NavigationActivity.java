@@ -42,6 +42,7 @@ public class NavigationActivity extends AppCompatActivity
     NavigationView navigationView;
     DrawerLayout drawer;
     APIManager apiManager;
+    boolean subMenuAdded = false;
 
     public Toolbar getToolbar() {
         return toolbar;
@@ -84,6 +85,8 @@ public class NavigationActivity extends AppCompatActivity
 
     public void setMenu() {
         //Set up the nav menu for the rooms
+
+        navigationView.getMenu().removeItem(0);
         SubMenu m = navigationView.getMenu().addSubMenu("Cuartos");
         int i =0;
         for (Room r : roomsArray) {

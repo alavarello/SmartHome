@@ -143,4 +143,36 @@ public class LampState extends State {
                 ", brightness=" + brightness +
                 '}';
     }
+
+    public static boolean isNotifyTurnOnClass() {
+        return notifyTurnOnClass;
+    }
+
+    public static boolean isNotifyTurnOffClass() {
+        return notifyTurnOffClass;
+    }
+
+    public static boolean isNotifyChangeBrigtnessClass() {
+        return notifyChangeBrigtnessClass;
+    }
+
+    public static boolean isNotifyChangeColorClass() {
+        return notifyChangeColorClass;
+    }
+
+    public Boolean getNotifyTurnOn() {
+        return notifyTurnOn;
+    }
+
+    public Boolean getNotifyTurnOff() {
+        return notifyTurnOff;
+    }
+
+    public Boolean getNotifyChangeBrigtness() {
+        return notifyChangeBrigtness;
+    }
+
+    public Boolean getNotifyChangeColor() {
+        return notifyChangeColor;
+    }
 }
