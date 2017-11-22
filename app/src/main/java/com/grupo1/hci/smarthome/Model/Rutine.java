@@ -12,19 +12,19 @@ public class Rutine {
 
     String name;
     String id;
-    ArrayList<JSONObject> actions;
+    ArrayList<Action> actions;
 
-    public Rutine(String name, String id, ArrayList<JSONObject> actions) {
+    public Rutine(String name, String id, ArrayList<Action> actions) {
         this.name = name;
         this.id = id;
         this.actions = actions;
     }
 
-    public ArrayList<JSONObject> getActions() {
+    public ArrayList<Action> getActions() {
         return actions;
     }
 
-    public void setActions(ArrayList<JSONObject> actions) {
+    public void setActions(ArrayList<Action> actions) {
         this.actions = actions;
     }
 
