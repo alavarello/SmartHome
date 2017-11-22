@@ -50,6 +50,7 @@ import com.grupo1.hci.smarthome.Activities.SuportDeviceActivity;
 
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
@@ -332,42 +333,36 @@ public class APIManager {
     /**
      * ACTIONS with parameters
      */
-    public void actionToApi(String deviceID, String actionName, String param){
-        String url = Constants.PORT_CONECTIVITY + "/api/devices/" + deviceID + "/" + actionName;
-        String toBeSent;
-        if( param != null){
-            toBeSent = "[\"" + param + "\"]";
-        } else{
-            toBeSent = "";
+
+
+    public void actionToApi( String deviceId, String actionName, String param) {
+        String url =  Constants.PORT_CONECTIVITY+"/api/devices/" + deviceId + "/" + actionName;
+        JSONObject params = new JSONObject();
+        try {
+            params.put("0", param);
+        } catch (JSONException e) {
         }
-        StringRequest sr = new StringRequest(Request.Method.PUT, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-            }
-        }, new Response.ErrorListener() {
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, params,
+                new Response.Listener<JSONObject>()
+                {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                    }
+                }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
             }
-        }) {
+
+        }){
             @Override
-            public byte[] getBody() throws AuthFailureError {
-                try {
-                    if(toBeSent == null) {
-                        return null;
-                    } else {
-                        return toBeSent.getBytes("utf-8");
-                    }
-                } catch (UnsupportedEncodingException exception) {
-                    return null;
-                }
-            }
-            @Override
-            public String getBodyContentType() {
-                return "application/json; charset=utf-8";
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Content-Type", "application/json");
+                return params;
             }
         };
 
-        queue.add(sr);
+        queue.add(request);
     }
 
     public void lampColorChange(final Activity activity, Device device, String color) {
@@ -395,7 +390,6 @@ public class APIManager {
     }
 
     public  void getState(final Context context , final Device device, final Activity activity, final Fragment fragment) {
-
         String url =  Constants.PORT_CONECTIVITY+"/api/devices/" + device.getId() + "/getState";
         cache = new DiskBasedCache(activity.getCacheDir(), 1024 * 1024); // 1MB cap
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, new JSONObject(),
