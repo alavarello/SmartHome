@@ -562,6 +562,27 @@ public class APIManager {
         queue.add(request);
     }
 
+    public void executeRutine(final Activity activity, Rutine rutine) {
+        String routineId = rutine.getId();
+        cache = new DiskBasedCache(activity.getCacheDir(), 1024 * 1024); // 1MB cap
+        String url =  Constants.PORT_CONECTIVITY+"/api/routines/" + routineId + "/execute";
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, new JSONObject(),
+                new Response.Listener<JSONObject>()
+                {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Toast.makeText(activity, "Rutine: "+rutine.getName() + " exceuted correctly", Toast.LENGTH_SHORT).show();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(activity, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        queue.add(request);
+    }
+
     public void blindUp(final Activity activity, Device device, final Switch switchView) {
         String deviceId = device.getId();
         cache = new DiskBasedCache(activity.getCacheDir(), 1024 * 1024); // 1MB cap

@@ -13,8 +13,10 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.grupo1.hci.smarthome.Model.APIManager;
 import com.grupo1.hci.smarthome.Model.Device;
 import com.grupo1.hci.smarthome.Model.Rutine;
+import com.grupo1.hci.smarthome.Notifications.ApiService;
 import com.grupo1.hci.smarthome.R;
 
 import java.util.ArrayList;
@@ -49,6 +51,12 @@ public class RutineAdapter extends ArrayAdapter<Rutine> {
         TextView deviceName = (TextView) convertView.findViewById(R.id.rutineRowLayout_nameTextView);
         Button actionButton = convertView.findViewById(R.id.rutineRowLayout_actionButton);
         actionButton.setFocusable(false);
+        actionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                APIManager.getInstance(rutinesListFragment.getActivity()).executeRutine(rutinesListFragment.getActivity(),rutine);
+            }
+        });
         // Populate the data into the template view using the data object
         deviceName.setText(rutine.getName());
         final ImageButton overflowMenu = convertView.findViewById(R.id.rutineRowLayout_overflowMenu_ImageButton);
