@@ -115,7 +115,7 @@ public class ApiService extends Service {
              devicesRemove.add(d1);
              statusRemove.add(st);
 
-             sendNotification(getApplicationContext() , d1.name + " has been deleted" , channelId );
+             sendNotification(getApplicationContext() , d1.name + " has been deleted" , channelId  , d1.name);
          }
      }
     }
@@ -124,8 +124,8 @@ public class ApiService extends Service {
         State s ;
         checkForDeleted(dev);
         for(DeviceNotifications d : dev ){
-            if(!devices.contains(d)){
-                devices.add(d);
+            if(!devices.contains(d) && !devicesAdd.contains(d)){
+                devicesAdd.add(d);
                 switch(d.typeId) {
                     case typeBlind:
                         s = new BlindState("", 0);
@@ -154,7 +154,7 @@ public class ApiService extends Service {
                     default:  s = new DoorState("", "");
                 }
                 s.setName(d.name);
-                sendNotification(getApplicationContext() ,  d.name + " has been added" , s.getNotificationChannel());
+                sendNotification(getApplicationContext() ,  d.name + " has been added" , s.getNotificationChannel() , d.name);
                 //status.add(new DeviceState(s,d.id));
                 statusAdd.add(new DeviceState(s,d.id));
             }
@@ -168,18 +168,31 @@ public class ApiService extends Service {
         queue = Volley.newRequestQueue(getApplicationContext());
         mServiceIntent  = new Intent(getApplicationContext(), PingService.class);
 
+        Gson g = new Gson();
+
         List<String> l = getArray();
         if(l.get(0) != null ){
             Type deviceType = new TypeToken<ArrayList<DeviceNotifications>>() {
             }.getType();
             Type statusType = new TypeToken<ArrayList<DeviceState>>() {
             }.getType();
-            Gson g = new Gson();
+
             devices =g.fromJson(l.get(0) ,deviceType );
             status = g.fromJson(l.get(1) , statusType);
 
+            SharedPreferences sp = this.getSharedPreferences(SHARED_PREFS_NAME, Activity.MODE_PRIVATE);
+            for(DeviceState d : status){
+                String s = sp.getString(d.deviceId , "null");
+                if(s != null){
+                    d.s = g.fromJson(s , d.s.getClass() );
+                    Log.d("recupera estado " , s);
+                }
+
+            }
+
         }
 
+        loadNotifications();
 
         Thread thread = new Thread() {
             @Override
@@ -190,6 +203,8 @@ public class ApiService extends Service {
                         checkDevicesState(getApplicationContext());
                         getAllDevices(getApplicationContext());
                         updateArrays();
+                        saveNotifications();
+                        Log.d("status es " ,g.toJson(status));
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -276,6 +291,7 @@ public class ApiService extends Service {
                             s = g.fromJson(r.getResult(), RefrigeratorState.class);
                             break;
                         default:
+                            Log.d("fue default!!" , "------");
                             s = g.fromJson(r.getResult(), LampState.class);
 
 
@@ -287,7 +303,6 @@ public class ApiService extends Service {
                 s.setDevice(deviceState.s.getDevice());
                 s.setName(deviceState.s.getName());
                 s.setNotificationChannel(deviceState.s.getNotificationChannel());
-                s.setSameNotifications(deviceState.s);
 
 
                 if( deviceState.s.equals(s) || !deviceState.s.isStarted()){
@@ -307,7 +322,7 @@ public class ApiService extends Service {
                 deviceState.s.setStarted(true);
 
                 for(String m : messages) {
-                    sendNotification(context,    m , deviceState.s.getNotificationChannel());
+                    sendNotification(context,    m , deviceState.s.getNotificationChannel() , deviceState.s.getName());
                 }
 
 
@@ -329,12 +344,13 @@ public class ApiService extends Service {
         queue.add(sr);
     }
 
-    private void sendNotification(Context context , String message , int channelId ){
+    private void sendNotification(Context context , String message , int channelId , String deviceName ){
        // mServiceIntent.putExtra("encabezado", "ayaya");
         mServiceIntent.putExtra(CommonConstants.EXTRA_MESSAGE, message);//l.getStatus().toString());
         mServiceIntent.setAction(CommonConstants.ACTION_PING);
 
         mServiceIntent.putExtra("channelId" , channelId);
+        mServiceIntent.putExtra("deviceName" , deviceName);
 
         int milliseconds = (5 * 1000);
 
@@ -371,12 +387,45 @@ public class ApiService extends Service {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                sendNotification(context , "error" , 100);
+                sendNotification(context , "error" , 100 , "ERROR");
 
             }
         });
 
         queue.add(request);
+
+    }
+
+    public void saveNotifications(){
+
+        SaverClass s = new SaverClass();
+        s.fillIn();
+
+        Gson g = new Gson();
+
+        String saver = g.toJson(s , SaverClass.class);
+
+        SharedPreferences sp = this.getSharedPreferences(SHARED_PREFS_NAME, Activity.MODE_PRIVATE);
+
+        SharedPreferences.Editor mEdit1 = sp.edit();
+        mEdit1.putString("saver" , saver);
+
+
+
+    }
+
+    public void loadNotifications(){
+        Gson g = new Gson();
+
+        SharedPreferences sp = this.getSharedPreferences(SHARED_PREFS_NAME, Activity.MODE_PRIVATE);
+        String dev = sp.getString("saver" , null);
+       if(dev == null) return;
+
+       SaverClass s = g.fromJson(dev , SaverClass.class );
+
+       s.load();
+
+
 
     }
 
@@ -392,11 +441,17 @@ public class ApiService extends Service {
         mEdit1.putString("devices", dev);
         mEdit1.putString("status", stat);
 
+        for(DeviceState d : status){
+            mEdit1.putString(d.deviceId , g.toJson(d.getS() , d.getS().getClass() ));
+        }
+
         return mEdit1.commit();
 
     }
 
     public List<String> getArray() {
+
+        Gson g = new Gson();
 
         SharedPreferences sp = this.getSharedPreferences(SHARED_PREFS_NAME, Activity.MODE_PRIVATE);
         String dev = sp.getString("devices" , null);

@@ -76,43 +76,31 @@ public class PingService extends IntentService {
                 getSystemService(NOTIFICATION_SERVICE);
 
         int channelId  = intent.getIntExtra("channelId" , CommonConstants.NOTIFICATION_ID );
+        String name = intent.getStringExtra("deviceName" );
+
+        if(name == null) name = "Notification";
 
         String action = intent.getAction();
         // This section handles the 3 possible actions:
         // ping, snooze, and dismiss.
         if(action.equals(CommonConstants.ACTION_PING)) {
-            issueNotification(intent, mMessage , channelId);
-        } else if (action.equals(CommonConstants.ACTION_SNOOZE)) {
-            nm.cancel(CommonConstants.NOTIFICATION_ID);
-            Log.d(CommonConstants.DEBUG_TAG, getString(R.string.snoozing));
-            // Sets a snooze-specific "done snoozing" message.
-            issueNotification(intent, getString(R.string.done_snoozing) , channelId);
-
-        } else if (action.equals(CommonConstants.ACTION_DISMISS)) {
-            nm.cancel(CommonConstants.NOTIFICATION_ID);
+            issueNotification(intent, mMessage, channelId , name);
         }
     }
 
-    private void issueNotification(Intent intent, String msg , int channelID ) {
+    private void issueNotification(Intent intent, String msg , int channelID  , String deviceName) {
         mNotificationManager = (NotificationManager)
                 getSystemService(NOTIFICATION_SERVICE);
 
         // Sets up the Snooze and Dismiss action buttons that will appear in the
         // expanded view of the notification.
-        Intent dismissIntent = new Intent(this, PingService.class);
-        dismissIntent.setAction(CommonConstants.ACTION_DISMISS);
-        PendingIntent piDismiss = PendingIntent.getService(this, 0, dismissIntent, 0);
-
-        Intent snoozeIntent = new Intent(this, PingService.class);
-        snoozeIntent.setAction(CommonConstants.ACTION_SNOOZE);
-        PendingIntent piSnooze = PendingIntent.getService(this, 0, snoozeIntent, 0);
 
         // Constructs the Builder object.
         builder =
                 new NotificationCompat.Builder(this)
                 .setSmallIcon(R.drawable.ic_stat_notification)
                 .setContentTitle(getString(R.string.notification))
-                .setContentText(getString(R.string.ping))
+                .setContentText(deviceName)
                 .setDefaults(Notification.DEFAULT_ALL) // requires VIBRATE permission
                 /*
                  * Sets the big view "big text" style and supplies the
@@ -122,9 +110,7 @@ public class PingService extends IntentService {
                  * pre-4.1 devices.
                  */
                 .setStyle(new NotificationCompat.BigTextStyle()
-                     .bigText(msg))
-                .addAction (R.drawable.ic_stat_dismiss,
-                        getString(R.string.dismiss), piDismiss);
+                     .bigText(msg));
 
         /*
          * Clicking the notification itself displays ResultActivity, which provides

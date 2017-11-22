@@ -14,13 +14,33 @@ public class DoorState  extends State {
     String status;
     String lock;
 
+    private static boolean notifyLockUnlockClass = true;
+    private static boolean notifyOpenCloseClass = true;
+
+
+    public static boolean isNotifyLockUnlockClass() {
+        return notifyLockUnlockClass;
+    }
+
+    public static void setNotifyLockUnlockClass(boolean notifyLockUnlockClass) {
+        DoorState.notifyLockUnlockClass = notifyLockUnlockClass;
+    }
+
+    public static boolean isNotifyOpenCloseClass() {
+        return notifyOpenCloseClass;
+    }
+
+    public static void setNotifyOpenCloseClass(boolean notifyOpenCloseClass) {
+        DoorState.notifyOpenCloseClass = notifyOpenCloseClass;
+    }
+
     public ArrayList<String> getDifferences(State a){
 
         DoorState s = (DoorState) a;
 
         ArrayList<String> ret = new ArrayList<>();
 
-        if(!s.status.equals(status)){
+        if(!s.status.equals(status) && notifyOpenCloseClass){
             if(status.equals("open")){
                 ret.add(super.getName() + " has been opened");
             }else{
@@ -28,7 +48,7 @@ public class DoorState  extends State {
             }
 
         }
-        if(!s.lock.equals(lock)){
+        if(!s.lock.equals(lock) && notifyLockUnlockClass){
             if(lock.equals("lock")){
                 ret.add(super.getName() + " has been locked");
             }else{

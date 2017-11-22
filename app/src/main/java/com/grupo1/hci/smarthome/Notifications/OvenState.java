@@ -15,6 +15,14 @@ public class OvenState extends State{
     String grill;
     String convection;
 
+    private static boolean notifyTurnOnClass = true;
+    private static boolean notifyTurnOffClass = true;
+    private static boolean notifyTemperatureClass = true;
+    private static boolean notifyHeatClass = true;
+    private static boolean notifyGrillClass = true;
+    private static boolean notifyConvectionClass = true;
+
+
     public ArrayList<String> getDifferences(State a){
 
         OvenState s = (OvenState) a;
@@ -22,30 +30,55 @@ public class OvenState extends State{
         ArrayList<String> ret = new ArrayList<>();
 
         if(!s.heat.equals(heat)){
-            ret.add(super.getName() + " Heat has changed to : " + heat);
+            if(notifyHeatClass)ret.add(super.getName() + " Heat has changed to : " + heat);
         }
         if(!s.grill.equals(grill)){
-            ret.add(super.getName() + " Grill has changed to : " + grill);
+            if(notifyGrillClass)ret.add(super.getName() + " Grill has changed to : " + grill);
         }
         if(!s.convection.equals(convection)){
-            ret.add(super.getName() + " Convection has changed to : " + convection);
+            if(notifyConvectionClass)ret.add(super.getName() + " Convection has changed to : " + convection);
         }
         if(!s.status.equals(status)){
             if(status.equals("on")){
-                ret.add(super.getName() + " has turned on");
+                if(notifyTurnOnClass)ret.add(super.getName() + " has turned on");
             }else{
-                ret.add(super.getName() + " has turned off");
+                if(notifyTurnOffClass)ret.add(super.getName() + " has turned off");
             }
         }
         if(s.temperature != temperature){
-            ret.add(super.getName() + " Temperature has changed to : " + temperature);
+            if(notifyTemperatureClass)ret.add(super.getName() + " Temperature has changed to : " + temperature);
         }
 
         return ret;
 
     }
 
-    public OvenState( String status, int temperature, String heat, String grill, String convection) {
+    public static void setNotifyTurnOnClass(boolean notifyTurnOnClass) {
+        OvenState.notifyTurnOnClass = notifyTurnOnClass;
+    }
+
+    public static void setNotifyTurnOffClass(boolean notifyTurnOffClass) {
+        OvenState.notifyTurnOffClass = notifyTurnOffClass;
+    }
+
+    public static void setNotifyTemperatureClass(boolean notifyTemperatureClass) {
+        OvenState.notifyTemperatureClass = notifyTemperatureClass;
+    }
+
+    public static void setNotifyHeatClass(boolean notifyHeatClass) {
+        OvenState.notifyHeatClass = notifyHeatClass;
+    }
+
+    public static void setNotifyGrillClass(boolean notifyGrillClass) {
+        OvenState.notifyGrillClass = notifyGrillClass;
+    }
+
+    public static void setNotifyConvectionClass(boolean notifyConvectionClass) {
+        OvenState.notifyConvectionClass = notifyConvectionClass;
+    }
+
+
+    public OvenState(String status, int temperature, String heat, String grill, String convection) {
         super(2);
         this.status = status;
         this.temperature = temperature;
@@ -53,6 +86,7 @@ public class OvenState extends State{
         this.grill = grill;
         this.convection = convection;
     }
+
 
     public String getStatus() {
         return status;
@@ -108,4 +142,30 @@ public class OvenState extends State{
                 ", convection='" + convection + '\'' +
                 '}';
     }
+
+    public static boolean isNotifyTurnOnClass() {
+        return notifyTurnOnClass;
+    }
+
+    public static boolean isNotifyTurnOffClass() {
+        return notifyTurnOffClass;
+    }
+
+    public static boolean isNotifyTemperatureClass() {
+        return notifyTemperatureClass;
+    }
+
+    public static boolean isNotifyHeatClass() {
+        return notifyHeatClass;
+    }
+
+    public static boolean isNotifyGrillClass() {
+        return notifyGrillClass;
+    }
+
+    public static boolean isNotifyConvectionClass() {
+        return notifyConvectionClass;
+    }
+
+
 }

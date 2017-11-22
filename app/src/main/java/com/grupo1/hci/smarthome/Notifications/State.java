@@ -82,4 +82,12 @@ public class State implements  Serializable {
 
     public void setSameNotifications(State sameNotifications) {
     }
+
+    protected boolean isNotifiable(Boolean instance, boolean classNot){
+        if(instance!= null){
+            return instance;
+        }else{
+            return classNot;
+        }
+    }
 }

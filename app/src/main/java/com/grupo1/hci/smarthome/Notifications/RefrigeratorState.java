@@ -12,20 +12,50 @@ public class RefrigeratorState extends State {
     int temperature;
     String mode;
 
+    private static boolean notifyFreezerTemperatureClass = true;
+    private static boolean notifyTemperatureClass = true;
+    private static  boolean notifyModeClass = true;
+
+
+
+    public static boolean isNotifyFreezerTemperatureClass() {
+        return notifyFreezerTemperatureClass;
+    }
+
+    public static void setNotifyFreezerTemperatureClass(boolean notifyFreezerTemperatureClass) {
+        RefrigeratorState.notifyFreezerTemperatureClass = notifyFreezerTemperatureClass;
+    }
+
+    public static boolean isNotifyTemperatureClass() {
+        return notifyTemperatureClass;
+    }
+
+    public static void setNotifyTemperatureClass(boolean notifyTemperatureClass) {
+        RefrigeratorState.notifyTemperatureClass = notifyTemperatureClass;
+    }
+
+    public static boolean isNotifyModeClass() {
+        return notifyModeClass;
+    }
+
+    public static void setNotifyModeClass(boolean notifyModeClass) {
+        RefrigeratorState.notifyModeClass = notifyModeClass;
+    }
+
     public ArrayList<String> getDifferences(State a){
 
         RefrigeratorState s = (RefrigeratorState) a;
         ArrayList<String> ret = new ArrayList<>();
 
         if(!s.mode.equals(mode)){
-            ret.add(super.getName() + " Mode has changed to : " + mode);
+           if(notifyModeClass) ret.add(super.getName() + " Mode has changed to : " + mode);
         }
 
         if(s.temperature != temperature){
-            ret.add(super.getName() + " Temperature has changed to : " + temperature);
+            if(notifyTemperatureClass)ret.add(super.getName() + " Temperature has changed to : " + temperature);
         }
         if(s.freezerTemperature != freezerTemperature){
-            ret.add(super.getName() + " Freezer Temperature has changed to : " + freezerTemperature);
+           if(notifyFreezerTemperatureClass) ret.add(super.getName() + " Freezer Temperature has changed to : " + freezerTemperature);
         }
 
         return ret;

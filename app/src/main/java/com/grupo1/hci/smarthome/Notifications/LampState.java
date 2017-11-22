@@ -1,5 +1,7 @@
 package com.grupo1.hci.smarthome.Notifications;
 
+import android.util.Log;
+
 import com.grupo1.hci.smarthome.Model.Lamp;
 
 import java.util.ArrayList;
@@ -19,36 +21,6 @@ public class LampState extends State {
     private static boolean notifyChangeBrigtnessClass = true;
     private static boolean notifyChangeColorClass = true;
 
-    private Boolean notifyTurnOn;
-    private Boolean notifyTurnOff;
-    private Boolean notifyChangeBrigtness;
-    private Boolean notifyChangeColor;
-
-
-    private boolean isNotifiable(Boolean instance, boolean classNot){
-        if(instance!= null){
-            return instance;
-        }else{
-            return classNot;
-        }
-    }
-
-    public boolean getRealNotifyTurnOn(){
-        return isNotifiable(notifyTurnOn , notifyTurnOnClass);
-    }
-
-    public boolean getRealNotifyTurnOff(){
-        return isNotifiable(notifyTurnOff , notifyTurnOffClass);
-    }
-
-    public boolean getRealNotifyChangeBrightness(){
-        return isNotifiable( notifyChangeBrigtness , notifyChangeBrigtnessClass);
-    }
-
-    public boolean getRealNotifyChangeColor(){
-        return isNotifiable(notifyChangeColor, notifyChangeColorClass);
-    }
-
 
     public ArrayList<String> getDifferences(State a){
 
@@ -56,19 +28,19 @@ public class LampState extends State {
         ArrayList<String> ret = new ArrayList<>();
 
         if(!s.color.equals(color)){
-            if(isNotifiable(notifyChangeColor , notifyChangeColorClass))ret.add(super.getName() + " Color has changed to : " + color);
+            if(notifyChangeColorClass)ret.add(super.getName() + " Color has changed to : " + color);
         }
         if(!s.status.equals(status)){
             if(status.equals("on")){
 
-               if(isNotifiable(notifyTurnOn , notifyTurnOnClass)) ret.add(super.getName() + " has turned on");
+               if(notifyTurnOnClass) ret.add(super.getName() + " has turned on");
             }else{
-               if(isNotifiable(notifyTurnOff , notifyTurnOffClass)) ret.add(super.getName() + " has turned off");
+               if(notifyTurnOffClass) ret.add(super.getName() + " has turned off");
             }
 
         }
         if(s.brightness != brightness){
-           if(isNotifiable(notifyChangeBrigtness , notifyChangeBrigtnessClass)) ret.add(super.getName() + " Brightness has changed to : " + brightness);
+           if(notifyChangeBrigtnessClass) ret.add(super.getName() + " Brightness has changed to : " + brightness);
         }
 
         return ret;
@@ -80,10 +52,6 @@ public class LampState extends State {
         this.color = color;
         this.status = status;
         this.brightness = brightness;
-        this.notifyChangeBrigtness= null;
-        this.notifyChangeColor= null;
-        this.notifyTurnOff= null;
-        this.notifyTurnOn= null;
     }
 
     public static void setNotifyTurnOnClass(boolean notifyTurnOnClass) {
@@ -104,21 +72,6 @@ public class LampState extends State {
         LampState.notifyChangeColorClass = notifyChangeColorClass;
     }
 
-    public void setNotifyTurnOn(boolean notifyTurnOn) {
-        this.notifyTurnOn = notifyTurnOn;
-    }
-
-    public void setNotifyTurnOff(boolean notifyTurnOff) {
-        this.notifyTurnOff = notifyTurnOff;
-    }
-
-    public void setNotifyChangeBrigtness(boolean notifyChangeBrigtness) {
-        this.notifyChangeBrigtness = notifyChangeBrigtness;
-    }
-
-    public void setNotifyChangeColor(boolean notifyChangeColor) {
-        this.notifyChangeColor = notifyChangeColor;
-    }
 
     public String getColor() {
         return color;
@@ -177,28 +130,5 @@ public class LampState extends State {
         return notifyChangeColorClass;
     }
 
-    public Boolean getNotifyTurnOn() {
-        return notifyTurnOn;
-    }
 
-    public Boolean getNotifyTurnOff() {
-        return notifyTurnOff;
-    }
-
-    public Boolean getNotifyChangeBrigtness() {
-        return notifyChangeBrigtness;
-    }
-
-    public Boolean getNotifyChangeColor() {
-        return notifyChangeColor;
-    }
-
-    public void setSameNotifications(LampState sameNotifications) {
-        super.setSameNotifications(sameNotifications);
-        LampState lamp = (LampState ) sameNotifications;
-        this.setNotifyChangeBrigtness( lamp.notifyChangeBrigtness);
-        this.setNotifyChangeColor(lamp.notifyChangeColor);
-        this.setNotifyTurnOff(lamp.notifyTurnOff);
-        this.setNotifyTurnOn(lamp.notifyTurnOn);
-    }
 }

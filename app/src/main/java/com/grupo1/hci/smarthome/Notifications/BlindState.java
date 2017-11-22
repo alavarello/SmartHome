@@ -14,6 +14,28 @@ public class BlindState extends State{
     String status;
     int level;
 
+    private static boolean notifyOpenClass = true;
+    private static boolean notifyCloseClass = true;
+
+
+
+    public static boolean isNotifyOpenClass() {
+        return notifyOpenClass;
+    }
+
+    public static void setNotifyOpenClass(boolean notifyOpenClass) {
+        BlindState.notifyOpenClass = notifyOpenClass;
+    }
+
+    public static boolean isNotifyCloseClass() {
+        return notifyCloseClass;
+    }
+
+    public static void setNotifyCloseClass(boolean notifyCloseClass) {
+        BlindState.notifyCloseClass = notifyCloseClass;
+    }
+
+
     public ArrayList<String> getDifferences(State a){
 
         BlindState s = (BlindState) a;
@@ -22,15 +44,20 @@ public class BlindState extends State{
 
         if(!s.status.equals(status)){
             if(status.equals("opened")){
-                ret.add(super.getName() + " has been opened");
+
+                if(notifyOpenClass)ret.add(super.getName() + " has started to open");
             }else{
-                ret.add(super.getName() + " has been closed");
+                if(notifyCloseClass)ret.add(super.getName() + " has started to close");
             }
 
         }
 
         if(s.level != level){
-            ret.add(super.getName() + "Level has changed to : " + level);
+            if(level == 100) {
+              if(notifyOpenClass)  ret.add(super.getName() + "has been opened");
+            }else if(level == 0){
+              if(notifyCloseClass)  ret.add(super.getName() + "has been closed");
+            }
         }
 
         return ret;

@@ -15,6 +15,8 @@ public class AcState  extends State {
     String horizontalSwing;
     String fanSpeed;
 
+
+
     public String getStatus() {
         return status;
     }
