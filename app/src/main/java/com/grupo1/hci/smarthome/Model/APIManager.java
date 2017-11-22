@@ -14,14 +14,17 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Cache;
 import com.android.volley.Network;
+import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.BasicNetwork;
 import com.android.volley.toolbox.DiskBasedCache;
+import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.HurlStack;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
@@ -49,6 +52,7 @@ import com.grupo1.hci.smarthome.Activities.SuportDeviceActivity;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -90,15 +94,7 @@ public class APIManager {
                             Gson gson = new GsonBuilder().create();
                             Type listType = new TypeToken<ArrayList<Room>>() {
                             }.getType();
-                            /**
-                             * Del string que devuelve la consulta selecciono to.do lo que esta
-                             * dentro de rooms, sino no lo desseializa bien.
-                             */
                             String jsonFragment = response.getString("rooms");
-                            /**
-                             * Este array ya tiene todos los objetos que busco de la API, solo
-                             * falta el adapter
-                             */
                             ArrayList<Room> roomList = gson.fromJson(jsonFragment, listType);
                             ((HomeActivity)activity).loadRooms(roomList);
                             ((NavigationActivity)activity).setRoomsArray(roomList);
@@ -183,50 +179,6 @@ public class APIManager {
     public void addDeviceToRoom() {
 
     }
-
-
-
-    /**
-     * @author sswinnen
-     * Recibe un nombre y un meta, (si el meta es vacio pasarle ""), y gson construye el JSON
-     * para mandarle a la API
-     * @param roomName nombre elegido por el usuario
-     * @param meta vacio en caso de no querer usarlo
-     */
-
-    private void newRoomToAPI(final String roomName, final String meta, final Activity activity) {
-        cache = new DiskBasedCache(activity.getCacheDir(), 1024 * 1024); // 1MB cap
-        String url =  Constants.PORT_CONECTIVITY+"/api/rooms";
-        Map<String, String> jsonParams = new HashMap<>();
-        jsonParams.put("name",roomName);
-        jsonParams.put("meta", "{}");
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(jsonParams),
-                new Response.Listener<JSONObject>()
-                {
-                    @Override
-                    public void onResponse(JSONObject response)
-                    {
-                        Toast.makeText(activity,response.toString(), Toast.LENGTH_LONG).show();
-                    }
-                },
-                new Response.ErrorListener()
-                {
-                    @Override
-                    public void onErrorResponse(VolleyError error)
-                    {
-                        if (null != error.networkResponse)
-                        {
-                            Toast.makeText(activity,error.getMessage(), Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
-        queue.add(request);
-    }
-
-    /**
-     * Recibe un id de room, arma el URL y manda el delete a la API
-     * @param room id del Room a eliminar. Si es conveniente se podria pasar el Room y desde ahi sacarle el id.
-     */
 
     public void deleteRoom(final Room room, final Activity activity) {
 
@@ -377,149 +329,69 @@ public class APIManager {
         queue.add(request);
     }
 
-
-    public void lampColorChange(final Activity activity, Device device, String color) {
-        String deviceId = device.getId();
-        cache = new DiskBasedCache(activity.getCacheDir(), 1024 * 1024); // 1MB cap
-        String url =  Constants.PORT_CONECTIVITY+"/api/devices/" + deviceId + "/changeColor";
-        Map<String, String> jsonParams = new HashMap<>();
-        jsonParams.put("color",color);
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, new JSONObject(jsonParams),
-                new Response.Listener<JSONObject>()
-                {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                    }
-                }, new Response.ErrorListener() {
+    /**
+     * ACTIONS with parameters
+     */
+    public void actionToApi(String deviceID, String actionName, String param){
+        String url = Constants.PORT_CONECTIVITY + "/api/devices/" + deviceID + "/" + actionName;
+        String toBeSent;
+        if( param != null){
+            toBeSent = "[\"" + param + "\"]";
+        } else{
+            toBeSent = "";
+        }
+        StringRequest sr = new StringRequest(Request.Method.PUT, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+            }
+        }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(activity, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
-        });
+        }) {
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+                try {
+                    if(toBeSent == null) {
+                        return null;
+                    } else {
+                        return toBeSent.getBytes("utf-8");
+                    }
+                } catch (UnsupportedEncodingException exception) {
+                    return null;
+                }
+            }
+            @Override
+            public String getBodyContentType() {
+                return "application/json; charset=utf-8";
+            }
+        };
 
-        queue.add(request);
+        queue.add(sr);
+    }
+
+    public void lampColorChange(final Activity activity, Device device, String color) {
+        actionToApi(device.getId(),"changeColor", color);
     }
 
     public void changeLampBrightness(final Activity activity, Device device, Integer brightness, final SeekBar dimmer) {
-        String deviceId = device.getId();
-        cache = new DiskBasedCache(activity.getCacheDir(), 1024 * 1024); // 1MB cap
-        String url =  Constants.PORT_CONECTIVITY+"/api/devices/" + deviceId + "/changeBrightness";
-        Map<String, Integer> jsonParams = new HashMap<>();
-        jsonParams.put("brightness",brightness);
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, new JSONObject(jsonParams),
-                new Response.Listener<JSONObject>()
-                {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(activity, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        queue.add(request);
+        actionToApi(device.getId(),"changeBrightness", brightness.toString());
     }
 
     public void setOvenTemperature(final Activity activity, Device device, Integer temperature,final EditText temperatureEditText) {
-        String deviceId = device.getId();
-        final String oldTemperature = temperatureEditText.getText().toString();
-        cache = new DiskBasedCache(activity.getCacheDir(), 1024 * 1024); // 1MB cap
-        String url =  Constants.PORT_CONECTIVITY+"/api/devices/" + deviceId + "/setTemperature";
-        Map<String, Integer> jsonParams = new HashMap<>();
-        jsonParams.put("temperature",temperature);
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, new JSONObject(jsonParams),
-                new Response.Listener<JSONObject>()
-                {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(activity, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        queue.add(request);
+        actionToApi(device.getId(),"setTemperature", temperature.toString());
     }
 
-
-    /**
-     *
-     * @param heat solo soporta  "conventional", "bottom", "top"
-     */
     public void setOvenHeat(final Activity activity, Device device, String heat, Spinner spinner) {
-        String deviceId = device.getId();
-        cache = new DiskBasedCache(activity.getCacheDir(), 1024 * 1024); // 1MB cap
-        String url =  Constants.PORT_CONECTIVITY+"/api/devices/" + deviceId + "/setHeat";
-        Map<String, String> jsonParams = new HashMap<>();
-        jsonParams.put("heat",heat);
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, new JSONObject(jsonParams),
-                new Response.Listener<JSONObject>()
-                {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(activity, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        queue.add(request);
+        actionToApi(device.getId(),"setHeat", heat);
     }
 
-    /**
-     * @param grill solo soporta  "large", "eco", "off"
-     */
     public void setOvenGrill(final Activity activity, Device device, String grill,Spinner spinner) {
-        String deviceId = device.getId();
-        cache = new DiskBasedCache(activity.getCacheDir(), 1024 * 1024); // 1MB cap
-        String url =  Constants.PORT_CONECTIVITY+"/api/devices/" + deviceId + "/setGrill";
-        Map<String, String> jsonParams = new HashMap<>();
-        jsonParams.put("grill",grill);
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, new JSONObject(jsonParams),
-                new Response.Listener<JSONObject>()
-                {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(activity, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        queue.add(request);
+        actionToApi(device.getId(),"setGrill", grill);
     }
 
-    /**
-     * convection soporta "normal" "eco" u "off"
-     */
     public void setOvenConvection(final Activity activity, Device device, String convection, Spinner spinner) {
-        String deviceId = device.getId();
-        cache = new DiskBasedCache(activity.getCacheDir(), 1024 * 1024); // 1MB cap
-        String url =  Constants.PORT_CONECTIVITY+"/api/devices/" + deviceId + "/setConvection";
-        Map<String, String> jsonParams = new HashMap<>();
-        jsonParams.put("convection",convection);
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, new JSONObject(jsonParams),
-                new Response.Listener<JSONObject>()
-                {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(activity, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        queue.add(request);
+        actionToApi(device.getId(),"setConvection", convection);
     }
 
     public  void getState(final Context context , final Device device, final Activity activity, final Fragment fragment) {
@@ -722,4 +594,5 @@ public class APIManager {
 
         queue.add(request);
     }
+
 }
