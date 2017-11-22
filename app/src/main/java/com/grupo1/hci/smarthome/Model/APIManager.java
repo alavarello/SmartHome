@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -41,6 +42,7 @@ import com.grupo1.hci.smarthome.Activities.HomeListFragment;
 import com.grupo1.hci.smarthome.Activities.LampFragment;
 import com.grupo1.hci.smarthome.Activities.NavigationActivity;
 import com.grupo1.hci.smarthome.Activities.OvenFragment;
+import com.grupo1.hci.smarthome.Activities.RefrigeratorFragment;
 import com.grupo1.hci.smarthome.Activities.RoomActivity;
 import com.grupo1.hci.smarthome.Activities.RoomListFragment;
 import com.grupo1.hci.smarthome.Activities.RoomsAdapter;
@@ -135,6 +137,8 @@ public class APIManager {
                             }.getType();
                             Type ovenType = new TypeToken<Oven>() {
                             }.getType();
+                            Type refrigeratorType = new TypeToken<Refrigerator>() {
+                            }.getType();
                             JSONArray jArray = response.getJSONArray("devices");
                             JSONObject j;
                             ArrayList<Device> deviceList = new ArrayList<>();
@@ -156,6 +160,10 @@ public class APIManager {
                                 else if(typeId.equals(Constants.OVEN_ID)){
                                     Oven o = gson.fromJson(j.toString(), ovenType);
                                     deviceList.add(o);
+                                }
+                                else if(typeId.equals(Constants.REFRIGERATOR_ID)){
+                                    Refrigerator r = gson.fromJson(j.toString(), refrigeratorType);
+                                    deviceList.add(r);
                                 }
                             }
                            // String jsonFragment = response.getString("devices");
@@ -381,6 +389,7 @@ public class APIManager {
         actionToApi(device.getId(),"setHeat", heat);
     }
 
+
     public void setOvenGrill(final Activity activity, Device device, String grill,Spinner spinner) {
         actionToApi(device.getId(),"setGrill", grill);
     }
@@ -446,6 +455,12 @@ public class APIManager {
                                     o.setHeat(jsonObject.getString("heat"));
                                     ((OvenFragment)fragment).loadOvenState(o);
                                     break;
+                                case Constants.REFRIGERATOR_ID:
+                                    Refrigerator r = (Refrigerator) device;
+                                    r.setFreezerTemperature(jsonObject.getInt("freezerTemperature"));
+                                    r.setTemperature(jsonObject.getInt("temperature"));
+                                    r.setMode(jsonObject.getString("mode"));
+                                    ((RefrigeratorFragment)fragment).loadRefriState(r);
                             }
 
                         } catch (Exception exception) {
@@ -589,4 +604,15 @@ public class APIManager {
         queue.add(request);
     }
 
+    public void setRefriTemp(FragmentActivity activity, Device device, String temperature, EditText refriEditText) {
+        actionToApi(device.getId(),"setTemperature", temperature);
+    }
+
+    public void setFreezerTemp(FragmentActivity activity, Device device, String freezerTemperature, EditText refriEditText) {
+        actionToApi(device.getId(),"setFreezerTemperature", freezerTemperature);
+    }
+
+    public void setRefriMode(FragmentActivity activity, Device device, String refriMode, Spinner refriSpinner) {
+        actionToApi(device.getId(),"setMode", refriMode);
+    }
 }

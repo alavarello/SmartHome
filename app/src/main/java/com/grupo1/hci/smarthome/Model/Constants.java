@@ -14,7 +14,7 @@ public class Constants {
     public static final int DELTE__FROM_OVERFLOW = 0;
     public static Context context;
     public static String appName;
-    public static String PORT_CONECTIVITY = "http://10.0.2.2:8080";
+    public static String PORT_CONECTIVITY = "http://192.168.0.105:8080";
 
 
 
@@ -31,6 +31,10 @@ public class Constants {
     public static final String BLIND_STATE_CLOSED = "closed";
     public static final String BLIND_STATE_OPENING = "opening";
 
+    //Refrigerator------------------------------------------
+    public static final String REFRIGERATOR_MODE_DEFAULT = "default";
+    public static final String REFRIGERATOR_MODE_PARTY = "party";
+    public static final String REFRIGERATOR_MODE_VACATION = "vacation";
     //Oven --------------------------------------------------
     public static final String OVEN_HEAT_CONVENTIONAL = "conventional";
     public static final String OVEN_HEAT_BOTTOM = "bottom";

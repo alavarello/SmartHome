@@ -63,6 +63,11 @@ public class DeviceActivity extends AppCompatActivity implements SuportDeviceAct
                 fragmentTransaction.add(R.id.deviceActivity_Fragmentcontainer, newFragment);
                 fragmentTransaction.commit();
                 break;
+            case Constants.REFRIGERATOR_ID:
+                newFragment = new RefrigeratorFragment();
+                fragmentTransaction.add(R.id.deviceActivity_Fragmentcontainer, newFragment);
+                fragmentTransaction.commit();
+                break;
         }
     }
 
@@ -103,6 +108,12 @@ public class DeviceActivity extends AppCompatActivity implements SuportDeviceAct
                     startActivity(intent);
                 }
                 if(device.getTypeId().equals(Constants.DOOR_ID)){
+                    Intent intent = new Intent(this, DoorSettingsActivity.class);
+                    intent.putExtra(Constants.DEVICE_INTENT, device);
+                    startActivity(intent);
+                }
+                if(device.getTypeId().equals(Constants.REFRIGERATOR_ID)){
+                    //TODO change to refrigerator setting activity
                     Intent intent = new Intent(this, DoorSettingsActivity.class);
                     intent.putExtra(Constants.DEVICE_INTENT, device);
                     startActivity(intent);

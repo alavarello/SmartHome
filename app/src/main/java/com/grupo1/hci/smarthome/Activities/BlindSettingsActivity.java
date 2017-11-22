@@ -57,7 +57,7 @@ public class BlindSettingsActivity extends AppCompatActivity {
     }
 
     private void setPersonalizeState() {
-       // if(blindState.)
+       //if(blindState.)
     }
 
     private void setDefaultState() {

@@ -182,6 +182,9 @@ public class RoomActivity extends NavigationActivity implements SuportDeviceActi
             case Constants.DOOR_ID:
                 newFragment = new DoorFragment();
                 break;
+            case Constants.REFRIGERATOR_ID:
+                newFragment = new RefrigeratorFragment();
+                break;
         }
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.homeActivity_FragmentDevicecontainer, newFragment);

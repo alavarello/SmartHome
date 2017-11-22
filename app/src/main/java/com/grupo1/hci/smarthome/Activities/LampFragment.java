@@ -19,7 +19,7 @@ import com.grupo1.hci.smarthome.R;
 
 public class LampFragment extends Fragment {
 
-    Switch onOffToggleButton;
+    Switch onOffSwitch;
     Lamp lamp;
     SeekBar seekBar;
     APIManager apiManager;
@@ -53,13 +53,13 @@ public class LampFragment extends Fragment {
 
 
     private void setOnClickListener() {
-        onOffToggleButton.setOnClickListener(new View.OnClickListener() {
+        onOffSwitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(onOffToggleButton.isChecked()){
-                    apiManager.deviceOnOff(getActivity(), lamp,"turnOff", onOffToggleButton);
+                if(onOffSwitch.isChecked()){
+                    apiManager.deviceOnOff(getActivity(), lamp,"turnOn", onOffSwitch);
                 }else{
-                    apiManager.deviceOnOff(getActivity(), lamp,"turnOn", onOffToggleButton);
+                    apiManager.deviceOnOff(getActivity(), lamp,"turnOff", onOffSwitch);
                 }
             }
         });
@@ -79,7 +79,6 @@ public class LampFragment extends Fragment {
 
             }
         });
-        //TODO add final fragment to apimanager changeColor
         yellowButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -112,10 +111,10 @@ public class LampFragment extends Fragment {
         lamp = (Lamp) ((SuportDeviceActivity) getActivity()).getDevice();
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(lamp.getName());
 
-        onOffToggleButton = view.findViewById(R.id.contentLamp_OnOff_switch);
+        onOffSwitch = view.findViewById(R.id.contentLamp_OnOff_switch);
         seekBar = view.findViewById(R.id.contentLamp_dimmerSeekBar);
-        onOffToggleButton.setTextOff(getString(R.string.off));
-        onOffToggleButton.setTextOn(getString(R.string.on));
+        onOffSwitch.setTextOff(getString(R.string.off));
+        onOffSwitch.setTextOn(getString(R.string.on));
         greenButton = view.findViewById(R.id.contentLamp_greenButton);
         yellowButton = view.findViewById(R.id.contentLamp_yellowButton);
         blueButton = view.findViewById(R.id.contentLamp_blueButton);
@@ -126,9 +125,9 @@ public class LampFragment extends Fragment {
     public void loadLampState(Lamp lamp) {
         this.lamp = lamp;
        if(lamp.isOn()){
-            onOffToggleButton.setChecked(true);
+            onOffSwitch.setChecked(true);
         }else{
-            onOffToggleButton.setChecked(false);
+            onOffSwitch.setChecked(false);
         }
         seekBar.setProgress(lamp.getBrightness());
        

@@ -72,16 +72,16 @@ public class OvenFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if(onOffSwitch.isChecked()){
-                    apiManager.deviceOnOff(getActivity(),oven,"turnOff", onOffSwitch );
-                }else{
                     apiManager.deviceOnOff(getActivity(),oven,"turnOn", onOffSwitch );
+                }else{
+                    apiManager.deviceOnOff(getActivity(),oven,"turnOff", onOffSwitch );
                 }
             }
         });
         temperatureEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-                apiManager.setOvenTemperature(getActivity(), oven, i, temperatureEditText);
+                apiManager.setOvenTemperature(getActivity(), oven,Integer.parseInt(textView.getText().toString()), temperatureEditText);
                 return false;
             }
         });
@@ -183,9 +183,9 @@ public class OvenFragment extends Fragment {
     public void loadOvenState(Oven oven) {
         this.oven = oven;
         if(oven.isOn()){
-            onOffSwitch.setChecked(false);
-        }else{
             onOffSwitch.setChecked(true);
+        }else{
+            onOffSwitch.setChecked(false);
         }
         temperatureEditText.setText(String.valueOf(oven.getTemperature()));
         if(oven.getConvection().equals(Constants.OVEN_CONVECTION_ECO)){

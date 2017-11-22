@@ -96,12 +96,13 @@ public class RoomsAdapter extends ArrayAdapter<Device> {
                 imageView.setImageResource(R.drawable.ic_door);
                 break;
             case Constants.BLIND_ID:
-                //TODO icon blind
                 imageView.setImageResource(R.drawable.ic_shutter);
                 break;
             case Constants.OVEN_ID:
                 imageView.setImageResource(R.drawable.ic_oven);
                 break;
+            case Constants.REFRIGERATOR_ID:
+                imageView.setImageResource(R.drawable.ic_door);
 
         }
         // Return the completed view to render on screen

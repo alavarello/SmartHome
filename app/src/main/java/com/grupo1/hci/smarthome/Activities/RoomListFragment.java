@@ -116,6 +116,7 @@ public class RoomListFragment extends ListFragment implements AdapterView.OnItem
             v.setBackgroundColor(Color.TRANSPARENT);
         }
         toolbar.setTitle(room.getName());
+        selectedElement.clear();
     }
 
     public void diselectElement(View view) {

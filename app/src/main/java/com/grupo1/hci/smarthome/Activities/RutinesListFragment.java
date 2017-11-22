@@ -92,6 +92,7 @@ public class RutinesListFragment extends ListFragment implements AdapterView.OnI
             v.setBackgroundColor(Color.TRANSPARENT);
         }
             toolbar.setTitle(R.string.title_activity_rutines);
+        selectedElement.clear();
     }
 
     public void diselectElement(View view) {

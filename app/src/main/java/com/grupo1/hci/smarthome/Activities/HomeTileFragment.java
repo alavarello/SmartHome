@@ -219,5 +219,6 @@ public class HomeTileFragment extends Fragment implements HomeFragment  {
             v.setBackgroundColor(Color.TRANSPARENT);
         }
         toolbar.setTitle(Constants.appName);
+        selectedElement.clear();
     }
 }

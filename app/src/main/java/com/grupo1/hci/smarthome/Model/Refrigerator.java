@@ -8,11 +8,13 @@ public class Refrigerator implements Device {
 
     private String id;
     private String name;
-    private String typeId;
+    private String typeId = Constants.REFRIGERATOR_ID;
 
     Integer freezerTemperature;
     Integer temperature;
     String mode;
+
+    public Refrigerator(){}
 
     public Refrigerator(Integer freezerTemperature, Integer temperature, String mode) {
         this.freezerTemperature = freezerTemperature;
@@ -27,42 +29,46 @@ public class Refrigerator implements Device {
         this.mode = "default";
     }
 
+    @Override
+    public String getId() {
+        return id;
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String getTypeId() {
+        return typeId;
+    }
+
     public Integer getFreezerTemperature() {
         return freezerTemperature;
-    }
-
-    public Integer getTemperature() {
-        return temperature;
-    }
-
-    public String getMode() {
-        return mode;
     }
 
     public void setFreezerTemperature(Integer freezerTemperature) {
         this.freezerTemperature = freezerTemperature;
     }
 
+    public Integer getTemperature() {
+        return temperature;
+    }
+
     public void setTemperature(Integer temperature) {
         this.temperature = temperature;
     }
 
+    public String getMode() {
+        return mode;
+    }
+
     public void setMode(String mode) {
         this.mode = mode;
-    }
-
-    @Override
-    public String getId() {
-        return null;
-    }
-
-    @Override
-    public String getTypeId() {
-        return null;
-    }
-
-    @Override
-    public String getName() {
-        return null;
     }
 }

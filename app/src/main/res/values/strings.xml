@@ -23,7 +23,7 @@
     <string name="Grill">Grill</string>
     <string name="Temperature">Temperature</string>
     <string name="Convection">Convection</string>
-    <string name="ONOFF" translatable="false">ON/OFF</string>
+    <string name="ONOFF" translatable="false">turn On</string>
     <string name="drawer_menu_setting">Settings</string>
         <string name="drawer_menu_rooms">Room</string>
         <string name="drawer_menu_rutines">Rutines</string>

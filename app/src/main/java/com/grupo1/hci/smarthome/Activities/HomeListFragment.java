@@ -157,6 +157,7 @@ public class HomeListFragment extends ListFragment implements AdapterView.OnItem
             v.setBackgroundColor(Color.TRANSPARENT);
         }
         toolbar.setTitle(Constants.appName);
+        selectedElement.clear();
     }
 
     @Override
