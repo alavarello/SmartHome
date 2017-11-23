@@ -42,7 +42,6 @@ public class NavigationActivity extends AppCompatActivity
     NavigationView navigationView;
     DrawerLayout drawer;
     APIManager apiManager;
-    boolean subMenuAdded = false;
 
     public Toolbar getToolbar() {
         return toolbar;
@@ -112,11 +111,11 @@ public class NavigationActivity extends AppCompatActivity
         int id = item.getItemId();
         if(id == R.id.settings){
             Intent intent = new Intent(NavigationActivity.this.getApplicationContext(), SettingsActivity.class);
-            intent.setFlags(intent.getFlags() | Intent.FLAG_ACTIVITY_NO_HISTORY);
+            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(intent);
         }else if(id == R.id.rutines){
             Intent intent = new Intent(NavigationActivity.this.getApplicationContext(), RutinesActivity.class);
-            intent.setFlags(intent.getFlags() | Intent.FLAG_ACTIVITY_NO_HISTORY);
+            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(intent);
         }else{
             if(!getClass().equals(RoomActivity.class)){
