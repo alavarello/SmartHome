@@ -10,6 +10,8 @@ public class SaverClass {
 
     //LAMP
 
+    private long  interval;
+
     private  boolean LampNotifyTurnOnClass ;
     private  boolean LampNotifyTurnOffClass;
     private boolean LampNotifyChangeBrigtnessClass ;
@@ -42,6 +44,8 @@ public class SaverClass {
     private boolean RefrigeratorNotifyModeClass ;
 
     public void load(){
+
+        ApiService.interval = interval;
 
 
         LampState.setNotifyTurnOnClass(LampNotifyTurnOnClass);
@@ -80,6 +84,8 @@ public class SaverClass {
 
 
     public void fillIn(){
+
+        interval = ApiService.interval;
 
         //LAMP
 
