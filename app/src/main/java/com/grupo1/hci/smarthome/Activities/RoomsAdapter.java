@@ -102,7 +102,7 @@ public class RoomsAdapter extends ArrayAdapter<Device> {
                 imageView.setImageResource(R.drawable.ic_oven);
                 break;
             case Constants.REFRIGERATOR_ID:
-                imageView.setImageResource(R.drawable.ic_door);
+                imageView.setImageResource(R.drawable.ic_refri);
 
         }
         // Return the completed view to render on screen
