@@ -54,10 +54,10 @@ public class BlindFragment extends Fragment {
             public void onClick(View view) {
                 Switch onOffToogleButton = (Switch) view;
                 if(onOffToogleButton.isChecked()){
-                   apiManager.blindDown(getActivity(), blind, openCloseToggleSwitch);
+                   apiManager.blindUp(getActivity(), blind, openCloseToggleSwitch);
 
                 }else{
-                    apiManager.blindUp(getActivity(), blind,openCloseToggleSwitch);
+                    apiManager.blindDown(getActivity(), blind,openCloseToggleSwitch);
 
                 }
             }
@@ -80,16 +80,16 @@ public class BlindFragment extends Fragment {
         this.blind = blind;
         String status = blind.getStatus();
         if(status.equals(Constants.BLIND_STATE_OPENED)){
-            openCloseToggleSwitch.setChecked(false);
+            openCloseToggleSwitch.setChecked(true);
 
         }else if(status.equals(Constants.BLIND_STATE_CLOSED)){
-            openCloseToggleSwitch.setChecked(true);
+            openCloseToggleSwitch.setChecked(false);
 
         }else if(status.equals(Constants.BLIND_STATE_CLOSING)){
-            openCloseToggleSwitch.setChecked(true);
+            openCloseToggleSwitch.setChecked(false);
 
         }else if(status.equals(Constants.BLIND_STATE_OPENING)){
-            openCloseToggleSwitch.setChecked(false);
+            openCloseToggleSwitch.setChecked(true);
 
         }
     }
