@@ -74,8 +74,8 @@
     <string name="blind">Blind</string>
     <string name="dismiss">Dismiss</string>
     <string name="snooze">Snooze</string>
-    <string name="changeNotificationOpenClose">OpenClose</string>
-    <string name="changeNotificationLockUnlock">cNLockUnlock</string>
+    <string name="changeNotificationOpenClose">Opens or closes</string>
+    <string name="changeNotificationLockUnlock">Locks or unlocks</string>
 
 
     <string-array name="defaultDeviceNotification_array">
@@ -196,6 +196,9 @@
     <string name="edit">Edit</string>
     <string name="deleted">Deleted</string>
     <string name="undo">Undo</string>
+    <string name="rooms">Rooms</string>
+    <string name="rutine">Rutine</string>
+    <string name="rutine_execute">has executed correctly</string>
 
 
 </resources>

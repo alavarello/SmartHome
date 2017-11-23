@@ -144,7 +144,7 @@ public class APIManager {
                             String jsonFragment = response.getString("rooms");
                             ArrayList<Room> roomList = gson.fromJson(jsonFragment, listType);
                             menu.removeItem(0);
-                           SubMenu m = menu.addSubMenu("Cuartos");
+                           SubMenu m = menu.addSubMenu(R.string.rooms);
                             int i =0;
                             for (Room r : roomList) {
                                 m.add(R.id.roomGroupNavigationalDrawer, i++ ,500, r.getName());
@@ -634,7 +634,7 @@ public class APIManager {
                 {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Toast.makeText(activity, "Rutine: "+rutine.getName() + " exceuted correctly", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(activity, activity.getString(R.string.rutine)+ " " +rutine.getName() + " " + activity.getString(R.string.rutine_execute), Toast.LENGTH_SHORT).show();
                     }
                 }, new Response.ErrorListener() {
             @Override

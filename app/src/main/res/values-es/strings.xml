@@ -146,4 +146,7 @@
     <string name="oven_eco">Eco</string>
     <string name="oven_off">Apagado</string>
     <string name="oven_large">Largo</string>
+    <string name="rooms">Cuartos</string>
+    <string name="rutine">Rutina</string>
+    <string name="rutine_execute">se ha ejecutado correctamente</string>
 </resources>
