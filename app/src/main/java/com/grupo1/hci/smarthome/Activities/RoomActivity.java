@@ -79,7 +79,7 @@ public class RoomActivity extends NavigationActivity implements SuportDeviceActi
                 ((RoomListFragment) fragment).startDeviceActivity(device);
             }
         }
-
+        setMenuWithApiCall();
         device = null;
     }
 

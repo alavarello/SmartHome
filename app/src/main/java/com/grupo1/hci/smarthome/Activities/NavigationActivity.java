@@ -134,6 +134,10 @@ public class NavigationActivity extends AppCompatActivity
         return true;
     }
 
+    public void setMenuWithApiCall(){
+        apiManager.getRoomsForMenu(this,  navigationView.getMenu());
+    }
+
 
 }
 

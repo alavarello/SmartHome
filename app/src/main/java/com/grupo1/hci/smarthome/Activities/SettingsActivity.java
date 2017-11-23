@@ -26,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.grupo1.hci.smarthome.Model.APIManager;
 import com.grupo1.hci.smarthome.Model.Blind;
 import com.grupo1.hci.smarthome.Model.Constants;
 import com.grupo1.hci.smarthome.Model.Room;
@@ -57,6 +58,10 @@ public class SettingsActivity extends AppCompatActivity implements NavigationVie
 
     }
 
+    public void setRoomsArray(ArrayList<Room> roomsArray){
+        this.roomsArray = roomsArray;
+    }
+
     private void setNavView() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -69,6 +74,7 @@ public class SettingsActivity extends AppCompatActivity implements NavigationVie
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+        setMenuWithApiCall();
     }
 
     private void setOnClickListener() {
@@ -205,5 +211,9 @@ public class SettingsActivity extends AppCompatActivity implements NavigationVie
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void setMenuWithApiCall(){
+        APIManager.getInstance(this).getRoomsForMenu(this,  navigationView.getMenu());
     }
 }

@@ -8,6 +8,8 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.SubMenu;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -50,7 +52,9 @@ import com.grupo1.hci.smarthome.Activities.RoomListFragment;
 import com.grupo1.hci.smarthome.Activities.RoomsAdapter;
 import com.grupo1.hci.smarthome.Activities.RoomsFragment;
 import com.grupo1.hci.smarthome.Activities.RutinesActivity;
+import com.grupo1.hci.smarthome.Activities.SettingsActivity;
 import com.grupo1.hci.smarthome.Activities.SuportDeviceActivity;
+import com.grupo1.hci.smarthome.R;
 
 
 import org.json.JSONArray;
@@ -117,6 +121,47 @@ public class APIManager {
                 if(swipeRefreshLayout != null){
                     swipeRefreshLayout.setRefreshing(false);
                 }
+                Toast.makeText(activity, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        queue.add(request);
+
+    }
+
+    public void getRoomsForMenu(final Activity activity, Menu menu) {
+        cache = new DiskBasedCache(activity.getCacheDir(), 1024 * 1024); // 1MB cap
+        String url = Constants.PORT_CONECTIVITY+"/api/rooms";
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, new JSONObject(),
+                new Response.Listener<JSONObject>()
+                {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try{
+                            Gson gson = new GsonBuilder().create();
+                            Type listType = new TypeToken<ArrayList<Room>>() {
+                            }.getType();
+                            String jsonFragment = response.getString("rooms");
+                            ArrayList<Room> roomList = gson.fromJson(jsonFragment, listType);
+                            menu.removeItem(0);
+                           SubMenu m = menu.addSubMenu("Cuartos");
+                            int i =0;
+                            for (Room r : roomList) {
+                                m.add(R.id.roomGroupNavigationalDrawer, i++ ,500, r.getName());
+                            }
+                            if(activity instanceof NavigationActivity){
+                                ((NavigationActivity)activity).setRoomsArray(roomList);
+                            }else{
+                                ((SettingsActivity)activity).setRoomsArray(roomList);
+                            }
+                        } catch (Exception exception) {
+                            Toast.makeText(activity, exception.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
                 Toast.makeText(activity, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
