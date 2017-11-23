@@ -23,7 +23,7 @@
     <string name="Grill">Grill</string>
     <string name="Temperature">Temperature</string>
     <string name="Convection">Convection</string>
-    <string name="ONOFF" translatable="false">turn On</string>
+    <string name="ONOFF">Turn on</string>
     <string name="drawer_menu_setting">Settings</string>
         <string name="drawer_menu_rooms">Room</string>
         <string name="drawer_menu_rutines">Rutines</string>
@@ -31,15 +31,15 @@
     <string name="blackErrorMessage">This field can\'t be empty</string>
     <string name="time_spinner">Receive a notification every</string>
     <string name="defaultsNotificationListTitle">Default configuration</string>
-    <string name="notificationTitle">Notify me when:</string>
+    <string name="notificationTitle">Notify me when</string>
     <string name="changeNotificationOn">Turn On</string>
     <string name="changeNotificationOff">Turn Off</string>
     <string name="changeNotificationColor">Color change</string>
     <string name="changeNotificationDimmer">Change Dimmer</string>
 
-    <string name="noDevices">You do not have devices i the room</string>
-    <string name="noRooms">You do not have room</string>
-    <string name="noRoutines">You do not have routines</string>
+    <string name="noDevices">You don\'t have any device in the room</string>
+    <string name="noRooms">You don\'t have any rooms</string>
+    <string name="noRoutines">You don\'t have any routine</string>
 
     <string name="activateButton">Activate</string>
 
@@ -97,7 +97,7 @@
         <item>@string/oven_top</item>
     </string-array>
 
-    <string name="notification">SmartHomeNotification</string>
+    <string name="notification" translatable="false">SmartHome</string>
     <string name="label">Ping Me</string>
     <string-array name="grill_array">
         <item>@string/oven_large</item>
@@ -162,10 +162,10 @@
     <string name="acStateFan">Fan speed has changed to :</string>
     <string name="acStateTurnOn">has turned on</string>
     <string name="acStateTurnOff">has turned off</string>
-    <string name="acStateMode">Mode has changed to :</string>
-    <string name="acStateVerticalSwing">Vertical Swing  has changed to :</string>
-    <string name="acStateHorizontalSwing">Horizontal Swing has changed to :</string>
-    <string name="acTemperature">Temperature has changed to :</string>
+    <string name="acStateMode">Mode has changed to:</string>
+    <string name="acStateVerticalSwing">Vertical Swing has changed to:</string>
+    <string name="acStateHorizontalSwing">Horizontal Swing has changed to:</string>
+    <string name="acTemperature">Temperature has changed to:</string>
     <string name="alarmStateStatus">Status has changed to :</string>
     <string name="blindStateOpen">has started to open</string>
     <string name="blindStateClose">has started to close</string>
@@ -175,23 +175,26 @@
     <string name="doorStateClosed">has been closed</string>
     <string name="doorStateLocked">has been locked</string>
     <string name="doorStateUnlocked">has been unlocked</string>
-    <string name="lampStateColor">Color has changed to :</string>
+    <string name="lampStateColor">Color has changed to:</string>
     <string name="lampStateOn">has turned on</string>
     <string name="lampStateOff">has turned off</string>
-    <string name="lampStateBrightness">Brightness has changed to :</string>
-    <string name="ovenStateHeat">Heat has changed to :</string>
-    <string name="ovenStateGrill">Grill has changed to :</string>
-    <string name="ovenStateConvection">Convection has changed to :</string>
+    <string name="lampStateBrightness">Brightness has changed to:</string>
+    <string name="ovenStateHeat">Heat has changed to:</string>
+    <string name="ovenStateGrill">Grill has changed to:</string>
+    <string name="ovenStateConvection">Convection has changed to:</string>
     <string name="ovenStateOn">has turned on</string>
     <string name="ovenStateOff">has turned off</string>
-    <string name="ovenStateTemperature">Temperature has changed to :</string>
-    <string name="refriStateMode">Mode has changed to :</string>
-    <string name="refriStateTemperature">Temperature has changed to :</string>
-    <string name="refriStateFreezerTemp">Freezer Temperature has changed to :</string>
+    <string name="ovenStateTemperature">Temperature has changed to:</string>
+    <string name="refriStateMode">Mode has changed to:</string>
+    <string name="refriStateTemperature">Temperature has changed to:</string>
+    <string name="refriStateFreezerTemp">Freezer temperature has changed to:</string>
     <string name="timerStateStatus">Status has changed to :</string>
     <string name="timerStateInterval">Interval has changed to :</string>
     <string name="timerStateRemaining">Remaining has changed to :</string>
-
+    <string name="refri_freezer_temp">Freezer Temperature</string>
+    <string name="refri_temp">Refrigerator Temperature</string>
+    <string name="refri_mode">Mode</string>
+    <string name="edit">Edit</string>
 
 
 

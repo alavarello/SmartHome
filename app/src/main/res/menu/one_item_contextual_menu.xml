@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="edit"
+    <item android:title="@string/edit"
         android:id="@+id/editElement"
         android:icon="@drawable/ic_edit_black_24dp"
         app:showAsAction="ifRoom"
         />
-    <item android:title="Delete"
+    <item android:title="@string/delete"
         android:id="@+id/deleteElement"
         android:icon="@mipmap/ic_delete_black_24dp"
         app:showAsAction="ifRoom"/>

@@ -58,8 +58,8 @@ public class EditDialogMessage extends DialogFragment {
         filterArray[0] = new InputFilter.LengthFilter(15);
         input.setFilters(filterArray);
         builder.setView(input);
-        builder.setMessage("EDIT")
-                .setPositiveButton("EDIT", new DialogInterface.OnClickListener() {
+        builder.setMessage(getResources().getString(R.string.edit))
+                .setPositiveButton(getResources().getString(R.string.edit), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         String newName = input.getText().toString().trim();
                         APIManager apiManager = APIManager.getInstance(getActivity());
