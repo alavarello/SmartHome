@@ -43,7 +43,6 @@ public class RoomListFragment extends ListFragment implements AdapterView.OnItem
     Room room;
     ActionMode mActionMode;
     Snackbar mySnackbar;
-    TextView emptyTextView;
     Toolbar toolbar;
     private CountDownTimer deleteCountDown;
     ArrayAdapter rowAdapter;
@@ -200,11 +199,8 @@ public class RoomListFragment extends ListFragment implements AdapterView.OnItem
         rowAdapter.clear();
         rowAdapter.addAll(devices);
         rowAdapter.notifyDataSetChanged();
-        emptyTextView = getActivity().findViewById(R.id.fragmentList_emptyListTextView);
-        if (deviceArray.isEmpty()) {
-            emptyTextView.setVisibility(View.VISIBLE);
-        } else {
-            emptyTextView.setVisibility(View.GONE);
+        if(deviceArray.isEmpty()) {
+            Toast.makeText(getActivity(), getResources().getText(R.string.noDevices), Toast.LENGTH_SHORT).show();
         }
     }
 

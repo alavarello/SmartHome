@@ -37,6 +37,12 @@
     <string name="changeNotificationColor">Color change</string>
     <string name="changeNotificationDimmer">Change Dimmer</string>
 
+    <string name="noDevices">You do not have devices i the room</string>
+    <string name="noRooms">You do not have room</string>
+    <string name="noRoutines">You do not have routines</string>
+
+    <string name="activateButton">Activate</string>
+
 
 
     <string name="open">Open</string>

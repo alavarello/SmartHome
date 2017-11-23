@@ -39,14 +39,11 @@ public class HomeActivity extends NavigationActivity {
         Constants.setAppName();
         if(savedInstanceState != null){
             roomsArray = (ArrayList<Room>) savedInstanceState.getSerializable(Constants.ROOM_ARRAY_INTENT);
-        }else{
-//            apiManager = APIManager.getInstance(this);
-//            apiManager.getRooms(this);
         }
         setFragment();
        getSupportActionBar().setTitle(Constants.appName);
 
-      Intent serviceIntent = new Intent(getApplicationContext() , ApiService.class );startService(serviceIntent);
+      //Intent serviceIntent = new Intent(getApplicationContext() , ApiService.class );startService(serviceIntent);
 
     }
 

@@ -44,7 +44,6 @@ public class HomeTileFragment extends Fragment implements HomeFragment, SwipeRef
     private CountDownTimer deleteCountDown;
     ActionMode.Callback mActionModeCallback;
     ArrayAdapter rowAdapter;
-    TextView emptyTextView;
     View view;
     APIManager apiManager;
     SwipeRefreshLayout swipeRefreshLayout;
@@ -102,8 +101,8 @@ public class HomeTileFragment extends Fragment implements HomeFragment, SwipeRef
         //set listview Adapter and onCikcListener
         rowAdapter = new HomeAdapter((HomeActivity) getActivity(), roomsArray, (HomeFragment) this, (HomeActivity) getActivity());
         gridView.setAdapter(rowAdapter);
-//        swipeRefreshLayout = view.findViewById(R.id.fragmentList_refreshLayout);
-//        swipeRefreshLayout.setOnRefreshListener(this);
+        swipeRefreshLayout = view.findViewById(R.id.fragmentList_refreshLayout);
+        swipeRefreshLayout.setOnRefreshListener(this);
     }
 
     private void setOnClickListeners(){
@@ -205,14 +204,11 @@ public class HomeTileFragment extends Fragment implements HomeFragment, SwipeRef
     @Override
     public void loadRomms(List<Room> rooms) {
         roomsArray = (ArrayList<Room>) rooms;
-        rowAdapter.clear();
+        //rowAdapter.clear();
         rowAdapter.addAll(rooms);
         rowAdapter.notifyDataSetChanged();
-        emptyTextView = getActivity().findViewById(R.id.fragmentList_emptyListTextView);
-        if(roomsArray.isEmpty()){
-            emptyTextView.setVisibility(View.VISIBLE);
-        }else{
-            emptyTextView.setVisibility(View.GONE);
+        if(roomsArray.isEmpty()) {
+            Toast.makeText(getActivity(), getResources().getText(R.string.noRooms), Toast.LENGTH_SHORT).show();
         }
     }
 

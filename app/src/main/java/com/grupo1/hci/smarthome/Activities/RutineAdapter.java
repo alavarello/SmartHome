@@ -52,6 +52,7 @@ public class RutineAdapter extends ArrayAdapter<Rutine> {
         TextView deviceName = (TextView) convertView.findViewById(R.id.rutineRowLayout_nameTextView);
         Button actionButton = convertView.findViewById(R.id.rutineRowLayout_actionButton);
         actionButton.setFocusable(false);
+        actionButton.setText(R.string.activateButton);
         actionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

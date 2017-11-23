@@ -5,14 +5,11 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:orientation="vertical">
 
-<TextView
-    android:id="@+id/fragmentList_emptyListTextView"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:text="EMPTY!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-    android:textSize="36sp"
-    android:visibility="gone" />
 
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/fragmentList_refreshLayout">
 <ListView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
@@ -31,4 +28,5 @@ android:orientation="vertical">
         android:id="@+id/gridView">
 
     </GridView>
+    </android.support.v4.widget.SwipeRefreshLayout>
 </LinearLayout>

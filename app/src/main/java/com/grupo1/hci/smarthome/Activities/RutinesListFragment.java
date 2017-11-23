@@ -32,7 +32,6 @@ public class RutinesListFragment extends ListFragment implements AdapterView.OnI
     // Array of strings...
     ArrayList<Rutine> rutineArray = new ArrayList<>();
     ArrayList<View> selectedElement = new ArrayList<>();
-    TextView emptyTextView;
     ActionMode mActionMode;
     Snackbar mySnackbar;
     private CountDownTimer deleteCountDown;
@@ -61,14 +60,15 @@ public class RutinesListFragment extends ListFragment implements AdapterView.OnI
     }
 
     public void loadRutines(ArrayList<Rutine> rutines) {
-        emptyTextView = getActivity().findViewById(R.id.fragmentList_emptyListTextView);
-        //rowAdapter.clear();
+        if(rutineArray.equals(rutines)){
+            return;
+        }
+        this.rutineArray = rutines;
+        rowAdapter.clear();
         rowAdapter.addAll(rutines);
         rowAdapter.notifyDataSetChanged();
-        if(rutineArray.isEmpty()){
-            emptyTextView.setVisibility(View.VISIBLE);
-        }else{
-            emptyTextView.setVisibility(View.GONE);
+        if(rutines.isEmpty()) {
+            Toast.makeText(getActivity(), getResources().getText(R.string.noRoutines), Toast.LENGTH_SHORT).show();
         }
     }
 

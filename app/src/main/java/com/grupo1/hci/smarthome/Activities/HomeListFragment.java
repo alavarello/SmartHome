@@ -49,7 +49,6 @@ public class HomeListFragment extends ListFragment implements AdapterView.OnItem
     private CountDownTimer deleteCountDown;
     ActionMode.Callback mActionModeCallback;
     ArrayAdapter rowAdapter;
-    TextView emptyTextView;
     View view;
     APIManager apiManager;
     SwipeRefreshLayout swipeRefreshLayout;
@@ -145,12 +144,9 @@ public class HomeListFragment extends ListFragment implements AdapterView.OnItem
         rowAdapter.clear();
         rowAdapter.addAll(rooms);
         rowAdapter.notifyDataSetChanged();
-//        emptyTextView = getActivity().findViewById(R.id.fragmentList_emptyListTextView);
-//        if(roomsArray.isEmpty()){
-//            emptyTextView.setVisibility(View.VISIBLE);
-//        }else{
-//            emptyTextView.setVisibility(View.GONE);
-//        }
+         if(roomsArray.isEmpty()) {
+             Toast.makeText(getActivity(), getResources().getText(R.string.noRooms), Toast.LENGTH_SHORT).show();
+         }
     }
 
 
