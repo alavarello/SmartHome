@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -52,6 +53,7 @@ public class HomeListFragment extends ListFragment implements AdapterView.OnItem
     View view;
     APIManager apiManager;
     SwipeRefreshLayout swipeRefreshLayout;
+    GridView gridView;
 
 
     public void setmActionMode(ActionMode mActionMode) {
@@ -79,8 +81,26 @@ public class HomeListFragment extends ListFragment implements AdapterView.OnItem
             setOnClickListeners();
             getListView().setOnItemClickListener(this);
             getListView().setOnItemLongClickListener(this);
+        }else{
+            setGridView();
         }
 
+    }
+
+    private void setGridView() {
+        //set the contextual floating menu
+        mActionModeCallback = new HomeContextualMenu();
+        ((HomeContextualMenu) mActionModeCallback).setHomeActivity((HomeActivity) getActivity());
+        gridView = view.findViewById(R.id.gridView);
+        gridView.setVisibility(View.VISIBLE);
+        getListView().setVisibility(View.GONE);
+        //set listview Adapter and onCikcListener
+        rowAdapter = new HomeAdapter((HomeActivity) getActivity(), roomsArray, (HomeFragment) this, (HomeActivity) getActivity());
+        gridView.setAdapter(rowAdapter);
+        swipeRefreshLayout = view.findViewById(R.id.fragmentList_refreshLayout);
+        swipeRefreshLayout.setOnRefreshListener(this);
+        gridView.setOnItemClickListener(this);
+        gridView.setOnItemLongClickListener(this);
     }
 
     private void setView(View view) {
