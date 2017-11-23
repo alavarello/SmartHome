@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ListFragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.ActionMode;
 import android.view.LayoutInflater;
@@ -26,7 +27,7 @@ import java.util.HashMap;
  * Created by agust on 11/4/2017.
  */
 
-public class RutinesListFragment extends ListFragment implements AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener{
+public class RutinesListFragment extends ListFragment implements AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener, SwipeRefreshLayout.OnRefreshListener{
 
     // Array of strings...
     ArrayList<Rutine> rutineArray = new ArrayList<>();
@@ -38,12 +39,15 @@ public class RutinesListFragment extends ListFragment implements AdapterView.OnI
     Toolbar toolbar;
     View view;
     ArrayAdapter rowAdapter;
-
+    SwipeRefreshLayout swipeRefreshLayout;
     ActionMode.Callback mActionModeCallback;
+    APIManager apiManager;
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_rutine, container, false);
+        apiManager = APIManager.getInstance(getActivity());
+        apiManager.getRoutines(getActivity(), null);
         return view;
     }
 
@@ -78,6 +82,8 @@ public class RutinesListFragment extends ListFragment implements AdapterView.OnI
         setListAdapter(rowAdapter);
         getListView().setOnItemClickListener(this);
         getListView().setOnItemLongClickListener(this);
+        swipeRefreshLayout = view.findViewById(R.id.framentRoutine_refreshLayout);
+        swipeRefreshLayout.setOnRefreshListener(this);
     }
 
     public void selectedElement(View view,Rutine rutine) {
@@ -201,5 +207,10 @@ public class RutinesListFragment extends ListFragment implements AdapterView.OnI
 
     public ArrayList<View> getSelectedElement(){
         return selectedElement;
+    }
+
+    @Override
+    public void onRefresh() {
+        apiManager.getRoutines(getActivity(), swipeRefreshLayout);
     }
 }

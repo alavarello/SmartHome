@@ -5,6 +5,8 @@ import android.content.Context;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.ActionBar;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -85,7 +87,7 @@ public class APIManager {
         return instance;
     }
 
-    public void getRooms(final Activity activity) {
+    public void getRooms(final Activity activity, SwipeRefreshLayout swipeRefreshLayout) {
         cache = new DiskBasedCache(activity.getCacheDir(), 1024 * 1024); // 1MB cap
         String url = Constants.PORT_CONECTIVITY+"/api/rooms";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, new JSONObject(),
@@ -105,10 +107,16 @@ public class APIManager {
                         } catch (Exception exception) {
                             Toast.makeText(activity, exception.getLocalizedMessage(), Toast.LENGTH_LONG).show();
                         }
+                        if(swipeRefreshLayout != null){
+                            swipeRefreshLayout.setRefreshing(false);
+                        }
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                if(swipeRefreshLayout != null){
+                    swipeRefreshLayout.setRefreshing(false);
+                }
                 Toast.makeText(activity, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
@@ -117,7 +125,7 @@ public class APIManager {
 
     }
 
-    public void getDevicesForRoom(String roomID, final Activity activity) {
+    public void getDevicesForRoom(String roomID, final Activity activity, SwipeRefreshLayout swipeRefreshLayout) {
 
         String url =  Constants.PORT_CONECTIVITY+"/api/rooms/" + roomID + "/devices";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, new JSONObject(),
@@ -173,10 +181,16 @@ public class APIManager {
                         } catch (Exception exception) {
                             Toast.makeText(activity, exception.getLocalizedMessage(), Toast.LENGTH_LONG).show();
                         }
+                        if(swipeRefreshLayout != null){
+                            swipeRefreshLayout.setRefreshing(false);
+                        }
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                if(swipeRefreshLayout != null){
+                    swipeRefreshLayout.setRefreshing(false);
+                }
                 Toast.makeText(activity, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
@@ -185,9 +199,7 @@ public class APIManager {
 
     }
 
-    public void addDeviceToRoom() {
 
-    }
 
     public void deleteRoom(final Room room, final Activity activity) {
 
@@ -275,7 +287,7 @@ public class APIManager {
         queue.add(request);
     }
 
-    public void getRoutines(final Activity activity) {
+    public void getRoutines(final Activity activity, SwipeRefreshLayout swipeRefreshLayout) {
         String url =  Constants.PORT_CONECTIVITY+"/api/routines";
         cache = new DiskBasedCache(activity.getCacheDir(), 1024 * 1024); // 1MB cap
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, new JSONObject(),
@@ -295,10 +307,16 @@ public class APIManager {
                         } catch (Exception exception) {
                             Toast.makeText(activity, exception.getLocalizedMessage(), Toast.LENGTH_LONG).show();
                         }
+                        if(swipeRefreshLayout != null){
+                            swipeRefreshLayout.setRefreshing(false);
+                        }
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                if(swipeRefreshLayout != null){
+                    swipeRefreshLayout.setRefreshing(false);
+                }
                 Toast.makeText(activity, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
@@ -635,5 +653,48 @@ public class APIManager {
 
     public void setRefriMode(FragmentActivity activity, Device device, String refriMode, Spinner refriSpinner) {
         actionToApi(device.getId(),"setMode", refriMode);
+    }
+
+    public void changeName(Object object, String newName, final String oldName, final TextView editText, final ActionBar actionBar) {
+        String url = "";
+
+        JSONObject params = new JSONObject();
+        try {
+            params.put("name", newName);
+        } catch (JSONException e) {}
+        if(object instanceof Room) {
+            url =  Constants.PORT_CONECTIVITY+"/api/rooms/" + ((Room)(object)).getId();
+        } else if(object instanceof Device) {
+            url =  Constants.PORT_CONECTIVITY+"/api/devices/" + ((Device)(object)).getId();
+            try {
+                params.put("typeId",((Device) object).getTypeId());
+            } catch (JSONException e) {}
+        } else if(object instanceof Rutine) {
+            url =  Constants.PORT_CONECTIVITY+"/api/routines/" + ((Rutine)(object)).getId();
+            try {
+                Gson gson = new Gson();
+                String actions = gson.toJson(((Rutine) object).getActions());
+                params.put("actions",actions);
+                params.put("meta","{}");
+            } catch (JSONException e) {}
+        }
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, params,
+                new Response.Listener<JSONObject>()
+                {
+                    @Override
+                    public void onResponse(JSONObject response) {}
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {}
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Content-Type", "application/json");
+                return params;
+            }
+        };
+
+        queue.add(request);
     }
 }

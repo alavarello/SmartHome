@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ListFragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.Toolbar;
 import android.view.ActionMode;
@@ -37,7 +39,7 @@ import java.util.List;
  * Created by agust on 11/15/2017.
  */
 
-public class HomeListFragment extends ListFragment implements AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener, HomeFragment {
+public class HomeListFragment extends ListFragment implements AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener, HomeFragment, SwipeRefreshLayout.OnRefreshListener {
 
     ArrayList<Room> roomsArray = new ArrayList<>();
     ArrayList<View> selectedElement = new ArrayList<>();
@@ -50,6 +52,7 @@ public class HomeListFragment extends ListFragment implements AdapterView.OnItem
     TextView emptyTextView;
     View view;
     APIManager apiManager;
+    SwipeRefreshLayout swipeRefreshLayout;
 
 
     public void setmActionMode(ActionMode mActionMode) {
@@ -71,11 +74,14 @@ public class HomeListFragment extends ListFragment implements AdapterView.OnItem
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         apiManager = APIManager.getInstance(getActivity());
-        apiManager.getRooms(getActivity());
-        setView(view);
-        setOnClickListeners();
-        getListView().setOnItemClickListener(this);
-        getListView().setOnItemLongClickListener(this);
+        apiManager.getRooms(getActivity(), null);
+        if(getResources().getConfiguration().orientation ==  getResources().getConfiguration().ORIENTATION_PORTRAIT){
+            setView(view);
+            setOnClickListeners();
+            getListView().setOnItemClickListener(this);
+            getListView().setOnItemLongClickListener(this);
+        }
+
     }
 
     private void setView(View view) {
@@ -85,6 +91,9 @@ public class HomeListFragment extends ListFragment implements AdapterView.OnItem
         //set listview Adapter and onCikcListener
         rowAdapter = new HomeAdapter((HomeActivity) getActivity(), roomsArray, (HomeFragment) this,(HomeActivity) getActivity());
         setListAdapter(rowAdapter);
+       swipeRefreshLayout = view.findViewById(R.id.fragmentList_refreshLayout);
+       swipeRefreshLayout.setOnRefreshListener(this);
+
     }
 
     public void deleteRooms(final HashMap<Room, Integer> rooms) {
@@ -136,12 +145,12 @@ public class HomeListFragment extends ListFragment implements AdapterView.OnItem
         rowAdapter.clear();
         rowAdapter.addAll(rooms);
         rowAdapter.notifyDataSetChanged();
-        emptyTextView = getActivity().findViewById(R.id.fragmentList_emptyListTextView);
-        if(roomsArray.isEmpty()){
-            emptyTextView.setVisibility(View.VISIBLE);
-        }else{
-            emptyTextView.setVisibility(View.GONE);
-        }
+//        emptyTextView = getActivity().findViewById(R.id.fragmentList_emptyListTextView);
+//        if(roomsArray.isEmpty()){
+//            emptyTextView.setVisibility(View.VISIBLE);
+//        }else{
+//            emptyTextView.setVisibility(View.GONE);
+//        }
     }
 
 
@@ -234,5 +243,8 @@ public class HomeListFragment extends ListFragment implements AdapterView.OnItem
     }
 
 
-
+    @Override
+    public void onRefresh() {
+        apiManager.getRooms(getActivity(), swipeRefreshLayout);
+    }
 }

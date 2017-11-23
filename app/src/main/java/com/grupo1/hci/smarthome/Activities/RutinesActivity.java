@@ -36,8 +36,6 @@ public class RutinesActivity extends NavigationActivity {
         getSupportActionBar().setTitle("Rutines");
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
-        APIManager apiManager = APIManager.getInstance(this);
-        apiManager.getRoutines(this);
         setFragment();
 
     }

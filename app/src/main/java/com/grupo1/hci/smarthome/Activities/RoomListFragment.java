@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ListFragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.ActionMode;
 import android.view.LayoutInflater;
@@ -34,7 +35,7 @@ import static android.app.Activity.RESULT_OK;
  * Created by agust on 11/4/2017.
  */
 
-public class RoomListFragment extends ListFragment implements AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener, RoomsFragment {
+public class RoomListFragment extends ListFragment implements AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener, SwipeRefreshLayout.OnRefreshListener,RoomsFragment {
 
     // Array of strings...
     ArrayList<Device> deviceArray = new ArrayList<>();
@@ -48,6 +49,8 @@ public class RoomListFragment extends ListFragment implements AdapterView.OnItem
     ArrayAdapter rowAdapter;
     View view;
     boolean isLargeScreen;
+    SwipeRefreshLayout swipeRefreshLayout;
+    APIManager apiManager;
 
     public void setDeviceArray(ArrayList<Device> deviceArray) {
         this.deviceArray = deviceArray;
@@ -70,8 +73,8 @@ public class RoomListFragment extends ListFragment implements AdapterView.OnItem
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         room = ((RoomActivity) getActivity()).getRoom();
-        APIManager apiManager = APIManager.getInstance(getActivity());
-        apiManager.getDevicesForRoom(room.getId(), getActivity());
+        apiManager = APIManager.getInstance(getActivity());
+        apiManager.getDevicesForRoom(room.getId(), getActivity(), null);
         toolbar = ((NavigationActivity) getActivity()).getToolbar();
         setView();
         getListView().setOnItemLongClickListener(this);
@@ -94,6 +97,8 @@ public class RoomListFragment extends ListFragment implements AdapterView.OnItem
         //set listview Adapter and onCikcListener
         rowAdapter = new RoomsAdapter((RoomActivity) getActivity(), deviceArray, (RoomsFragment) this, (RoomActivity) getActivity());
         setListAdapter(rowAdapter);
+        swipeRefreshLayout = view.findViewById(R.id.framentRoom_refreshLayout);
+        swipeRefreshLayout.setOnRefreshListener(this);
 
     }
 
@@ -266,5 +271,10 @@ public class RoomListFragment extends ListFragment implements AdapterView.OnItem
                 loadDevices(deviceArray);
             }
         }
+    }
+
+    @Override
+    public void onRefresh() {
+        apiManager.getDevicesForRoom(room.getId(), getActivity(), swipeRefreshLayout);
     }
 }

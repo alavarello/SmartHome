@@ -38,7 +38,6 @@ public class RoomActivity extends NavigationActivity implements SuportDeviceActi
     Room room;
     Fragment fragment;
     FragmentTransaction fragmentTransaction;
-    APIManager apiManager;
     public Room getRoom() {
         return room;
     }
@@ -55,8 +54,7 @@ public class RoomActivity extends NavigationActivity implements SuportDeviceActi
         }else{
             room = (Room) getIntent().getSerializableExtra(Constants.ROOM_INTENT);
             roomsArray = (ArrayList<Room>) getIntent().getSerializableExtra(Constants.ROOM_ARRAY_INTENT);
-            apiManager = APIManager.getInstance(this);
-            apiManager.getDevicesForRoom(room.getId(), this);
+
         }
         setMenu();
         if(((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_XLARGE)){

@@ -7,6 +7,7 @@ import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.ActionMode;
 import android.view.LayoutInflater;
@@ -32,7 +33,7 @@ import java.util.List;
  * Created by agust on 11/15/2017.
  */
 
-public class HomeTileFragment extends Fragment implements HomeFragment  {
+public class HomeTileFragment extends Fragment implements HomeFragment, SwipeRefreshLayout.OnRefreshListener {
 
     ArrayList<Room> roomsArray = new ArrayList<>();
     ArrayList<View> selectedElement = new ArrayList<>();
@@ -46,6 +47,7 @@ public class HomeTileFragment extends Fragment implements HomeFragment  {
     TextView emptyTextView;
     View view;
     APIManager apiManager;
+    SwipeRefreshLayout swipeRefreshLayout;
     public void setmActionMode(ActionMode mActionMode) {
         this.mActionMode = mActionMode;
     }
@@ -87,7 +89,7 @@ public class HomeTileFragment extends Fragment implements HomeFragment  {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         apiManager = APIManager.getInstance(getActivity());
-        apiManager.getRooms(getActivity());
+        apiManager.getRooms(getActivity(), null);
         setView(view);
         setOnClickListeners();
     }
@@ -100,6 +102,8 @@ public class HomeTileFragment extends Fragment implements HomeFragment  {
         //set listview Adapter and onCikcListener
         rowAdapter = new HomeAdapter((HomeActivity) getActivity(), roomsArray, (HomeFragment) this, (HomeActivity) getActivity());
         gridView.setAdapter(rowAdapter);
+//        swipeRefreshLayout = view.findViewById(R.id.fragmentList_refreshLayout);
+//        swipeRefreshLayout.setOnRefreshListener(this);
     }
 
     private void setOnClickListeners(){
@@ -225,5 +229,11 @@ public class HomeTileFragment extends Fragment implements HomeFragment  {
         }
         toolbar.setTitle(Constants.appName);
         selectedElement.clear();
+    }
+
+    @Override
+    public void onRefresh() {
+        apiManager.getRooms(getActivity(), swipeRefreshLayout);
+        //TODO swipetorefresh finish refreshing
     }
 }

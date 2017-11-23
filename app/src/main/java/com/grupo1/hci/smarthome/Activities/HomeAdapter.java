@@ -1,5 +1,6 @@
 package com.grupo1.hci.smarthome.Activities;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.PopupMenu;
