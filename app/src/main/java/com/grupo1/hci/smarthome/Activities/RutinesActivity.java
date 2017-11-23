@@ -37,6 +37,7 @@ public class RutinesActivity extends NavigationActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
         setFragment();
+        setMenuWithApiCall();
 
     }
 
