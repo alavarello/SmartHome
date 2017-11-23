@@ -153,6 +153,38 @@
     <string name="changeNotificationRefriTemp">Changes Refrigerator temperature</string>
     <string name="changeNotificationRefriFreezerTemp">Changes Freezer temperature</string>
     <string name="changeNotificationRefriMode">Changes mode</string>
+    <string name="acStateFan">Fan speed has changed to :</string>
+    <string name="acStateTurnOn">has turned on</string>
+    <string name="acStateTurnOff">has turned off</string>
+    <string name="acStateMode">Mode has changed to :</string>
+    <string name="acStateVerticalSwing">Vertical Swing  has changed to :</string>
+    <string name="acStateHorizontalSwing">Horizontal Swing has changed to :</string>
+    <string name="acTemperature">Temperature has changed to :</string>
+    <string name="alarmStateStatus">Status has changed to :</string>
+    <string name="blindStateOpen">has started to open</string>
+    <string name="blindStateClose">has started to close</string>
+    <string name="blindStateOpened">has been opened</string>
+    <string name="blindStateClosed">has been closed</string>
+    <string name="doorStateOpened">has been opened</string>
+    <string name="doorStateClosed">has been closed</string>
+    <string name="doorStateLocked">has been locked</string>
+    <string name="doorStateUnlocked">has been unlocked</string>
+    <string name="lampStateColor">Color has changed to :</string>
+    <string name="lampStateOn">has turned on</string>
+    <string name="lampStateOff">has turned off</string>
+    <string name="lampStateBrightness">Brightness has changed to :</string>
+    <string name="ovenStateHeat">Heat has changed to :</string>
+    <string name="ovenStateGrill">Grill has changed to :</string>
+    <string name="ovenStateConvection">Convection has changed to :</string>
+    <string name="ovenStateOn">has turned on</string>
+    <string name="ovenStateOff">has turned off</string>
+    <string name="ovenStateTemperature">Temperature has changed to :</string>
+    <string name="refriStateMode">Mode has changed to :</string>
+    <string name="refriStateTemperature">Temperature has changed to :</string>
+    <string name="refriStateFreezerTemp">Freezer Temperature has changed to :</string>
+    <string name="timerStateStatus">Status has changed to :</string>
+    <string name="timerStateInterval">Interval has changed to :</string>
+    <string name="timerStateRemaining">Remaining has changed to :</string>
 
 
 

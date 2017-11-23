@@ -2,6 +2,7 @@ package com.grupo1.hci.smarthome.Notifications;
 
 
 import com.grupo1.hci.smarthome.Model.Door;
+import com.grupo1.hci.smarthome.R;
 
 import java.util.ArrayList;
 
@@ -46,17 +47,17 @@ public class DoorState  extends State {
 
         if(!s.status.equals(status) && notifyOpenCloseClass){
             if(status.equals("open")){
-                ret.add(super.getName() + " has been opened");
+                ret.add(super.getName() + " " + super.context.getResources().getString(R.string.doorStateOpened));
             }else{
-                ret.add(super.getName() + " has been closed");
+                ret.add(super.getName() + " " + super.context.getResources().getString(R.string.doorStateClosed));
             }
 
         }
         if(!s.lock.equals(lock) && notifyLockUnlockClass){
             if(lock.equals("lock")){
-                ret.add(super.getName() + " has been locked");
+                ret.add(super.getName() + " " + super.context.getResources().getString(R.string.doorStateLocked));
             }else{
-                ret.add(super.getName() + " has been unlocked");
+                ret.add(super.getName() + " " + super.context.getResources().getString(R.string.doorStateUnlocked));
             }
         }
 

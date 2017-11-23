@@ -2,6 +2,7 @@ package com.grupo1.hci.smarthome.Notifications;
 
 
 import com.grupo1.hci.smarthome.Model.Blind;
+import com.grupo1.hci.smarthome.R;
 
 import java.util.ArrayList;
 
@@ -49,18 +50,18 @@ public class BlindState extends State{
         if(!s.status.equals(status)){
             if(status.equals("opened")){
 
-                if(notifyOpenClass)ret.add(super.getName() + " has started to open");
+                if(notifyOpenClass)ret.add(super.getName() + " " + super.context.getResources().getString(R.string.blindStateOpen));
             }else{
-                if(notifyCloseClass)ret.add(super.getName() + " has started to close");
+                if(notifyCloseClass)ret.add(super.getName() + " " + super.context.getResources().getString(R.string.blindStateClose));
             }
 
         }
 
         if(s.level != level){
             if(level == 100) {
-              if(notifyOpenClass)  ret.add(super.getName() + "has been opened");
+              if(notifyOpenClass)  ret.add(super.getName() + " " + super.context.getResources().getString(R.string.blindStateOpened));
             }else if(level == 0){
-              if(notifyCloseClass)  ret.add(super.getName() + "has been closed");
+              if(notifyCloseClass)  ret.add(super.getName() + " " + super.context.getResources().getString(R.string.blindStateClosed));
             }
         }
 
