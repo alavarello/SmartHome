@@ -354,7 +354,9 @@ public class ApiService extends Service {
     }
 
 
-    public void sendNotificationTwo(Context context , String message , int channelId , String deviceName , String deviceId , String roomId, String roomName){
+    public void sendNotificationTwo(Context context , String message , int channelId , String deviceName , String deviceId , String roomId, String roomName, String typeId){
+        mServiceIntent  = new Intent(getApplicationContext(), PingService.class);
+
         mServiceIntent.putExtra(CommonConstants.EXTRA_MESSAGE, message);//l.getStatus().toString());
         mServiceIntent.setAction(CommonConstants.ACTION_PING);
 
@@ -363,6 +365,7 @@ public class ApiService extends Service {
         mServiceIntent.putExtra("deviceId" , deviceId);
         mServiceIntent.putExtra("roomId" , roomId);
         mServiceIntent.putExtra("roomName" , roomName);
+        mServiceIntent.putExtra("typeId" , typeId);
 
         Log.d("Send Notification Two:" , roomId + "-" + deviceId);
 
@@ -509,9 +512,10 @@ public class ApiService extends Service {
                                aux = deviceList.getJSONObject(i);
 
                               String auxId =  aux.getString("id");
+                              String typeId = aux.getString("typeId");
 
                                if(auxId.equals(deviceId)){
-                                   sendNotificationTwo(context , message , channelId , deviceName , deviceId , r.getId() , r.getName());
+                                   sendNotificationTwo(context , message , channelId , deviceName , deviceId , r.getId() , r.getName() , typeId);
                                }
 
 
