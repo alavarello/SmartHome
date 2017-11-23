@@ -66,7 +66,8 @@ public class HomeTileFragment extends Fragment implements HomeFragment, SwipeRef
 
     @Override
     public void roomDeleteError(Room room) {
-
+        roomsArray.add(room);
+        loadRomms(roomsArray);
     }
 
     @Override

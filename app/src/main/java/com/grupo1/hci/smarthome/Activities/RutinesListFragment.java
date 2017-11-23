@@ -112,6 +112,11 @@ public class RutinesListFragment extends ListFragment implements AdapterView.OnI
         }
     }
 
+    public void deleteRoutinesError(Rutine rutine){
+        rutineArray.add(rutine);
+        loadRutines(rutineArray);
+    }
+
     public void deleteRutines(final HashMap<Rutine, Integer> rutines)
     {
         //setting the snackbar

@@ -52,6 +52,7 @@ import com.grupo1.hci.smarthome.Activities.RoomListFragment;
 import com.grupo1.hci.smarthome.Activities.RoomsAdapter;
 import com.grupo1.hci.smarthome.Activities.RoomsFragment;
 import com.grupo1.hci.smarthome.Activities.RutinesActivity;
+import com.grupo1.hci.smarthome.Activities.RutinesListFragment;
 import com.grupo1.hci.smarthome.Activities.SettingsActivity;
 import com.grupo1.hci.smarthome.Activities.SuportDeviceActivity;
 import com.grupo1.hci.smarthome.R;
@@ -62,6 +63,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Method;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -261,11 +263,10 @@ public class APIManager {
                     @Override
                     public void onErrorResponse(VolleyError error)
                     {
-                        if (null != error.networkResponse)
-                        {
+
                             ((HomeFragment)((RoomActivity)activity).getFragment()).roomDeleteError(room);
                             Toast.makeText(activity, R.string.error_deleteRoom, Toast.LENGTH_LONG).show();
-                        }
+              
                     }
                 });
         queue.add(request);
@@ -287,11 +288,9 @@ public class APIManager {
                     @Override
                     public void onErrorResponse(VolleyError error)
                     {
-                        if (null != error.networkResponse)
-                        {
-                           //TODO
+
+                            ((RutinesListFragment)((RutinesActivity)activity).getFragment()).deleteRoutinesError(rutine);
                             Toast.makeText(activity, R.string.error_deleteRoutine, Toast.LENGTH_LONG).show();
-                        }
                     }
                 });
         queue.add(request);
@@ -316,13 +315,11 @@ public class APIManager {
                     @Override
                     public void onErrorResponse(VolleyError error)
                     {
-                        if (null != error.networkResponse)
-                        {
+
                             Toast.makeText(activity, R.string.error_deleteDevice, Toast.LENGTH_LONG).show();
-                            if(from == Constants.DELTE__FROM_OVERFLOW){
+
                                 ((RoomsFragment)((RoomActivity)activity).getFragment()).deviceDeleteError(device);
-                            }
-                        }
+
                     }
                 });
         queue.add(request);
@@ -777,7 +774,8 @@ public class APIManager {
                         else{
                            ((Device)object).setName(newName);
                         }
-                        ((NavigationActivity)activity).setMenuWithApiCall();
+
+
                     }
                 }, new Response.ErrorListener() {
             @Override
