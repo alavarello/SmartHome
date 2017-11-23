@@ -210,7 +210,6 @@ public class RoomListFragment extends ListFragment implements AdapterView.OnItem
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         Object o = adapterView.getAdapter().getItem(i);
         Device device = (Device) o;//As you are using Default String Adapter
-        Toast.makeText(getActivity().getApplicationContext(), device.getName(), Toast.LENGTH_SHORT).show();
         //if is the same view as the selected one
         if (mActionMode == null) {
             diselectElements();
@@ -237,7 +236,6 @@ public class RoomListFragment extends ListFragment implements AdapterView.OnItem
 
         Object o = adapterView.getAdapter().getItem(i);
         Device device = (Device) o;//As you are using Default String Adapter
-        Toast.makeText(getActivity().getApplicationContext(), device.getName(), Toast.LENGTH_SHORT).show();
         selectedElement(view, device);
         if (mActionMode != null) {
             if (selectedElement.contains(view)) {

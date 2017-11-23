@@ -213,7 +213,6 @@ public class HomeListFragment extends ListFragment implements AdapterView.OnItem
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         Object o = adapterView.getAdapter().getItem(i);
         Room room = (Room) o;//As you are using Default String Adapter
-        Toast.makeText(getActivity().getApplicationContext(), room.getName() + " ShortClick", Toast.LENGTH_SHORT).show();
         //if is the same view as the selected one
         if (mActionMode == null) {
             diselectElements();
@@ -239,7 +238,6 @@ public class HomeListFragment extends ListFragment implements AdapterView.OnItem
         Object o = adapterView.getAdapter().getItem(i);
         Room room = (Room) o;//As you are using Default String Adapter
 
-        Toast.makeText(getActivity().getApplicationContext(), room.getName() + " LongClick", Toast.LENGTH_SHORT).show();
         selectedElement(view, room);
         if (mActionMode != null) {
             if (selectedElement.contains(view)) {

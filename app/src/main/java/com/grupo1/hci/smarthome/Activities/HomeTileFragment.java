@@ -111,7 +111,6 @@ public class HomeTileFragment extends Fragment implements HomeFragment, SwipeRef
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Object o = adapterView.getAdapter().getItem(i);
                 Room room = (Room) o;//As you are using Default String Adapter
-                Toast.makeText(getActivity().getApplicationContext(), room.getName() + " ShortClick", Toast.LENGTH_SHORT).show();
                 //if is the same view as the selected one
                 if (mActionMode == null) {
                     diselectElements();
@@ -137,7 +136,6 @@ public class HomeTileFragment extends Fragment implements HomeFragment, SwipeRef
                 Object o = adapterView.getAdapter().getItem(i);
                 Room room = (Room) o;//As you are using Default String Adapter
 
-                Toast.makeText(getActivity().getApplicationContext(), room.getName() + " LongClick", Toast.LENGTH_SHORT).show();
                 selectedElement(view, room);
                 if (mActionMode != null) {
                     if (selectedElement.contains(view)) {

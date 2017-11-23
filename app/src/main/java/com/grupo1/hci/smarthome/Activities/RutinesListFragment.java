@@ -159,7 +159,6 @@ public class RutinesListFragment extends ListFragment implements AdapterView.OnI
 
         Object o = adapterView.getAdapter().getItem(i);
         Rutine rutine = (Rutine) o;//As you are using Default String Adapter
-        Toast.makeText(getActivity().getApplicationContext(), rutine.toString(), Toast.LENGTH_SHORT).show();
         selectedElement(view, rutine);
         if (mActionMode != null) {
             if (selectedElement.contains(view)) {
@@ -184,7 +183,6 @@ public class RutinesListFragment extends ListFragment implements AdapterView.OnI
 
         Object o = adapterView.getAdapter().getItem(i);
         Rutine rutine = (Rutine) o;//As you are using Default String Adapter
-        Toast.makeText(getActivity().getApplicationContext(), rutine.toString(), Toast.LENGTH_SHORT).show();
 
         //if is the same view as the selected one
         if (mActionMode == null) {

@@ -229,6 +229,9 @@
     <string name="error_blindDown">An error has occurred while closing the blind. Please check your Internet connection</string>
     <string name="error_changeName">An error has occurred while changing the name. Please check your Internet connection</string>
     <string name="interval_update">Changes will take effect the next time you open the app</string>
+    <string name="error_regexp1">The name must contain more than 3 characters and must contain only letters, numbers or _</string>
+    <string name="error_regexp2">The name must contain only letters, numbers or _</string>
+    <string name="error_regexp3">The name must contain more than 3 characters</string>
 
 
 </resources>

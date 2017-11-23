@@ -64,15 +64,15 @@ public class EditDialogMessage extends DialogFragment {
                         String newName = input.getText().toString().trim();
                         APIManager apiManager = APIManager.getInstance(getActivity());
                         if(!Pattern.matches("^[\\w ]+$", newName) && newName.length() < 3 ){
-                            Toast.makeText(getActivity(), "The text blbla", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getActivity(), R.string.error_regexp1, Toast.LENGTH_LONG).show();
                             return;
                         }
                         if(!Pattern.matches("^[\\w ]+$", newName)){
-                            Toast.makeText(getActivity(), "The text blbla2", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getActivity(), R.string.error_regexp2, Toast.LENGTH_LONG).show();
                             return;
                         }
                         if(newName.length() < 3 ){
-                            Toast.makeText(getActivity(), "The text blbla3", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getActivity(), R.string.error_regexp3, Toast.LENGTH_LONG).show();
                             return;
                         }
                         if(isDevice){

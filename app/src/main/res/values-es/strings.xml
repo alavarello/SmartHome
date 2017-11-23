@@ -171,4 +171,8 @@
     <string name="refriTemperatureMaxMinValue">La temperatura debe estar entre 2 y 8</string>
     <string name="temperatureMinandMaxValueError">La temperatura debe estar entre 90 y 230</string>
     <string name="interval_update">Los cambios se verán reflejados la próxima vez que abra la aplicación</string>
+    <string name="error_regexp1">El nombre debe contener más de 3 caracteres y debe contener solo letras, números o _</string>
+    <string name="error_regexp2">The name must contain only letters, numbers or _</string>
+    <string name="error_regexp3">El nombre debe contener más de 3 caracteres</string>
+
 </resources>
