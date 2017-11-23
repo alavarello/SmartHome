@@ -30,6 +30,7 @@ import com.grupo1.hci.smarthome.Model.APIManager;
 import com.grupo1.hci.smarthome.Model.Blind;
 import com.grupo1.hci.smarthome.Model.Constants;
 import com.grupo1.hci.smarthome.Model.Room;
+import com.grupo1.hci.smarthome.Notifications.ApiService;
 import com.grupo1.hci.smarthome.R;
 
 import java.io.Serializable;
@@ -148,6 +149,37 @@ public class SettingsActivity extends AppCompatActivity implements NavigationVie
         });
     }
 
+    private long getMilis(int i){
+        long milis;
+        switch(i){
+            //1 seconds
+            case 0 : milis = 1 * 1000;
+                break;
+            //5 seconds
+            case 1: milis = 5 * 1000;
+                break;
+            //30 seconds
+            case 2: milis = 30 * 1000;
+                break;
+             // 1 minuto
+            case 3: milis = 1 * 60 * 1000;
+                break;
+             // 5 minutos
+            case 4: milis = 5 * 60 * 1000;
+                break;
+             //10 minutos
+            case 5: milis = 10 * 60 * 1000;
+                break;
+             //30 minutos
+            case 6: milis = 30 * 60 * 1000;
+                break;
+
+            default: milis = 1 * 1000;
+        }
+
+        return milis;
+    }
+
     private void setTimeSpinner() {
 
         String[] list = getResources().getStringArray(R.array.timeNotification_array);
@@ -157,6 +189,10 @@ public class SettingsActivity extends AppCompatActivity implements NavigationVie
         timeNotificationSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                long  time = getMilis(i);
+
+                ApiService.interval = time;
+
                 Toast.makeText(getApplicationContext(),adapterView.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
             }
 

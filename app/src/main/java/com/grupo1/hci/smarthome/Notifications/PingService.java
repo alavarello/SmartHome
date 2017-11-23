@@ -130,7 +130,7 @@ public class PingService extends IntentService {
          * UI for snoozing or dismissing the notification.
          * This is available through either the normal view or big view.
          */
-         Intent resultIntent = new Intent(this, RoomActivity.class);
+         Intent resultIntent = new Intent(this, HomeActivity.class);
          resultIntent.putExtra(CommonConstants.EXTRA_MESSAGE, msg);
          resultIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 

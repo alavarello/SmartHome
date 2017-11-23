@@ -1,5 +1,6 @@
 package com.grupo1.hci.smarthome.Activities;
 
+import com.grupo1.hci.smarthome.Model.Device;
 import com.grupo1.hci.smarthome.Notifications.ApiService;
 
 import android.content.Context;
@@ -35,6 +36,7 @@ public class HomeActivity extends NavigationActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         Constants.context = getApplicationContext();
         Constants.setAppName();
         if(savedInstanceState != null){
@@ -44,6 +46,16 @@ public class HomeActivity extends NavigationActivity {
        getSupportActionBar().setTitle(Constants.appName);
 
       Intent serviceIntent = new Intent(getApplicationContext() , ApiService.class );startService(serviceIntent);
+
+        Room room = (Room) getIntent().getSerializableExtra(Constants.ROOM_INTENT);
+        Device d = (Device) getIntent().getSerializableExtra(Constants.DEVICE_INTENT);
+        if(room != null){
+            Intent in = new Intent(this , RoomActivity.class);
+            in.putExtra(Constants.ROOM_INTENT , room);
+            in.putExtra(Constants.DEVICE_INTENT , d);
+
+            startActivity(in );
+        }
 
     }
 
