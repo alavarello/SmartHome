@@ -153,10 +153,19 @@ public class ApiService extends Service {
                         break;
                     default:  s = new DoorState("", "");
                 }
+                s.setContext(this);
                 s.setName(d.name);
                 sendNotification(getApplicationContext() ,  d.name + " has been added" , s.getNotificationChannel() , d.name);
                 //status.add(new DeviceState(s,d.id));
                 statusAdd.add(new DeviceState(s,d.id));
+            }
+        }
+    }
+
+    public static void updateVisibility(String idDevice , boolean visibility){
+        for(DeviceState d : status){
+            if(d.deviceId.equals(idDevice)){
+                d.s.isVisible = visibility;
             }
         }
     }
@@ -179,6 +188,10 @@ public class ApiService extends Service {
 
             devices =g.fromJson(l.get(0) ,deviceType );
             status = g.fromJson(l.get(1) , statusType);
+
+            for(DeviceState d : status){
+                d.s.isVisible = false;
+            }
 
         }
 
@@ -293,6 +306,8 @@ public class ApiService extends Service {
                 s.setDevice(deviceState.s.getDevice());
                 s.setName(deviceState.s.getName());
                 s.setNotificationChannel(deviceState.s.getNotificationChannel());
+                s.setContext(deviceState.s.getContext());
+                s.isVisible = deviceState.s.isVisible;
 
 
                 if( deviceState.s.equals(s) || !deviceState.s.isStarted()){

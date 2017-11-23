@@ -27,6 +27,10 @@ public class LampState extends State {
         LampState s = (LampState) a;
         ArrayList<String> ret = new ArrayList<>();
 
+        if(super.isVisible){
+            return ret;
+        }
+
         if(!s.color.equals(color)){
             if(notifyChangeColorClass)ret.add(super.getName() + " Color has changed to : " + color);
         }

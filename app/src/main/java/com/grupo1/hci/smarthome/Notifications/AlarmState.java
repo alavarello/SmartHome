@@ -17,6 +17,10 @@ public class AlarmState extends State{
 
         ArrayList<String> ret = new ArrayList<>();
 
+        if(super.isVisible){
+            return ret;
+        }
+
         if(!s.status.equals(status)){
             ret.add(super.getName() + " Status has changed to : " + status);
         }
@@ -29,7 +33,7 @@ public class AlarmState extends State{
         return status;
     }
 
-    public AlarmState( String status) {
+    public AlarmState(  String status) {
         super(5);
         this.status = status;
     }

@@ -42,6 +42,10 @@ public class BlindState extends State{
 
         ArrayList<String> ret = new ArrayList<>();
 
+        if(super.isVisible){
+            return ret;
+        }
+
         if(!s.status.equals(status)){
             if(status.equals("opened")){
 

@@ -40,6 +40,10 @@ public class DoorState  extends State {
 
         ArrayList<String> ret = new ArrayList<>();
 
+        if(super.isVisible){
+            return ret;
+        }
+
         if(!s.status.equals(status) && notifyOpenCloseClass){
             if(status.equals("open")){
                 ret.add(super.getName() + " has been opened");
