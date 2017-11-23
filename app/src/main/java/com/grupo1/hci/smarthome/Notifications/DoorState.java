@@ -46,7 +46,7 @@ public class DoorState  extends State {
         }
 
         if(!s.status.equals(status) && notifyOpenCloseClass){
-            if(status.equals("open")){
+            if(status.equals("opened")){
                 ret.add(super.getName() + " " + super.context.getResources().getString(R.string.doorStateOpened));
             }else{
                 ret.add(super.getName() + " " + super.context.getResources().getString(R.string.doorStateClosed));
@@ -54,7 +54,7 @@ public class DoorState  extends State {
 
         }
         if(!s.lock.equals(lock) && notifyLockUnlockClass){
-            if(lock.equals("lock")){
+            if(lock.equals("locked")){
                 ret.add(super.getName() + " " + super.context.getResources().getString(R.string.doorStateLocked));
             }else{
                 ret.add(super.getName() + " " + super.context.getResources().getString(R.string.doorStateUnlocked));

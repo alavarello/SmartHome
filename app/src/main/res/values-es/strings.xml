@@ -79,10 +79,11 @@
     </string-array>
 
     <string-array name="grill_array">
-        <item>Largo</item>
-        <item>Eco</item>
-        <item>Apagado</item>
+        <item>@string/oven_large</item>
+        <item>@string/oven_eco</item>
+        <item>@string/oven_off</item>
     </string-array>
+
 
     <string-array name="convection_array">
         <item>Normal</item>
@@ -96,18 +97,15 @@
     <string name="activateButton">Activar</string>
     <string name="dismiss">Cerrar</string>
     <string name="oven_normal">Normal</string>
-    <string name="oven_eco">Eco</string>
-    <string name="oven_off">Apagado</string>
-    <string name="oven_large">Largo</string>
     <string name="oven_conventional">Convencional</string>
     <string name="oven_top">Arriba</string>
     <string name="oven_bottom">Abajo</string>
     <string name="refri_def">Por defecto</string>
     <string name="refri_party">Fiesta</string>
     <string name="refri_vacation">Vacaciones</string>
-    <string name="changeNotificationRefriTemp">Cambia la temperatura del refrigerador</string>
-    <string name="changeNotificationRefriFreezerTemp">Cambia la temperatura del freezer</string>
-    <string name="changeNotificationRefriMode">Cambia el modo</string>
+    <string name="changeNotificationRefriTemp">Cambiar la temperatura del refrigerador</string>
+    <string name="changeNotificationRefriFreezerTemp">Cambiar la temperatura del freezer</string>
+    <string name="changeNotificationRefriMode">Cambiar el modo</string>
     <string name="acStateFan">La velocidad del ventilador ha cambiado a:</string>
     <string name="acStateTurnOn">se ha encendido</string>
     <string name="acStateTurnOff">se ha apagado</string>
@@ -124,13 +122,13 @@
     <string name="doorStateClosed">se ha cerrado</string>
     <string name="doorStateLocked">se ha trabado</string>
     <string name="doorStateUnlocked">se ha destrabado</string>
-    <string name="lampStateColor">El color ha cambiado a:</string>
+    <string name="lampStateColor">El color ha cambiado</string>
     <string name="lampStateOn">se ha encendido</string>
     <string name="lampStateOff">se ha apagado</string>
     <string name="lampStateBrightness">El brillo ha cambiado a:</string>
-    <string name="ovenStateHeat">El calor ha cambiado a:</string>
-    <string name="ovenStateGrill">El grill ha cambiado a:</string>
-    <string name="ovenStateConvection">La convección ha cambiado a:</string>
+    <string name="ovenStateHeat">El modo de calor ha cambiado a:</string>
+    <string name="ovenStateGrill">El modo grill ha cambiado a:</string>
+    <string name="ovenStateConvection">El modo de convección ha cambiado a:</string>
     <string name="ovenStateOn">se ha encendido</string>
     <string name="ovenStateOff">se ha apagado</string>
     <string name="ovenStateTemperature">La temperatura ha cambiado a:</string>
@@ -145,4 +143,7 @@
     <string name="refri_mode">Modo</string>
     <string name="edit">Editar</string>
     <string name="deleted">Eliminado</string>
+    <string name="oven_eco">Eco</string>
+    <string name="oven_off">Apagado</string>
+    <string name="oven_large">Largo</string>
 </resources>

@@ -65,9 +65,9 @@ public class BlindState extends State{
                     ret.add(super.getName() + " " + super.context.getResources().getString(R.string.blindStateClosed));
             }
             if(level == 100 && s.equals("opened")) {
-              if(notifyOpenClass)  ret.add(super.getName() + "has been opened");
+              if(notifyOpenClass)  ret.add(super.getName() + " " + super.context.getResources().getString(R.string.blindStateOpened));
             }else if(level == 100  && s.equals("closed")){
-              if(notifyCloseClass)  ret.add(super.getName() + "has been closed");
+              if(notifyCloseClass)  ret.add(super.getName() + super.context.getResources().getString(R.string.blindStateClosed));
             }
         }
 

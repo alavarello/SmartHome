@@ -33,7 +33,7 @@ public class LampState extends State {
         }
 
         if(!s.color.equals(color)){
-            if(notifyChangeColorClass)ret.add(super.getName() + " " + super.context.getResources().getString(R.string.lampStateColor) + color);
+            if(notifyChangeColorClass)ret.add(super.getName() + " " + super.context.getResources().getString(R.string.lampStateColor));
         }
         if(!s.status.equals(status)){
             if(status.equals("on")){
@@ -45,7 +45,7 @@ public class LampState extends State {
 
         }
         if(s.brightness != brightness){
-           if(notifyChangeBrigtnessClass) ret.add(super.getName() + " " + super.context.getResources().getString(R.string.lampStateBrightness) + brightness);
+           if(notifyChangeBrigtnessClass) ret.add(super.getName() + " " + super.context.getResources().getString(R.string.lampStateBrightness) + " " + brightness);
         }
 
         return ret;

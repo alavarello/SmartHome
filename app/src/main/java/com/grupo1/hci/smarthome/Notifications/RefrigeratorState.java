@@ -1,6 +1,8 @@
 package com.grupo1.hci.smarthome.Notifications;
 
 
+import android.util.Log;
+
 import com.grupo1.hci.smarthome.R;
 
 import java.util.ArrayList;
@@ -54,14 +56,34 @@ public class RefrigeratorState extends State {
         }
 
         if(!s.mode.equals(mode)){
-           if(notifyModeClass) ret.add(super.getName() + super.context.getResources().getString(R.string.refriStateMode) + mode);
+            Log.d("DENTRO MODE", "DENTRO DE MODE");
+           if(notifyModeClass)
+           {
+               if(mode.equals("party")) {
+                   ret.add(super.getName() + " " + super.context.getResources().getString(R.string.refriStateMode) + " " + super.context.getResources().getString(R.string.refri_party));
+
+               }
+               else if(mode.equals("vacation")) {
+                   ret.add(super.getName() + " " + super.context.getResources().getString(R.string.refriStateMode) + " " + super.context.getResources().getString(R.string.refri_vacation));
+
+               }
+               else
+               {
+                   ret.add(super.getName() + " " + super.context.getResources().getString(R.string.refriStateMode) + " " + super.context.getResources().getString(R.string.refri_def));
+
+               }
+               return ret;
+           }
         }
 
         if(s.temperature != temperature){
-            if(notifyTemperatureClass)ret.add(super.getName() + super.context.getResources().getString(R.string.refriStateTemperature) + temperature);
+            if(notifyTemperatureClass)
+                ret.add(super.getName() + " " + super.context.getResources().getString(R.string.refriStateTemperature) + " " + temperature);
         }
         if(s.freezerTemperature != freezerTemperature){
-           if(notifyFreezerTemperatureClass) ret.add(super.getName() + super.context.getResources().getString(R.string.refriStateFreezerTemp) + freezerTemperature);
+            Log.d("DENTRO FREEZER TEMP", "DENTRO DE FREEZER TEMP");
+           if(notifyFreezerTemperatureClass)
+               ret.add(super.getName() + " " + super.context.getResources().getString(R.string.refriStateFreezerTemp) + " " + freezerTemperature);
         }
 
         return ret;

@@ -36,13 +36,65 @@ public class OvenState extends State{
         }
 
         if(!s.heat.equals(heat)){
-            if(notifyHeatClass)ret.add(super.getName() + " " + super.context.getResources().getString(R.string.ovenStateHeat) + heat);
+            if(notifyHeatClass)
+            {
+                if(heat.equals("conventional")) {
+
+                    ret.add(super.getName() + " " + super.context.getResources().getString(R.string.ovenStateHeat) + " " + super.context.getResources().getString(R.string.oven_conventional));
+
+                }
+                else if(heat.equals("bottom")) {
+
+                        ret.add(super.getName() + " " + super.context.getResources().getString(R.string.ovenStateHeat) + " " + super.context.getResources().getString(R.string.oven_bottom));
+
+                }
+                else
+                {
+                        ret.add(super.getName() + " " + super.context.getResources().getString(R.string.ovenStateHeat) + " " + super.context.getResources().getString(R.string.oven_off));
+
+                }
+            }
+
         }
         if(!s.grill.equals(grill)){
-            if(notifyGrillClass)ret.add(super.getName() + " " + super.context.getResources().getString(R.string.ovenStateGrill) + grill);
+            if(notifyGrillClass)
+            {
+                if(grill.equals("large")) {
+
+                    ret.add(super.getName() + " " + super.context.getResources().getString(R.string.ovenStateGrill) + " " + super.context.getResources().getString(R.string.oven_large));
+
+                }
+                else if(grill.equals("eco")) {
+                        ret.add(super.getName() + " " + super.context.getResources().getString(R.string.ovenStateGrill) + " " + super.context.getResources().getString(R.string.oven_eco));
+
+                }
+                else
+                {
+                        ret.add(super.getName() + " " + super.context.getResources().getString(R.string.ovenStateGrill) + " " + super.context.getResources().getString(R.string.oven_off));
+
+                }
+            }
+
         }
         if(!s.convection.equals(convection)){
-            if(notifyConvectionClass)ret.add(super.getName() + " " + super.context.getResources().getString(R.string.ovenStateConvection) + convection);
+            if(notifyConvectionClass) {
+                if(convection.equals("normal")) {
+
+                    ret.add(super.getName() + " " + super.context.getResources().getString(R.string.ovenStateConvection) + " " + super.context.getResources().getString(R.string.oven_normal));
+
+                }
+                else if(convection.equals("eco")) {
+                    if(notifyConvectionClass)
+                        ret.add(super.getName() + " " + super.context.getResources().getString(R.string.ovenStateConvection) + " " + super.context.getResources().getString(R.string.oven_eco));
+
+                }
+                else
+                {
+                    if(notifyGrillClass)ret.add(super.getName() + " " + super.context.getResources().getString(R.string.ovenStateConvection) + " " + super.context.getResources().getString(R.string.oven_off));
+
+                }
+            }
+
         }
         if(!s.status.equals(status)){
             if(status.equals("on")){
@@ -52,7 +104,7 @@ public class OvenState extends State{
             }
         }
         if(s.temperature != temperature){
-            if(notifyTemperatureClass)ret.add(super.getName() + " " + super.context.getResources().getString(R.string.ovenStateTemperature) + temperature);
+            if(notifyTemperatureClass)ret.add(super.getName() + " " + super.context.getResources().getString(R.string.ovenStateTemperature) + " " + temperature);
         }
 
         return ret;
@@ -172,6 +224,7 @@ public class OvenState extends State{
     public static boolean isNotifyConvectionClass() {
         return notifyConvectionClass;
     }
+
 
 
 }

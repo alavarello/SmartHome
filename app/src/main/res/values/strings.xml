@@ -174,7 +174,7 @@
     <string name="doorStateClosed">has been closed</string>
     <string name="doorStateLocked">has been locked</string>
     <string name="doorStateUnlocked">has been unlocked</string>
-    <string name="lampStateColor">Color has changed to:</string>
+    <string name="lampStateColor">Color has changed</string>
     <string name="lampStateOn">has turned on</string>
     <string name="lampStateOff">has turned off</string>
     <string name="lampStateBrightness">Brightness has changed to:</string>
