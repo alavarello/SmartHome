@@ -4,6 +4,7 @@ package com.grupo1.hci.smarthome.Notifications;
  * Created by francisco on 19/11/2017.
  */
 
+import android.content.Context;
 import android.util.Log;
 
 import java.io.Serializable;
@@ -21,14 +22,27 @@ public class State implements  Serializable {
 
     private int notificationChannel;
 
+    protected boolean isVisible;
+
+    protected Context context;
+
     public int getDevice(){
         return device;
     }
 
-    public State(int device) {
+    public State(int device ) {
         this.isStarted = false;
         this.device = device;
         this.notificationChannel = notificationChannelCounter++;
+        this.isVisible = false;
+    }
+
+    public Context getContext() {
+        return context;
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
     }
 
     public int getNotificationChannel() {

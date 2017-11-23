@@ -1,5 +1,7 @@
 package com.grupo1.hci.smarthome.Notifications;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 
 /**
@@ -42,7 +44,7 @@ public class AcState  extends State {
     }
 
     public AcState(String status, int temperature, String mode, String verticalSwing, String horizontalSwing, String fanSpeed) {
-        super(3);
+        super(3 );
         this.status = status;
         this.temperature = temperature;
         this.mode = mode;
@@ -95,6 +97,10 @@ public class AcState  extends State {
         AcState s = (AcState) a;
 
         ArrayList<String> ret = new ArrayList<>();
+
+        if(super.isVisible){
+            return ret;
+        }
 
         if(!s.fanSpeed.equals(fanSpeed)){
             ret.add(super.getName() + " Fan speed has changed to : " + fanSpeed);

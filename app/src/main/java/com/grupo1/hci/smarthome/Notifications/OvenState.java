@@ -29,6 +29,10 @@ public class OvenState extends State{
 
         ArrayList<String> ret = new ArrayList<>();
 
+        if(super.isVisible){
+            return ret;
+        }
+
         if(!s.heat.equals(heat)){
             if(notifyHeatClass)ret.add(super.getName() + " Heat has changed to : " + heat);
         }

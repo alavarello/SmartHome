@@ -47,6 +47,10 @@ public class RefrigeratorState extends State {
         RefrigeratorState s = (RefrigeratorState) a;
         ArrayList<String> ret = new ArrayList<>();
 
+        if(super.isVisible){
+            return ret;
+        }
+
         if(!s.mode.equals(mode)){
            if(notifyModeClass) ret.add(super.getName() + " Mode has changed to : " + mode);
         }

@@ -150,6 +150,9 @@
         <item>Party</item>
     </string-array>
 
+    <string name="changeNotificationRefriTemp">Changes Refrigerator temperature</string>
+    <string name="changeNotificationRefriFreezerTemp">Changes Freezer temperature</string>
+    <string name="changeNotificationRefriMode">Changes mode</string>
 
 
 
