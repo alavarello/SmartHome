@@ -54,6 +54,7 @@ public class RoomActivity extends NavigationActivity implements SuportDeviceActi
         }else{
             room = (Room) getIntent().getSerializableExtra(Constants.ROOM_INTENT);
             roomsArray = (ArrayList<Room>) getIntent().getSerializableExtra(Constants.ROOM_ARRAY_INTENT);
+            device = (Device) getIntent().getSerializableExtra(Constants.DEVICE_INTENT);
 
         }
         setMenu();
@@ -63,6 +64,13 @@ public class RoomActivity extends NavigationActivity implements SuportDeviceActi
         //Set toolbar content
         getSupportActionBar().setTitle(room.getName());
         setFragment();
+        if(device != null){
+            if(((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_XLARGE)){
+                changeDeviceFragment(device);
+            }else {
+                ((RoomListFragment) fragment).startDeviceActivity(device);
+            }
+        }
 
     }
 

@@ -101,7 +101,7 @@ public class RoomListFragment extends ListFragment implements AdapterView.OnItem
 
     }
 
-    private void startDeviceActivity(Device device) {
+    public void startDeviceActivity(Device device) {
         Intent intent;
         intent = new Intent(getActivity().getApplicationContext(), DeviceActivity.class);
         intent.putExtra(Constants.DEVICE_INTENT, (Serializable) device);
