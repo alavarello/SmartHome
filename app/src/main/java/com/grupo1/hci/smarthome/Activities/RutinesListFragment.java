@@ -115,8 +115,8 @@ public class RutinesListFragment extends ListFragment implements AdapterView.OnI
     public void deleteRutines(final HashMap<Rutine, Integer> rutines)
     {
         //setting the snackbar
-        mySnackbar = Snackbar.make(getActivity().findViewById(R.id.homeActivity_Fragmentcontainer), "Deleted", Snackbar.LENGTH_LONG);
-        mySnackbar.setAction("Undo", new View.OnClickListener(){
+        mySnackbar = Snackbar.make(getActivity().findViewById(R.id.homeActivity_Fragmentcontainer), R.string.deleted, Snackbar.LENGTH_LONG);
+        mySnackbar.setAction(R.string.undo, new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {

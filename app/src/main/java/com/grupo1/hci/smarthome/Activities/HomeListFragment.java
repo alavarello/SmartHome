@@ -117,8 +117,8 @@ public class HomeListFragment extends ListFragment implements AdapterView.OnItem
 
     public void deleteRooms(final HashMap<Room, Integer> rooms) {
         //setting the snackbar
-        mySnackbar = Snackbar.make(getActivity().findViewById(R.id.homeActivity_Fragmentcontainer), "Deleted", Snackbar.LENGTH_LONG);
-        mySnackbar.setAction("Undo", new View.OnClickListener() {
+        mySnackbar = Snackbar.make(getActivity().findViewById(R.id.homeActivity_Fragmentcontainer), R.string.deleted, Snackbar.LENGTH_LONG);
+        mySnackbar.setAction(R.string.undo, new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {

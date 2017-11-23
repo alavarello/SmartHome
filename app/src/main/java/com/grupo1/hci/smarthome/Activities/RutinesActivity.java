@@ -33,7 +33,7 @@ public class RutinesActivity extends NavigationActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        getSupportActionBar().setTitle("Rutines");
+        getSupportActionBar().setTitle(R.string.title_activity_rutines);
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
         setFragment();
