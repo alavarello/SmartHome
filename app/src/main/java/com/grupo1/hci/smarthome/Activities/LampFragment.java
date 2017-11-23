@@ -1,5 +1,6 @@
 package com.grupo1.hci.smarthome.Activities;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.grupo1.hci.smarthome.Model.APIManager;
@@ -27,6 +29,12 @@ public class LampFragment extends Fragment {
     Button redButton;
     Button blueButton;
     Button yellowButton;
+    TextView orange;
+    TextView blue;
+    TextView red;
+    TextView green;
+    TextView selected;
+
 
     public LampFragment() {
         // Required empty public constructor
@@ -82,28 +90,37 @@ public class LampFragment extends Fragment {
         yellowButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                apiManager.lampColorChange(getActivity(),lamp, Constants.COLOR_YELLOW);
+                apiManager.lampColorChange(getActivity(),lamp, Constants.COLOR_YELLOW, orange, selected);
+                selected= orange;
+                orange.setBackgroundColor(Color.GRAY);
             }
         });
         redButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                apiManager.lampColorChange(getActivity(),lamp, Constants.COLOR_RED);
+                apiManager.lampColorChange(getActivity(),lamp, Constants.COLOR_RED, red, selected);
+                selected= red;
+                red.setBackgroundColor(Color.GRAY);
             }
         });
         greenButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                apiManager.lampColorChange(getActivity(),lamp, Constants.COLOR_GREEN);
+                apiManager.lampColorChange(getActivity(),lamp, Constants.COLOR_GREEN, green, selected);
+                selected= green;
+                blue.setBackgroundColor(Color.GRAY);
             }
         });
         blueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                apiManager.lampColorChange(getActivity(),lamp, Constants.COLOR_BLUE);
+                apiManager.lampColorChange(getActivity(),lamp, Constants.COLOR_BLUE, blue, selected);
+                selected= blue;
+                blue.setBackgroundColor(Color.GRAY);
+
             }
         });
-        
+
     }
 
     private void setView(View view) {
@@ -119,19 +136,35 @@ public class LampFragment extends Fragment {
         yellowButton = view.findViewById(R.id.contentLamp_yellowButton);
         blueButton = view.findViewById(R.id.contentLamp_blueButton);
         redButton = view.findViewById(R.id.contentLamp_redButton);
+        orange = view.findViewById(R.id.orange_color);
+        blue = view.findViewById(R.id.blue_color);
+        red = view.findViewById(R.id.red_color);
+        green = view.findViewById(R.id.green_color);
 
     }
 
     public void loadLampState(Lamp lamp) {
         this.lamp = lamp;
-       if(lamp.isOn()){
+        if(lamp.isOn()){
             onOffSwitch.setChecked(true);
         }else{
             onOffSwitch.setChecked(false);
         }
         seekBar.setProgress(lamp.getBrightness());
-       
-       //TODO color of the lamp
+
+        if(lamp.getColor().equals(Constants.COLOR_BLUE)){
+            selected= blue;
+            blue.setBackgroundColor(Color.GRAY);
+        }else if(lamp.getColor().equals(Constants.COLOR_GREEN)){
+            green.setBackgroundColor(Color.GRAY);
+            selected= green;
+        }else if(lamp.getColor().equals(Constants.COLOR_RED)){
+            red.setBackgroundColor(Color.GRAY);
+            selected= red;
+        }else {
+            orange.setBackgroundColor(Color.GRAY);
+            selected= orange;
+        }
 
     }
 

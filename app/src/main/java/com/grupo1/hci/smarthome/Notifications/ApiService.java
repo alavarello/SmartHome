@@ -167,6 +167,7 @@ public class ApiService extends Service {
     }
 
     public static void updateVisibility(String idDevice , boolean visibility){
+
         for(DeviceState d : status){
             if(d.deviceId.equals(idDevice)){
                 d.s.isVisible = visibility;
@@ -211,7 +212,6 @@ public class ApiService extends Service {
                         getAllDevices(getApplicationContext());
                         updateArrays();
                         saveNotifications();
-                        Log.d("status es " ,g.toJson(status));
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();

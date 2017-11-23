@@ -4,6 +4,7 @@ import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -54,8 +55,8 @@ public class RefrigeratorFragment extends Fragment {
 
     private void setView(View view) {
 
-        refri = (Refrigerator) ((DeviceActivity) getActivity()).getDevice();
-        ((DeviceActivity)getActivity()).getSupportActionBar().setTitle(refri.getName());
+        refri = (Refrigerator) ((SuportDeviceActivity) getActivity()).getDevice();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(refri.getName());
 
         refri_mode = view.findViewById(R.id.refri_mode);
         refri_temp = view.findViewById(R.id.refri_temp);
