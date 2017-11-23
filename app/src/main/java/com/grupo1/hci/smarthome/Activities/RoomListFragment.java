@@ -72,8 +72,6 @@ public class RoomListFragment extends ListFragment implements AdapterView.OnItem
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         room = ((RoomActivity) getActivity()).getRoom();
-        apiManager = APIManager.getInstance(getActivity());
-        apiManager.getDevicesForRoom(room.getId(), getActivity(), null);
         toolbar = ((NavigationActivity) getActivity()).getToolbar();
         setView();
         getListView().setOnItemLongClickListener(this);
@@ -89,6 +87,8 @@ public class RoomListFragment extends ListFragment implements AdapterView.OnItem
 
 
     private void setView() {
+        apiManager = APIManager.getInstance(getActivity());
+        apiManager.getDevicesForRoom(room.getId(), getActivity(), null);
         toolbar.setTitle(room.getName());
         //set the contextual floating menu
         mActionModeCallback = new RoomContextualMenu();

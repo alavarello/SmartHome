@@ -1,8 +1,10 @@
 package com.grupo1.hci.smarthome.Model;
 
+import android.graphics.Color;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 /**
  * Created by agust on 11/23/2017.
@@ -19,6 +21,9 @@ public class RevertError {
     EditText editText;
     String editTextValue;
 
+    TextView newTextView ;
+    TextView oldTextView ;
+
 
 
 
@@ -30,6 +35,9 @@ public class RevertError {
             dimmer.setProgress(dimmerValue);
         }else if(editText != null){
             editText.setText(editTextValue);
+        }else if(newTextView != null){
+            newTextView.setBackgroundColor(Color.TRANSPARENT);
+            oldTextView.setBackgroundColor(Color.GRAY);
         }
     }
 
@@ -46,5 +54,10 @@ public class RevertError {
     public void setEditText(EditText editText, String editTextValue){
         this.editText = editText;
         this.editTextValue = editTextValue;
+    }
+
+    public void setTextView(TextView newTextView, TextView oldTextView){
+        this.newTextView = newTextView;
+        this.oldTextView = oldTextView;
     }
 }

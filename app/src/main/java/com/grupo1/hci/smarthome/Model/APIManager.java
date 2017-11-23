@@ -144,7 +144,7 @@ public class APIManager {
                             String jsonFragment = response.getString("rooms");
                             ArrayList<Room> roomList = gson.fromJson(jsonFragment, listType);
                             menu.removeItem(0);
-                           SubMenu m = menu.addSubMenu(R.string.rooms);
+                            SubMenu m = menu.addSubMenu(R.string.rooms);
                             int i =0;
                             for (Room r : roomList) {
                                 m.add(R.id.roomGroupNavigationalDrawer, i++ ,500, r.getName());
@@ -219,9 +219,10 @@ public class APIManager {
                                     deviceList.add(r);
                                 }
                             }
-                           // String jsonFragment = response.getString("devices");
-                          //  ArrayList<Device> deviceList = gson.fromJson(jsonFragment, listType);
-                          ((RoomActivity)activity).loadDevices(deviceList);
+                            // String jsonFragment = response.getString("devices");
+                            //  ArrayList<Device> deviceList = gson.fromJson(jsonFragment, listType);
+                            ((RoomActivity)activity).loadDevices(deviceList);
+                            Toast.makeText(activity, response.toString(), Toast.LENGTH_SHORT).show();
                         } catch (Exception exception) {
                             Toast.makeText(activity, exception.getLocalizedMessage(), Toast.LENGTH_LONG).show();
                         }
@@ -254,6 +255,7 @@ public class APIManager {
                     @Override
                     public void onResponse(JSONObject response)
                     {
+                        Toast.makeText(activity,response.toString(), Toast.LENGTH_LONG).show();
                     }
                 },
                 new Response.ErrorListener()
@@ -280,6 +282,7 @@ public class APIManager {
                     @Override
                     public void onResponse(JSONObject response)
                     {
+                        Toast.makeText(activity,response.toString(), Toast.LENGTH_LONG).show();
                     }
                 },
                 new Response.ErrorListener()
@@ -289,7 +292,7 @@ public class APIManager {
                     {
                         if (null != error.networkResponse)
                         {
-                           //TODO
+                            //TODO
                             Toast.makeText(activity, R.string.error_deleteRoutine, Toast.LENGTH_LONG).show();
                         }
                     }
@@ -429,7 +432,9 @@ public class APIManager {
         queue.add(request);
     }
 
-    public void lampColorChange(final Activity activity, Device device, String color) {
+    public void lampColorChange(final Activity activity, Device device, String color, TextView textView, TextView oldTextView) {
+        RevertError re = new RevertError();
+        re.setTextView(textView, oldTextView);
         actionToApi(device.getId(),"changeColor", color, new RevertError());
     }
 
@@ -515,9 +520,9 @@ public class APIManager {
                                     break;
                                 case Constants.BLIND_ID:
                                     Blind b = (Blind) device;
-                                   b.setStatus(jsonObject.getString("status"));
+                                    b.setStatus(jsonObject.getString("status"));
                                     ((BlindFragment)fragment).loadBlindState(b);
-                                   break;
+                                    break;
                                 case Constants.DOOR_ID:
                                     Door d = (Door) device;
                                     if(jsonObject.getString("status").equals("opened")){
@@ -768,21 +773,21 @@ public class APIManager {
                 {
                     @Override
                     public void onResponse(JSONObject response) {
-                       if(object.getClass().equals(Room.class)){
+                        if(object.getClass().equals(Room.class)){
                             ((Room)object).setName(newName);
                         }
                         else if(object.getClass().equals(Rutine.class)){
                             ((Rutine)object).setName(newName);
                         }
                         else{
-                           ((Device)object).setName(newName);
+                            ((Device)object).setName(newName);
                         }
                         ((NavigationActivity)activity).setMenuWithApiCall();
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(activity, R.string.error_changeName, Toast.LENGTH_LONG).show();
+                Toast.makeText(activity, R.string.error_changeName, Toast.LENGTH_LONG).show();
             }
         }){
             @Override
