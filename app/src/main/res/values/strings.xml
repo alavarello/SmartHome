@@ -151,6 +151,12 @@
     <string name="refri_party">Party</string>
     <string name="refri_vacation">Vacation</string>
 
+    <string name="refriSettings">Refrigerator Settings</string>
+    <string name="lampSettings">Lamp Settings</string>
+    <string name="blindSettings">Blind Settings</string>
+    <string name="ovenSettings">Oven Settings</string>
+    <string name="doorSettings">Door Settings</string>
+
     <string-array name="refri_mode">
         <item>Default</item>
         <item>Vacation</item>
