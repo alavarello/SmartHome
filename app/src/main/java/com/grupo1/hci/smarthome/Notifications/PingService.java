@@ -92,6 +92,8 @@ public class PingService extends IntentService {
         String action = intent.getAction();
         // This section handles the 3 possible actions:
         // ping, snooze, and dismiss.
+        Log.d("handler:" , roomId + "-" + deviceId);
+        Log.d("ACTION PING" , CommonConstants.ACTION_PING);
         if(action.equals(CommonConstants.ACTION_PING)) {
             issueNotification(intent, mMessage, channelId , name , deviceId , roomId , roomName);
         }

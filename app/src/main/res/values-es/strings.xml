@@ -39,9 +39,9 @@
     <string name="on">Encendido</string>
     <string name="off">Apagado</string>
     <string name="temperature">Temperatura</string>
-    <string name="delete">Borrar</string>
+    <string name="delete">Eliminar</string>
     <string name="cancel">Cancelar</string>
-    <string name="deleteConfirmation">¿Está seguro de que desea borrar el elemento?</string>
+    <string name="deleteConfirmation">¿Está seguro que desea eliminar el elemento?</string>
     <string name="undo">Deshacer</string>
     <string name="hello_blank_fragment">Hola fragmento blanco</string>
     <string name="oven">Horno</string>
@@ -65,7 +65,6 @@
     <string name="changeNotificationConvection">Cambiar el modo de convección</string>
     <string name="changeNotificationTemperature">Cambiar la temperatura</string>
     <string name="changeNotificationGrill">Cambiar el modo de parrilla</string>
-
     <string-array name="timeNotification_array">
         <item>30 segundos</item>
         <item>1 minuto</item>
@@ -145,4 +144,5 @@
     <string name="refri_temp">Temperatura del refrigerador</string>
     <string name="refri_mode">Modo</string>
     <string name="edit">Editar</string>
+    <string name="deleted">Eliminado</string>
 </resources>
