@@ -149,4 +149,23 @@
     <string name="rooms">Cuartos</string>
     <string name="rutine">Rutina</string>
     <string name="rutine_execute">se ha ejecutado correctamente</string>
+    <string name="error_loading_rooms">Ocurrió un error al cargar los cuartos. Por favor verifique su conexión a Internet</string>
+    <string name="error_getDevices">Ocurrió un error al cargar los dispositivos. Por favor verifique su conexión a Internet</string>
+    <string name="error_deleteRoom">Ocurrió un error al borrar el cuarto. Por favor verifique su conexión a Internet</string>
+    <string name="error_deleteRoutine">Ocurrió un error al borrar la rutina. Por favor verifique su conexión a Internet</string>
+    <string name="error_deleteDevice">Ocurrió un error al borrar el dispositivo. Por favor verifique su conexión a Internet</string>
+    <string name="error_getRoutines">Ocurrió un error al cargar las rutinas. Por favor verifique su conexión a Internet</string>
+    <string name="error_deviceOff">Ocurrió un error al apagar el dispositivo. Por favor verifique su conexión a Internet</string>
+    <string name="error_getState">Ocurrió un error al cargar los dispositivos. Por favor verifique su conexión a Internet</string>
+    <string name="error_openDoor">Ocurrió un error al abrir la puerta. Por favor verifique su conexión a Internet</string>
+    <string name="error_closeDoor">Ocurrió un error al cerrar la puerta. Por favor verifique su conexión a Internet</string>
+    <string name="error_lockDoor">Ocurrió un error al trabar la puerta. Por favor verifique su conexión a Internet</string>
+    <string name="error_unlockDoor">Ocurrió un error al destrabar la puerta. Por favor verifique su conexión a Internet</string>
+    <string name="error_executeRoutine">Ocurrió un error al ejecutar la rutina. Por favor verifique su conexión a Internet</string>
+    <string name="error_blindUp">Ocurrió un error al subir la cortina. Por favor verifique su conexión a Internet</string>
+    <string name="error_blindDown">Ocurrió un error al bajar la cortina. Por favor verifique su conexión a Internet</string>
+    <string name="error_changeName">Ocurrió un error al cambiar el nombre. Por favor verifique su conexión a Internet</string>
+    <string name="freezerTemperatureMinMaxValue">La temperatura del freezer debe estar entre -20 y -8</string>
+    <string name="refriTemperatureMaxMinValue">La temperatura debe estar entre 2 y 8</string>
+    <string name="temperatureMinandMaxValueError">La temperatura debe estar entre 90 y 230</string>
 </resources>

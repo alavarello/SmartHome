@@ -14,7 +14,7 @@ public class Constants {
     public static final int DELTE__FROM_OVERFLOW = 0;
     public static Context context;
     public static String appName;
-    public static String PORT_CONECTIVITY = "http://194.0.0.2:8080";
+    public static String PORT_CONECTIVITY = "http://10.0.2.2:8080";
 
 
 

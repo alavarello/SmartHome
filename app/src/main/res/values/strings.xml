@@ -200,8 +200,24 @@
     <string name="rutine">Rutine</string>
     <string name="rutine_execute">has executed correctly</string>
     <string name="temperatureMinandMaxValueError">The temperature must be between 90 and 230</string>
-    <string name="refriTemperatureMaxMinValue">The values must be between 2 and 8</string>
-    <string name="freezerTemperatureMinMaxValue">The freezer temperature mus be between -20 and -8</string>
+    <string name="refriTemperatureMaxMinValue">The temperature must be between 2 and 8</string>
+    <string name="freezerTemperatureMinMaxValue">The freezer temperature must be between -20 and -8</string>
+    <string name="error_loading_rooms">An error has occurred while loading the rooms. Please check your Internet connection</string>
+    <string name="error_getDevices">An error has occurred while loading the devices. Please check your Internet connection</string>
+    <string name="error_deleteRoom">An error has occurred while deleting the room. Please check your Internet connection</string>
+    <string name="error_deleteRoutine">An error has occurred while deleting the routine. Please check your Internet connection</string>
+    <string name="error_deleteDevice">An error has occurred while deleting the device. Please check your Internet connection</string>
+    <string name="error_getRoutines">An error has occurred while loading the routines. Please check your Internet connection</string>
+    <string name="error_deviceOff">An error has occurred while turning off the device. Please check your Internet connection</string>
+    <string name="error_getState">An error has occurred while loading the devices state. Please check your Internet connection</string>
+    <string name="error_openDoor">An error has occurred while opening the door. Please check your Internet connection</string>
+    <string name="error_closeDoor">An error has occurred while closing the door. Please check your Internet connection</string>
+    <string name="error_lockDoor">An error has occurred while locking the door. Please check your Internet connection</string>
+    <string name="error_unlockDoor">An error has occurred while unlocking the door. Please check your Internet connection</string>
+    <string name="error_executeRoutine">An error has occurred while executing the routine. Please check your Internet connection</string>
+    <string name="error_blindUp">An error has occurred while opening the blind. Please check your Internet connection</string>
+    <string name="error_blindDown">An error has occurred while closing the blind. Please check your Internet connection</string>
+    <string name="error_changeName">An error has occurred while changing the name. Please check your Internet connection</string>
 
 
 </resources>
