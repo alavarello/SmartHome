@@ -46,7 +46,6 @@ public class RutinesActivity extends NavigationActivity {
         fragment = new RutinesListFragment();
         fragmentTransaction.add(R.id.homeActivity_Fragmentcontainer, fragment);
         fragmentTransaction.commit();
-
     }
 
     public Fragment getFragment() {
@@ -56,6 +55,10 @@ public class RutinesActivity extends NavigationActivity {
 
     public void loadRutines(ArrayList<Rutine> rutineList) {
         ((RutinesListFragment)fragment).loadRutines(rutineList);
+    }
+
+    public ArrayList<View> getSelectedElements(){
+        return ((RutinesListFragment)fragment).getSelectedElement();
     }
 }
 

@@ -6,6 +6,7 @@ import android.view.View;
 import com.grupo1.hci.smarthome.Model.Device;
 import com.grupo1.hci.smarthome.Model.Room;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -22,4 +23,5 @@ public interface RoomsFragment {
     void diselectElement(View view);
     void deviceDeleteError(Device device);
     void deleteDevice(Device device);
+    ArrayList<View> getSelectedElements();
 }

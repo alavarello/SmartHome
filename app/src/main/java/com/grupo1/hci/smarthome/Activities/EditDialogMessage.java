@@ -1,5 +1,6 @@
 package com.grupo1.hci.smarthome.Activities;
 
+import android.support.v7.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -7,15 +8,19 @@ import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.grupo1.hci.smarthome.Model.Device;
 import com.grupo1.hci.smarthome.Model.Room;
 import com.grupo1.hci.smarthome.Model.Rutine;
 import com.grupo1.hci.smarthome.R;
+
+import java.util.regex.Pattern;
 
 /**
  * Created by agust on 11/5/2017.
@@ -29,6 +34,8 @@ public class EditDialogMessage extends DialogFragment {
     Boolean isRutine = false;
     Boolean isDevice = false;
     Boolean isRoom = false;
+    View view;
+    ActionBar ab;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -44,17 +51,31 @@ public class EditDialogMessage extends DialogFragment {
         builder.setMessage("EDIT")
                 .setPositiveButton("EDIT", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
+
+                        if(!Pattern.matches("a*b", "aaaaab")){
+                            //TODO pattern match
+                        }
                         if(isDevice){
-                            Toast.makeText(getActivity().getApplicationContext(), "Se edito el disp "+ device.getName() , Toast.LENGTH_SHORT).show();
+                            if(view != null){
+                                TextView et = view.findViewById(R.id.rowLayout_nameTextView);
+                                et.setText(input.getText().toString());
+                                //TODO diselect element
+                            }else{
+                                ab.setTitle(input.getText().toString());
+                            }
+                            //TODO APi call
                             return;
                         }
                         if(isRoom){
-                            Toast.makeText(getActivity().getApplicationContext(), "Se edito el cuarto "+ room.getName() , Toast.LENGTH_SHORT).show();
+                            TextView et = view.findViewById(R.id.rowLayout_nameTextView);
+                            et.setText(input.getText().toString());
+                            //TODO APi call and diselect element
                             return;
                         }
                         if(isRutine){
-                            Toast.makeText(getActivity().getApplicationContext(), "Se edito la rutina "+ rutine.getName() , Toast.LENGTH_SHORT).show();
-
+                            TextView et = view.findViewById(R.id.rutineRowLayout_nameTextView);
+                            et.setText(input.getText().toString());
+                            //TODO APi call and diselect element
                             return;
                         }
 
@@ -88,5 +109,13 @@ public class EditDialogMessage extends DialogFragment {
         this.isRoom = false;
         this.isDevice = false;
         this.isRutine = true;
+    }
+
+    public void setView(View view) {
+        this.view = view;
+    }
+
+    public void setAb(ActionBar ab) {
+        this.ab = ab;
     }
 }

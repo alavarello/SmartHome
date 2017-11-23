@@ -101,6 +101,9 @@ public class RutinesListFragment extends ListFragment implements AdapterView.OnI
         if(selectedElement.isEmpty()){
             mActionMode.finish();
         }
+        if (selectedElement.size() == 1) {
+            ((RutineContextualMenu) mActionModeCallback).changeToOneItemsMenu();
+        }
     }
 
     public void deleteRutines(final HashMap<Rutine, Integer> rutines)
@@ -157,6 +160,7 @@ public class RutinesListFragment extends ListFragment implements AdapterView.OnI
                 diselectElement(view);
                 ((RutineContextualMenu) mActionModeCallback).removeRutine(rutine);
             } else {
+                ((RutineContextualMenu) mActionModeCallback).changeToSeveralItemsMenu();
                 ((RutineContextualMenu) mActionModeCallback).addRutine(rutine, i);
                 selectedElement(view, rutine);
             }
@@ -185,6 +189,7 @@ public class RutinesListFragment extends ListFragment implements AdapterView.OnI
                 ((RutineContextualMenu) mActionModeCallback).removeRutine(rutine);
             } else {
                 ((RutineContextualMenu) mActionModeCallback).addRutine(rutine, i);
+                ((RutineContextualMenu) mActionModeCallback).changeToSeveralItemsMenu();
                 selectedElement(view, rutine);
             }
         }
@@ -192,5 +197,9 @@ public class RutinesListFragment extends ListFragment implements AdapterView.OnI
 
     public void setmActionMode(ActionMode mActionMode) {
         this.mActionMode = mActionMode;
+    }
+
+    public ArrayList<View> getSelectedElement(){
+        return selectedElement;
     }
 }

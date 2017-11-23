@@ -59,6 +59,7 @@ public class RoomContextualMenu implements ActionMode.Callback {
             case R.id.editElement:
                 EditDialogMessage editDeviceMessage = new EditDialogMessage();
                 editDeviceMessage.setDevice(devices.keySet().iterator().next());
+                editDeviceMessage.setView(roomActivity.getSelectedElements().get(0));
                 editDeviceMessage.show(roomActivity.getFragmentManager(), "editDevice");
                 break;
             case R.id.deleteElement:

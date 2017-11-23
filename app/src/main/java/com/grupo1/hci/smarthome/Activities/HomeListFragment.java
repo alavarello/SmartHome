@@ -178,6 +178,11 @@ public class HomeListFragment extends ListFragment implements AdapterView.OnItem
         loadRomms(roomsArray);
     }
 
+    @Override
+    public ArrayList<View> getSelectedElements() {
+        return selectedElement;
+    }
+
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

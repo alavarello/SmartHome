@@ -47,6 +47,7 @@ public class RutineAdapter extends ArrayAdapter<Rutine> {
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.rutine_row_layout, parent, false);
         }
+        final View finalView = convertView;
         // Lookup view for data population
         TextView deviceName = (TextView) convertView.findViewById(R.id.rutineRowLayout_nameTextView);
         Button actionButton = convertView.findViewById(R.id.rutineRowLayout_actionButton);
@@ -64,13 +65,22 @@ public class RutineAdapter extends ArrayAdapter<Rutine> {
             @Override
             public void onClick(View view) {
                 PopupMenu popup = new PopupMenu(context, view);
-                popup.inflate(R.menu.contextual_menu);
+                popup.inflate(R.menu.one_item_contextual_menu);
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
-                        HashMap<Rutine,Integer> hashMap = new HashMap<>();
-                        hashMap.put(rutine, position);
-                        rutinesListFragment.deleteRutines(hashMap);
+                        switch (item.getItemId()) {
+                            case R.id.editElement:
+                                EditDialogMessage editDeviceMessage = new EditDialogMessage();
+                                editDeviceMessage.setRutine(rutine);
+                                editDeviceMessage.setView(finalView);
+                                editDeviceMessage.show(rutinesListFragment.getActivity().getFragmentManager(), "editRoutine");
+                                break;
+                            case R.id.deleteElement:
+                                HashMap<Rutine, Integer> hashMap = new HashMap<>();
+                                hashMap.put(rutine, position);
+                                rutinesListFragment.deleteRutines(hashMap);
+                        }
                         return true;
                     }
                 });

@@ -143,6 +143,11 @@ public class RoomListFragment extends ListFragment implements AdapterView.OnItem
 
     }
 
+    @Override
+    public ArrayList<View> getSelectedElements() {
+        return selectedElement;
+    }
+
     public void deleteDevices(final HashMap<Device, Integer> devices) {
         //setting the snackbar
         mySnackbar = Snackbar.make(getActivity().findViewById(R.id.homeActivity_Fragmentcontainer), "Deleted", Snackbar.LENGTH_LONG);

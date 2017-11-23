@@ -21,4 +21,5 @@ public interface HomeFragment {
     void diselectElements();
     void diselectElement(View view);
     void roomDeleteError(Room room);
+    ArrayList<View> getSelectedElements();
 }
