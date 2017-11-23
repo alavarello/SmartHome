@@ -206,7 +206,7 @@ public class ApiService extends Service {
             public void run() {
                 try {
                     while(true) {
-                        sleep(interval);
+                        sleep(5000);
                         checkDevicesState(getApplicationContext());
                         getAllDevices(getApplicationContext());
                         updateArrays();

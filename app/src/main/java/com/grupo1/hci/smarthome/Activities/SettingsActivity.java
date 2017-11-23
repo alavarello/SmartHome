@@ -193,7 +193,7 @@ public class SettingsActivity extends AppCompatActivity implements NavigationVie
 
                 ApiService.interval = time;
 
-                Toast.makeText(getApplicationContext(),adapterView.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.interval_update, Toast.LENGTH_LONG).show();
             }
 
             @Override

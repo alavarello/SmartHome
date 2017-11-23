@@ -12,7 +12,7 @@
         <string name="title_activity_door">DoorActivity</string>
         <string name="title_activity_settings">Settings</string>
         <string name="title_activity_oven">OvenActivity</string>
-        <string name="title_activity_rutines">Rutines</string>
+        <string name="title_activity_rutines">Routines</string>
 
     <string name="lamp">Lamp</string>
     <string name="color">Color</string>
@@ -26,7 +26,7 @@
     <string name="ONOFF">Turn on</string>
     <string name="drawer_menu_setting">Settings</string>
         <string name="drawer_menu_rooms">Room</string>
-        <string name="drawer_menu_rutines">Rutines</string>
+        <string name="drawer_menu_rutines">Routines</string>
 
     <string name="blackErrorMessage">This field can\'t be empty</string>
     <string name="time_spinner">Receive a notification every</string>
@@ -63,6 +63,8 @@
         <!-- TODO: Remove or change this placeholder text -->
         <string name="hello_blank_fragment">Hello blank fragment</string>
     <string-array name="timeNotification_array">
+        <item>1 second</item>
+        <item>5 seconds</item>
         <item>30 seconds</item>
         <item>1 minute</item>
         <item>5 minutes</item>
@@ -197,7 +199,7 @@
     <string name="deleted">Deleted</string>
     <string name="undo">Undo</string>
     <string name="rooms">Rooms</string>
-    <string name="rutine">Rutine</string>
+    <string name="rutine">Routine</string>
     <string name="rutine_execute">has executed correctly</string>
     <string name="temperatureMinandMaxValueError">The temperature must be between 90 and 230</string>
     <string name="refriTemperatureMaxMinValue">The temperature must be between 2 and 8</string>
@@ -218,6 +220,7 @@
     <string name="error_blindUp">An error has occurred while opening the blind. Please check your Internet connection</string>
     <string name="error_blindDown">An error has occurred while closing the blind. Please check your Internet connection</string>
     <string name="error_changeName">An error has occurred while changing the name. Please check your Internet connection</string>
+    <string name="interval_update">Changes will take effect the next time you open the app</string>
 
 
 </resources>
