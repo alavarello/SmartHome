@@ -49,16 +49,10 @@ public class HomeActivity extends NavigationActivity {
 
     private void setFragment() {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        if(getResources().getConfiguration().orientation ==  getResources().getConfiguration().ORIENTATION_PORTRAIT) {
             fragment = new HomeListFragment();
             fragmentTransaction.replace(R.id.homeActivity_Fragmentcontainer, fragment);
             fragmentTransaction.commit();
-        }else{
-            Toast.makeText(getApplicationContext(), "CAMBIO", Toast.LENGTH_SHORT).show();
-            fragment = new HomeTileFragment();
-            fragmentTransaction.replace(R.id.homeActivity_Fragmentcontainer, fragment);
-            fragmentTransaction.commit();
-        }
+
     }
 
     public Fragment getFragment() {
