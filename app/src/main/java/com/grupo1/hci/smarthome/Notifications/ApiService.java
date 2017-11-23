@@ -24,6 +24,7 @@ import com.grupo1.hci.smarthome.Model.Constants;
 import com.grupo1.hci.smarthome.Model.Device;
 import com.grupo1.hci.smarthome.Model.Room;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.lang.reflect.Type;
@@ -363,6 +364,8 @@ public class ApiService extends Service {
         mServiceIntent.putExtra("roomId" , roomId);
         mServiceIntent.putExtra("roomName" , roomName);
 
+        Log.d("Send Notification Two:" , roomId + "-" + deviceId);
+
 
         int milliseconds = (5 * 1000);
 
@@ -381,6 +384,7 @@ public class ApiService extends Service {
     }
 
     public  void getAllDevices(final Context context) {
+
 
          //String url = "http://10.0.2.2:8080/api/devices";
         String url =  Constants.PORT_CONECTIVITY+"/api/devices";
@@ -485,6 +489,8 @@ public class ApiService extends Service {
 
     private void checkDevicesInRoom( Room r , Context context , String message , int channelId , String deviceName , String deviceId){
 
+        Log.d("device id y room id" , r.getId() + "-" + deviceId);
+
         String url = Constants.PORT_CONECTIVITY+"/api/rooms/" + r.getId() + "/devices";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, new JSONObject(),
                 new Response.Listener<JSONObject>()
@@ -495,16 +501,24 @@ public class ApiService extends Service {
                             Gson gson = new GsonBuilder().create();
                             Type listType = new TypeToken<ArrayList<Device>>() {
                             }.getType();
-                            String jsonFragment = response.getString("rooms");
-                            ArrayList<Device> deviceList = gson.fromJson(jsonFragment, listType);
+                            JSONArray deviceList = response.getJSONArray("devices");
 
-                            for( Device  d  : deviceList){
-                                if(d.getId().equals(deviceId)){
-                                    sendNotificationTwo(context , message , channelId , deviceName , deviceId , r.getId() , r.getName());
-                                }
+                            JSONObject aux;
+
+                            for(int i = 0 ; i < deviceList.length() ; i++ ){
+                               aux = deviceList.getJSONObject(i);
+
+                              String auxId =  aux.getString("id");
+
+                               if(auxId.equals(deviceId)){
+                                   sendNotificationTwo(context , message , channelId , deviceName , deviceId , r.getId() , r.getName());
+                               }
+
 
                             }
+
                         } catch (Exception exception) {
+                            Log.e("checkDevicesInRoom" , "error en API");
                             // Toast.makeText(activity, exception.getLocalizedMessage(), Toast.LENGTH_LONG).show();
                         }
                     }
@@ -519,7 +533,7 @@ public class ApiService extends Service {
 
 
     public void getRoomOfDevice( Context context , String message , int channelId , String deviceName , String deviceId) {
-        String url = Constants.PORT_CONECTIVITY+"/api/rooms/";
+        String url = Constants.PORT_CONECTIVITY+"/api/rooms";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, new JSONObject(),
                 new Response.Listener<JSONObject>()
                 {
@@ -537,6 +551,7 @@ public class ApiService extends Service {
                             }
 
                         } catch (Exception exception) {
+                            Log.e("getRoomDevice" , "error en API");
                            // Toast.makeText(activity, exception.getLocalizedMessage(), Toast.LENGTH_LONG).show();
                         }
                     }
