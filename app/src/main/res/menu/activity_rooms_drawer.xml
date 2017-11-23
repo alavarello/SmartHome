@@ -13,7 +13,7 @@
     </item>
     <item android:title="@string/drawer_menu_rutines"
         android:id="@+id/rutines"
-        android:icon="@drawable/ic_menu_manage"
+        android:icon="@drawable/ic_assignment_black_24dp"
         android:orderInCategory="1000"     >
     </item>
     <item android:title="@string/drawer_menu_setting"

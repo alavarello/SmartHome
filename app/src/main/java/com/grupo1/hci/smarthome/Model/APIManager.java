@@ -121,7 +121,7 @@ public class APIManager {
                 if(swipeRefreshLayout != null){
                     swipeRefreshLayout.setRefreshing(false);
                 }
-                Toast.makeText(activity, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, R.string.error_loading_rooms, Toast.LENGTH_LONG).show();
             }
         });
 
@@ -144,7 +144,7 @@ public class APIManager {
                             String jsonFragment = response.getString("rooms");
                             ArrayList<Room> roomList = gson.fromJson(jsonFragment, listType);
                             menu.removeItem(0);
-                           SubMenu m = menu.addSubMenu("Cuartos");
+                           SubMenu m = menu.addSubMenu(R.string.rooms);
                             int i =0;
                             for (Room r : roomList) {
                                 m.add(R.id.roomGroupNavigationalDrawer, i++ ,500, r.getName());
@@ -162,7 +162,7 @@ public class APIManager {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(activity, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, R.string.error_loading_rooms, Toast.LENGTH_LONG).show();
             }
         });
 
@@ -236,7 +236,7 @@ public class APIManager {
                 if(swipeRefreshLayout != null){
                     swipeRefreshLayout.setRefreshing(false);
                 }
-                Toast.makeText(activity, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, R.string.error_getDevices, Toast.LENGTH_LONG).show();
             }
         });
 
@@ -266,7 +266,7 @@ public class APIManager {
                         if (null != error.networkResponse)
                         {
                             ((HomeFragment)((RoomActivity)activity).getFragment()).roomDeleteError(room);
-                            Toast.makeText(activity,error.getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(activity, R.string.error_deleteRoom, Toast.LENGTH_LONG).show();
                         }
                     }
                 });
@@ -293,7 +293,7 @@ public class APIManager {
                         if (null != error.networkResponse)
                         {
                            //TODO
-                            Toast.makeText(activity,error.getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(activity, R.string.error_deleteRoutine, Toast.LENGTH_LONG).show();
                         }
                     }
                 });
@@ -321,7 +321,7 @@ public class APIManager {
                     {
                         if (null != error.networkResponse)
                         {
-                            Toast.makeText(activity,error.getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(activity, R.string.error_deleteDevice, Toast.LENGTH_LONG).show();
                             if(from == Constants.DELTE__FROM_OVERFLOW){
                                 ((RoomsFragment)((RoomActivity)activity).getFragment()).deviceDeleteError(device);
                             }
@@ -361,7 +361,7 @@ public class APIManager {
                 if(swipeRefreshLayout != null){
                     swipeRefreshLayout.setRefreshing(false);
                 }
-                Toast.makeText(activity, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, R.string.error_getRoutines, Toast.LENGTH_LONG).show();
             }
         });
 
@@ -389,7 +389,7 @@ public class APIManager {
             @Override
             public void onErrorResponse(VolleyError error) {
                 switchView.setChecked( actionName.equals("turnOn"));
-                Toast.makeText(activity, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, R.string.error_deviceOff, Toast.LENGTH_LONG).show();
             }
         });
 
@@ -563,7 +563,7 @@ public class APIManager {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(activity, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, R.string.error_getState, Toast.LENGTH_LONG).show();
             }
         });
 
@@ -585,7 +585,7 @@ public class APIManager {
             @Override
             public void onErrorResponse(VolleyError error) {
                 switchView.setChecked(false);
-                Toast.makeText(activity, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, R.string.error_openDoor, Toast.LENGTH_LONG).show();
             }
         });
 
@@ -606,7 +606,7 @@ public class APIManager {
             @Override
             public void onErrorResponse(VolleyError error) {
                 switchView.setChecked(true);
-                Toast.makeText(activity, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, R.string.error_closeDoor, Toast.LENGTH_LONG).show();
             }
         });
 
@@ -627,7 +627,7 @@ public class APIManager {
             @Override
             public void onErrorResponse(VolleyError error) {
                 switchView.setChecked(true);
-                Toast.makeText(activity, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, R.string.error_lockDoor, Toast.LENGTH_LONG).show();
             }
         });
 
@@ -648,7 +648,7 @@ public class APIManager {
             @Override
             public void onErrorResponse(VolleyError error) {
                 switchView.setChecked(false);
-                Toast.makeText(activity, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, R.string.error_unlockDoor, Toast.LENGTH_LONG).show();
             }
         });
 
@@ -664,12 +664,12 @@ public class APIManager {
                 {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Toast.makeText(activity, "Rutine: "+rutine.getName() + " exceuted correctly", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(activity, activity.getString(R.string.rutine)+ " " +rutine.getName() + " " + activity.getString(R.string.rutine_execute), Toast.LENGTH_SHORT).show();
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(activity, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, R.string.error_executeRoutine, Toast.LENGTH_LONG).show();
             }
         });
 
@@ -690,7 +690,7 @@ public class APIManager {
             @Override
             public void onErrorResponse(VolleyError error) {
                 switchView.setChecked(false);
-                Toast.makeText(activity, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, R.string.error_blindUp, Toast.LENGTH_LONG).show();
             }
         });
 
@@ -711,7 +711,7 @@ public class APIManager {
             @Override
             public void onErrorResponse(VolleyError error) {
                 switchView.setChecked(true);
-                Toast.makeText(activity, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, R.string.error_blindDown, Toast.LENGTH_LONG).show();
             }
         });
 
@@ -784,7 +784,9 @@ public class APIManager {
                     }
                 }, new Response.ErrorListener() {
             @Override
-            public void onErrorResponse(VolleyError error) {}
+            public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(activity, R.string.error_changeName, Toast.LENGTH_LONG).show();
+            }
         }){
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {

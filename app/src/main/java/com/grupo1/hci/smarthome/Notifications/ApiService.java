@@ -45,7 +45,7 @@ import java.util.Set;
 public class ApiService extends Service {
 
 
-
+    public static long interval = 1000;
     private static final String SHARED_PREFS_NAME = "MY_SHARED_PREF";
 
   private final static String   typeBlind = Constants.BLIND_ID;
@@ -206,7 +206,7 @@ public class ApiService extends Service {
             public void run() {
                 try {
                     while(true) {
-                        sleep(5000);
+                        sleep(interval);
                         checkDevicesState(getApplicationContext());
                         getAllDevices(getApplicationContext());
                         updateArrays();

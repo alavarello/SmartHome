@@ -86,7 +86,7 @@ public class NavigationActivity extends AppCompatActivity
         //Set up the nav menu for the rooms
 
         navigationView.getMenu().removeItem(0);
-        SubMenu m = navigationView.getMenu().addSubMenu("Cuartos");
+        SubMenu m = navigationView.getMenu().addSubMenu(R.string.rooms);
         int i =0;
         for (Room r : roomsArray) {
             m.add(R.id.roomGroupNavigationalDrawer, i++ ,500, r.getName());
