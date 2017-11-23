@@ -68,6 +68,11 @@ public class HomeTileFragment extends Fragment implements HomeFragment  {
 
     }
 
+    @Override
+    public ArrayList<View> getSelectedElements() {
+        return selectedElement;
+    }
+
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_list, container, false);

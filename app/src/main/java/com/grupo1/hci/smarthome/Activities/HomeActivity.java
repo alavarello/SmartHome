@@ -46,7 +46,7 @@ public class HomeActivity extends NavigationActivity {
         setFragment();
        getSupportActionBar().setTitle(Constants.appName);
 
-      Intent serviceIntent = new Intent(getApplicationContext() , ApiService.class );startService(serviceIntent);
+      //Intent serviceIntent = new Intent(getApplicationContext() , ApiService.class );startService(serviceIntent);
 
     }
 

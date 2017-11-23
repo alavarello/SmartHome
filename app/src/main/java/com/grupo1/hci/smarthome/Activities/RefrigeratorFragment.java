@@ -3,6 +3,7 @@ package com.grupo1.hci.smarthome.Activities;
 import android.support.v4.app.Fragment;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -136,6 +137,8 @@ public class RefrigeratorFragment extends Fragment {
         }
 
     }
+
+
 
 
 }

@@ -39,8 +39,16 @@ public class RutineContextualMenu implements ActionMode.Callback {
     public boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
         MenuInflater inflater = actionMode.getMenuInflater();
         this.menu =menu;
-        inflater.inflate(R.menu.contextual_menu, menu);
+        inflater.inflate(R.menu.one_item_contextual_menu, menu);
         return true;
+    }
+
+    public void changeToOneItemsMenu(){
+        menu.findItem(R.id.editElement).setVisible(true);
+    }
+
+    public void changeToSeveralItemsMenu(){
+        menu.findItem(R.id.editElement).setVisible(false);
     }
 
     @Override
@@ -53,6 +61,12 @@ public class RutineContextualMenu implements ActionMode.Callback {
         switch (menuItem.getItemId()) {
             case R.id.deleteElement:
                 ((RutinesListFragment) rutineActivity.getFragment()).deleteRutines(rutines);
+                break;
+            case R.id.editElement:
+                EditDialogMessage editDeviceMessage = new EditDialogMessage();
+                editDeviceMessage.setView(rutineActivity.getSelectedElements().get(0));
+                editDeviceMessage.setRutine(rutines.keySet().iterator().next());
+                editDeviceMessage.show(rutineActivity.getFragmentManager(), "editRoutine");
                 break;
         }
         return true;

@@ -166,6 +166,10 @@ public class RoomActivity extends NavigationActivity implements SuportDeviceActi
         }
     }
 
+    public ArrayList<View> getSelectedElements(){
+        return ((RoomsFragment)fragment).getSelectedElements();
+    }
+
     public void changeDeviceFragment(Device device) {
         this.device = device;
         Fragment newFragment = null;

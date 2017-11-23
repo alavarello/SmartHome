@@ -62,6 +62,7 @@ public class HomeContextualMenu implements ActionMode.Callback {
            case R.id.editElement:
                EditDialogMessage editDeviceMessage = new EditDialogMessage();
                editDeviceMessage.setRoom(rooms.keySet().iterator().next());
+               editDeviceMessage.setView( ((HomeFragment)homeActivity.getFragment()).getSelectedElements().get(0));
                editDeviceMessage.show(homeActivity.getFragmentManager(), "editDevice");
                break;
            case R.id.deleteElement:

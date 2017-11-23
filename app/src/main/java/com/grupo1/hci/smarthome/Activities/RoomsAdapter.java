@@ -51,6 +51,7 @@ public class RoomsAdapter extends ArrayAdapter<Device> {
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.row_layout, parent, false);
         }
+        final View finalView = convertView;
         // Lookup view for data population
         TextView deviceName = (TextView) convertView.findViewById(R.id.rowLayout_nameTextView);
         final ImageButton overflowMenu = convertView.findViewById(R.id.rowLayout_overflowMenu_imageButton);
@@ -64,13 +65,12 @@ public class RoomsAdapter extends ArrayAdapter<Device> {
                     public boolean onMenuItemClick(MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.editElement:
-                                Toast.makeText(context, "Se edito!!!!!", Toast.LENGTH_SHORT).show();
                                 EditDialogMessage editDeviceMessage = new EditDialogMessage();
                                 editDeviceMessage.setDevice(device);
+                                editDeviceMessage.setView(finalView);
                                 editDeviceMessage.show(roomActivity.getFragmentManager(), "editDevice");
                                 break;
                             case R.id.deleteElement:
-                                Toast.makeText(context, "Se borro!!!!!" +device.getId(), Toast.LENGTH_SHORT).show();
                                 HashMap<Device,Integer> hashMap = new HashMap<>();
                                 hashMap.put(device, position);
 
