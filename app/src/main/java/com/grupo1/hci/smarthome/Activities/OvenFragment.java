@@ -1,7 +1,9 @@
 package com.grupo1.hci.smarthome.Activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
+import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -81,6 +83,24 @@ public class OvenFragment extends Fragment {
         temperatureEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                Integer temperature = Integer.parseInt(textView.getText().toString());
+                if( temperature > 230 || temperature < 90){
+                    temperatureEditText.setError(getResources().getText(R.string.temperatureMinandMaxValueError));
+                    temperatureEditText.setText(String.valueOf(oven.getTemperature()));
+                    CountDownTimer cdt = new CountDownTimer(4000, 1000) {
+                        @Override
+                        public void onTick(long l) {
+
+                        }
+
+                        @Override
+                        public void onFinish() {
+                            temperatureEditText.setError(null);
+                        }
+                    };
+                    cdt.start();
+                    return false;
+                }
                 apiManager.setOvenTemperature(getActivity(), oven,Integer.parseInt(textView.getText().toString()), temperatureEditText);
                 return false;
             }
@@ -152,7 +172,6 @@ public class OvenFragment extends Fragment {
         grillSpinner = view.findViewById(R.id.contentOven_Grill_Spinner);
         convectionSpinner = view.findViewById(R.id.contentOven_Convection_Spinner);
         temperatureEditText = view.findViewById(R.id.contentOven_Temperature_EditText);
-
         setSpinners(view);
 
         onOffSwitch.setTextOff(getString(R.string.off));

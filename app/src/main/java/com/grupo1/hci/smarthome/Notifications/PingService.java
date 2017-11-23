@@ -16,8 +16,12 @@ package com.grupo1.hci.smarthome.Notifications;
 
 import com.grupo1.hci.smarthome.Activities.HomeActivity;
 import com.grupo1.hci.smarthome.Activities.RoomActivity;
+import com.grupo1.hci.smarthome.Model.Blind;
 import com.grupo1.hci.smarthome.Model.Constants;
+import com.grupo1.hci.smarthome.Model.Door;
 import com.grupo1.hci.smarthome.Model.Lamp;
+import com.grupo1.hci.smarthome.Model.Oven;
+import com.grupo1.hci.smarthome.Model.Refrigerator;
 import com.grupo1.hci.smarthome.Model.Room;
 import com.grupo1.hci.smarthome.R;
 
@@ -81,11 +85,10 @@ public class PingService extends IntentService {
 
         int channelId  = intent.getIntExtra("channelId" , CommonConstants.NOTIFICATION_ID );
         String name = intent.getStringExtra("deviceName" );
-
         String deviceId = intent.getStringExtra("deviceId" );
        String roomId =  intent.getStringExtra("roomId");
-
        String roomName = intent.getStringExtra("roomName");
+       String typeId = intent.getStringExtra("typeId");
 
         if(name == null) name = "Notification";
 
@@ -95,11 +98,11 @@ public class PingService extends IntentService {
         Log.d("handler:" , roomId + "-" + deviceId);
         Log.d("ACTION PING" , CommonConstants.ACTION_PING);
         if(action.equals(CommonConstants.ACTION_PING)) {
-            issueNotification(intent, mMessage, channelId , name , deviceId , roomId , roomName);
+            issueNotification(intent, mMessage, channelId , name , deviceId , roomId , roomName , typeId);
         }
     }
 
-    private void issueNotification(Intent intent, String msg , int channelID  , String deviceName, String deviceId, String roomId, String roomName) {
+    private void issueNotification(Intent intent, String msg , int channelID  , String deviceName, String deviceId, String roomId, String roomName , String typeId) {
         mNotificationManager = (NotificationManager)
                 getSystemService(NOTIFICATION_SERVICE);
 
@@ -111,8 +114,8 @@ public class PingService extends IntentService {
                 new NotificationCompat.Builder(this)
                 .setSmallIcon(R.drawable.ic_stat_notification)
                 .setContentTitle(getString(R.string.notification))
-                .setContentText(deviceName)
-                .setDefaults(Notification.DEFAULT_ALL) // requires VIBRATE permission
+                .setContentText(msg)
+                .setDefaults(Notification.DEFAULT_ALL); // requires VIBRATE permission
                 /*
                  * Sets the big view "big text" style and supplies the
                  * text (the user's reminder message) that will be displayed
@@ -120,8 +123,7 @@ public class PingService extends IntentService {
                  * These calls are ignored by the support library for
                  * pre-4.1 devices.
                  */
-                .setStyle(new NotificationCompat.BigTextStyle()
-                     .bigText(msg));
+
 
         /*
          * Clicking the notification itself displays ResultActivity, which provides
@@ -132,8 +134,30 @@ public class PingService extends IntentService {
          resultIntent.putExtra(CommonConstants.EXTRA_MESSAGE, msg);
          resultIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
-        resultIntent.putExtra(Constants.DEVICE_INTENT, new Lamp(deviceId , deviceName) );
+        switch(typeId){
+
+            case Constants.BLIND_ID :
+                resultIntent.putExtra(Constants.DEVICE_INTENT, new Blind(deviceId , deviceName) );
+                break;
+            case Constants.LAMP_ID:
+                resultIntent.putExtra(Constants.DEVICE_INTENT, new Lamp(deviceId , deviceName) );
+                break;
+            case Constants.REFRIGERATOR_ID:
+                resultIntent.putExtra(Constants.DEVICE_INTENT, new Refrigerator(deviceId , deviceName) );
+                break;
+            case Constants.OVEN_ID:
+                resultIntent.putExtra(Constants.DEVICE_INTENT, new Oven(deviceId , deviceName) );
+                break;
+            case Constants.DOOR_ID:
+                resultIntent.putExtra(Constants.DEVICE_INTENT, new Door(deviceId , deviceName) );
+                break;
+             default:
+                 resultIntent.putExtra(Constants.DEVICE_INTENT, new Lamp(deviceId , deviceName) );
+        }
+
         resultIntent.putExtra(Constants.ROOM_INTENT , new Room(roomId , roomName));
+
+        resultIntent.setAction("" + System.currentTimeMillis());
 
          // Because clicking the notification opens a new ("special") activity, there's
          // no need to create an artificial back stack.
@@ -145,6 +169,7 @@ public class PingService extends IntentService {
                  PendingIntent.FLAG_UPDATE_CURRENT
          );
 
+        builder.setAutoCancel(true);
          builder.setContentIntent(resultPendingIntent);
         issueNotification(builder , channelID);
     }

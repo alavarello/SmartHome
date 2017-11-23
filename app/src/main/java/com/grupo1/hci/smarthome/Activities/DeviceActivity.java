@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.grupo1.hci.smarthome.Model.Constants;
 import com.grupo1.hci.smarthome.Model.Device;
+import com.grupo1.hci.smarthome.Notifications.ApiService;
 import com.grupo1.hci.smarthome.R;
 
 public class DeviceActivity extends AppCompatActivity implements SuportDeviceActivity{
@@ -69,6 +70,16 @@ public class DeviceActivity extends AppCompatActivity implements SuportDeviceAct
                 fragmentTransaction.commit();
                 break;
         }
+
+        ApiService.updateVisibility(device.getId() ,true);
+
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        ApiService.updateVisibility(device.getId() ,false);
     }
 
     public Device getDevice() {
