@@ -1,5 +1,6 @@
 package com.grupo1.hci.smarthome.Activities;
 
+import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -84,13 +85,49 @@ public class RefrigeratorFragment extends Fragment {
         refri_temp.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                Integer refriTemp = Integer.parseInt(textView.getText().toString());
+                if(refriTemp > 8 || refriTemp < 2) {
+                    refri_temp.requestFocus();
+                    refri_temp.setError(getResources().getText(R.string.refriTemperatureMaxMinValue));
+                    refri_temp.setText(String.valueOf(refri.getTemperature()));
+                    CountDownTimer cdt = new CountDownTimer(4000, 1000) {
+                        @Override
+                        public void onTick(long l) {
+
+                        }
+
+                        @Override
+                        public void onFinish() {
+                            refri_temp.setError(null);
+                        }
+                    };
+                    cdt.start();
+                    return false;
+                }
                 apiManager.setRefriTemp(getActivity(), refri, textView.getText().toString(), refri_temp);
-                return false;
+                return true;
             }
         });
         freezer_temp.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                Integer freezerTemp = Integer.parseInt(textView.getText().toString());
+                if(freezerTemp > -8 || freezerTemp < -20){
+                    freezer_temp.setError(getResources().getText(R.string.freezerTemperatureMinMaxValue));
+                    freezer_temp.setText(String.valueOf(refri.getFreezerTemperature()));
+                    CountDownTimer cdt = new CountDownTimer(4000, 1000) {
+                        @Override
+                        public void onTick(long l) {
+
+                        }
+
+                        @Override
+                        public void onFinish() {
+                            freezer_temp.setError(null);
+                        }
+                    };
+                    cdt.start();
+                }
                 apiManager.setFreezerTemp(getActivity(), refri, textView.getText().toString(), freezer_temp);
                 return false;
             }

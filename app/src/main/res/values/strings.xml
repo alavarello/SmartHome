@@ -196,6 +196,9 @@
     <string name="edit">Edit</string>
     <string name="deleted">Deleted</string>
     <string name="undo">Undo</string>
+    <string name="temperatureMinandMaxValueError">The temperature must be between 90 and 230</string>
+    <string name="refriTemperatureMaxMinValue">The values must be between 2 and 8</string>
+    <string name="freezerTemperatureMinMaxValue">The freezer temperature mus be between -20 and -8</string>
 
 
 </resources>

@@ -312,7 +312,6 @@ public class APIManager {
                         if(from == Constants.DELTE_FROM_DIALOGE){
                             ((SuportDeviceActivity)activity).deviceDeleted();
                         }
-                        Toast.makeText(activity,response.toString(), Toast.LENGTH_LONG).show();
                     }
                 },
                 new Response.ErrorListener()
@@ -389,11 +388,7 @@ public class APIManager {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                if(actionName.equals("turnOff")){
-                    switchView.setChecked(false);
-                }else {
-                    switchView.setChecked(true);
-                }
+                switchView.setChecked( actionName.equals("turnOn"));
                 Toast.makeText(activity, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
@@ -406,7 +401,7 @@ public class APIManager {
      */
 
 
-    public void actionToApi( String deviceId, String actionName, String param) {
+    public void actionToApi( String deviceId, String actionName, String param, RevertError re) {
         String url =  Constants.PORT_CONECTIVITY+"/api/devices/" + deviceId + "/" + actionName;
         JSONObject params = new JSONObject();
         try {
@@ -422,6 +417,7 @@ public class APIManager {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                re.revert();
             }
 
         }){
@@ -437,28 +433,62 @@ public class APIManager {
     }
 
     public void lampColorChange(final Activity activity, Device device, String color) {
-        actionToApi(device.getId(),"changeColor", color);
+        actionToApi(device.getId(),"changeColor", color, new RevertError());
     }
 
     public void changeLampBrightness(final Activity activity, Device device, Integer brightness, final SeekBar dimmer) {
-        actionToApi(device.getId(),"changeBrightness", brightness.toString());
+        RevertError re = new RevertError();
+        re.setDimmer(dimmer, ((Lamp)device).getBrightness());
+        actionToApi(device.getId(),"changeBrightness", brightness.toString(), re);
     }
 
     public void setOvenTemperature(final Activity activity, Device device, Integer temperature,final EditText temperatureEditText) {
-        actionToApi(device.getId(),"setTemperature", temperature.toString());
+        RevertError re = new RevertError();
+        re.setEditText(temperatureEditText,String.valueOf(temperature) );
+        actionToApi(device.getId(),"setTemperature", temperature.toString(), re);
     }
 
     public void setOvenHeat(final Activity activity, Device device, String heat, Spinner spinner) {
-        actionToApi(device.getId(),"setHeat", heat);
+        RevertError re = new RevertError();
+        Oven oven = (Oven) device;
+        if(oven.getHeat().equals(Constants.OVEN_HEAT_BOTTOM)){
+            re.setSpinner(spinner, Constants.OVEN_HEAT_BOTTOM_POSITION);
+        }
+        else if(oven.getHeat().equals(Constants.OVEN_HEAT_TOP)){
+            re.setSpinner(spinner, Constants.OVEN_HEAT_TOP_POSITION);
+        }else{
+            re.setSpinner(spinner, Constants.OVEN_HEAT_CONVENTIONAL_POSITION);
+        }
+        actionToApi(device.getId(),"setHeat", heat, re);
     }
 
 
     public void setOvenGrill(final Activity activity, Device device, String grill,Spinner spinner) {
-        actionToApi(device.getId(),"setGrill", grill);
+        RevertError re = new RevertError();
+        Oven oven = (Oven) device;
+        if(oven.getGrill().equals(Constants.OVEN_GRILL_ECO)){
+            re.setSpinner(spinner, Constants.OVEN_GRILL_ECO_POSITION);
+        }
+        else if(oven.getGrill().equals(Constants.OVEN_GRILL_LARGE)){
+            re.setSpinner(spinner, Constants.OVEN_GRILL_LARGE_POSITION);
+        }else{
+            re.setSpinner(spinner, Constants.OVEN_GRILL_OFF_POSITION);
+        }
+        actionToApi(device.getId(),"setGrill", grill, re);
     }
 
     public void setOvenConvection(final Activity activity, Device device, String convection, Spinner spinner) {
-        actionToApi(device.getId(),"setConvection", convection);
+        RevertError re = new RevertError();
+        Oven oven = (Oven) device;
+        if(oven.getConvection().equals(Constants.OVEN_CONVECTION_ECO)){
+            re.setSpinner(spinner, Constants.OVEN_CONVECTION_ECO_POSITION);
+        }
+        else if(oven.getConvection().equals(Constants.OVEN_CONVECTION_NORMAL)){
+            re.setSpinner(spinner, Constants.OVEN_CONVECTION_NORMAL_POSITION);
+        }else{
+            re.setSpinner(spinner, Constants.OVEN_CONVECTION_OFF_POSITION);
+        }
+        actionToApi(device.getId(),"setConvection", convection, re);
     }
 
     public  void getState(final Context context , final Device device, final Activity activity, final Fragment fragment) {
@@ -689,15 +719,28 @@ public class APIManager {
     }
 
     public void setRefriTemp(FragmentActivity activity, Device device, String temperature, EditText refriEditText) {
-        actionToApi(device.getId(),"setTemperature", temperature);
+        RevertError re = new RevertError();
+        re.setEditText(refriEditText, temperature);
+        actionToApi(device.getId(),"setTemperature", temperature,re);
     }
 
     public void setFreezerTemp(FragmentActivity activity, Device device, String freezerTemperature, EditText refriEditText) {
-        actionToApi(device.getId(),"setFreezerTemperature", freezerTemperature);
+        RevertError re = new RevertError();
+        re.setEditText(refriEditText, freezerTemperature);
+        actionToApi(device.getId(),"setFreezerTemperature", freezerTemperature, re);
     }
 
     public void setRefriMode(FragmentActivity activity, Device device, String refriMode, Spinner refriSpinner) {
-        actionToApi(device.getId(),"setMode", refriMode);
+        RevertError re = new RevertError();
+        if(refriMode.equals(Constants.REFRIGERATOR_MODE_DEFAULT)){
+            re.setSpinner(refriSpinner, 0);
+        }
+        else if(refriMode.equals(Constants.REFRIGERATOR_MODE_VACATION)){
+            re.setSpinner(refriSpinner, 1);
+        }else if(refriMode.equals(Constants.REFRIGERATOR_MODE_PARTY)){
+            re.setSpinner(refriSpinner, 2);
+        }
+        actionToApi(device.getId(),"setMode", refriMode, re);
     }
 
     public void changeName(Activity activity, Object object, String newName, final String oldName, final TextView editText, final ActionBar actionBar) {
