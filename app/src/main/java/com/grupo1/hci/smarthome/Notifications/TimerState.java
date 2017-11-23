@@ -1,6 +1,8 @@
 package com.grupo1.hci.smarthome.Notifications;
 
 
+import com.grupo1.hci.smarthome.R;
+
 import java.sql.Time;
 import java.util.ArrayList;
 
@@ -26,14 +28,14 @@ public class TimerState extends State{
         }
 
         if(!s.status.equals(status)){
-            ret.add(super.getName() + " Status has changed to : " + status);
+            ret.add(super.getName() + " " + super.context.getResources().getString(R.string.timerStateStatus) + status);
         }
 
         if(s.interval != interval){
-            ret.add(super.getName() + " Interval has changed to : " + interval);
+            ret.add(super.getName() + " " + super.context.getResources().getString(R.string.timerStateInterval) + interval);
         }
         if(s.remaining != remaining){
-            ret.add(super.getName() + " Remaining has changed to : " + remaining);
+            ret.add(super.getName() + " " + super.context.getResources().getString(R.string.timerStateRemaining) + remaining);
         }
 
         return ret;

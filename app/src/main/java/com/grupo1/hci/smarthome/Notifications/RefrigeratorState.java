@@ -1,6 +1,8 @@
 package com.grupo1.hci.smarthome.Notifications;
 
 
+import com.grupo1.hci.smarthome.R;
+
 import java.util.ArrayList;
 
 /**
@@ -52,14 +54,14 @@ public class RefrigeratorState extends State {
         }
 
         if(!s.mode.equals(mode)){
-           if(notifyModeClass) ret.add(super.getName() + " Mode has changed to : " + mode);
+           if(notifyModeClass) ret.add(super.getName() + super.context.getResources().getString(R.string.refriStateMode) + mode);
         }
 
         if(s.temperature != temperature){
-            if(notifyTemperatureClass)ret.add(super.getName() + " Temperature has changed to : " + temperature);
+            if(notifyTemperatureClass)ret.add(super.getName() + super.context.getResources().getString(R.string.refriStateTemperature) + temperature);
         }
         if(s.freezerTemperature != freezerTemperature){
-           if(notifyFreezerTemperatureClass) ret.add(super.getName() + " Freezer Temperature has changed to : " + freezerTemperature);
+           if(notifyFreezerTemperatureClass) ret.add(super.getName() + super.context.getResources().getString(R.string.refriStateFreezerTemp) + freezerTemperature);
         }
 
         return ret;

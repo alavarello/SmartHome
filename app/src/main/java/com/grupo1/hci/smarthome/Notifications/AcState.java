@@ -2,6 +2,8 @@ package com.grupo1.hci.smarthome.Notifications;
 
 import android.content.Context;
 
+import com.grupo1.hci.smarthome.R;
+
 import java.util.ArrayList;
 
 /**
@@ -103,27 +105,27 @@ public class AcState  extends State {
         }
 
         if(!s.fanSpeed.equals(fanSpeed)){
-            ret.add(super.getName() + " Fan speed has changed to : " + fanSpeed);
+            ret.add(super.getName() + " " + super.context.getResources().getString(R.string.acStateFan) + fanSpeed);
         }
         if(!s.status.equals(status)){
             if(status.equals("on")){
-                ret.add(super.getName() + " has turned on");
+                ret.add(super.getName() + " " + super.context.getResources().getString(R.string.acStateTurnOn));
             }else {
 
-                ret.add(super.getName() + " has turned off");
+                ret.add(super.getName() + " " +super.context.getResources().getString(R.string.acStateTurnOff));
             }
         }
         if(!s.mode.equals(mode)){
-            ret.add(super.getName() + " Mode has changed to : " + mode);
+            ret.add(super.getName() + " " + super.context.getResources().getString(R.string.acStateMode) + mode);
         }
         if(!s.verticalSwing.equals(verticalSwing)){
-            ret.add(super.getName() + " Vertical Swing  has changed to : " + verticalSwing);
+            ret.add(super.getName() + " " + super.context.getResources().getString(R.string.acStateVerticalSwing) + verticalSwing);
         }
         if(!s.horizontalSwing.equals(horizontalSwing)){
-            ret.add(super.getName() + " Horizontal Swing has changed to : " + horizontalSwing);
+            ret.add(super.getName() + " " + super.context.getResources().getString(R.string.acStateHorizontalSwing) + horizontalSwing);
         }
         if(s.temperature != temperature){
-            ret.add(super.getName() + " Temperature has changed to : " + mode);
+            ret.add(super.getName() + " " + super.context.getResources().getString(R.string.acTemperature) + mode);
         }
 
         return ret;

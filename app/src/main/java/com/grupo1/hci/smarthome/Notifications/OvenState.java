@@ -1,6 +1,8 @@
 package com.grupo1.hci.smarthome.Notifications;
 
 
+import com.grupo1.hci.smarthome.R;
+
 import java.util.ArrayList;
 
 /**
@@ -34,23 +36,23 @@ public class OvenState extends State{
         }
 
         if(!s.heat.equals(heat)){
-            if(notifyHeatClass)ret.add(super.getName() + " Heat has changed to : " + heat);
+            if(notifyHeatClass)ret.add(super.getName() + " " + super.context.getResources().getString(R.string.ovenStateHeat) + heat);
         }
         if(!s.grill.equals(grill)){
-            if(notifyGrillClass)ret.add(super.getName() + " Grill has changed to : " + grill);
+            if(notifyGrillClass)ret.add(super.getName() + " " + super.context.getResources().getString(R.string.ovenStateGrill) + grill);
         }
         if(!s.convection.equals(convection)){
-            if(notifyConvectionClass)ret.add(super.getName() + " Convection has changed to : " + convection);
+            if(notifyConvectionClass)ret.add(super.getName() + " " + super.context.getResources().getString(R.string.ovenStateConvection) + convection);
         }
         if(!s.status.equals(status)){
             if(status.equals("on")){
-                if(notifyTurnOnClass)ret.add(super.getName() + " has turned on");
+                if(notifyTurnOnClass)ret.add(super.getName() + " " + super.context.getResources().getString(R.string.ovenStateOn));
             }else{
-                if(notifyTurnOffClass)ret.add(super.getName() + " has turned off");
+                if(notifyTurnOffClass)ret.add(super.getName() + " " + super.context.getResources().getString(R.string.ovenStateOff));
             }
         }
         if(s.temperature != temperature){
-            if(notifyTemperatureClass)ret.add(super.getName() + " Temperature has changed to : " + temperature);
+            if(notifyTemperatureClass)ret.add(super.getName() + " " + super.context.getResources().getString(R.string.ovenStateTemperature) + temperature);
         }
 
         return ret;

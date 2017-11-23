@@ -1,6 +1,8 @@
 package com.grupo1.hci.smarthome.Notifications;
 
 
+import com.grupo1.hci.smarthome.R;
+
 import java.util.ArrayList;
 
 /**
@@ -22,7 +24,7 @@ public class AlarmState extends State{
         }
 
         if(!s.status.equals(status)){
-            ret.add(super.getName() + " Status has changed to : " + status);
+            ret.add(super.getName() + " " + super.context.getResources().getString(R.string.alarmStateStatus) + status);
         }
 
         return ret;

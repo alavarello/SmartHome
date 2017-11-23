@@ -24,7 +24,7 @@ public class State implements  Serializable {
 
     protected boolean isVisible;
 
-    protected Context context;
+    transient protected Context context;
 
     public int getDevice(){
         return device;

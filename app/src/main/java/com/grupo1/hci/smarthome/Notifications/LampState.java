@@ -3,6 +3,7 @@ package com.grupo1.hci.smarthome.Notifications;
 import android.util.Log;
 
 import com.grupo1.hci.smarthome.Model.Lamp;
+import com.grupo1.hci.smarthome.R;
 
 import java.util.ArrayList;
 
@@ -32,19 +33,19 @@ public class LampState extends State {
         }
 
         if(!s.color.equals(color)){
-            if(notifyChangeColorClass)ret.add(super.getName() + " Color has changed to : " + color);
+            if(notifyChangeColorClass)ret.add(super.getName() + " " + super.context.getResources().getString(R.string.lampStateColor) + color);
         }
         if(!s.status.equals(status)){
             if(status.equals("on")){
 
-               if(notifyTurnOnClass) ret.add(super.getName() + " has turned on");
+               if(notifyTurnOnClass) ret.add(super.getName() + " " + super.context.getResources().getString(R.string.lampStateOn));
             }else{
-               if(notifyTurnOffClass) ret.add(super.getName() + " has turned off");
+               if(notifyTurnOffClass) ret.add(super.getName() + " " + super.context.getResources().getString(R.string.lampStateOff));
             }
 
         }
         if(s.brightness != brightness){
-           if(notifyChangeBrigtnessClass) ret.add(super.getName() + " Brightness has changed to : " + brightness);
+           if(notifyChangeBrigtnessClass) ret.add(super.getName() + " " + super.context.getResources().getString(R.string.lampStateBrightness) + brightness);
         }
 
         return ret;

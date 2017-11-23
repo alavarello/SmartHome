@@ -153,7 +153,7 @@ public class ApiService extends Service {
                         break;
                     default:  s = new DoorState("", "");
                 }
-                s.setContext(this);
+               s.setContext(this);
                 s.setName(d.name);
                 sendNotification(getApplicationContext() ,  d.name + " has been added" , s.getNotificationChannel() , d.name);
                 //status.add(new DeviceState(s,d.id));
@@ -306,7 +306,7 @@ public class ApiService extends Service {
                 s.setDevice(deviceState.s.getDevice());
                 s.setName(deviceState.s.getName());
                 s.setNotificationChannel(deviceState.s.getNotificationChannel());
-                s.setContext(deviceState.s.getContext());
+                s.setContext(getApplicationContext());
                 s.isVisible = deviceState.s.isVisible;
 
 
@@ -437,8 +437,6 @@ public class ApiService extends Service {
             Log.e("saver se guarda" , "omo null");
         }
 
-        Log.d("saver es " , saver);
-
         mEdit1.putString("saver" , saver);
 
         return mEdit1.commit();
@@ -454,12 +452,10 @@ public class ApiService extends Service {
         String dev = sp.getString("devices" , null);
         String stat = sp.getString("status" , null);
         String saver = sp.getString("saver" , null);
-        Log.d("la clase saver es " ,saver);
         if(saver != null)
         {
             SaverClass s = g.fromJson(saver , SaverClass.class );
             s.load();
-
 
         }
 
