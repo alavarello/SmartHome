@@ -37,7 +37,7 @@
     <string name="changeNotificationColor">Color change</string>
     <string name="changeNotificationDimmer">Change Dimmer</string>
 
-    <string name="noDevices">You don\'t have any device in the room</string>
+    <string name="noDevices">You don\'t have any devices in the room</string>
     <string name="noRooms">You don\'t have any rooms</string>
     <string name="noRoutines">You don\'t have any routine</string>
 

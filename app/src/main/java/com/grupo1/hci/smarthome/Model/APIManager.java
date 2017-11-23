@@ -785,6 +785,19 @@ public class APIManager {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                if(object.getClass().equals(Room.class)){
+                editText.setText(oldName);
+            }
+            else if(object.getClass().equals(Rutine.class)){
+                    editText.setText(oldName);
+            }
+            else{
+                if(editText != null){
+                    editText.setText(oldName);
+                }else{
+                    actionBar.setTitle(oldName);
+                }
+            }
                 Toast.makeText(activity, R.string.error_changeName, Toast.LENGTH_LONG).show();
             }
         }){
