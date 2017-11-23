@@ -6,7 +6,9 @@ import com.grupo1.hci.smarthome.Notifications.ApiService;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -36,7 +38,6 @@ public class HomeActivity extends NavigationActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         Constants.context = getApplicationContext();
         Constants.setAppName();
         if(savedInstanceState != null){

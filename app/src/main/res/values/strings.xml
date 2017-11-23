@@ -76,6 +76,7 @@
     <string name="snooze">Snooze</string>
     <string name="changeNotificationOpenClose">Opens or closes</string>
     <string name="changeNotificationLockUnlock">Locks or unlocks</string>
+    <string name="refrigerator">Refrigerator</string>
 
 
     <string-array name="defaultDeviceNotification_array">
@@ -83,6 +84,7 @@
         <item>@string/oven</item>
         <item>@string/blind</item>
         <item>@string/door</item>
+        <item>@string/refrigerator</item>
     </string-array>
 
     <string name="ping_text">Set Seconds Until Ping</string>
