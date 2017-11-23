@@ -30,6 +30,8 @@ public class Lamp implements Device {
         this.brightness = brightness;
     }
 
+
+
     public Lamp(){}
 
     public boolean isOn() {
