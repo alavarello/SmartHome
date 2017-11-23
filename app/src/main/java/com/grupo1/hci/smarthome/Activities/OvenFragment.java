@@ -83,7 +83,14 @@ public class OvenFragment extends Fragment {
         temperatureEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-                Integer temperature = Integer.parseInt(textView.getText().toString());
+                Integer temperature;
+                try{
+                    temperature = Integer.parseInt(textView.getText().toString());
+                }
+                catch (Exception e){
+                    temperatureEditText.setText(String.valueOf(oven.getTemperature()));
+                    return false;
+                }
                 if( temperature > 230 || temperature < 90){
                     temperatureEditText.setError(getResources().getText(R.string.temperatureMinandMaxValueError));
                     temperatureEditText.setText(String.valueOf(oven.getTemperature()));

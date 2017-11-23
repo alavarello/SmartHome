@@ -85,7 +85,13 @@ public class RefrigeratorFragment extends Fragment {
         refri_temp.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-                Integer refriTemp = Integer.parseInt(textView.getText().toString());
+                Integer refriTemp;
+                try{
+                     refriTemp = Integer.parseInt(textView.getText().toString());
+                }catch (Exception e){
+                    refri_temp.setText(String.valueOf(refri.getTemperature()));
+                    return false;
+                }
                 if(refriTemp > 8 || refriTemp < 2) {
                     refri_temp.requestFocus();
                     refri_temp.setError(getResources().getText(R.string.refriTemperatureMaxMinValue));
@@ -111,7 +117,13 @@ public class RefrigeratorFragment extends Fragment {
         freezer_temp.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-                Integer freezerTemp = Integer.parseInt(textView.getText().toString());
+                Integer freezerTemp;
+                try{
+                 freezerTemp = Integer.parseInt(textView.getText().toString());
+                }catch (Exception e){
+                    freezer_temp.setText(String.valueOf(refri.getFreezerTemperature()));
+                    return false;
+                }
                 if(freezerTemp > -8 || freezerTemp < -20){
                     freezer_temp.setError(getResources().getText(R.string.freezerTemperatureMinMaxValue));
                     freezer_temp.setText(String.valueOf(refri.getFreezerTemperature()));
