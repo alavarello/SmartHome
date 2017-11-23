@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.Switch;
 
 import com.grupo1.hci.smarthome.Model.Blind;
@@ -15,9 +16,6 @@ public class BlindSettingsActivity extends AppCompatActivity {
 
     Switch notificationCloseSwitch;
     Switch notificationOpenSwitch;
-    Blind blind;
-    BlindState blindState;
-    boolean isDefault = false;
 
 
     @Override
@@ -31,17 +29,23 @@ public class BlindSettingsActivity extends AppCompatActivity {
         ActionBar ab = getSupportActionBar();
         // Enable the Up button
         ab.setDisplayHomeAsUpEnabled(true);
-        blind = (Blind) getIntent().getSerializableExtra(Constants.DEVICE_INTENT);
-        if(blind == null){
-            isDefault = true;
-            //TODO blindState
-        }
         setView();
         setOnSwitchListeners();
     }
 
     private void setOnSwitchListeners() {
-
+        notificationOpenSwitch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                BlindState.setNotifyOpenClass(notificationOpenSwitch.isChecked());
+            }
+        });
+        notificationCloseSwitch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                BlindState.setNotifyCloseClass(notificationCloseSwitch.isChecked());
+            }
+        });
 
     }
 
@@ -49,18 +53,9 @@ public class BlindSettingsActivity extends AppCompatActivity {
         notificationCloseSwitch = findViewById(R.id.activityBlindSettings_notificationCloseSwitch);
         notificationOpenSwitch = findViewById(R.id.activityBlindSettings_notificationOpenSwitch);
 
-        if(isDefault){
-            setDefaultState();
-        }else{
-            setPersonalizeState();
-        }
-    }
-
-    private void setPersonalizeState() {
-       //if(blindState.)
-    }
-
-    private void setDefaultState() {
+        notificationCloseSwitch.setChecked(BlindState.isNotifyCloseClass());
+        notificationOpenSwitch.setChecked(BlindState.isNotifyOpenClass());
 
     }
+
 }

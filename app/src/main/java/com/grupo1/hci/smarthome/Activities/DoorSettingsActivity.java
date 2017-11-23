@@ -4,8 +4,10 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.Switch;
 
+import com.grupo1.hci.smarthome.Notifications.DoorState;
 import com.grupo1.hci.smarthome.R;
 
 public class DoorSettingsActivity extends AppCompatActivity {
@@ -30,6 +32,18 @@ public class DoorSettingsActivity extends AppCompatActivity {
     }
 
     private void setOnSwitchListeners() {
+        notificationLockUnlockSwitch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DoorState.setNotifyLockUnlockClass(notificationLockUnlockSwitch.isChecked());
+            }
+        });
+        notificationOpenCloseSwitch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DoorState.setNotifyOpenCloseClass(notificationOpenCloseSwitch.isChecked());
+            }
+        });
 
     }
 
@@ -37,5 +51,8 @@ public class DoorSettingsActivity extends AppCompatActivity {
 
         notificationLockUnlockSwitch = findViewById(R.id.activityBlindSettings_notificationLockUnlockSwitch);
         notificationOpenCloseSwitch = findViewById(R.id.activityBlindSettings_notificationOpenCloseSwitch);
+
+        notificationLockUnlockSwitch.setChecked(DoorState.isNotifyLockUnlockClass());
+        notificationOpenCloseSwitch.setChecked(DoorState.isNotifyOpenCloseClass());
     }
 }

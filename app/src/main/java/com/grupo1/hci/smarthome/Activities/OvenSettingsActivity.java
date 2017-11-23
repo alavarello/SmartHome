@@ -4,8 +4,10 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.Switch;
 
+import com.grupo1.hci.smarthome.Notifications.OvenState;
 import com.grupo1.hci.smarthome.R;
 
 public class OvenSettingsActivity extends AppCompatActivity {
@@ -33,7 +35,42 @@ public class OvenSettingsActivity extends AppCompatActivity {
     }
 
     private void setOnSwitchListeners() {
-
+        notificationOnSwitch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                OvenState.setNotifyTurnOnClass(notificationOnSwitch.isChecked());
+            }
+        });
+        notificationOffSwitch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                OvenState.setNotifyTurnOffClass(notificationOffSwitch.isChecked());
+            }
+        });
+        notificationConvectionSwitch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                OvenState.setNotifyConvectionClass(notificationConvectionSwitch.isChecked());
+            }
+        });
+        notificationGrillSwitch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                OvenState.setNotifyGrillClass(notificationGrillSwitch.isChecked());
+            }
+        });
+        notificationTemperatureSwitch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                OvenState.setNotifyTemperatureClass(notificationTemperatureSwitch.isChecked());
+            }
+        });
+        notificationHeatSwitch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                OvenState.setNotifyHeatClass(notificationHeatSwitch.isChecked());
+            }
+        });
     }
 
     private void setView() {
@@ -44,5 +81,12 @@ public class OvenSettingsActivity extends AppCompatActivity {
         notificationGrillSwitch = findViewById(R.id.activityOvenSettings_notificationGrillSwitch);
         notificationTemperatureSwitch = findViewById(R.id.activityOvenSettings_notificationTemperatureSwitch);
         notificationHeatSwitch = findViewById(R.id.activityOvenSettings_notificationHeatSwitch);
+
+        notificationOnSwitch.setChecked(OvenState.isNotifyTurnOnClass());
+        notificationOffSwitch.setChecked(OvenState.isNotifyTurnOffClass());
+        notificationConvectionSwitch.setChecked(OvenState.isNotifyConvectionClass());
+        notificationHeatSwitch.setChecked(OvenState.isNotifyHeatClass());
+        notificationTemperatureSwitch.setChecked(OvenState.isNotifyTemperatureClass());
+        notificationGrillSwitch.setChecked(OvenState.isNotifyGrillClass());
     }
 }
