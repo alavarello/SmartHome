@@ -58,25 +58,36 @@
                 android:value="com.grupo1.hci.smarthome.Activities.RoomActivity" />
         </activity>
         <activity android:name=".Activities.LampSettingsActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="@string/lampSettings">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.SettingsActivity" />
         </activity>
         <activity android:name=".Activities.BlindSettingsActivity"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="@string/blindSettings">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.SettingsActivity" />
         </activity>
         <activity android:name=".Activities.OvenSettingsActivity"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="@string/ovenSettings">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.SettingsActivity" />
         </activity>
         <activity android:name=".Activities.DoorSettingsActivity"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="@string/doorSettings">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.SettingsActivity" />
+        </activity>
+        <activity android:name=".Activities.RefrigeratorSettingsActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="@string/refriSettings">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.SettingsActivity" />

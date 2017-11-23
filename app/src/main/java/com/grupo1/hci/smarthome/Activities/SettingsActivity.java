@@ -45,6 +45,7 @@ public class SettingsActivity extends AppCompatActivity implements NavigationVie
     String oven;
     String door;
     String blind;
+    String refrigerator;
     Toolbar toolbar;
     NavigationView navigationView;
     DrawerLayout drawer;
@@ -113,6 +114,7 @@ public class SettingsActivity extends AppCompatActivity implements NavigationVie
         lamp = res.getString(R.string.lamp);
         door = res.getString(R.string.door);
         blind = res.getString(R.string.blind);
+        refrigerator = res.getString(R.string.refrigerator);
 
         String[] list = getResources().getStringArray(R.array.defaultDeviceNotification_array);
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,list ) {
@@ -142,6 +144,9 @@ public class SettingsActivity extends AppCompatActivity implements NavigationVie
                     startActivity(intent);
                 }else if(s.equals(blind)){
                     Intent intent = new Intent(SettingsActivity.this, BlindSettingsActivity.class);
+                    startActivity(intent);
+                }else if(s.equals(refrigerator)){
+                    Intent intent = new Intent(SettingsActivity.this, RefrigeratorSettingsActivity.class);
                     startActivity(intent);
                 }
 

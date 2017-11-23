@@ -444,7 +444,7 @@ public class APIManager {
 
     public void setOvenTemperature(final Activity activity, Device device, Integer temperature,final EditText temperatureEditText) {
         RevertError re = new RevertError();
-        re.setEditText(temperatureEditText,String.valueOf(temperature) );
+        re.setEditText(temperatureEditText,String.valueOf(((Oven)device).getTemperature()) );
         actionToApi(device.getId(),"setTemperature", temperature.toString(), re);
     }
 
@@ -720,24 +720,24 @@ public class APIManager {
 
     public void setRefriTemp(FragmentActivity activity, Device device, String temperature, EditText refriEditText) {
         RevertError re = new RevertError();
-        re.setEditText(refriEditText, temperature);
+        re.setEditText(refriEditText, String.valueOf(((Refrigerator)device).getTemperature()));
         actionToApi(device.getId(),"setTemperature", temperature,re);
     }
 
     public void setFreezerTemp(FragmentActivity activity, Device device, String freezerTemperature, EditText refriEditText) {
         RevertError re = new RevertError();
-        re.setEditText(refriEditText, freezerTemperature);
+        re.setEditText(refriEditText, String.valueOf(((Refrigerator)device).getFreezerTemperature()));
         actionToApi(device.getId(),"setFreezerTemperature", freezerTemperature, re);
     }
 
     public void setRefriMode(FragmentActivity activity, Device device, String refriMode, Spinner refriSpinner) {
         RevertError re = new RevertError();
-        if(refriMode.equals(Constants.REFRIGERATOR_MODE_DEFAULT)){
+        if(((Refrigerator)device).getMode().equals(Constants.REFRIGERATOR_MODE_DEFAULT)){
             re.setSpinner(refriSpinner, 0);
         }
-        else if(refriMode.equals(Constants.REFRIGERATOR_MODE_VACATION)){
+        else if(((Refrigerator)device).getMode().equals(Constants.REFRIGERATOR_MODE_VACATION)){
             re.setSpinner(refriSpinner, 1);
-        }else if(refriMode.equals(Constants.REFRIGERATOR_MODE_PARTY)){
+        }else if(((Refrigerator)device).getMode().equals(Constants.REFRIGERATOR_MODE_PARTY)){
             re.setSpinner(refriSpinner, 2);
         }
         actionToApi(device.getId(),"setMode", refriMode, re);
