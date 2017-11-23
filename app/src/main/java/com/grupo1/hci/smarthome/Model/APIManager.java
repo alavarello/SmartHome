@@ -700,7 +700,7 @@ public class APIManager {
         actionToApi(device.getId(),"setMode", refriMode);
     }
 
-    public void changeName(Object object, String newName, final String oldName, final TextView editText, final ActionBar actionBar) {
+    public void changeName(Activity activity, Object object, String newName, final String oldName, final TextView editText, final ActionBar actionBar) {
         String url = "";
 
         JSONObject params = new JSONObject();
@@ -727,7 +727,18 @@ public class APIManager {
                 new Response.Listener<JSONObject>()
                 {
                     @Override
-                    public void onResponse(JSONObject response) {}
+                    public void onResponse(JSONObject response) {
+                       if(object.getClass().equals(Room.class)){
+                            ((Room)object).setName(newName);
+                        }
+                        else if(object.getClass().equals(Rutine.class)){
+                            ((Rutine)object).setName(newName);
+                        }
+                        else{
+                           ((Device)object).setName(newName);
+                        }
+                        ((NavigationActivity)activity).setMenuWithApiCall();
+                    }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {}

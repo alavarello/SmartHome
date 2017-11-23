@@ -23,6 +23,7 @@ public class Blind implements Device {
         this.status = Constants.BLIND_STATE_OPENED;
     }
 
+
     public Blind(){}
 
     @Override

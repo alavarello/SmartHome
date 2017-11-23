@@ -80,24 +80,24 @@ public class EditDialogMessage extends DialogFragment {
                                 TextView tv = view.findViewById(R.id.rowLayout_nameTextView);
                                 tv.setText(input.getText().toString());
                                 //TODO diselect element
-                                apiManager.changeName(device, newName,device.getName(), tv, null);
+                                apiManager.changeName(getActivity(),device, newName,device.getName(), tv, null);
                             }else{
                                 ab.setTitle(input.getText().toString());
-                                apiManager.changeName(device, newName, device.getName(),null, ab);
+                                apiManager.changeName(getActivity(),device, newName, device.getName(),null, ab);
                             }
                             return;
                         }
                         if(isRoom){
                             TextView tv = view.findViewById(R.id.rowLayout_nameTextView);
                             tv.setText(input.getText().toString());
-                            apiManager.changeName(room, newName,room.getName(), tv, null);
+                            apiManager.changeName(getActivity(),room, newName,room.getName(), tv, null);
                             //TODO diselect element
                             return;
                         }
                         if(isRutine){
                             TextView tv = view.findViewById(R.id.rutineRowLayout_nameTextView);
                             tv.setText(input.getText().toString());
-                            apiManager.changeName(rutine, newName,rutine.getName(), tv, null);
+                            apiManager.changeName(getActivity(),rutine, newName,rutine.getName(), tv, null);
                             //TODO diselect element
                             return;
                         }

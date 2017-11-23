@@ -38,6 +38,11 @@ public class Oven implements Device {
 
     public Oven(){}
 
+    @Override
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public boolean isOn() {
         return isOn;
     }

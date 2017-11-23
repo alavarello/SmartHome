@@ -29,6 +29,7 @@ public class Refrigerator implements Device {
         this.mode = "default";
     }
 
+
     @Override
     public String getId() {
         return id;
