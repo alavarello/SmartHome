@@ -180,16 +180,6 @@ public class ApiService extends Service {
             devices =g.fromJson(l.get(0) ,deviceType );
             status = g.fromJson(l.get(1) , statusType);
 
-            SharedPreferences sp = this.getSharedPreferences(SHARED_PREFS_NAME, Activity.MODE_PRIVATE);
-            for(DeviceState d : status){
-                String s = sp.getString(d.deviceId , "null");
-                if(s != null){
-                    d.s = g.fromJson(s , d.s.getClass() );
-                    Log.d("recupera estado " , s);
-                }
-
-            }
-
         }
 
         loadNotifications();
@@ -398,32 +388,14 @@ public class ApiService extends Service {
 
     public void saveNotifications(){
 
-        SaverClass s = new SaverClass();
-        s.fillIn();
 
-        Gson g = new Gson();
-
-        String saver = g.toJson(s , SaverClass.class);
-
-        SharedPreferences sp = this.getSharedPreferences(SHARED_PREFS_NAME, Activity.MODE_PRIVATE);
-
-        SharedPreferences.Editor mEdit1 = sp.edit();
-        mEdit1.putString("saver" , saver);
 
 
 
     }
 
     public void loadNotifications(){
-        Gson g = new Gson();
 
-        SharedPreferences sp = this.getSharedPreferences(SHARED_PREFS_NAME, Activity.MODE_PRIVATE);
-        String dev = sp.getString("saver" , null);
-       if(dev == null) return;
-
-       SaverClass s = g.fromJson(dev , SaverClass.class );
-
-       s.load();
 
 
 
@@ -441,9 +413,18 @@ public class ApiService extends Service {
         mEdit1.putString("devices", dev);
         mEdit1.putString("status", stat);
 
-        for(DeviceState d : status){
-            mEdit1.putString(d.deviceId , g.toJson(d.getS() , d.getS().getClass() ));
+        SaverClass s = new SaverClass();
+        s.fillIn();
+
+        String saver = g.toJson(s , SaverClass.class);
+
+        if( saver == null ){
+            Log.e("saver se guarda" , "omo null");
         }
+
+        Log.d("saver es " , saver);
+
+        mEdit1.putString("saver" , saver);
 
         return mEdit1.commit();
 
@@ -453,9 +434,21 @@ public class ApiService extends Service {
 
         Gson g = new Gson();
 
+
         SharedPreferences sp = this.getSharedPreferences(SHARED_PREFS_NAME, Activity.MODE_PRIVATE);
         String dev = sp.getString("devices" , null);
         String stat = sp.getString("status" , null);
+        String saver = sp.getString("saver" , null);
+        Log.d("la clase saver es " ,saver);
+        if(saver != null)
+        {
+            SaverClass s = g.fromJson(saver , SaverClass.class );
+            s.load();
+
+
+        }
+
+
         List<String> l = new LinkedList<>();
         l.add(0 , dev);
         l.add(1,stat);
