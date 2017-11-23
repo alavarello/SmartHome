@@ -5,7 +5,11 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
@@ -22,14 +26,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.grupo1.hci.smarthome.Model.APIManager;
 import com.grupo1.hci.smarthome.Model.Blind;
 import com.grupo1.hci.smarthome.Model.Constants;
+import com.grupo1.hci.smarthome.Model.Room;
 import com.grupo1.hci.smarthome.R;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class SettingsActivity extends AppCompatActivity {
+public class SettingsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     EditText appNameEditText;
     Spinner timeNotificationSpinner;
@@ -38,14 +44,37 @@ public class SettingsActivity extends AppCompatActivity {
     String oven;
     String door;
     String blind;
+    Toolbar toolbar;
+    NavigationView navigationView;
+    DrawerLayout drawer;
+    ArrayList<Room> roomsArray = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-
+        setNavView();
         setView();
         setOnClickListener();
 
+    }
+
+    public void setRoomsArray(ArrayList<Room> roomsArray){
+        this.roomsArray = roomsArray;
+    }
+
+    private void setNavView() {
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+        drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+        setMenuWithApiCall();
     }
 
     private void setOnClickListener() {
@@ -66,13 +95,6 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void setView() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        // Get a support ActionBar corresponding to this toolbar
-        ActionBar ab = getSupportActionBar();
-        // Enable the Up button
-        ab.setDisplayHomeAsUpEnabled(true);
 
         //--------------
         appNameEditText = findViewById(R.id.settingsContent_AppName_editText);
@@ -156,4 +178,42 @@ public class SettingsActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if(id == R.id.settings){
+            Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
+        }else if(id == R.id.rutines){
+            Intent intent = new Intent(getApplicationContext(), RutinesActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
+        }else{
+            if(!getClass().equals(RoomActivity.class)){
+                Intent intent = new Intent(getApplicationContext(), RoomActivity.class);
+                intent.putExtra(Constants.ROOM_INTENT, (Serializable) roomsArray.get(id));
+                intent.putExtra(Constants.ROOM_ARRAY_INTENT, (Serializable) roomsArray);
+                startActivity(intent);
+            }
+        }
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    public void setMenuWithApiCall(){
+        APIManager.getInstance(this).getRoomsForMenu(this,  navigationView.getMenu());
+    }
 }

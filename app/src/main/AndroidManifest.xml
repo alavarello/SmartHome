@@ -16,7 +16,6 @@
         <receiver android:name=".Notifications.BootListenerReceiver"  android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
-
             </intent-filter>
         </receiver>
         <activity
@@ -45,9 +44,6 @@
             android:name=".Activities.SettingsActivity"
             android:label="@string/title_activity_settings"
             android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.grupo1.hci.smarthome.Activities.HomeActivity" />
         </activity>
         <activity
             android:name=".Activities.RutinesActivity"

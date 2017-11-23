@@ -58,4 +58,5 @@ public class BlindSettingsActivity extends AppCompatActivity {
 
     }
 
+
 }

@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.IBinder;
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.android.volley.Request;
@@ -20,6 +21,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.grupo1.hci.smarthome.Model.Constants;
+import com.grupo1.hci.smarthome.Model.Device;
+import com.grupo1.hci.smarthome.Model.Room;
 
 import org.json.JSONObject;
 
@@ -60,7 +63,7 @@ public class ApiService extends Service {
 
     Intent mServiceIntent ;
 
-    static ArrayList<DeviceNotifications> devices  = new ArrayList<>();
+    static ArrayList<DeviceNotifications> devices  =  new ArrayList<>();
 
     static ArrayList<DeviceState> status = new ArrayList<>();
 
@@ -115,7 +118,7 @@ public class ApiService extends Service {
              devicesRemove.add(d1);
              statusRemove.add(st);
 
-             sendNotification(getApplicationContext() , d1.name + " has been deleted" , channelId  , d1.name);
+             sendNotification(getApplicationContext() , d1.name + " has been deleted" , channelId  , d1.name , d1.getDeviceId());
          }
      }
     }
@@ -155,7 +158,7 @@ public class ApiService extends Service {
                 }
                s.setContext(this);
                 s.setName(d.name);
-                sendNotification(getApplicationContext() ,  d.name + " has been added" , s.getNotificationChannel() , d.name);
+                sendNotification(getApplicationContext() ,  d.name + " has been added" , s.getNotificationChannel() , d.name, d.getDeviceId());
                 //status.add(new DeviceState(s,d.id));
                 statusAdd.add(new DeviceState(s,d.id));
             }
@@ -327,7 +330,7 @@ public class ApiService extends Service {
                 deviceState.s.setStarted(true);
 
                 for(String m : messages) {
-                    sendNotification(context,    m , deviceState.s.getNotificationChannel() , deviceState.s.getName());
+                    sendNotification(context,    m , deviceState.s.getNotificationChannel() , deviceState.s.getName(), deviceState.deviceId);
                 }
 
 
@@ -349,13 +352,17 @@ public class ApiService extends Service {
         queue.add(sr);
     }
 
-    private void sendNotification(Context context , String message , int channelId , String deviceName ){
-       // mServiceIntent.putExtra("encabezado", "ayaya");
+
+    public void sendNotificationTwo(Context context , String message , int channelId , String deviceName , String deviceId , String roomId, String roomName){
         mServiceIntent.putExtra(CommonConstants.EXTRA_MESSAGE, message);//l.getStatus().toString());
         mServiceIntent.setAction(CommonConstants.ACTION_PING);
 
         mServiceIntent.putExtra("channelId" , channelId);
         mServiceIntent.putExtra("deviceName" , deviceName);
+        mServiceIntent.putExtra("deviceId" , deviceId);
+        mServiceIntent.putExtra("roomId" , roomId);
+        mServiceIntent.putExtra("roomName" , roomName);
+
 
         int milliseconds = (5 * 1000);
 
@@ -363,6 +370,14 @@ public class ApiService extends Service {
 
         // Launches IntentService "PingService" to set timer.
         context.startService(mServiceIntent );
+    }
+
+
+    private void sendNotification(Context context , String message , int channelId , String deviceName , String deviceId){
+       // mServiceIntent.putExtra("encabezado", "ayaya");
+
+        getRoomOfDevice(context , message ,channelId , deviceName ,deviceId);
+
     }
 
     public  void getAllDevices(final Context context) {
@@ -392,7 +407,9 @@ public class ApiService extends Service {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                sendNotification(context , "error" , 100 , "ERROR");
+                Log.e("notification" , "error in notifications");
+
+               // sendNotification(context , "error" , 100 , "ERROR");
 
             }
         });
@@ -464,6 +481,73 @@ public class ApiService extends Service {
         l.add(0 , dev);
         l.add(1,stat);
         return l;
+    }
+
+    private void checkDevicesInRoom( Room r , Context context , String message , int channelId , String deviceName , String deviceId){
+
+        String url = Constants.PORT_CONECTIVITY+"/api/rooms/" + r.getId() + "/devices";
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, new JSONObject(),
+                new Response.Listener<JSONObject>()
+                {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try{
+                            Gson gson = new GsonBuilder().create();
+                            Type listType = new TypeToken<ArrayList<Device>>() {
+                            }.getType();
+                            String jsonFragment = response.getString("rooms");
+                            ArrayList<Device> deviceList = gson.fromJson(jsonFragment, listType);
+
+                            for( Device  d  : deviceList){
+                                if(d.getId().equals(deviceId)){
+                                    sendNotificationTwo(context , message , channelId , deviceName , deviceId , r.getId() , r.getName());
+                                }
+
+                            }
+                        } catch (Exception exception) {
+                            // Toast.makeText(activity, exception.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            }
+        });
+
+        queue.add(request);
+    }
+
+
+    public void getRoomOfDevice( Context context , String message , int channelId , String deviceName , String deviceId) {
+        String url = Constants.PORT_CONECTIVITY+"/api/rooms/";
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, new JSONObject(),
+                new Response.Listener<JSONObject>()
+                {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try{
+                            Gson gson = new GsonBuilder().create();
+                            Type listType = new TypeToken<ArrayList<Room>>() {
+                            }.getType();
+                            String jsonFragment = response.getString("rooms");
+                            ArrayList<Room> roomList = gson.fromJson(jsonFragment, listType);
+
+                            for( Room  r : roomList){
+                                    checkDevicesInRoom(r ,context , message , channelId , deviceName , deviceId );
+                            }
+
+                        } catch (Exception exception) {
+                           // Toast.makeText(activity, exception.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            }
+        });
+
+        queue.add(request);
+
     }
 
 

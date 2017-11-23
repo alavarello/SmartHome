@@ -15,6 +15,10 @@
 package com.grupo1.hci.smarthome.Notifications;
 
 import com.grupo1.hci.smarthome.Activities.HomeActivity;
+import com.grupo1.hci.smarthome.Activities.RoomActivity;
+import com.grupo1.hci.smarthome.Model.Constants;
+import com.grupo1.hci.smarthome.Model.Lamp;
+import com.grupo1.hci.smarthome.Model.Room;
 import com.grupo1.hci.smarthome.R;
 
 
@@ -78,17 +82,22 @@ public class PingService extends IntentService {
         int channelId  = intent.getIntExtra("channelId" , CommonConstants.NOTIFICATION_ID );
         String name = intent.getStringExtra("deviceName" );
 
+        String deviceId = intent.getStringExtra("deviceId" );
+       String roomId =  intent.getStringExtra("roomId");
+
+       String roomName = intent.getStringExtra("roomName");
+
         if(name == null) name = "Notification";
 
         String action = intent.getAction();
         // This section handles the 3 possible actions:
         // ping, snooze, and dismiss.
         if(action.equals(CommonConstants.ACTION_PING)) {
-            issueNotification(intent, mMessage, channelId , name);
+            issueNotification(intent, mMessage, channelId , name , deviceId , roomId , roomName);
         }
     }
 
-    private void issueNotification(Intent intent, String msg , int channelID  , String deviceName) {
+    private void issueNotification(Intent intent, String msg , int channelID  , String deviceName, String deviceId, String roomId, String roomName) {
         mNotificationManager = (NotificationManager)
                 getSystemService(NOTIFICATION_SERVICE);
 
@@ -117,9 +126,12 @@ public class PingService extends IntentService {
          * UI for snoozing or dismissing the notification.
          * This is available through either the normal view or big view.
          */
-         Intent resultIntent = new Intent(this, HomeActivity.class);
+         Intent resultIntent = new Intent(this, RoomActivity.class);
          resultIntent.putExtra(CommonConstants.EXTRA_MESSAGE, msg);
          resultIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+        resultIntent.putExtra(Constants.DEVICE_INTENT, new Lamp(deviceId , deviceName) );
+        resultIntent.putExtra(Constants.ROOM_INTENT , new Room(roomId , roomName));
 
          // Because clicking the notification opens a new ("special") activity, there's
          // no need to create an artificial back stack.

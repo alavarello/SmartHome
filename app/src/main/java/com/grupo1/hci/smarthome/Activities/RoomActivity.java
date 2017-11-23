@@ -57,13 +57,21 @@ public class RoomActivity extends NavigationActivity implements SuportDeviceActi
             device = (Device) getIntent().getSerializableExtra(Constants.DEVICE_INTENT);
 
         }
-        setMenu();
+        //setMenu();
         if(((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_XLARGE)){
             setViewForXLARGE();
         }
         //Set toolbar content
         getSupportActionBar().setTitle(room.getName());
         setFragment();
+
+
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
         if(device != null){
             if(((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_XLARGE)){
                 changeDeviceFragment(device);
@@ -71,8 +79,10 @@ public class RoomActivity extends NavigationActivity implements SuportDeviceActi
                 ((RoomListFragment) fragment).startDeviceActivity(device);
             }
         }
-
+        setMenuWithApiCall();
+        device = null;
     }
+
 
     private void setViewForXLARGE() {
         LinearLayout listFragment = findViewById(R.id.homeActivity_Fragmentcontainer);
