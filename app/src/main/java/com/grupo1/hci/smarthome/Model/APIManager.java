@@ -224,7 +224,7 @@ public class APIManager {
                             // String jsonFragment = response.getString("devices");
                             //  ArrayList<Device> deviceList = gson.fromJson(jsonFragment, listType);
                             ((RoomActivity)activity).loadDevices(deviceList);
-                            Toast.makeText(activity, response.toString(), Toast.LENGTH_SHORT).show();
+                          
                         } catch (Exception exception) {
                             Toast.makeText(activity, exception.getLocalizedMessage(), Toast.LENGTH_LONG).show();
                         }

@@ -75,7 +75,6 @@
     <string name="door">Door</string>
     <string name="blind">Blind</string>
     <string name="dismiss">Dismiss</string>
-    <string name="snooze">Snooze</string>
     <string name="changeNotificationOpenClose">Opens or closes</string>
     <string name="changeNotificationLockUnlock">Locks or unlocks</string>
     <string name="refrigerator">Refrigerator</string>
@@ -89,11 +88,6 @@
         <item>@string/refrigerator</item>
     </string-array>
 
-    <string name="ping_text">Set Seconds Until Ping</string>
-    <string name="done_snoozing">Done Snoozing.</string>
-    <string name="seconds_default">10</string>
-    <string name="reminder_label">Reminder Text</string>
-    <string name="reminder_text">Don\'t forget!</string>
     <string-array name="heat_array">
         <item>@string/oven_conventional</item>
         <item>@string/oven_bottom</item>
@@ -101,18 +95,12 @@
     </string-array>
 
     <string name="notification" translatable="false">SmartHome</string>
-    <string name="label">Ping Me</string>
     <string-array name="grill_array">
         <item>@string/oven_large</item>
         <item>@string/oven_eco</item>
         <item>@string/oven_off</item>
     </string-array>
 
-    <string name="ping">Ping!</string>
-    <string name="snoozing">Snoozing!</string>
-    <string name="timer_start">Setting the timer</string>
-    <string name="sleep_error">Sleep failure</string>
-    <string name="timer_finished">Timer finished.</string>
     <string-array name="convection_array">
         <item>@string/oven_normal</item>
         <item>@string/oven_eco</item>

@@ -174,5 +174,11 @@
     <string name="error_regexp1">El nombre debe contener más de 3 caracteres y debe contener solo letras, números o _</string>
     <string name="error_regexp2">The name must contain only letters, numbers or _</string>
     <string name="error_regexp3">El nombre debe contener más de 3 caracteres</string>
+    <string name="refrigerator">Refrigerador</string>
+    <string name="refriSettings">Configuración del refrigerador</string>
+    <string name="lampSettings">Configuración de la lámpara</string>
+    <string name="blindSettings">Configuración de la cortina</string>
+    <string name="ovenSettings">Configuración del horno</string>
+    <string name="doorSettings">Configuración de la puerta</string>
 
 </resources>
